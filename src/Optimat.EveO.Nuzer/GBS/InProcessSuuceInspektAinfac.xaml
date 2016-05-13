@@ -1,0 +1,72 @@
+﻿<UserControl x:Class="Optimat.EveO.Nuzer.GBS.SictInProcessSuuceInspektAinfac"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="111" d:DesignWidth="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="4"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="4"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="11"></ColumnDefinition>
+            <ColumnDefinition Width="4*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Text="started"
+                   Margin="1" VerticalAlignment="Center">
+        </TextBlock>
+
+        <TextBlock Text="duration / ms"
+                   Grid.Row="2"
+                   Margin="1" VerticalAlignment="Center">
+        </TextBlock>
+
+        <TextBlock Text="result"
+                   Grid.Row="4"
+                   Margin="1" VerticalAlignment="Center">
+        </TextBlock>
+
+        <Grid Grid.Column="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="1"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="1"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <TextBox Name="TextBoxBeginAlter"
+                IsReadOnly="True" Width="55"
+                     TextAlignment="Right"
+                VerticalAlignment="Center">
+            </TextBox>
+            
+            <TextBlock Text="s ago at"
+                       Grid.Column="2"
+                       Margin="1" VerticalAlignment="Center"></TextBlock>
+
+            <TextBox Name="TextBoxBeginZaitKalender"
+                IsReadOnly="True" Grid.Column="4" Width="133"
+                VerticalAlignment="Center">
+            </TextBox>
+        </Grid>
+
+        <TextBox
+            Name="TextBoxDauerMili"
+            IsReadOnly="True"
+            Grid.Column="2" Grid.Row="2" Width="55" HorizontalAlignment="Left"></TextBox>
+
+        <TextBox
+            Name="TextBoxErgeebnisSictString"
+            IsReadOnly="True"
+            Grid.Column="2" Grid.Row="4"></TextBox>
+    </Grid>
+</UserControl>

@@ -1,0 +1,10 @@
+﻿<Bib3.Windows:ApplicationMitGbsUndTimer
+    x:Class="Optimat.EveO.Nuzer.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Bib3.Windows="clr-namespace:Bib3.Windows;assembly=Bib3.Windows"
+    xmlns:Optimat.GBS="clr-namespace:Optimat.GBS;assembly=Optimat">
+    <Application.Resources>
+        <ResourceDictionary Source="pack://application:,,,/Optimat.EveOnline.Knsl;component/GBS/Style.xaml"></ResourceDictionary>
+    </Application.Resources>
+</Bib3.Windows:ApplicationMitGbsUndTimer>

@@ -1,0 +1,395 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D95AA226-5FD2-44B1-9DE3-7E326E34CB18}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Optimat.EveO.Nuzer</RootNamespace>
+    <AssemblyName>Optimat.EveOnline.Knsl</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <NuGetPackageImportStamp>5c500fef</NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Haupt.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>Optimat.EveO.Nuzer.App</StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Bib3">
+      <HintPath>..\..\..\..\..\Impl\Assembly\Optimat.EveOnline\Optimat.EveOnline.UI\bin\Debug\Bib3.dll</HintPath>
+    </Reference>
+    <Reference Include="Bib3.FCL">
+      <HintPath>..\..\..\..\..\Impl\Assembly\Optimat.EveOnline\Optimat.EveOnline.UI\bin\Debug\Bib3.FCL.dll</HintPath>
+    </Reference>
+    <Reference Include="Bib3.RefNezDif">
+      <HintPath>..\..\..\..\..\Impl\Assembly\Optimat.EveOnline\Optimat.EveOnline.UI\bin\Debug\Bib3.RefNezDif.dll</HintPath>
+    </Reference>
+    <Reference Include="Bib3.Windows">
+      <HintPath>..\..\..\..\..\Impl\Assembly\Optimat.EveOnline\Optimat.EveOnline.UI\bin\Debug\Bib3.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="BotEngine.Common">
+      <HintPath>..\..\..\..\..\..\..\BotEngine\Impl\BotEngine\BotEngine\BotEngine.Interface\bin\Debug\BotEngine.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="BotEngine.EveOnline, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\lib\BotEngine.EveOnline.dll</HintPath>
+    </Reference>
+    <Reference Include="BotEngine.EveOnline.Interface, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\lib\BotEngine.EveOnline.Interface.dll</HintPath>
+    </Reference>
+    <Reference Include="BotEngine.Interface">
+      <HintPath>..\..\..\..\..\..\..\BotEngine\Impl\BotEngine\BotEngine\BotEngine.Interface\bin\Debug\BotEngine.Interface.dll</HintPath>
+    </Reference>
+    <Reference Include="BotEngine.UI">
+      <HintPath>..\..\..\..\..\..\..\BotEngine\Impl\BotEngine\BotEngine\BotEngine.UI\bin\Debug\BotEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Debug.Windows.Prozes">
+      <HintPath>..\..\..\..\..\Impl\Assembly\Optimat.EveOnline\Optimat.EveOnline.UI\bin\Debug\Debug.Windows.Prozes.dll</HintPath>
+    </Reference>
+    <Reference Include="Fasterflect">
+      <HintPath>..\packages\fasterflect.2.1.3\lib\net40\Fasterflect.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.4.9.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.4.9\lib\Net45\HtmlAgilityPack.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="InputSimulator">
+      <HintPath>..\..\..\..\..\..\Bib\InputSimulator.0.1.0.0-bin\InputSimulator.0.1.0.0-bin\Debug\InputSimulator.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Optimat">
+      <HintPath>..\..\..\..\..\Impl\Assembly\Optimat.EveOnline\Optimat.EveOnline.UI\bin\Debug\Optimat.dll</HintPath>
+    </Reference>
+    <Reference Include="Optimat.EveOnline, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Impl\Assembly\Optimat.EveOnline\Optimat.EveOnline\bin\Debug\Optimat.EveOnline.dll</HintPath>
+    </Reference>
+    <Reference Include="Optimat.EveOnline.Base, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Impl\Assembly\Optimat.EveOnline\Optimat.EveOnline.Base\bin\Debug\Optimat.EveOnline.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Optimat.EveOnline.CustomBot, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Impl\Assembly\Optimat.EveOnline\Optimat.EveOnline.CustomBot\bin\Debug\Optimat.EveOnline.CustomBot.dll</HintPath>
+    </Reference>
+    <Reference Include="Optimat.EveOnline.TempAuswertGbs">
+      <HintPath>..\..\..\..\..\Impl\Assembly\Optimat.EveOnline\Optimat.EveOnline.TempAuswertGbs\bin\Debug\Optimat.EveOnline.TempAuswertGbs.dll</HintPath>
+    </Reference>
+    <Reference Include="Optimat.EveOnline.UI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Impl\Assembly\Optimat.EveOnline\Optimat.EveOnline.UI\bin\Debug\Optimat.EveOnline.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="protobuf-net, Version=2.0.0.668, Culture=neutral, PublicKeyToken=257b51d87d2e4d67, processorArchitecture=MSIL">
+      <HintPath>..\packages\protobuf-net.2.0.0.668\lib\net40\protobuf-net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WpfAutoGrid, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WpfAutoGrid.1.3.0.0\lib\net45\WpfAutoGrid.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <None Include="App.Berict.cs" />
+    <Compile Include="App.Bot.cs" />
+    <Compile Include="App.CustomBot.cs" />
+    <Compile Include="App.EveOnln.cs" />
+    <Compile Include="App.EveOnln.Wirkung.cs" />
+    <Compile Include="App.Gbs.cs" />
+    <Compile Include="App.Gbs.EveOnln.cs" />
+    <Compile Include="App.LicenceClient.cs" />
+    <Compile Include="App.Sensor.cs" />
+    <Compile Include="App.Wirkung.cs" />
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="App.EveOnln.Server.cs" />
+    <Compile Include="CustomBotServer.cs" />
+    <Compile Include="Extension.cs" />
+    <Compile Include="GBS\CustomBotServer.xaml.cs">
+      <DependentUpon>CustomBotServer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GBS\Erwaitert.xaml.cs">
+      <DependentUpon>Erwaitert.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GBS\InProcessSuuceInspektAinfac.xaml.cs">
+      <DependentUpon>InProcessSuuceInspektAinfac.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GBS\WaalWindow.xaml.cs">
+      <DependentUpon>WaalWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Glob.cs" />
+    <Compile Include="MengeSictIdent64Scpaicer.cs" />
+    <Compile Include="Report\EveOnline.Anwendung.Berict.Auswert.cs" />
+    <Compile Include="Report\SictAusSctroomDiferenzScnapscus.cs" />
+    <Compile Include="SensorClient.cs" />
+    <Compile Include="TempBot\AufgaabeParam\AufgaabeParam.Andere.cs" />
+    <Compile Include="TempBot\AufgaabeParam\AufgaabeParam.Andere.Konstrukt.cs" />
+    <Compile Include="TempBot\AufgaabeParam\AufgaabeParam.Destrukt.cs" />
+    <Compile Include="TempBot\AufgaabeParam\AufgaabeParam.InfoPanelRouteFüüreAus.cs" />
+    <Compile Include="TempBot\AufgaabeParam\AufgaabeParam.InSolarSystemMenuAktioon.cs" />
+    <Compile Include="TempBot\AufgaabeParam\AufgaabeParam.GbsElementVerberge.cs" />
+    <Compile Include="TempBot\AufgaabeParam\AufgaabeParam.LockTarget.cs" />
+    <Compile Include="TempBot\AufgaabeParam\AufgaabeParam.MengeOverviewObjGrupeMesung.cs" />
+    <Compile Include="TempBot\AufgaabeParam\AufgaabeParam.OverviewPresetLaade.cs" />
+    <Compile Include="TempBot\AufgaabeParam\AufgaabeParam.OverviewPresetLaadeNaacVorgeseheneTab.cs" />
+    <Compile Include="TempBot\AufgaabeParam\AufgaabeParam.ScrollDown.cs" />
+    <Compile Include="TempBot\AufgaabeParam\AufgaabeParam.ScrollToTop.cs" />
+    <Compile Include="TempBot\AufgaabeParam\AufgaabeParam.ScteleSicerOverviewSortNaacDistance.cs" />
+    <Compile Include="TempBot\AufgaabeParam\AufgaabeParam.ShipAktuelCargoTypLeere.cs" />
+    <Compile Include="TempBot\AufgaabeParam\AufgaabeParam.ShipAktuelOpenInventoryCargoTyp.cs" />
+    <Compile Include="TempBot\AufgaabeParam\AufgaabeParam.ShipDock.cs" />
+    <Compile Include="TempBot\AufgaabeParam\AufgaabeParam.ShipFluct.cs" />
+    <Compile Include="TempBot\AufgaabeParam\AufgaabeParam.ShipStop.cs" />
+    <Compile Include="TempBot\Mine\AutoMine.cs" />
+    <Compile Include="TempBot\Mine\AutoMine.DockUndOffload.cs" />
+    <Compile Include="TempBot\Mine\AutoMine.InBeltMine.cs" />
+    <Compile Include="TempBot\Mine\AutoMine.SurveyScan.cs" />
+    <Compile Include="TempBot\Mine\AutoMine.WarpToBelt.cs" />
+    <Compile Include="TempBot\ScpezEveOnln\AufgaabeKombiZuusctand.cs" />
+    <Compile Include="TempBot\ScpezEveOnln\AuswertGbs\Ergeebnis.cs" />
+    <Compile Include="TempBot\ScpezEveOnln\AuswertGbs\Extension.cs" />
+    <Compile Include="TempBot\ScpezEveOnln\AuswertGbs\ModuleButtonHintInterpretiirt.cs" />
+    <Compile Include="TempBot\ScpezEveOnln\AuswertGbs\Scpez.cs" />
+    <Compile Include="TempBot\ScpezEveOnln\AuswertGbs\ShipUIIndicationAuswert.cs" />
+    <Compile Include="TempBot\ScpezEveOnln\AuswertGbs\WindowInventoryVerknüpfungMitOverview.cs" />
+    <Compile Include="TempBot\ScpezEveOnln\Automaat.Zuusctand.cs" />
+    <Compile Include="TempBot\ScpezEveOnln\Automaat.Zuusctand.Verwerte.cs" />
+    <Compile Include="TempBot\ScpezEveOnln\Automaat.Zuusctand.Verwerte.Komponente.cs" />
+    <Compile Include="TempBot\ScpezEveOnln\Automaat.Zuusctand.Verwerte.Tailaufgaabe.cs" />
+    <Compile Include="TempBot\ScpezEveOnln\Automat.cs" />
+    <Compile Include="TempBot\ScpezEveOnln\Automat.Helfer.cs" />
+    <Compile Include="TempBot\ScpezEveOnln\Automat.Zuusctand.Aktualisiire.cs" />
+    <Compile Include="TempBot\ScpezEveOnln\Automat.Zuusctand.Aktualisiire.TailListePrioMengeAufgaabe.cs" />
+    <Compile Include="TempBot\ScpezEveOnln\ISictAutomatZuusctand.cs" />
+    <Compile Include="TempBot\Sonst\AgentUndMission.Aktualisiire.cs" />
+    <Compile Include="TempBot\Sonst\AgentUndMission.Verwerte.cs" />
+    <Compile Include="TempBot\Sonst\AgentUndMission.Zuusctand.cs" />
+    <Compile Include="TempBot\Sonst\Assets.Zuusctand.cs" />
+    <Compile Include="TempBot\Sonst\Aufgaabe.cs" />
+    <Compile Include="TempBot\Sonst\AufgaabeParam.cs" />
+    <Compile Include="TempBot\Sonst\AufgaabeParam.Verglaic.cs" />
+    <Compile Include="TempBot\Sonst\AufgaabeÜbersazNaacGbs.cs" />
+    <Compile Include="TempBot\Sonst\AusSequenz.Transitioon.cs" />
+    <Compile Include="TempBot\Sonst\Automaat.Zuusctand.Extension.cs" />
+    <Compile Include="TempBot\Sonst\Extension.cs" />
+    <Compile Include="TempBot\Sonst\FittingUndShip.Aktualisiire.cs" />
+    <Compile Include="TempBot\Sonst\FittingUndShip.ModuleRepr.Zuusctand.cs" />
+    <Compile Include="TempBot\Sonst\FittingUndShip.Zuusctand.cs" />
+    <Compile Include="TempBot\Sonst\FürGefectAufgaabeManööver.cs" />
+    <Compile Include="TempBot\Sonst\Gbs.Agregatioon.AusTransitionInfo.cs" />
+    <Compile Include="TempBot\Sonst\Gbs.Aktualisiire.cs" />
+    <Compile Include="TempBot\Sonst\Gbs.ListGrouped.Zuusctand.cs" />
+    <Compile Include="TempBot\Sonst\Gbs.Menu.Kaskaade.cs" />
+    <Compile Include="TempBot\Sonst\Gbs.Window.Zuusctand.cs" />
+    <Compile Include="TempBot\Sonst\Gbs.Zuusctand.cs" />
+    <Compile Include="TempBot\Sonst\InRaumAktioonUndGefect.Aktualis.cs" />
+    <Compile Include="TempBot\Sonst\InRaumAktioonUndGefect.Zuusctand.cs" />
+    <Compile Include="TempBot\Sonst\InRaumObjektReprZuusctand.cs" />
+    <Compile Include="TempBot\Sonst\Konfig.cs" />
+    <Compile Include="TempBot\Sonst\Konfig.MissionStrategikon.cs" />
+    <Compile Include="TempBot\Sonst\Mission.Aktualisiire.cs" />
+    <Compile Include="TempBot\Sonst\Mission.ObjectiveLocation.cs" />
+    <Compile Include="TempBot\Sonst\Mission.Strategikon.Instanz.cs" />
+    <Compile Include="TempBot\Sonst\Mission.Strategikon.Instanz.FortscritBerecne.cs" />
+    <Compile Include="TempBot\Sonst\Mission.Zuusctand.cs" />
+    <Compile Include="TempBot\Sonst\MissionStrategikon.cs" />
+    <Compile Include="TempBot\Sonst\MissionTitel.cs" />
+    <Compile Include="TempBot\Sonst\OverviewObjektZuusctand.cs" />
+    <Compile Include="TempBot\Sonst\OverviewProfileFolgeViewport.cs" />
+    <Compile Include="TempBot\Sonst\OverviewUndTarget.Aktualisiire.cs" />
+    <Compile Include="TempBot\Sonst\OverviewUndTarget.Zuusctand.cs" />
+    <Compile Include="TempBot\Sonst\ScpaicerTransitioonNaacHasValue.cs" />
+    <Compile Include="TempBot\Sonst\ShipModuleAktivitäätZaitraum.cs" />
+    <Compile Include="TempBot\Sonst\SictFläceRectekOrtoAbhängigVonGbsAst.cs" />
+    <Compile Include="TempBot\Sonst\StrategikonInRaumAtomZwisceergeebnis.cs" />
+    <Compile Include="TempBot\Sonst\SurveyScanView.cs" />
+    <Compile Include="TempBot\Sonst\TargetZuusctand.cs" />
+    <Compile Include="TempBot\Sonst\Topologii.cs" />
+    <Compile Include="TempBot\Sonst\VerbindungListEntryUndInRaumObjektPerDistance.cs" />
+    <Compile Include="TempBot\Sonst\WindowAgentDialogueZuusctand.cs" />
+    <Compile Include="TempBot\Sonst\WirkungPfaad.cs" />
+    <Compile Include="TempBot\Sonst\ZuGbsObjektZuusctand.cs" />
+    <Compile Include="VonServerBerict.cs" />
+    <Compile Include="WebServer.cs" />
+    <None Include="UserscriptHost.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="GBS\Haupt.xaml.cs">
+      <DependentUpon>Haupt.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Konfig.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="GBS\CustomBotServer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GBS\Erwaitert.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GBS\Haupt.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GBS\InProcessSuuceInspektAinfac.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GBS\Style.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GBS\WaalWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Haupt.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="FodyWeavers.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Optimat.EveO\Optimat.EveO.csproj">
+      <Project>{2582079f-554e-463b-8422-f9fd2e4e6ed9}</Project>
+      <Name>Optimat.EveO</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Fody.1.28.3\build\Fody.targets" Condition="Exists('..\packages\Fody.1.28.3\build\Fody.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Fody.1.28.3\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.1.28.3\build\Fody.targets'))" />
+  </Target>
+  <!--
+Disabled because cleaning up the Assemblies results in FileNotFoundEception for Assembly when VS Hosting Process is used for Debugging.
+
+  <Target AfterTargets="AfterBuild;NonWinFodyTarget" Name="CleanReferenceCopyLocalPaths">
+    <Delete Files="@(ReferenceCopyLocalPaths->'$(OutDir)%(DestinationSubDirectory)%(Filename)%(Extension)')" />
+  </Target>
+-->
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

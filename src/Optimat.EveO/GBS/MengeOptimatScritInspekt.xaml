@@ -1,0 +1,319 @@
+﻿<UserControl x:Class="Optimat.EveOnline.GBS.SictMengeOptimatScritInspekt"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:Optimat.GBS="clr-namespace:Optimat.GBS;assembly=Optimat"
+             mc:Ignorable="d" 
+             d:DesignHeight="444" d:DesignWidth="444">
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="4*"></RowDefinition>
+                <RowDefinition Height="1"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="1"></RowDefinition>
+                    <RowDefinition Height="4*"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0"
+                      ClipToBounds="True">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="3"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <Canvas Grid.Row="0"
+                            Visibility="Collapsed"
+                            Height="{Binding Path=ActualHeight, ElementName=DataGridZiilProcessListeVonServerVorsclaagWirkungHeaderGridBerecnungHeight}">
+                        <Grid Name="DataGridZiilProcessListeVonServerVorsclaagWirkungHeaderGridBerecnungHeight">
+                            <Grid Height="{Binding Path=ActualHeight, ElementName=DataGridMengeOptimationScritHeaderSaiteNuzerBegin}"></Grid>
+                            <Grid Height="{Binding Path=ActualHeight, ElementName=DataGridMengeOptimationScritHeaderSaiteServer}"></Grid>
+                            <Grid Height="{Binding Path=ActualHeight, ElementName=DataGridMengeOptimationScritHeaderSaiteNuzerEnde}"></Grid>
+                        </Grid>
+                        <Grid
+                            Name="DataGridMengeOptimationScritHeaderSaiteNuzerBegin">
+                            <Grid Margin="1">
+                                <Grid.Background>
+                                    <SolidColorBrush Color="Black" Opacity="0.3"></SolidColorBrush>
+                                </Grid.Background>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="4"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="4"></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Text="->" Grid.Column="4" FontWeight="Bold" Margin="1" VerticalAlignment="Center"></TextBlock>
+
+                                <TextBlock Text="client side"
+                                           Grid.Column="2"
+                                           FontWeight="Bold" HorizontalAlignment="Center" Margin="3"></TextBlock>
+                            </Grid>
+                        </Grid>
+
+                        <Grid
+                                                                Name="DataGridMengeOptimationScritHeaderSaiteServer">
+                            <Grid Margin="1">
+                                <Grid.Background>
+                                    <SolidColorBrush Color="Black" Opacity="0.3"></SolidColorBrush>
+                                </Grid.Background>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="4"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="4"></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Text="->" Grid.Column="0" FontWeight="Bold" Margin="1" VerticalAlignment="Center"></TextBlock>
+
+                                <TextBlock Text="->" Grid.Column="4" FontWeight="Bold" Margin="1" VerticalAlignment="Center"></TextBlock>
+
+                                <TextBlock Text="server side"
+                                           Grid.Column="2"
+                                           FontWeight="Bold" HorizontalAlignment="Center" Margin="3"></TextBlock>
+                            </Grid>
+                        </Grid>
+
+                        <Grid
+                            Name="DataGridMengeOptimationScritHeaderSaiteNuzerEnde">
+                            <Grid Margin="1">
+                                <Grid.Background>
+                                    <SolidColorBrush Color="Black" Opacity="0.3"></SolidColorBrush>
+                                </Grid.Background>
+                                
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="4"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="4"></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Text="client side"
+                                           Grid.Column="2"
+                                           FontWeight="Bold" HorizontalAlignment="Center" Margin="3"></TextBlock>
+
+                                <TextBlock Text="->" Grid.Column="0" FontWeight="Bold" Margin="1" VerticalAlignment="Center"></TextBlock>
+                            </Grid>
+                        </Grid>
+
+                    </Canvas>
+
+                    <Canvas Grid.Row="2"
+                            Height="{Binding Path=ActualHeight, ElementName=DataGridZiilProcessListeVonServerVorsclaagWirkungHeaderZaile1GridBerecnungHeight}">
+                        <Grid Name="DataGridZiilProcessListeVonServerVorsclaagWirkungHeaderZaile1GridBerecnungHeight">
+                            <Grid Height="{Binding Path=ActualHeight, ElementName=DataGridMengeOptimationScritHeaderSaiteNuzerBeginTailVonZiilProcessLeese}"></Grid>
+                        </Grid>
+                        <Grid
+                            Name="DataGridMengeOptimationScritHeaderSaiteNuzerBeginTailVonZiilProcessLeese">
+                            <Grid Margin="1">
+                                <Grid.Background>
+                                    <SolidColorBrush Color="Black" Opacity="0.2"></SolidColorBrush>
+                                </Grid.Background>
+
+                                <TextBlock Text="read from Process"
+                                           FontWeight="Bold" TextWrapping="Wrap"
+                                           Margin="3" HorizontalAlignment="Center"></TextBlock>
+                            </Grid>
+                        </Grid>
+
+                    </Canvas>
+                </Grid>
+
+                <DataGrid
+                    Name="DataGridMengeOptimationScrit"
+                    CanUserAddRows="False"
+                    CanUserDeleteRows="False"
+                    CanUserReorderColumns="False"
+                    CanUserResizeRows="False"
+                    AutoGenerateColumns="False"
+                    CanUserSortColumns="False"
+                    Grid.Row="2"
+                    LayoutUpdated="DataGridMengeOptimationScrit_LayoutUpdated"
+                    EnableRowVirtualization="True"
+                    >
+                    <!--
+                    Vorersct Height=Star
+
+                    Height="{Binding RelativeSource={RelativeSource AncestorType=UserControl, Mode=FindAncestor}, Path=DataGridHeight}"
+                    -->
+                    <DataGrid.Columns>
+                        <DataGridTemplateColumn
+                            x:Name="DataGridMengeOptimationScritWirkungColumnZiilProcessLeeseBeginZaitKalender"
+                            Header="begin time"
+                            IsReadOnly="True"
+                            SortDirection="Descending"
+                            SortMemberPath="Wert.ProcessLeeseBeginZaitMili">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <TextBox
+                                            Text="{Binding Path=Wert.ProcessLeeseBeginZaitKalenderString, Mode=OneTime}"
+                                            IsReadOnly="True"
+                                            VerticalAlignment="Center">
+                                        </TextBox>
+                                    </Grid>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTemplateColumn
+                            x:Name="DataGridMengeOptimatScritVonZiilProcessLeeseZaitDistanzVonBeginBisEnde"
+                            Header="duration&#10; / ms"
+                            IsReadOnly="True"
+                            SortMemberPath="Wert.VonProcessLeeseDistanzVonBeginBisEndeMili">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <TextBox
+                                            Text="{Binding Path=Wert.VonProcessLeeseDistanzVonBeginBisEndeMili, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                            IsReadOnly="True"
+                                            VerticalAlignment="Center">
+                                        </TextBox>
+                                    </Grid>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        
+                        <DataGridTemplateColumn
+                            x:Name="DataGridMengeOptimationScritVorsclaagWirkungZwekSictString"
+                            Header="intended purpose of&#10;suggested input"
+                            IsReadOnly="True"
+                            SortMemberPath="Wert.VorsclaagWirkungZwekSictString"
+                            Width="*">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                            <RowDefinition Height="0"></RowDefinition>
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        
+                                        <TextBox
+                                            Text="{Binding Path=Wert.VorsclaagWirkungZwekSictString, Mode=OneWay}"
+                                            IsReadOnly="True"
+                                            VerticalAlignment="Center">
+                                        </TextBox>
+
+                                        <!--
+
+		 * 2014.07.14
+		 * 
+		 * Ersaz durc GBS Tab "UI & Config"
+		 * 
+                                        <Grid Grid.Row="2"
+                                              Visibility="{Binding Path=Wert.PanelMengeMeldungVisibility, Mode=OneWay}">
+                                            <Grid.Background>
+                                                <SolidColorBrush Color="Firebrick" Opacity="0.3"></SolidColorBrush>
+                                            </Grid.Background>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="33"></ColumnDefinition>
+                                                <ColumnDefinition Width="0"></ColumnDefinition>
+                                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            
+                                            <TextBox Grid.Column="2"
+                                                     Margin="3"
+                                                     Text="{Binding Path=Wert.PanelMengeMeldungText, Mode=OneWay}"
+                                                     IsReadOnly="True"
+                                                     Opacity="0.9">
+                                            </TextBox>
+                                        </Grid>
+                                        -->
+
+                                    </Grid>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTemplateColumn
+                            x:Name="DataGridMengeOptimationScritZaitDistanzVonProcessLeeseBeginBisNaacProcessWirkungEnde"
+                            Header="duration from&#10;reading to&#10;input / ms"
+                            IsReadOnly="True"
+                            SortMemberPath="Wert.ZaitDistanzVonZiilProcessLeeseBeginBisWirkungEndeMili">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <TextBox
+                                            Text="{Binding Path=Wert.ZaitDistanzVonZiilProcessLeeseBeginBisWirkungEndeMili, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                            IsReadOnly="True"
+                                            VerticalAlignment="Center">
+                                        </TextBox>
+                                    </Grid>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTemplateColumn
+                            x:Name="DataGridMengeOptimationScritWirkungFüüreAusErfolg"
+                            Header="executed"
+                            SortMemberPath="Wert.WirkungFüüreAusErfolg"
+                            IsReadOnly="False"
+                            Visibility="Collapsed">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <CheckBox
+                                            IsChecked="{Binding Path=Wert.WirkungFüüreAusErfolg, Mode=OneWay}"
+                                            IsEnabled="False"
+                                            VerticalAlignment="Center" HorizontalAlignment="Center">
+                                        </CheckBox>
+                                    </Grid>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+
+            <Grid Grid.Row="2"
+                  Visibility="Collapsed">
+                <GroupBox>
+                    <GroupBox.Header>
+                        <TextBlock Text="save log to file"
+                                   Margin="1"></TextBlock>
+                    </GroupBox.Header>
+                    <GroupBox.Content>
+                        <StackPanel>
+                            <WrapPanel>
+                                <Button Name="ButtonListeOptimatScritScraibeNaacDatai"
+                                    Drop="ButtonListeOptimatScritScraibeNaacDatai_Drop"
+                                        Click="ButtonListeOptimatScritScraibeNaacDatai_Click"
+                                    AllowDrop="True"
+                                    Margin="3">
+                                    <TextBlock Text="copy contents from table above to file"
+                                               Margin="1"></TextBlock>
+                                </Button>
+                            </WrapPanel>
+                            <GroupBox Grid.Row="2"
+                                      Margin="3">
+                                <GroupBox.Header>
+                                    <TextBlock Text="result" Margin="1"></TextBlock>
+                                </GroupBox.Header>
+
+                                <GroupBox.Content>
+                                    <Optimat.GBS:BerictTextUndAnim
+                                        x:Name="ListeOptimatScritScraibeNaacDataiErgeebnisBerict"
+                                        Height="44"></Optimat.GBS:BerictTextUndAnim>
+                                </GroupBox.Content>
+                            </GroupBox>
+
+                        </StackPanel>
+                    </GroupBox.Content>
+                </GroupBox>
+            </Grid>
+        </Grid>
+
+    </Grid>
+</UserControl>

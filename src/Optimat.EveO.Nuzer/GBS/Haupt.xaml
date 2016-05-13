@@ -1,0 +1,1329 @@
+﻿<UserControl x:Class="Optimat.EveO.Nuzer.GBS.Haupt"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:Optimat.GBS="clr-namespace:Optimat.GBS;assembly=Optimat"
+             xmlns:Bib3.GBS="clr-namespace:Bib3.GBS;assembly=Bib3.Windows"
+             xmlns:Bib3.FCL.GBS="clr-namespace:Bib3.FCL.GBS;assembly=Bib3.FCL"
+             xmlns:Optimat.EveO.Nuzer.GBS="clr-namespace:Optimat.EveO.Nuzer.GBS"
+             xmlns:Optimat.Inspektor.GBS="clr-namespace:Optimat.Inspektor.GBS;assembly=Optimat"
+             xmlns:Optimat.EveOnline.GBS="clr-namespace:Optimat.EveOnline.GBS;assembly=Optimat.EveOnline"
+             xmlns:Optimat.EveOnlineS.GBS="clr-namespace:Optimat.EveOnline.GBS;assembly=Optimat.EveO"
+             xmlns:Optimat.EveOnline.UI="clr-namespace:Optimat.EveOnline.UI;assembly=Optimat.EveOnline.UI"
+             xmlns:Optimat.EveOnline.UI.CustomBot="clr-namespace:Optimat.EveOnline.UI.CustomBot;assembly=Optimat.EveOnline.UI"
+             xmlns:BotEngine.UI="clr-namespace:BotEngine.UI;assembly=BotEngine.UI"
+             PreviewKeyDown="UserControl_PreviewKeyDown"
+             KeyUp="UserControl_KeyUp"
+             mc:Ignorable="d" 
+             d:DesignHeight="1111" d:DesignWidth="555"
+             Loaded="UserControl_Loaded">
+    <UserControl.Resources>
+        
+        <Style TargetType="TextBlock">
+            <Setter Property="Margin" Value="3,1,3,1"></Setter>
+        </Style>
+
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+
+        <Style x:Key="Flat">
+            <Setter Property="Control.Background" Value="{x:Null}" />
+            <Setter Property="Control.BorderBrush" Value="{x:Null}" />
+            <Style.Triggers>
+                <Trigger Property="Control.IsMouseOver" Value="True">
+                    <Setter Property="Control.Background" Value="{x:Null}" />
+                    <Setter Property="Control.BorderBrush" Value="{x:Null}" />
+                </Trigger>
+                <Trigger Property="Control.IsFocused" Value="True">
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="GridSplitterPreviewStyle" >
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Fill="#80000000"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="GridSplitterStyleVertical" TargetType="{x:Type GridSplitter}">
+            <Setter Property="Background"
+                   Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
+            <Setter Property="PreviewStyle" Value="{StaticResource GridSplitterPreviewStyle}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type GridSplitter}">
+                        <Border BorderBrush="{TemplateBinding BorderBrush}"
+                               BorderThickness="{TemplateBinding BorderThickness}"
+                               Background="{TemplateBinding Background}"
+                               CornerRadius="5">
+                            <Canvas RenderOptions.EdgeMode="Aliased" UseLayoutRounding="True"
+                                   Height="6" VerticalAlignment="Center"
+                                   Width="50" HorizontalAlignment="Center">
+                                <Line X1="0" X2="50" Y1="0" Y2="0"
+                                     Stroke="White" StrokeThickness="1"/>
+                                <Line X1="0" X2="50" Y1="1" Y2="1"
+                                     Stroke="#A0A0A0" StrokeThickness="1"/>
+                                <Line X1="0" X2="50" Y1="4" Y2="4"
+                                     Stroke="White" StrokeThickness="1"/>
+                                <Line X1="0" X2="50" Y1="5" Y2="5"
+                                     Stroke="#A0A0A0" StrokeThickness="1"/>
+                                <Canvas.LayoutTransform>
+                                    <RotateTransform Angle="90"></RotateTransform>
+                                </Canvas.LayoutTransform>
+                            </Canvas>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </UserControl.Resources>
+
+    <Grid>
+        <!--
+                2014.01.09
+                Nit meer benöötigt sait ainfüürung ButtonZiilProzesWirkungSezeFort
+                
+        <Grid
+            Panel.ZIndex="4"
+            HorizontalAlignment="Right" VerticalAlignment="Top">
+            <WrapPanel>
+                <Button Name="ButtonEveOnlnAutoWirkungFraigaabeSezeAin"
+                Click="ButtonEveOnlnAutoWirkungFraigaabeSezeAin_Click"
+                 Visibility="Collapsed">
+                    <Button.LayoutTransform>
+                        <ScaleTransform ScaleX="0.9" ScaleY="0.9"></ScaleTransform>
+                    </Button.LayoutTransform>
+                    <TextBlock Text="Auto.Wirkung.Ain" Margin="1"></TextBlock>
+                </Button>
+
+                <Button Name="ButtonEveOnlnAutoSensoNaacServerFraigaabeSezeAin"
+                        Click="ButtonEveOnlnAutoSensoNaacServerFraigaabeSezeAin_Click"
+                        Margin="3">
+                    <Button.LayoutTransform>
+                        <ScaleTransform ScaleX="0.9" ScaleY="0.9"></ScaleTransform>
+                    </Button.LayoutTransform>
+                    <TextBlock Text="Auto.Senso.Ain" Margin="1"></TextBlock>
+                </Button>
+            </WrapPanel>
+        </Grid>
+                -->
+        <TabControl>
+            <TabItem>
+                <TabItem.Header>
+                    <Grid
+                        VerticalAlignment="Stretch">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="4"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Text="Eve Online" Grid.Column="0" VerticalAlignment="Center" Margin="1"></TextBlock>
+
+                        <!--
+
+                        <Ellipse Name="EllipseEveOnlineSctaatusAnzaige"
+								VerticalAlignment="Center" HorizontalAlignment="Center"
+									 Stroke="Black" StrokeThickness="1.4" Width="13" Height="13"
+                                 Grid.Column="2"
+                                 Visibility="Visible"></Ellipse>
+                        -->
+
+                        <Bib3.FCL.GBS:SictListeSymboolMeldungAkzeptanzFeelerWarnung
+                            x:Name="EveOnlineSctaatusInspekt"
+                            Grid.Column="2"
+                            
+                            ></Bib3.FCL.GBS:SictListeSymboolMeldungAkzeptanzFeelerWarnung>
+
+                    </Grid>
+                </TabItem.Header>
+
+                <TabItem.Content>
+                    <TabControl>
+                        <TabItem>
+                            <TabItem.Header>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition Width="4"></ColumnDefinition>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Ellipse Name="EllipseEveOnlineZuusctandInspektSctaatusAnzaige"
+								VerticalAlignment="Center" HorizontalAlignment="Center"
+									 Stroke="Black" StrokeThickness="1.4" Width="13" Height="13"
+                                 Grid.Column="2"
+                                             Visibility="Collapsed"></Ellipse>
+
+                                    <TextBlock Text="Character/Ship state" Margin="1" VerticalAlignment="Center" Grid.Column="0"></TextBlock>
+                                </Grid>
+                            </TabItem.Header>
+
+                            <TabItem.Content>
+                                <WrapPanel>
+                                    <GroupBox VerticalAlignment="Center"
+                                              Margin="3"
+                                              BorderThickness="1.6">
+                                        <GroupBox.Header>
+                                            <TextBlock Text="Location" Margin="3"></TextBlock>
+                                        </GroupBox.Header>
+
+                                        <GroupBox.Content>
+                                            <StackPanel>
+
+                                                <Optimat.EveOnline.GBS:SictLocationInfo
+                                                    x:Name="EveOnlineZuusctandInspektCurrentLocation"
+                                                    Width="199" Height="Auto"
+                                                ></Optimat.EveOnline.GBS:SictLocationInfo>
+
+                                                <!--
+                                                <WrapPanel>
+                                                    <CheckBox Name="CheckBoxEveOnlineZuusctandInspektDocked"
+                                                          IsEnabled="False" VerticalAlignment="Center" Margin="3">
+                                                        <TextBlock Text="Docked" Margin="1"></TextBlock>
+                                                    </CheckBox>
+                                                    <CheckBox Name="CheckBoxEveOnlineZuusctandInspektUnDocking"
+                                                          IsEnabled="False" VerticalAlignment="Center"  Margin="3" Visibility="Collapsed">
+                                                        <TextBlock Text="Undocking" Margin="1"></TextBlock>
+                                                    </CheckBox>
+                                                </WrapPanel>
+                                                -->
+                                            </StackPanel>
+                                        </GroupBox.Content>
+                                    </GroupBox>
+
+                                    <!--
+                                    <GroupBox VerticalAlignment="Center"
+                                              Margin="3">
+                                        <GroupBox.Header>
+                                            <TextBlock Text="Hitpoints and Capacitor" Margin="3"></TextBlock>
+                                        </GroupBox.Header>
+
+                                        <GroupBox.Content>
+                                            <Optimat.EveOnline.GBS:SictShipTreferpunkteUndCapacitorInspekt
+                                                x:Name="EveOnlnCharShipSctaatusShipTreferpunkteInspekt"
+                                                Width="160" Height="80"></Optimat.EveOnline.GBS:SictShipTreferpunkteUndCapacitorInspekt>
+                                        </GroupBox.Content>
+                                    </GroupBox>
+                                    
+                                    <GroupBox VerticalAlignment="Center"
+                                              Margin="3">
+                                        <GroupBox.Header>
+                                            <TextBlock Text="Travel" Margin="3"></TextBlock>
+                                        </GroupBox.Header>
+                                        
+                                        <GroupBox.Content>
+                                            <StackPanel>
+                                                
+                                                <GroupBox>
+                                                    <GroupBox.Header>
+                                                        <TextBlock Text="speed" Margin="1"></TextBlock>
+                                                    </GroupBox.Header>
+                                                    
+                                                    <GroupBox.Content>
+                                                        <TextBox Name="TextBoxEveOnlnCharShipStateShipSpeedInspekt" IsReadOnly="True" Width="66"></TextBox>
+                                                    </GroupBox.Content>
+                                                </GroupBox>
+
+                                                <CheckBox Name="CeckBoxEveOnlnCharShipStateShipWarpingInspekt" IsEnabled="False" Margin="3">
+                                                    <TextBlock Text="Warping"></TextBlock>
+                                                </CheckBox>
+                                                <CheckBox Name="CeckBoxEveOnlnCharShipStateShipJumpingInspekt" IsEnabled="False" Margin="3">
+                                                    <TextBlock Text="Jumping"></TextBlock>
+                                                </CheckBox>
+                                            </StackPanel>
+                                        </GroupBox.Content>
+                                    </GroupBox>
+                                    -->
+
+                                    <GroupBox
+                                        VerticalAlignment="Center"
+                                        Margin="3"
+                                        BorderThickness="1.6">
+                                        <GroupBox.Header>
+                                            <TextBlock Text="Ship" Margin="1"></TextBlock>
+                                        </GroupBox.Header>
+
+                                        <GroupBox.Content>
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto"></RowDefinition>
+                                                    <RowDefinition Height="Auto"></RowDefinition>
+                                                </Grid.RowDefinitions>
+                                                <Optimat.EveOnline.GBS:SictCharShipInspekt
+                                                x:Name="EveOnlnCharShipStateInspekt"
+                                                Width="333"></Optimat.EveOnline.GBS:SictCharShipInspekt>
+                                                
+                                                <GroupBox
+                                                    Grid.Row="1">
+                                                    <GroupBox.Header>
+                                                        <TextBlock Text="Fitting"></TextBlock>
+                                                    </GroupBox.Header>
+                                                    
+                                                    <GroupBox.Content>
+                                                        <TextBox
+                                                            Name="TextBoxEveOnlnShipInspektFitting"
+                                                            IsReadOnly="True"
+                                                            Height="77"
+                                                            VerticalScrollBarVisibility="Visible"></TextBox>
+                                                    </GroupBox.Content>
+                                                </GroupBox>
+                                            </Grid>
+                                        </GroupBox.Content>
+                                    </GroupBox>
+                                </WrapPanel>
+                            </TabItem.Content>
+                        </TabItem>
+
+                        <TabItem>
+                            <TabItem.Header>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition Width="4"></ColumnDefinition>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock
+                                        Text="UI &amp; Config" Margin="1" Grid.Column="0"></TextBlock>
+
+                                    <Bib3.FCL.GBS:SictListeSymboolMeldungAkzeptanzFeelerWarnung
+                                        x:Name="EveOnlineGbsUndKonfigSctaatusInspekt"
+                                        Grid.Column="2"
+                                        >
+                                    </Bib3.FCL.GBS:SictListeSymboolMeldungAkzeptanzFeelerWarnung>
+
+                                </Grid>
+                            </TabItem.Header>
+
+                            <TabItem.Content>
+                                <Optimat.EveOnline.GBS:SictMengeNaacNuzerMeldungZuEveOnlineMitSictDetail
+                                    x:Name="EveOnlineMengeNaacNuzerMeldung">
+                                </Optimat.EveOnline.GBS:SictMengeNaacNuzerMeldungZuEveOnlineMitSictDetail>
+                            </TabItem.Content>
+                        </TabItem>
+
+                        <TabItem>
+                            <TabItem.Header>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition Width="4"></ColumnDefinition>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Text="Missions" Margin="1"></TextBlock>
+
+                                    <Bib3.FCL.GBS:SictListeSymboolMeldungAkzeptanzFeelerWarnung
+                                        x:Name="EverOnlineMengeMissionSctaatusInspekt"
+                                        Grid.Column="2"
+                                        >
+                                    </Bib3.FCL.GBS:SictListeSymboolMeldungAkzeptanzFeelerWarnung>
+                                </Grid>
+                            </TabItem.Header>
+
+                            <TabItem.Content>
+                                <Optimat.EveOnline.GBS:SictDataGridMengeMission
+                                    x:Name="DataGridMengeMission"
+                                    ColumnAktioonVerberge="true"
+                                    ColumnAktioonBescriftung="action"
+                                    ColumnTitelBescriftung="Title"
+                                    ColumnInLocationSystemListePfaadAnzaalBescriftung="at Location&#10;trial count"
+                                    ColumnDauerVonFüüreAusBeginBisCompleteBescriftung="duration&#10;of Execution"
+                                    ></Optimat.EveOnline.GBS:SictDataGridMengeMission>
+                            </TabItem.Content>
+                        </TabItem>
+
+                        <TabItem>
+                            <TabItem.Header>
+                                <TextBlock Text="Preferences" Margin="1"></TextBlock>
+                            </TabItem.Header>
+
+                            <TabItem.Content>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="4"></RowDefinition>
+                                        <RowDefinition Height="4*"></RowDefinition>
+                                    </Grid.RowDefinitions>
+
+                                    <Expander>
+                                        <Expander.Header>
+                                            <TextBlock
+                                                Text="store / load / reset   Preferences"
+                                                 Style="{StaticResource HeaderStyle}"></TextBlock>
+                                        </Expander.Header>
+
+                                        <Expander.Content>
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto"></RowDefinition>
+                                                    <RowDefinition Height="4"></RowDefinition>
+                                                    <RowDefinition Height="Auto"></RowDefinition>
+                                                </Grid.RowDefinitions>
+                                                <WrapPanel>
+                                                    <Button
+                                                        Name="ButtonEveOnlineAutoKonfigScraibeNaacDatai"
+                                                        AllowDrop="True"
+                                                        Drop="ButtonEveOnlineAutoKonfigScraibeNaacDatai_Drop"
+                                                        Click="ButtonEveOnlineAutoKonfigScraibeNaacDatai_Click"
+                                                        Margin="3">
+                                                        <TextBlock Text="store to file"></TextBlock>
+                                                    </Button>
+                                                    <Button
+                                                        Name="ButtonEveOnlineAutoKonfigLaadeVonDatai"
+                                                        AllowDrop="True"
+                                                        Drop="ButtonEveOnlineAutoKonfigLaadeVonDatai_Drop"
+                                                        Click="ButtonEveOnlineAutoKonfigLaadeVonDatai_Click"
+                                                        Margin="3">
+                                                        <TextBlock Text="load from file"></TextBlock>
+                                                    </Button>
+                                                    <Button
+                                                        Name="ButtonEveOnlineAutoKonfigSezeZurük"
+                                                        Click="ButtonEveOnlineAutoKonfigSezeZurük_Click"
+                                                        Margin="3">
+                                                        <TextBlock Text="reset to default"></TextBlock>
+                                                    </Button>
+                                                </WrapPanel>
+
+                                                <GroupBox Grid.Row="2">
+                                                    <GroupBox.Header>
+                                                        <TextBlock Text="result" Margin="1"></TextBlock>
+                                                    </GroupBox.Header>
+
+                                                    <GroupBox.Content>
+                                                        <Optimat.GBS:BerictTextUndAnim
+                                                            x:Name="EveOnlineAutoKonfigAktioonErgeebnisBerict"
+                                                            Height="66"></Optimat.GBS:BerictTextUndAnim>
+                                                    </GroupBox.Content>
+                                                </GroupBox>
+                                            </Grid>
+                                        </Expander.Content>
+                                    </Expander>
+
+                                    <Optimat.EveOnline.GBS:SictAutoKonfig
+                                        x:Name="SctoierelementEveOnlinePräferenz"
+                                        Grid.Row="2"></Optimat.EveOnline.GBS:SictAutoKonfig>
+                                </Grid>
+                            </TabItem.Content>
+                        </TabItem>
+
+                        <TabItem
+                            Visibility="Collapsed">
+                            <TabItem.Header>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition Width="1"></ColumnDefinition>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition Width="4"></ColumnDefinition>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Text="Simulation" Margin="1" VerticalAlignment="Center" Grid.Column="0"></TextBlock>
+
+                                    <CheckBox Name="CheckBoxEveOnlineSimuFraigaabe"
+                                              Grid.Column="2" VerticalAlignment="Center"></CheckBox>
+
+                                    <!--
+                                    <Ellipse Name="EllipseEveOnlineSimuSctaatusAnzaige"
+								VerticalAlignment="Center" HorizontalAlignment="Center"
+									 Stroke="Black" StrokeThickness="1.4" Width="13" Height="13"
+                                 Grid.Column="4"
+                                             Visibility="Visible"></Ellipse>
+-->
+                                    <Bib3.FCL.GBS:SictListeSymboolMeldungAkzeptanzFeelerWarnung
+                                        x:Name="EveOnlineSimuSctaatusInspekt"
+                                        Grid.Column="4"
+                                        >
+                                    </Bib3.FCL.GBS:SictListeSymboolMeldungAkzeptanzFeelerWarnung>
+
+                                </Grid>
+                            </TabItem.Header>
+
+                            <TabItem.Content>
+
+                                <ScrollViewer>
+                                    <StackPanel>
+                                        <GroupBox
+                                            HorizontalAlignment="Left">
+                                            <GroupBox.Header>
+                                                <TextBlock Text="In Overview Scroll"></TextBlock>
+                                            </GroupBox.Header>
+                                            <GroupBox.Content>
+                                                <CheckBox Name="CheckBoxSimuInOverviewScroll"></CheckBox>
+                                            </GroupBox.Content>
+                                        </GroupBox>
+
+                                        <GroupBox
+                                            HorizontalAlignment="Left">
+                                            <GroupBox.Header>
+                                                <TextBlock Text="move Mouse to Topmost Window corner"></TextBlock>
+                                            </GroupBox.Header>
+                                            <GroupBox.Content>
+                                                <ComboBox Name="ComboBoxSimuMausAufWindowVordersteEkeIndex">
+                                                </ComboBox>
+                                            </GroupBox.Content>
+                                        </GroupBox>
+
+                                        <GroupBox
+                                        Margin="3"
+                                        HorizontalAlignment="Left">
+                                            <GroupBox.Header>
+                                                <TextBlock Text="simulate hitpoints/capacitor capacity" Margin="1"></TextBlock>
+                                            </GroupBox.Header>
+
+                                            <GroupBox.Content>
+                                                <Optimat.EveOnline.GBS:SictKonfigAntailShieldArmorStructCapacitorMitScalterBinär
+                                                    x:Name="EveOnlineSimuShipTreferpunkteUndCapacitor"
+                                                Width="233">
+                                                </Optimat.EveOnline.GBS:SictKonfigAntailShieldArmorStructCapacitorMitScalterBinär>
+                                            </GroupBox.Content>
+                                        </GroupBox>
+
+                                        <GroupBox
+                                        Margin="3"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Left">
+                                            <GroupBox.Header>
+                                                <TextBlock Text="prefered Damage Type" Margin="3"></TextBlock>
+                                            </GroupBox.Header>
+
+                                            <GroupBox.Content>
+                                                <ComboBox Name="ComboBoxEveOnlineSimuDamageType"></ComboBox>
+                                            </GroupBox.Content>
+                                        </GroupBox>
+
+                                        <GroupBox
+                                            VerticalAlignment="Center"
+                                            HorizontalAlignment="Left"
+                                            Margin="3">
+                                            <GroupBox.Header>
+                                                <TextBlock Text="ignore Prefered Fitting,&#10; dont load or prepare Fitting" Margin="3"></TextBlock>
+                                            </GroupBox.Header>
+
+                                            <GroupBox.Content>
+                                                <CheckBox Name="CheckBoxEveOnlineSimuAnforderungFittingIgnoriire"
+                                                          HorizontalAlignment="Center"
+                                                          Margin="3"></CheckBox>
+                                            </GroupBox.Content>
+                                        </GroupBox>
+
+                                        <!--
+                                    <CheckBox Name="CheckBoxEveOnlineSimuMissionIgnoriireAnforderungFitting"
+                                              VerticalAlignment="Center"
+                                              Margin="3">
+                                        <TextBlock Text="Mission Ignoriire Anforderung Fitting" Margin="1"></TextBlock>
+                                    </CheckBox>
+                                    -->
+
+                                        <!--
+                                    <GroupBox>
+                                        <GroupBox.Header>
+                                            <Grid Margin="1">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                    <ColumnDefinition Width="4"></ColumnDefinition>
+                                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                </Grid.ColumnDefinitions>
+
+                                                <TextBlock Text="Aufgaabe.Distance Ainzusctele"></TextBlock>
+
+                                                <CheckBox Name="CheckBoxEveOnlineSimuAufgaabeDistanceAinzuscteleFraigaabe"
+                                                          Grid.Column="2" VerticalAlignment="Center"></CheckBox>
+                                            </Grid>
+                                        </GroupBox.Header>
+
+                                        <GroupBox.Content>
+                                            <TextBox Name="TextBoxEveOnlineSimuAufgaabeDistanceAinzuscteleDistanceSol"
+                                                     Text="1000"></TextBox>
+                                        </GroupBox.Content>
+                                    </GroupBox>
+                                    -->
+                                    </StackPanel>
+                                </ScrollViewer>
+                            </TabItem.Content>
+                        </TabItem>
+
+                    </TabControl>
+                </TabItem.Content>
+            </TabItem>
+
+            <TabItem IsSelected="True">
+                <TabItem.Header>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="4"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="6"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Text="Target Process"
+                                   VerticalAlignment="Center"></TextBlock>
+
+                        <Grid Grid.Column="4">
+                            <Bib3.FCL.GBS:SictListeSymboolMeldungAkzeptanzFeelerWarnung
+                                x:Name="ZiilProcessSctaatusInspekt">
+                            </Bib3.FCL.GBS:SictListeSymboolMeldungAkzeptanzFeelerWarnung>
+
+                        </Grid>
+
+                        <Grid
+                            Grid.Column="2"
+                            Margin="-1">
+                            <!--
+                        <Viewbox
+                            Grid.Column="2"
+                            Stretch="Uniform">
+                            -->
+                            <Grid
+                                Margin="0">
+                                <Optimat.GBS:ToggleButtonSctabBinär
+                            x:Name="ButtonZiilProzesWirkungFraigaabe"
+                            Grid.Column="2"
+                            VerticalAlignment="Center">
+                                    <Optimat.GBS:ToggleButtonSctabBinär.LayoutTransform>
+                                        <ScaleTransform ScaleX="0.8" ScaleY="0.7"></ScaleTransform>
+                                    </Optimat.GBS:ToggleButtonSctabBinär.LayoutTransform>
+                                    <Optimat.GBS:ToggleButtonSctabBinär.ButtonLinxContent>
+                                        <TextBlock Text="pause">
+                                            <TextBlock.ToolTip>
+                                                <TextBlock></TextBlock>
+                                                <!--
+                                            x:Name="ButtonZiilProzesWirkungUnterbreceTooltipTextBlock"
+                                        -->
+                                            </TextBlock.ToolTip>
+                                    </TextBlock>
+                                    </Optimat.GBS:ToggleButtonSctabBinär.ButtonLinxContent>
+
+                                    <Optimat.GBS:ToggleButtonSctabBinär.ButtonReczContent>
+                                        <TextBlock Text="play">
+                                            <TextBlock.ToolTip>
+                                                <TextBlock Text="resume generating input according to the recommendation of the optimization Service." Margin="1"></TextBlock>
+                                            </TextBlock.ToolTip>
+                                    </TextBlock>
+                                    </Optimat.GBS:ToggleButtonSctabBinär.ButtonReczContent>
+                                </Optimat.GBS:ToggleButtonSctabBinär>
+                            </Grid>
+                            <!--
+                        </Viewbox>
+                            -->
+                        </Grid>
+                        <!--
+                        <Border Grid.Column="4" BorderBrush="Black" BorderThickness="1" VerticalAlignment="Center" CornerRadius="3">
+                            <Grid Grid.Column="4" VerticalAlignment="Center">
+                                <Grid.LayoutTransform>
+                                    <ScaleTransform ScaleX="0.8" ScaleY="0.8"></ScaleTransform>
+                                </Grid.LayoutTransform>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="4"></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+
+                                <Optimat.GBS:SichtToggleButton
+                                    x:Name="ButtonZiilProzesWirkungUnterbrece"
+                                    IsChecked="True"
+                                    VerticalAlignment="Center" Width="44"
+                                    Style="{StaticResource Flat}"
+                                    DisallowUncheck="True"
+                                    Checked="ButtonZiilProzesWirkungUnterbrece_Checked"
+                                    Click="ButtonZiilProzesWirkungUnterbrece_Click">
+                                    <TextBlock Text="pause" Margin="1">
+                                        <TextBlock.ToolTip>
+                                            <TextBlock
+                                                Name="ButtonZiilProzesWirkungUnterbreceTooltipTextBlock"
+                                                Text=""></TextBlock>
+                                        </TextBlock.ToolTip>
+                                    </TextBlock>
+                                </Optimat.GBS:SichtToggleButton>
+
+                                <Optimat.GBS:SichtToggleButton
+                                    x:Name="ButtonZiilProzesWirkungSezeFort" Grid.Column="2" VerticalAlignment="Center" IsChecked="False"  Width="44"
+                                    Style="{StaticResource Flat}"
+                                    DisallowUncheck="True"
+                                    Checked="ButtonZiilProzesWirkungSezeFort_Checked">
+                                    <TextBlock Text="play" Margin="1">
+                                        <TextBlock.ToolTip>
+                                            <TextBlock Text="resume generating input according to the recommendation of the optimization Service." Margin="1"></TextBlock>
+                                        </TextBlock.ToolTip>
+                                    </TextBlock>
+                                </Optimat.GBS:SichtToggleButton>
+                            </Grid>
+                        </Border>
+                        -->
+                    </Grid>
+                </TabItem.Header>
+
+                <TabItem.Content>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="6"></RowDefinition>
+                            <RowDefinition Height="4*"></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <!--
+                        <Border
+                            BorderBrush="Black"
+                            BorderThickness="1">
+                            <Expander
+                            IsExpanded="True"
+                            BorderThickness="1.6">
+                                <Expander.Header>
+                                    <TextBlock Text="Log of optimization steps">
+                                        <TextBlock.LayoutTransform>
+                                            <ScaleTransform ScaleX="1.1" ScaleY="1.1"></ScaleTransform>
+                                        </TextBlock.LayoutTransform>
+                                    </TextBlock>
+                                </Expander.Header>
+                            </Expander>
+                        </Border>
+-->
+                        <TabControl
+                            Grid.Row="2">
+                            <TabItem>
+                                <TabItem.Header>
+                                    <TextBlock Text="Activity Log"></TextBlock>
+                                </TabItem.Header>
+
+                                <TabItem.Content>
+                                    <Grid>
+                                        <Optimat.EveOnlineS.GBS:SictMengeOptimatScritInspekt
+                                            x:Name="ListeOptimatScritInspekt"
+                                            DataGridHeight="199"
+                                            Margin="4">
+                                        </Optimat.EveOnlineS.GBS:SictMengeOptimatScritInspekt>
+                                    </Grid>
+                                </TabItem.Content>
+                            </TabItem>
+                            <TabItem>
+                                <TabItem.Header>
+                                    <TextBlock Text="choosing the Process"></TextBlock>
+                                </TabItem.Header>
+
+                                <TabItem.Content>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                            <RowDefinition Height="4"></RowDefinition>
+                                            <RowDefinition Height="4*"></RowDefinition>
+                                        </Grid.RowDefinitions>
+
+                                        <ScrollViewer
+                                        Grid.Row="2"
+                                        VerticalScrollBarVisibility="Visible">
+                                            <Optimat.GBS:SictAuswaalWindowsProcess
+                                            x:Name="ZiilProcessAuswaalZiilProcess"
+                                            DataGridMengeProcessHeight="333"
+                                            GrupeProcessBewertungBescriftung="criteria for rating candidate Processes"
+                                            ButtonBewertungKriteriumKopiireVonDataGridAuswaalBescriftung="copy from selection below"
+                                            TabeleMengeProcessHeaderBewertungMainModuleDataiBescriftung="MainModule matching"
+                                            GrupeTabeleMengeProcessHeaderBescriftung="processes found"
+                                            GrupeTabeleMengeProcessHeaderBescriftungTailAktuelNict="rating outdated"
+                                            GrupeTabeleMengeProcessAufgaabeSuuceAktiivBescriftung="search and rating in progress"
+                                            ButtonMengeProcessSuuceBeginBescriftung="search for and rate processes"
+                                            DataGridMengeProcessColumnIstGlaicAuswaalBisherHeaderBescriftung="current&#10;target"
+                                            DataGridMengeProcessColumnBewertungPunktAnzaalHeaderBescriftung="rating"
+                                            GrupeProcessAuswaalHeaderBescriftung="select target process"
+                                            GrupeProcessAuswaalKnopfAusTabeleBescriftung="set selected above as new target"
+                                            GrupeProcessAuswaalCheckBoxMitMaximumBewertung="always set candidate with highest rating as target"
+                                            GrupeProcessAuswaalGrupeAuswaalBisherBescriftung="current target"></Optimat.GBS:SictAuswaalWindowsProcess>
+                                        </ScrollViewer>
+                                    </Grid>
+                                </TabItem.Content>
+                            </TabItem>
+                            <TabItem>
+                                <TabItem.Header>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                            <ColumnDefinition Width="4"></ColumnDefinition>
+                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+
+                                        <TextBlock Text="reading from Process"></TextBlock>
+
+                                        <!--
+                                        <Ellipse Name="EllipseZiilProcessLeeseSctaatusInspekt"
+                                        VerticalAlignment="Center" HorizontalAlignment="Center"
+                                        Stroke="Black" StrokeThickness="1.4" Width="11" Height="11"
+                                        Grid.Column="2"></Ellipse>
+                                        -->
+
+                                        <!--
+                                        <Bib3.FCL.GBS:BoolAbbildSymboolAkzeptanzFeelerWarnung
+                                            x:Name="SensorClientStatusInspect"
+                                            NullSymbolTyp="InArbait"
+                                            FalseSymbolTyp="Feeler"
+                                            TrueSymbolTyp="Akzeptanz"
+                                            Grid.Column="2"
+                                            >
+                                        </Bib3.FCL.GBS:BoolAbbildSymboolAkzeptanzFeelerWarnung>
+                                        
+                                        -->
+                                        
+                                        <Bib3.FCL.GBS:SictSymboolAkzeptanzFeelerWarnung
+                                            x:Name="SensorClientStatusInspect"
+                                            Grid.Column="2"></Bib3.FCL.GBS:SictSymboolAkzeptanzFeelerWarnung>
+                                    </Grid>
+                                </TabItem.Header>
+
+                                <TabItem.Content>
+                                    <StackPanel>
+                                        <Optimat.EveOnline.UI.CustomBot:InputSnapshot
+                                            x:Name="VonProcessLeeseLezteInspekt"></Optimat.EveOnline.UI.CustomBot:InputSnapshot>
+                                    </StackPanel>
+                                </TabItem.Content>
+                            </TabItem>
+                            <TabItem>
+                                <TabItem.Header>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                            <ColumnDefinition Width="4"></ColumnDefinition>
+                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+
+                                        <TextBlock Text="input to Process"></TextBlock>
+
+                                        <!--
+                                        <Ellipse Name="EllipseZiilProcessAingaabeSctaatusInspekt"
+                                        VerticalAlignment="Center" HorizontalAlignment="Center"
+                                        Stroke="Black" StrokeThickness="1.4" Width="11" Height="11"
+                                        Grid.Column="2"></Ellipse>
+                                        -->
+
+                                        <Bib3.FCL.GBS:SictListeSymboolMeldungAkzeptanzFeelerWarnung
+                                            x:Name="ZiilProcessSctaatusTailAingaabeInspekt"
+                                            Grid.Column="2"
+                                            >
+                                        </Bib3.FCL.GBS:SictListeSymboolMeldungAkzeptanzFeelerWarnung>
+
+
+                                    </Grid>
+                                </TabItem.Header>
+
+                                <TabItem.Content>
+                                    <ScrollViewer>
+                                        <StackPanel>
+                                            <GroupBox BorderThickness="1.6">
+                                                <GroupBox.Header>
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                            <ColumnDefinition Width="4"></ColumnDefinition>
+                                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                        </Grid.ColumnDefinitions>
+
+                                                        <TextBlock
+                                                            Text="current status of input generation"
+                                                             Style="{StaticResource HeaderStyle}"
+                                                            VerticalAlignment="Center">
+                                                        </TextBlock>
+
+                                                        <Grid Grid.Column="2" Visibility="Collapsed">
+                                                            <Ellipse Name="EllipseZiilProcessWirkungFraigaabeSctaatus"
+								                                VerticalAlignment="Center" HorizontalAlignment="Center"
+									                            Stroke="Black" StrokeThickness="1.4" Width="13" Height="13"
+                                                                ></Ellipse>
+                                                        </Grid>
+
+                                                    </Grid>
+                                                </GroupBox.Header>
+
+                                                <GroupBox.Content>
+                                                    <Grid Margin="1">
+                                                        <TextBlock Text="generating input is disabled. Press the button labeled &quot;play&quot; above to enable generating input."
+                                                               Name="TextBlockZiilProcessWirkungFraigaabeSctaatusAus"
+                                                               Margin="1">
+                                                        </TextBlock>
+
+                                                        <TextBlock Text="generating input is enabled."
+                                                               Name="TextBlockZiilProcessWirkungFraigaabeSctaatusAin"
+                                                               Margin="1">
+                                                        </TextBlock>
+                                                    </Grid>
+                                                </GroupBox.Content>
+                                            </GroupBox>
+
+                                            <GroupBox
+                                                Margin="1"
+                                                BorderThickness="1.6">
+                                                <GroupBox.Header>
+                                                    <TextBlock
+                                                        Text="Keyboard shortcuts used to pause generating input"
+                                                         Style="{StaticResource HeaderStyle}">
+                                                    </TextBlock>
+                                                </GroupBox.Header>
+
+                                                <GroupBox.Content>
+                                                    <Optimat.GBS:SictAingaabeMengeTasteKombi
+                                                    Name="ZiilProcessWirkungPauseAuswaalMengeKeyKombi"
+                                                    DataGridMengeKeyKombiHeight="99"
+                                                    GrupeMengeKeyKombiVorhandeHeaderBescriftung="current set of shortcuts"
+                                                    GrupeKeyKombiFüügeAinHeaderBescriftung="create new shortcut comprising the keys currently active"
+                                                    GrupeKeyKombiFüügeAinBescriftungMengeKeyDown="active keys:"
+                                                    ButtonKeyKombiFüügeAinBescriftung="insert this shortcut"></Optimat.GBS:SictAingaabeMengeTasteKombi>
+                                                </GroupBox.Content>
+                                            </GroupBox>
+
+                                        </StackPanel>
+                                    </ScrollViewer>
+                                </TabItem.Content>
+                            </TabItem>
+                        </TabControl>
+                    </Grid>
+                </TabItem.Content>
+            </TabItem>
+
+            <TabItem>
+                <TabItem.Header>
+                    <Grid
+                        VerticalAlignment="Stretch">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="4"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Column="2">
+                            <!--
+							<Ellipse Name="EllipseScnitOptimatServerSctaatusAnzaige"
+								VerticalAlignment="Center" HorizontalAlignment="Center"
+									 Stroke="Black" StrokeThickness="1.4" Width="13" Height="13"
+                                      ></Ellipse>
+                            -->
+
+                            <Bib3.FCL.GBS:BoolAbbildSymboolAkzeptanzFeelerWarnung
+                                x:Name="LicenseClientStateIcon"
+                                FalseSymbolTyp="Feeler"
+                                TrueSymbolTyp="Akzeptanz"
+                                >
+                            </Bib3.FCL.GBS:BoolAbbildSymboolAkzeptanzFeelerWarnung>
+                        </Grid>
+                        <TextBlock
+                            Text="Optimization Service"
+                            Grid.Column="0" VerticalAlignment="Center" Margin="1"></TextBlock>
+                    </Grid>
+                </TabItem.Header>
+
+                <TabItem.Content>
+                    <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Disabled">
+                        <StackPanel>
+                            <StackPanel.Resources>
+                                <Style TargetType="Bib3.FCL.GBS:BoolAbbildSymboolAkzeptanzFeelerWarnung"
+                                       BasedOn="{StaticResource {x:Type Bib3.FCL.GBS:BoolAbbildSymboolAkzeptanzFeelerWarnung}}">
+                                    <Setter Property="Margin" Value="3"></Setter>
+                                </Style>
+                            </StackPanel.Resources>
+
+                            <GroupBox Grid.Row="0" BorderThickness="2">
+                                <GroupBox.Header>
+                                    <Border
+                                         Style="{StaticResource HeaderStyle}">
+                                        <TextBlock Text="connection settings" Style="{StaticResource HeaderStyle}">
+                                        </TextBlock>
+                                    </Border>
+                                </GroupBox.Header>
+
+                                <GroupBox.Content>
+                                    <Grid Grid.IsSharedSizeScope="True">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                            <RowDefinition Height="4"></RowDefinition>
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                            <RowDefinition Height="4"></RowDefinition>
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                        </Grid.RowDefinitions>
+										
+										<GroupBox>
+											<GroupBox.Header>
+												<TextBlock Text="API URI"></TextBlock>
+											</GroupBox.Header>
+
+											<GroupBox.Content>
+												<TextBox Name="TextBoxSensorServerApiUri" Text=""></TextBox>
+											</GroupBox.Content>
+										</GroupBox>
+
+                                        <GroupBox
+											Grid.Row="0"
+											Visibility="Collapsed">
+                                            <GroupBox.Header>
+                                                <TextBlock Text="connection configuration file"  Style="{StaticResource HeaderStyle}"></TextBlock>
+                                            </GroupBox.Header>
+
+                                            <GroupBox.Content>
+                                                <GroupBox>
+                                                    <GroupBox.Header>
+                                                        <TextBlock Text="path to configuration file" Margin="1"></TextBlock>
+                                                    </GroupBox.Header>
+
+                                                    <GroupBox.Content>
+                                                        <StackPanel
+                                                            AllowDrop="True" Drop="TextBoxOptimatServerVerbindungLizenzDataiPfaad_Drop">
+                                                            <TextBlock TextWrapping="Wrap"
+                                                                       Text="sets the path to the configuration file which will be used to load the connection settings. drag and drop a file to the textbox to set the path to the dropped file."
+                                                                       Margin="1"></TextBlock>
+                                                            <TextBox Name="TextBoxOptimatServerVerbindungLizenzDataiPfaad"
+                                                                     PreviewDragOver="TextBoxOptimatServerVerbindungLizenzDataiPfaad_PreviewDragOver">
+                                                            </TextBox>
+                                                        </StackPanel>
+                                                    </GroupBox.Content>
+                                                </GroupBox>
+                                            </GroupBox.Content>
+                                        </GroupBox>
+
+                                    </Grid>
+                                </GroupBox.Content>
+                            </GroupBox>
+
+                            <GroupBox>
+                                <GroupBox.Header>
+
+                                    <Border
+                                            Style="{StaticResource HeaderStyle}">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                <ColumnDefinition Width="4"></ColumnDefinition>
+                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Text="connection" Style="{StaticResource HeaderStyle}">
+                                            </TextBlock>
+                                            <Bib3.FCL.GBS:BoolAbbildSymboolAkzeptanzFeelerWarnung
+                                                x:Name="LicenseClientStatusInspect"
+                                            Grid.Column="2"
+                                                FalseSymbolTyp="Feeler"
+                                                TrueSymbolTyp="Akzeptanz"></Bib3.FCL.GBS:BoolAbbildSymboolAkzeptanzFeelerWarnung>
+                                        </Grid>
+                                    </Border>
+                                </GroupBox.Header>
+
+                                <GroupBox.Content>
+                                    <BotEngine.UI:LicenseClientInspect
+                                        x:Name="LicenseClientInspect"></BotEngine.UI:LicenseClientInspect>
+                                </GroupBox.Content>
+                            </GroupBox>
+                        </StackPanel>
+                    </ScrollViewer>
+                </TabItem.Content>
+            </TabItem>
+
+            <TabItem
+                Visibility="Visible">
+                <TabItem.Header>
+                    <TextBlock Text="Reporting"></TextBlock>
+                </TabItem.Header>
+
+                <TabItem.Content>
+                    <StackPanel>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="4"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <GroupBox Grid.Row="0"
+                                      BorderThickness="1.6">
+                                <GroupBox.Header>
+                                    <TextBlock
+                                        Text="Structured Report storage folder"
+                                         Style="{StaticResource HeaderStyle}">
+                                    </TextBlock>
+                                </GroupBox.Header>
+
+                                <GroupBox.Content>
+                                    <Optimat.GBS:SictAingaabePfaadDsUndKapaz
+                                    x:Name="BerictPersistAingaabeBerictHaupt"
+                                        PfaadBescriftung="Path"
+                                        PfaadWindowsExplorerStartBescriftung="open in explorer"
+                                        KapazitäätBescriftung="Capacity"
+                                        KapazitäätAinhaitTypSictInt="2"
+                                        MengeDataiEntferneBescriftung="delete files in excess&#10;of below specified capacity"
+                                        MengeDataiEntferneÜüberflusButtonJeztBescriftung="delete files now"
+                                        AuswaalKapazitäätMaximum="10000000000"></Optimat.GBS:SictAingaabePfaadDsUndKapaz>
+                                </GroupBox.Content>
+                            </GroupBox>
+
+                            <GroupBox Grid.Row="2"
+                                      BorderThickness="1.6">
+                                <GroupBox.Header>
+                                    <TextBlock
+                                        Text="Screenshot storage folder"
+                                         Style="{StaticResource HeaderStyle}">
+                                    </TextBlock>
+                                </GroupBox.Header>
+
+                                <GroupBox.Content>
+                                    <Optimat.GBS:SictAingaabePfaadDsUndKapaz
+                                    x:Name="BerictPersistAingaabeBerictWindowClientRaster"
+                                        PfaadBescriftung="Path"
+                                        PfaadWindowsExplorerStartBescriftung="open in explorer"
+                                        KapazitäätBescriftung="Capacity"
+                                        KapazitäätAinhaitTypSictInt="2"
+                                        MengeDataiEntferneBescriftung="delete files in excess&#10;of below specified capacity"
+                                        MengeDataiEntferneÜüberflusButtonJeztBescriftung="delete files now"
+                                        AuswaalKapazitäätMaximum="10000000000"></Optimat.GBS:SictAingaabePfaadDsUndKapaz>
+                                </GroupBox.Content>
+                            </GroupBox>
+                        </Grid>
+
+                        <GroupBox
+                            AllowDrop="True"
+                            Drop="SizungBerictVerzaicnisPfaad_Drop">
+                            <GroupBox.Header>
+                                <TextBlock Text="Bot Session Report Directory"></TextBlock>
+                            </GroupBox.Header>
+
+                            <GroupBox.Content>
+                                <TextBox
+                                    Name="TextBoxSizungBerictVerzaicnisPfaad"></TextBox>
+                            </GroupBox.Content>
+                        </GroupBox>
+
+                    </StackPanel>
+                </TabItem.Content>
+            </TabItem>
+
+            <TabItem>
+                <TabItem.Header>
+                    <TextBlock Text="Settings"></TextBlock>
+                </TabItem.Header>
+
+                <TabItem.Content>
+                    <ScrollViewer>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="4"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="4"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <GroupBox Grid.Row="0">
+                                <GroupBox.Header>
+                                    <TextBlock Text="general settings" Style="{StaticResource HeaderStyle}">
+                                        <TextBlock.LayoutTransform>
+                                            <ScaleTransform ScaleX="1.1" ScaleY="1.1"></ScaleTransform>
+                                        </TextBlock.LayoutTransform>
+                                    </TextBlock>
+                                </GroupBox.Header>
+
+                                <GroupBox.Content>
+                                    <StackPanel>
+                                        <TextBlock Text="contains the settings from all Tabs except the Tab titled &quot;Eve Online&quot;"
+                                               Margin="1"></TextBlock>
+
+                                        <!--
+                                        <Button Name="ButtonPersistenzScraibeKonfiguratioonNaacDatai"
+                                                AllowDrop="True">save current state to File</Button>
+-->
+                                        <WrapPanel>
+                                            <Button
+                                                Name="ButtonKonfigScraibeNaacDatai"
+                                                Click="ButtonKonfigScraibeNaacDatai_Click"
+                                                Drop="ButtonKonfigScraibeNaacDatai_Drop"
+                                                AllowDrop="True"
+                                                Margin="3">
+                                                <TextBlock Text="store to file"></TextBlock>
+                                            </Button>
+                                            <Button
+                                                Name="ButtonKonfigLaadeVonDatai"
+                                                Click="ButtonKonfigLaadeVonDatai_Click"
+                                                Drop="ButtonKonfigLaadeVonDatai_Drop"
+                                                AllowDrop="True"
+                                                Margin="3">
+                                                <TextBlock Text="load from file"></TextBlock>
+                                            </Button>
+                                            <Button
+                                                Name="ButtonKonfigSezeZurük"
+                                                Click="ButtonKonfigSezeZurük_Click"
+                                                Margin="3">
+                                                <TextBlock Text="reset to default"></TextBlock>
+                                            </Button>
+                                        </WrapPanel>
+
+                                        <GroupBox>
+                                            <GroupBox.Header>
+                                                <TextBlock Text="report" Margin="3"></TextBlock>
+                                            </GroupBox.Header>
+
+                                            <GroupBox.Content>
+                                                <Optimat.GBS:BerictTextUndAnim
+                                                    x:Name="KonfigAktioonErgeebnisBerict"
+                                                    Height="77"></Optimat.GBS:BerictTextUndAnim>
+                                                <!--
+                                                <Grid>
+                                                    <TextBox Name="TextBoxPersistenzScraibeKonfigNaacDataiBerict"
+                                                         IsReadOnly="True" Height="66" VerticalScrollBarVisibility="Visible"
+                                                         Panel.ZIndex="1"></TextBox>
+
+                                                    <Rectangle Name="RectanglePersistenzScraibeKonfigNaacDataiBerict"
+                                                           Opacity="0" IsHitTestVisible="False" Panel.ZIndex="4"></Rectangle>
+                                                </Grid>
+                                                -->
+                                            </GroupBox.Content>
+                                        </GroupBox>
+                                    </StackPanel>
+                                </GroupBox.Content>
+                            </GroupBox>
+                            
+                            <Grid Height="111" Grid.Row="2">
+                            </Grid>
+                            
+                            <GroupBox
+                                Grid.Row="4">
+                                <GroupBox.Header>
+                                    <TextBlock Text="Advanced Mode" Style="{StaticResource HeaderStyle}"></TextBlock>
+                                </GroupBox.Header>
+
+                                <GroupBox.Content>
+                                    <Button
+                                        Name="ButtonErwaitertFraigaabe"
+                                        Click="ButtonErwaitertFraigaabe_Click"
+                                        HorizontalAlignment="Left">
+                                        <TextBlock Text="enable advanced Mode"></TextBlock>
+                                    </Button>
+                                </GroupBox.Content>
+                            </GroupBox>
+                            
+                        </Grid>
+                    </ScrollViewer>
+                </TabItem.Content>
+            </TabItem>
+
+            <TabItem
+                Name="TabItemErwaitert"
+                Visibility="Collapsed"
+                >
+                <TabItem.Header>
+                    <TextBlock Text="Advanced"></TextBlock>
+                </TabItem.Header>
+                
+                <TabItem.Content>
+                    <ScrollViewer>
+                        <Optimat.EveO.Nuzer.GBS:Erwaitert
+                            x:Name="ControlErwaitert"></Optimat.EveO.Nuzer.GBS:Erwaitert>
+                    </ScrollViewer>
+                </TabItem.Content>
+            </TabItem>
+
+            <TabItem
+                Name="TabItemInspekt"
+                Margin="10,3,-10,0"
+                Visibility="Collapsed">
+                <TabItem.Header>
+                    <TextBlock Text="Inspekt" Margin="1">
+                        <TextBlock.LayoutTransform>
+                            <ScaleTransform ScaleX="0.9" ScaleY="0.9"></ScaleTransform>
+                        </TextBlock.LayoutTransform>
+                    </TextBlock>
+                </TabItem.Header>
+
+                <TabItem.Content>
+                    <StackPanel>
+
+                        <GroupBox
+                            Margin="3">
+                            <GroupBox.Header>
+                                <TextBlock Text="Exception" Margin="3"></TextBlock>
+                            </GroupBox.Header>
+
+                            <GroupBox.Content>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="1"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                    </Grid.RowDefinitions>
+
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                            <ColumnDefinition Width="11"></ColumnDefinition>
+                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+
+                                        <TextBlock Text="Alter" Margin="3"></TextBlock>
+
+                                        <TextBox Name="TextBoxDbgTimerElapsedLockedInRaameBerictExceptionLezteAlter"
+                                                 IsReadOnly="True"
+                                                 Grid.Column="2" Width="77"></TextBox>
+                                    </Grid>
+
+                                    <TextBox
+                                        Name="TextBoxDbgTimerElapsedLockedInRaameBerictExceptionLezteSictString"
+                                        Grid.Row="2"
+                                         IsReadOnly="True"
+                                        VerticalScrollBarVisibility="Visible"
+                                        Height="44"></TextBox>
+                                </Grid>
+                            </GroupBox.Content>
+                        </GroupBox>
+
+                        <GroupBox
+                            Margin="3">
+                            <GroupBox.Header>
+                                <TextBlock Text="OptimatScrit.Zwiscescpaicer" Margin="3"></TextBlock>
+                            </GroupBox.Header>
+
+                            <GroupBox.Content>
+                                <WrapPanel>
+                                    <GroupBox
+                                        Margin="1" VerticalAlignment="Center">
+                                        <GroupBox.Header>
+                                            <TextBlock Text="Alter" Margin="1"></TextBlock>
+                                        </GroupBox.Header>
+
+                                        <GroupBox.Content>
+                                            <TextBox Name="TextBoxInspektOptimatScritZwiscescpaicerAlter"
+                                                     IsReadOnly="True" Width="55"></TextBox>
+                                        </GroupBox.Content>
+                                    </GroupBox>
+
+                                    <Button Name="ButtonInspektOptimatScritZwiscescpaicerWindowClientRasterScraibeNaacDatai"
+                                            Margin="3" VerticalAlignment="Center"
+                                            AllowDrop="True">
+                                        <TextBlock Text="Window.Client.Raster scraibe naac Datai" Margin="1"></TextBlock>
+                                    </Button>
+
+                                    <Button Name="ButtonInspektOptimatScritZwiscescpaicerVonProcessGbsBaumScraibeNaacDatai"
+                                            Margin="3" VerticalAlignment="Center"
+                                            AllowDrop="True">
+                                        <TextBlock Text="GBS Baum scraibe naac Datai" Margin="1"></TextBlock>
+                                    </Button>
+                                </WrapPanel>
+                            </GroupBox.Content>
+                        </GroupBox>
+                        
+                        <GroupBox>
+                            <GroupBox.Header>
+                                <TextBlock Text="Scrit.Zait"></TextBlock>
+                            </GroupBox.Header>
+
+                            <GroupBox.Content>
+                                <TextBox
+                                    Name="TextBoxInspektScritZait"
+                                    IsReadOnly="True"
+                                    Height="77"></TextBox>
+                            </GroupBox.Content>
+                        </GroupBox>
+                        
+                    </StackPanel>
+                </TabItem.Content>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</UserControl>

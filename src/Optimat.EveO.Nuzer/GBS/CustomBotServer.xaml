@@ -1,0 +1,111 @@
+﻿<UserControl x:Class="Optimat.EveO.Nuzer.GBS.CustomBotServer"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:Bib3.FCL.GBS="clr-namespace:Bib3.FCL.GBS;assembly=Bib3.FCL"
+             xmlns:Optimat.GBS="clr-namespace:Optimat.GBS;assembly=Optimat"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.Resources>
+            <Style TargetType="TextBlock">
+                <Setter Property="VerticalAlignment" Value="Center"></Setter>
+            </Style>
+           
+        </Grid.Resources>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="4"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="4"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="4"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="4"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="4"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="4"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="11"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock
+                Text="API URI"></TextBlock>
+
+            <TextBox
+                Name="TextBoxApiUri"
+                Grid.Column="2"
+                IsReadOnly="True"></TextBox>
+
+            <TextBlock
+                Text="is Listening"
+                Grid.Row="2"></TextBlock>
+
+            <CheckBox
+                Name="CheckBoxIsListening"
+                Grid.Column="2" Grid.Row="2" IsEnabled="False"
+                HorizontalAlignment="Left" VerticalAlignment="Center"></CheckBox>
+
+            <TextBlock
+                Text="started"
+                Grid.Row="4"></TextBlock>
+
+            <Optimat.GBS:ZaitpunktStopwatchInspektAlterUndKalender
+                x:Name="BeginZait"
+                Grid.Column="2" Grid.Row="4"></Optimat.GBS:ZaitpunktStopwatchInspektAlterUndKalender>
+            
+            <TextBlock
+                Text="requests served"
+                Grid.Row="6"></TextBlock>
+            <TextBox
+                Name="TextBoxListeRequestAnzaal"
+                Grid.Column="2" Grid.Row="6"
+                Width="44" HorizontalAlignment="Left"
+                IsReadOnly="True"></TextBox>
+
+            <TextBlock
+                Text="last request"
+                Grid.Row="8"></TextBlock>
+            <Optimat.GBS:ZaitpunktStopwatchInspektAlterUndKalender
+                x:Name="ListeRequestLezteZait"
+                Grid.Column="2" Grid.Row="8"
+                ></Optimat.GBS:ZaitpunktStopwatchInspektAlterUndKalender>
+
+            <TextBlock
+                Text="last requested Measurement time"
+                Grid.Row="10"></TextBlock>
+            <Optimat.GBS:ZaitpunktStopwatchInspektAlterUndKalender
+                x:Name="ListeRequestMesungLezteZait"
+                Grid.Column="2" Grid.Row="10"
+                ></Optimat.GBS:ZaitpunktStopwatchInspektAlterUndKalender>
+
+            <TextBlock
+                Text="last Error"
+                Grid.Row="12"></TextBlock>
+
+            <Grid
+                Grid.Row="12" Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="1"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                
+                <Optimat.GBS:ZaitpunktStopwatchInspektAlterUndKalender
+                    x:Name="ListeExceptionLezteZait"></Optimat.GBS:ZaitpunktStopwatchInspektAlterUndKalender>
+                
+                <TextBox
+                    Name="TextBoxListeExceptionLezteSictString"
+                    IsReadOnly="True"
+                    Grid.Row="2" Height="55" VerticalScrollBarVisibility="Visible"></TextBox>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>
