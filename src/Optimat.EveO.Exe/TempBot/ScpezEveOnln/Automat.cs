@@ -377,72 +377,29 @@ namespace Optimat.ScpezEveOnln
 				var InternZuusctandScpez = InternZuusctand as SictAutomatZuusctandWaiterlaitung;
 
 				if (null != InternZuusctandScpez)
-				{
 					InternZuusctandScpez.TempDebugListeScritBerecneStopwatchZaitUndNuzerZait = this.TempDebugListeScritBerecneStopwatchZaitUndNuzerZait;
-				}
 			}
 
 			if (InternZuusctand.VorsclaagWirkungAusgefüürtNictLezteAlterBerecne() < 5555)
-			{
 				return false;
-			}
 
 			{
-				/*
-				 * 2015.03.12
-				 * 
-					//	Tail Auswertung Scnapscus
-
-					var GbsBaumWurzel = this.VonNuzerMeldungZuusctandTailGbsBaum;
-
-					if (null != GbsBaumWurzel)
-					{
-						int InBaumAstIndexZääler = 0;
-
-						GbsBaumWurzel.AbgelaiteteAigescafteBerecne(ref	InBaumAstIndexZääler);
-					}
-
-					InternZuusctand.VonNuzerMeldungZuusctandTailGbsBaum = VonNuzerMeldungZuusctandTailGbsBaum;
-
-					var AuswertDauer = new SictMesungZaitraumAusStopwatch(true);
-
-					var Auswert = new SictAuswertGbsAgr(GbsBaumWurzel);
-
-					Auswert.Berecne();
-
-					AuswertDauer.EndeSezeJezt();
-
-					var AuswertErgeebnis = new	SictAusGbsScnapscusAuswertungSrv(Auswert.AuswertErgeebnis);
-				 * */
-
 				SictAusGbsScnapscusAuswertungSrv AuswertErgeebnis = null;
 
-				{
-					var VonSensorScnapscus = InternZuusctand.VonSensorScnapscus;
+				var MemoryMeasurement = InternZuusctand?.VonSensorScnapscus?.MemoryMeasurement?.Mesung;
 
-					if (null != VonSensorScnapscus)
-					{
-						if (null != VonSensorScnapscus.MemoryMeasurement)
-						{
-							AuswertErgeebnis = new SictAusGbsScnapscusAuswertungSrv(VonSensorScnapscus.MemoryMeasurement.Mesung);
-						}
-					}
-				}
+				if (null != MemoryMeasurement)
+					AuswertErgeebnis = new SictAusGbsScnapscusAuswertungSrv(MemoryMeasurement);
+
 				InternZuusctand.ListeScnapscusLezteAuswertungErgeebnis = AuswertErgeebnis;
-
-				/*
-				 * 2015.03.12
-				 * 
-				this.ScnapscusAuswertLezte = new SictWertMitZait<SictAuswertGbsAgr>(NuzerZaitMili ?? -1, Auswert);
-			 * */
 
 				var OptimatParam = InternZuusctand.OptimatParam();
 
-				var VonNuzerParamSimuFraigaabe = (null == OptimatParam) ? null : OptimatParam.SimuFraigaabe;
+				var VonNuzerParamSimuFraigaabe = OptimatParam?.SimuFraigaabe;
 
-				var VonNuzerParamSimu = (null == OptimatParam) ? null : OptimatParam.Simu;
+				var VonNuzerParamSimu = OptimatParam?.Simu;
 
-				var VonNuzerParamAutoFraigaabe = (null == OptimatParam) ? null : OptimatParam.AutoFraigaabe;
+				var VonNuzerParamAutoFraigaabe = OptimatParam?.AutoFraigaabe;
 
 				var ListeScnapscusLezteAuswertungErgeebnisNaacSimu =
 					ApliziireSimulatioon(AuswertErgeebnis,
