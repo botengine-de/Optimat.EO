@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="Optimat.EveOnline.UI.CustomBot.SensorMeasurement"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <ResourceDictionary Source="/Optimat.EveOnline.UI;component/Style.xaml"></ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="1"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="11"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        
+        <TextBlock Text="object count"></TextBlock>
+        
+        <TextBox
+            Name="TextBoxObjectCount"
+            IsReadOnly="True"
+            Grid.Column="2"></TextBox>
+
+        <Button
+            Name="ButtonWriteToFile"
+            AllowDrop="True"
+            Drop="ButtonWriteToFile_Drop"
+            Grid.Row="2"
+            Grid.ColumnSpan="9"
+            HorizontalAlignment="Left">
+            <TextBlock Text="write to File (drop here)"></TextBlock>
+        </Button>
+    </Grid>
+</UserControl>

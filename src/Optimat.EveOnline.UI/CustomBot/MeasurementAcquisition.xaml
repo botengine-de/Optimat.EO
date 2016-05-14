@@ -1,0 +1,123 @@
+﻿<UserControl x:Class="Optimat.EveOnline.UI.CustomBot.MeasurementAcquisition"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:Optimat.EveOnline.UI.CustomBot="clr-namespace:Optimat.EveOnline.UI.CustomBot"
+             mc:Ignorable="d" 
+             d:DesignHeight="555" d:DesignWidth="444">
+    <UserControl.Resources>
+        <ResourceDictionary Source="/Optimat.EveOnline.UI;component/Style.xaml"></ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.Resources>
+            <Style TargetType="Button">
+                <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+                <Setter Property="Margin" Value="2"></Setter>
+            </Style>
+
+            <!--
+            <Style TargetType="GroupBox" BasedOn="{StaticResource BorderToGroupStyle}">
+            </Style>
+            -->
+        </Grid.Resources>
+
+        <StackPanel>
+            <GroupBox>
+                <GroupBox.Header>
+                    <Border Style="{StaticResource HeaderStyle}">
+                        <TextBlock Text="acquire from File" Style="{StaticResource HeaderStyle}"></TextBlock>
+                    </Border>
+                </GroupBox.Header>
+
+                <GroupBox.Content>
+                    <StackPanel>
+                        <Button
+                        Name="ButtonReadFromFile"
+                        AllowDrop="True"
+                        Drop="ButtonReadFromFile_Drop">
+                            <TextBlock Text="read from File (drop here)"></TextBlock>
+                        </Button>
+                        
+                        <GroupBox>
+                            <GroupBox.Header>
+                                <TextBlock Text="last attempt to load from file" Style="{StaticResource HeaderStyle}"></TextBlock>
+                            </GroupBox.Header>
+                        </GroupBox>
+                    </StackPanel>
+
+                </GroupBox.Content>
+            </GroupBox>
+
+            <GroupBox>
+                <GroupBox.Header>
+                    <Border Style="{StaticResource HeaderStyle}">
+                        <TextBlock Text="acquire from Webserver" Style="{StaticResource HeaderStyle}"></TextBlock>
+                    </Border>
+                </GroupBox.Header>
+
+                <GroupBox.Content>
+                    <StackPanel>
+                        <GroupBox>
+                            <GroupBox.Header>
+                                <TextBlock Text="connection parameter" Style="{StaticResource HeaderStyle}"></TextBlock>
+                            </GroupBox.Header>
+
+                            <GroupBox.Content>
+                                <Optimat.EveOnline.UI.CustomBot:ConnectionParam
+                                    x:Name="ConnectionParam"></Optimat.EveOnline.UI.CustomBot:ConnectionParam>
+                            </GroupBox.Content>
+                        </GroupBox>
+
+                        <GroupBox>
+                            <GroupBox.Header>
+                                <TextBlock Text="trigger" Style="{StaticResource HeaderStyle}"></TextBlock>
+                            </GroupBox.Header>
+
+                            <GroupBox.Content>
+                                <StackPanel>
+                                    <Button
+                                                Name="ButtonFromWebserverRequestOnce"
+                                                Click="ButtonFromWebserverRequestOnce_Click">
+                                        <TextBlock Text="request once"></TextBlock>
+                                    </Button>
+
+                                    <CheckBox
+                            Name="CheckBoxFromWebserverRequestContinuously"
+                            Margin="4">
+                                        <TextBlock Text="request continuously" Margin="1"></TextBlock>
+                                    </CheckBox>
+                                </StackPanel>
+                            </GroupBox.Content>
+                        </GroupBox>
+
+                        <GroupBox>
+                            <GroupBox.Header>
+                                <TextBlock Text="last request" Style="{StaticResource HeaderStyle}"></TextBlock>
+                            </GroupBox.Header>
+
+                            <GroupBox.Content>
+                                <Optimat.EveOnline.UI.CustomBot:SnapshotRequest
+                                        x:Name="FromWebserverRequestLastInspect"></Optimat.EveOnline.UI.CustomBot:SnapshotRequest>
+                            </GroupBox.Content>
+                        </GroupBox>
+                    </StackPanel>
+                </GroupBox.Content>
+            </GroupBox>
+
+            <GroupBox>
+                <GroupBox.Header>
+                    <Border Style="{StaticResource HeaderStyle}">
+                        <TextBlock Text="last Acquisition" Style="{StaticResource HeaderStyle}"></TextBlock>
+                    </Border>
+                </GroupBox.Header>
+                
+                <GroupBox.Content>
+                    <Optimat.EveOnline.UI.CustomBot:InputSnapshot
+                        x:Name="AcquisitionLastInspect"></Optimat.EveOnline.UI.CustomBot:InputSnapshot>
+                </GroupBox.Content>
+            </GroupBox>
+        </StackPanel>
+
+    </Grid>
+</UserControl>

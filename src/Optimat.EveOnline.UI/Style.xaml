@@ -1,0 +1,32 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Bib3.FCL.GBS="clr-namespace:Bib3.FCL.GBS;assembly=Bib3.FCL"
+    xmlns:Optimat.GBS="clr-namespace:Optimat.GBS;assembly=Optimat">
+
+    <ResourceDictionary.MergedDictionaries>
+        
+        <!--
+        2015.08.29
+        Ersaz durc BotEngine.UI;component/Resource.xaml
+        <ResourceDictionary Source="pack://application:,,,/Optimat;component/GBS/Style.xaml"></ResourceDictionary>
+        -->
+
+        <ResourceDictionary Source="pack://application:,,,/BotEngine.UI;component/Resource.xaml"></ResourceDictionary>
+
+        <ResourceDictionary>
+
+            <Style TargetType="Bib3.FCL.GBS:ZaitpunktStopwatchInspektAlterUndKalender">
+                <Setter Property="BeginText" Value=""></Setter>
+                <Setter Property="ZwisceAlterUndKalenderText" Value="s ago at"></Setter>
+            </Style>
+
+        <!--
+        2015.08.29
+            <Style TargetType="Bib3.FCL.GBS:BoolAbbildSymboolAkzeptanzFeelerWarnung" BasedOn="{StaticResource WidthAssignFromActualHeight}"></Style>
+            -->
+
+        </ResourceDictionary>
+    </ResourceDictionary.MergedDictionaries>
+
+</ResourceDictionary>

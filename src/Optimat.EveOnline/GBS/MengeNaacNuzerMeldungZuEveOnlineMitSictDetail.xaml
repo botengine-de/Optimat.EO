@@ -1,0 +1,21 @@
+﻿<UserControl x:Class="Optimat.EveOnline.GBS.SictMengeNaacNuzerMeldungZuEveOnlineMitSictDetail"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:Optimat.EveOnline.GBS="clr-namespace:Optimat.EveOnline.GBS"
+             mc:Ignorable="d" 
+             d:DesignHeight="444" d:DesignWidth="555">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="4*"></RowDefinition>
+            <RowDefinition Height="4"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Optimat.EveOnline.GBS:SictDataGridMengeNaacNuzerMeldungZuEveOnline
+            x:Name="DataGridMengeMeldung"
+            Grid.Row="0">
+        </Optimat.EveOnline.GBS:SictDataGridMengeNaacNuzerMeldungZuEveOnline>
+    </Grid>
+</UserControl>

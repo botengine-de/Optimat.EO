@@ -1,0 +1,59 @@
+﻿<UserControl x:Class="Optimat.EveOnline.UI.SensorMeasurementViewTreeAndSpatial"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:Bib3.FCL.GBS="clr-namespace:Bib3.FCL.GBS;assembly=Bib3.FCL"
+             xmlns:Bib3.FCL.GBS.Inspektor="clr-namespace:Bib3.FCL.GBS.Inspektor;assembly=Bib3.FCL"
+             xmlns:Optimat.EveOnline.UI="clr-namespace:Optimat.EveOnline.UI"
+             xmlns:Bib3.Terz.GBS.Inspektor="clr-namespace:Bib3.Terz.GBS.Inspektor;assembly=Bib3.Terz"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="444">
+    <UserControl.Resources>
+        <ResourceDictionary Source="/Optimat.EveOnline.UI;component/Style.xaml"></ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="4*" MinWidth="44"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="4*" MinWidth="44"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="1"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Expander>
+                <Expander.Header>
+                    <TextBlock Text="selection" Style="{StaticResource HeaderStyle}"></TextBlock>
+                </Expander.Header>
+                
+                <Expander.Content>
+                    <Bib3.FCL.GBS.Inspektor:PfaadAusBenanteMemberUndIndexExport
+                        x:Name="SelectedItemPath"
+                        AuswaalPfaad="{Binding ElementName=ViewTree, Path=AuswaalPfaad}"
+                        PfaadHeaderBescriftung="path">
+                        <Bib3.FCL.GBS.Inspektor:PfaadAusBenanteMemberUndIndexExport.MengeSictControl>
+                            <Bib3.Terz.GBS.Inspektor:SictRefNezDif></Bib3.Terz.GBS.Inspektor:SictRefNezDif>
+                            <Bib3.Terz.GBS.Inspektor:SictNewtonsoftJsonSerialis></Bib3.Terz.GBS.Inspektor:SictNewtonsoftJsonSerialis>
+                            <Bib3.FCL.GBS.Inspektor:ExportSictToString></Bib3.FCL.GBS.Inspektor:ExportSictToString>
+                        </Bib3.FCL.GBS.Inspektor:PfaadAusBenanteMemberUndIndexExport.MengeSictControl>
+                    </Bib3.FCL.GBS.Inspektor:PfaadAusBenanteMemberUndIndexExport>
+                </Expander.Content>
+            </Expander>
+
+            <Bib3.FCL.GBS.Inspektor:BaumAusBenanteMemberUndIndex
+                x:Name="ViewTree"
+                Grid.Row="2"></Bib3.FCL.GBS.Inspektor:BaumAusBenanteMemberUndIndex>
+        </Grid>
+
+        <GridSplitter Grid.Column="1" Width="7" ResizeBehavior="PreviousAndNext" ResizeDirection="Columns" VerticalAlignment="Stretch"></GridSplitter>
+
+        <Optimat.EveOnline.UI:SensorMeasurementViewSpatial
+            x:Name="ViewSpatial"
+            Grid.Column="2"></Optimat.EveOnline.UI:SensorMeasurementViewSpatial>
+    </Grid>
+</UserControl>

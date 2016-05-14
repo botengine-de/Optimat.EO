@@ -109,21 +109,6 @@
     <Reference Include="Optimat">
       <HintPath>..\..\lib\Optimat.dll</HintPath>
     </Reference>
-    <Reference Include="Optimat.EveOnline">
-      <HintPath>..\..\lib\Optimat.EveOnline.dll</HintPath>
-    </Reference>
-    <Reference Include="Optimat.EveOnline.Base">
-      <HintPath>..\..\lib\Optimat.EveOnline.Base.dll</HintPath>
-    </Reference>
-    <Reference Include="Optimat.EveOnline.CustomBot">
-      <HintPath>..\..\lib\Optimat.EveOnline.CustomBot.dll</HintPath>
-    </Reference>
-    <Reference Include="Optimat.EveOnline.TempAuswertGbs">
-      <HintPath>..\..\lib\Optimat.EveOnline.TempAuswertGbs.dll</HintPath>
-    </Reference>
-    <Reference Include="Optimat.EveOnline.UI">
-      <HintPath>..\..\lib\Optimat.EveOnline.UI.dll</HintPath>
-    </Reference>
     <Reference Include="protobuf-net, Version=2.0.0.668, Culture=neutral, PublicKeyToken=257b51d87d2e4d67, processorArchitecture=MSIL">
       <HintPath>..\packages\protobuf-net.2.0.0.668\lib\net40\protobuf-net.dll</HintPath>
       <Private>True</Private>
@@ -358,6 +343,26 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Optimat.EveOnline.Base\Optimat.EveOnline.Base.csproj">
+      <Project>{38e5633b-1aa6-4d03-90b6-9b672a17f32a}</Project>
+      <Name>Optimat.EveOnline.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Optimat.EveOnline.CustomBot\Optimat.EveOnline.CustomBot.csproj">
+      <Project>{d8f6bbab-23e1-44b8-adb4-ad2c5f703a41}</Project>
+      <Name>Optimat.EveOnline.CustomBot</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Optimat.EveOnline.TempAuswertGbs\Optimat.EveOnline.TempAuswertGbs.csproj">
+      <Project>{f493b43d-0230-488c-95c3-99e150295ea9}</Project>
+      <Name>Optimat.EveOnline.TempAuswertGbs</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Optimat.EveOnline.UI\Optimat.EveOnline.UI.csproj">
+      <Project>{d2d968ac-1169-4005-8960-f8afca65eb58}</Project>
+      <Name>Optimat.EveOnline.UI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Optimat.EveOnline\Optimat.EveOnline.csproj">
+      <Project>{f09fc6c1-e998-40c7-8dc9-3f5843729094}</Project>
+      <Name>Optimat.EveOnline</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Optimat.EveO\Optimat.EveO.csproj">
       <Project>{2582079f-554e-463b-8422-f9fd2e4e6ed9}</Project>
       <Name>Optimat.EveO</Name>

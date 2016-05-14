@@ -1,0 +1,97 @@
+﻿<UserControl x:Class="Optimat.EveOnline.GBS.SictLocationInfo"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="99" d:DesignWidth="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="1"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="1"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="1"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="4"></ColumnDefinition>
+                <ColumnDefinition Width="100*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="Nearest" Margin="3" VerticalAlignment="Center"></TextBlock>
+
+            <TextBox Name="TextBoxNearestNameInspekt"
+                         IsReadOnly="True"
+                         Grid.Column="2" VerticalAlignment="Center"></TextBox>
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100*"></ColumnDefinition>
+                <ColumnDefinition Width="11"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="4"></ColumnDefinition>
+                    <ColumnDefinition Width="100*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="System" Margin="3" VerticalAlignment="Center"></TextBlock>
+
+                <TextBox Name="TextBoxSystemNaameInspekt"
+                         IsReadOnly="True"
+                         Grid.Column="2" VerticalAlignment="Center"></TextBox>
+            </Grid>
+
+            <Grid Grid.Column="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="1"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="Sec." Margin="3" VerticalAlignment="Center"></TextBlock>
+
+                <TextBox Name="TextBoxSecurityLevelInspekt"
+                         IsReadOnly="True"
+                         Grid.Column="2" Width="33" VerticalAlignment="Center"></TextBox>
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Row="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="4"></ColumnDefinition>
+                <ColumnDefinition Width="100*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="Constellation" Margin="3" VerticalAlignment="Center"></TextBlock>
+
+            <TextBox Name="TextBoxConstellationNaameInspekt"
+                         IsReadOnly="True"
+                         Grid.Column="2" VerticalAlignment="Center"></TextBox>
+        </Grid>
+
+        <Grid Grid.Row="6">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="4"></ColumnDefinition>
+                <ColumnDefinition Width="100*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="Region" Margin="3" VerticalAlignment="Center"></TextBlock>
+
+            <TextBox Name="TextBoxRegionNaameInspekt"
+                         IsReadOnly="True"
+                         Grid.Column="2" VerticalAlignment="Center"></TextBox>
+        </Grid>
+    </Grid>
+</UserControl>

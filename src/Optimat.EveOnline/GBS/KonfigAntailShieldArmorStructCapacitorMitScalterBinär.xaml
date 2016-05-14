@@ -1,0 +1,103 @@
+﻿<UserControl x:Class="Optimat.EveOnline.GBS.SictKonfigAntailShieldArmorStructCapacitorMitScalterBinär"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:Bib3.FCL.GBS="clr-namespace:Bib3.FCL.GBS;assembly=Bib3.FCL"
+             xmlns:Optimat.GBS="clr-namespace:Optimat.GBS"
+             mc:Ignorable="d" 
+             d:DesignHeight="111" d:DesignWidth="300">
+    <Grid>
+        <StackPanel Grid.IsSharedSizeScope="True">
+            <Grid
+                Name="GridShield">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" SharedSizeGroup="Bescriftung"></ColumnDefinition>
+                    <ColumnDefinition Width="4"></ColumnDefinition>
+                    <ColumnDefinition Width="4*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                
+                <TextBlock Text="Shield"
+                           VerticalAlignment="Center" Margin="3"></TextBlock>
+
+                <Bib3.FCL.GBS:SictAuswaalZaalGanzMitSliderUndTextBox
+                    x:Name="AuswaalShieldProzent"
+                    ScalterBinärAktiiv="True"
+                    Minimum="0"
+                    Maximum="100"
+                    TextBoxWidth="33"
+                    BescriftungAinhait="%"
+                    Grid.Column="2"
+                    Margin="1"></Bib3.FCL.GBS:SictAuswaalZaalGanzMitSliderUndTextBox>
+                
+            </Grid>
+            <Grid
+                Name="GridArmor">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" SharedSizeGroup="Bescriftung"></ColumnDefinition>
+                    <ColumnDefinition Width="4"></ColumnDefinition>
+                    <ColumnDefinition Width="4*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="Armor"
+                           VerticalAlignment="Center" Margin="3"></TextBlock>
+
+                <Bib3.FCL.GBS:SictAuswaalZaalGanzMitSliderUndTextBox
+                    x:Name="AuswaalArmorProzent"
+                    ScalterBinärAktiiv="True"
+                    Minimum="0"
+                    Maximum="100"
+                    TextBoxWidth="33"
+                    BescriftungAinhait="%"
+                    Grid.Column="2"
+                    Margin="1"></Bib3.FCL.GBS:SictAuswaalZaalGanzMitSliderUndTextBox>
+
+            </Grid>
+            <Grid
+                Name="GridStruct">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" SharedSizeGroup="Bescriftung"></ColumnDefinition>
+                    <ColumnDefinition Width="4"></ColumnDefinition>
+                    <ColumnDefinition Width="4*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="Struct"
+                           VerticalAlignment="Center" Margin="3"></TextBlock>
+
+                <Bib3.FCL.GBS:SictAuswaalZaalGanzMitSliderUndTextBox
+                    x:Name="AuswaalStructProzent"
+                    ScalterBinärAktiiv="True"
+                    Minimum="0"
+                    Maximum="100"
+                    TextBoxWidth="33"
+                    BescriftungAinhait="%"
+                    Grid.Column="2"
+                    Margin="1"></Bib3.FCL.GBS:SictAuswaalZaalGanzMitSliderUndTextBox>
+
+            </Grid>
+
+            <Grid
+                Name="GridCapacitor">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" SharedSizeGroup="Bescriftung"></ColumnDefinition>
+                    <ColumnDefinition Width="4"></ColumnDefinition>
+                    <ColumnDefinition Width="4*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="Capacitor"
+                           VerticalAlignment="Center" Margin="3"></TextBlock>
+
+                <Bib3.FCL.GBS:SictAuswaalZaalGanzMitSliderUndTextBox
+                    x:Name="AuswaalCapacitorProzent"
+                    ScalterBinärAktiiv="True"
+                    Minimum="0"
+                    Maximum="100"
+                    TextBoxWidth="33"
+                    BescriftungAinhait="%"
+                    Grid.Column="2"
+                    Margin="1"></Bib3.FCL.GBS:SictAuswaalZaalGanzMitSliderUndTextBox>
+
+            </Grid>
+        </StackPanel>
+    </Grid>
+</UserControl>

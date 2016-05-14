@@ -1,0 +1,168 @@
+﻿<UserControl x:Class="Optimat.EveOnline.GBS.SictDataGridMengeNaacNuzerMeldungZuEveOnline"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:Bib3.FCL.GBS="clr-namespace:Bib3.FCL.GBS;assembly=Bib3.FCL"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="444">
+    <UserControl.Resources>
+        <Style TargetType="Bib3.FCL.GBS:CheckedOderHidden">
+            <Setter Property="Width" Value="{Binding Path=ActualHeight, RelativeSource={RelativeSource Self}}" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="MinHeight" Value="10" />
+            <Setter Property="MaxHeight" Value="30" />
+            <Setter Property="Margin" Value="2" />
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <DataGrid
+            Name="DataGrid"
+            CanUserAddRows="False"
+            CanUserDeleteRows="False"
+            AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn
+                    IsReadOnly="True"
+                    SortMemberPath="Wert.MeldungIdent">
+                    <DataGridTemplateColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="id"></TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.HeaderTemplate>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock
+                                Text="{Binding Path=Wert.MeldungIdent,Mode=OneWay}"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"
+                                Margin="1,0,1,0"></TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn
+                    IsReadOnly="True"
+                    SortMemberPath="Wert.MeldungDringlickait">
+                    <DataGridTemplateColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="severity"></TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.HeaderTemplate>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock
+                                Text="{Binding Path=Wert.MeldungDringlickaitSictString,Mode=OneWay}"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"
+                                Margin="1,0,1,0"></TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn
+                    IsReadOnly="True"
+                    SortMemberPath="Wert.SymboolTyp">
+                    <DataGridTemplateColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text=""></TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.HeaderTemplate>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Bib3.FCL.GBS:SictSymboolAkzeptanzFeelerWarnung
+                            SymboolTyp="{Binding Path=Wert.SymboolTyp,Mode=OneTime}"
+                                VerticalAlignment="Stretch"
+                                MaxHeight="24"
+                                Width="{Binding Path=ActualHeight, RelativeSource={RelativeSource Self}}"
+                                Margin="2">
+                            </Bib3.FCL.GBS:SictSymboolAkzeptanzFeelerWarnung>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn
+                    IsReadOnly="True"
+                    SortMemberPath="Wert.SictungFrüühesteAlter">
+                    <DataGridTemplateColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="first seen&#10;age / s"></TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.HeaderTemplate>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBox
+                                Text="{Binding Path=Wert.SictungFrüühesteAlter,Mode=OneWay}"
+                                IsReadOnly="True">
+                            </TextBox>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn
+                    IsReadOnly="True"
+                    SortMemberPath="Wert.SictungLezteAlter">
+                    <DataGridTemplateColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="last seen&#10;age / s"></TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.HeaderTemplate>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBox
+                                Text="{Binding Path=Wert.SictungLezteAlter,Mode=OneWay}"
+                                IsReadOnly="True">
+                            </TextBox>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn
+                    IsReadOnly="True"
+                    SortMemberPath="Wert.VonServerNocExistent">
+                    <DataGridTemplateColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="still&#10;active"></TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.HeaderTemplate>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <!--
+                            <CheckBox
+                                IsChecked="{Binding Path=Wert.VonServerNocExistent,Mode=OneWay}"
+                                IsEnabled="False"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center">
+                            </CheckBox>
+                            -->
+
+                            <Bib3.FCL.GBS:CheckedOderHidden
+                                    Checked="{Binding Path=Wert.VonServerNocExistent,Mode=OneWay}"
+                                ></Bib3.FCL.GBS:CheckedOderHidden>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn
+                    Width="*"
+                    IsReadOnly="True"
+                    SortMemberPath="Wert.MeldungSictString">
+                    <DataGridTemplateColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="Message Text"></TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.HeaderTemplate>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBox
+                                Text="{Binding Path=Wert.MeldungSictString,Mode=OneTime}"
+                                IsReadOnly="True">
+                            </TextBox>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

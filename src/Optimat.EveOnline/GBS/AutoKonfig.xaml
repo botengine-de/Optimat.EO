@@ -1,0 +1,495 @@
+﻿<UserControl x:Class="Optimat.EveOnline.GBS.SictAutoKonfig"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:Bib3.FCL.GBS="clr-namespace:Bib3.FCL.GBS;assembly=Bib3.FCL"
+             xmlns:Optimat.EveOnline.GBS="clr-namespace:Optimat.EveOnline.GBS"
+             mc:Ignorable="d" 
+             d:DesignHeight="555" d:DesignWidth="555">
+    <UserControl.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="Margin" Value="3,1,3,1"></Setter>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid>
+        <TabControl>
+            <TabItem
+                Visibility="Collapsed">
+                <TabItem.Header>
+                    <Grid>
+                        <TextBlock Text="Overview" Margin="1"></TextBlock>
+                    </Grid>
+                </TabItem.Header>
+
+                <TabItem.Content>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="1"></RowDefinition>
+                            <RowDefinition Height="4*"></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <Expander Visibility="Collapsed">
+                            <Expander.Header>
+                                <TextBlock Text="Description"></TextBlock>
+                            </Expander.Header>
+
+                            <Expander.Content>
+                                <TextBox Text="Overview Description"></TextBox>
+                            </Expander.Content>
+                        </Expander>
+
+                        <!--
+                        <ScrollViewer Grid.Row="2">
+                            <StackPanel>
+                        -->
+                        <GroupBox Grid.Row="2">
+                            <GroupBox.Header>
+                                <TextBlock Text="Overview" Margin="1"></TextBlock>
+                            </GroupBox.Header>
+
+                            <GroupBox.Content>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="1"></RowDefinition>
+                                        <RowDefinition Height="4*"></RowDefinition>
+                                        <RowDefinition Height="4"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                    </Grid.RowDefinitions>
+
+                                    <Expander>
+                                        <Expander.Header>
+                                            <TextBlock Text="Description" Margin="1"></TextBlock>
+                                        </Expander.Header>
+                                        <Expander.LayoutTransform>
+                                            <ScaleTransform ScaleX="0.8" ScaleY="0.8"></ScaleTransform>
+                                        </Expander.LayoutTransform>
+
+                                        <Expander.Content>
+                                            <TextBox
+                                                Text="The bot needs to know which Types of Objects it can expect to be visible in which Overview Preset. This information is configured in this section. This information enables the bot to switch to the Overview Tab that show Objects it is looking for and to load the correct Overview Preset if the Tab does not show the correct Preset anymore."
+                                                TextWrapping="Wrap" IsReadOnly="True">
+                                            </TextBox>
+                                        </Expander.Content>
+                                    </Expander>
+
+                                    <Grid Grid.Row="2">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                            <RowDefinition Height="1"></RowDefinition>
+                                            <RowDefinition Height="4*"></RowDefinition>
+                                        </Grid.RowDefinitions>
+
+                                        <Grid
+                                            Grid.Row="0"
+                                            ClipToBounds="True">
+                                            <Canvas
+                                                Grid.Row="0"
+                                                Height="{Binding Path=ActualHeight, ElementName=DataGridOverviewMengePresetHeaderGridBerecnungHeight}">
+                                                <Grid Name="DataGridOverviewMengePresetHeaderGridBerecnungHeight">
+                                                    <Grid Height="{Binding Path=ActualHeight, ElementName=DataGridOverviewMengePresetHeaderGrupeObjGrupeSictbar}"></Grid>
+                                                </Grid>
+
+                                                <Grid
+                                                    Name="DataGridOverviewMengePresetHeaderGrupeObjGrupeSictbar">
+                                                    <Grid Margin="1">
+                                                        <Grid.Background>
+                                                            <SolidColorBrush Color="Black" Opacity="0.3"></SolidColorBrush>
+                                                        </Grid.Background>
+
+                                                        <TextBlock
+                                                            Text="types visible in Preset"
+                                                            FontWeight="Bold" TextWrapping="Wrap"
+                                                            Margin="3" HorizontalAlignment="Center"></TextBlock>
+                                                    </Grid>
+                                                </Grid>
+                                            </Canvas>
+                                        </Grid>
+
+                                        <DataGrid
+                                            Name="DataGridOverviewMengePreset"
+                                            CanUserAddRows="False"
+                                            CanUserReorderColumns="False"
+                                            AutoGenerateColumns="False"
+                                            VerticalScrollBarVisibility="Visible"
+                                            LayoutUpdated="DataGridOverviewMengePreset_LayoutUpdated"
+                                            Grid.Row="2"
+                                            Grid.ColumnSpan="2">
+
+                                            <DataGrid.Columns>
+                                                <DataGridTemplateColumn IsReadOnly="True" Header="delete" Width="44" CanUserSort="False">
+                                                    <DataGridTemplateColumn.CellTemplate>
+                                                        <DataTemplate>
+                                                            <Button Name="DataGridOverviewMengePresetColumnButtonEntferne"
+                                                                        Click="DataGridOverviewMengePresetColumnButtonEntferne_Click"
+                                                                        HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                                <TextBlock FontWeight="Bold">X</TextBlock>
+                                                            </Button>
+                                                        </DataTemplate>
+                                                    </DataGridTemplateColumn.CellTemplate>
+                                                </DataGridTemplateColumn>
+
+                                                <DataGridTemplateColumn
+                                                    IsReadOnly="False"
+                                                    SortMemberPath="Wert.OverviewPresetName">
+                                                    <DataGridTemplateColumn.Header>
+                                                        <TextBlock Text="Overview Preset&#10;.Name"></TextBlock>
+                                                    </DataGridTemplateColumn.Header>
+                                                    <DataGridTemplateColumn.CellTemplate>
+                                                        <DataTemplate>
+                                                            <TextBox
+                                                                    Text="{Binding Path=Wert.OverviewPresetName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                                    TextChanged="OverviewPresetColumn_OnTextChanged"
+                                                                    VerticalAlignment="Center"></TextBox>
+                                                        </DataTemplate>
+                                                    </DataGridTemplateColumn.CellTemplate>
+                                                </DataGridTemplateColumn>
+
+                                                <DataGridTemplateColumn
+                                                    x:Name="DataGridOverviewMengePresetColumnOverviewTabName"
+                                                    IsReadOnly="False" Header="Overview Tab&#10;which should&#10;display this Preset"
+                                                                            SortMemberPath="Wert.OverviewTabName">
+                                                    <DataGridTemplateColumn.CellTemplate>
+                                                        <DataTemplate>
+                                                            <TextBox
+                                                                    Text="{Binding Path=Wert.OverviewTabName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                                    TextChanged="OverviewPresetColumn_OnTextChanged"
+                                                                    VerticalAlignment="Center"></TextBox>
+                                                        </DataTemplate>
+                                                    </DataGridTemplateColumn.CellTemplate>
+                                                </DataGridTemplateColumn>
+
+                                            </DataGrid.Columns>
+                                        </DataGrid>
+                                    </Grid>
+
+                                    <Grid Grid.Row="4">
+                                        <Button Name="ButtonOverviewPresetFüügeAin"
+                                                        Click="ButtonOverviewPresetFüügeAin_Click"
+                                                        HorizontalAlignment="Center">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                    <ColumnDefinition Width="4"></ColumnDefinition>
+                                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                </Grid.ColumnDefinitions>
+
+                                                <TextBlock Text="include Overview Preset named"
+                                                                   VerticalAlignment="Center"
+                                                           Margin="2"></TextBlock>
+
+                                                <TextBox Name="TextBoxOverviewPresetFüügeAinIdent"
+                                                                 Grid.Column="2"
+                                                                 Width="111"></TextBox>
+                                            </Grid>
+                                        </Button>
+                                    </Grid>
+                                </Grid>
+                            </GroupBox.Content>
+                        </GroupBox>
+
+                        <!--
+                        <GroupBox
+                                    Visibility="Collapsed">
+                                    <GroupBox.Header>
+                                        <TextBlock Text="Overview Tab" Margin="1"></TextBlock>
+                                    </GroupBox.Header>
+
+                                    <GroupBox.Content>
+                                        <StackPanel>
+                                            <Expander>
+                                                <Expander.Header>
+                                                    <TextBlock Text="Description" Margin="1"></TextBlock>
+                                                </Expander.Header>
+                                                <Expander.LayoutTransform>
+                                                    <ScaleTransform ScaleX="0.8" ScaleY="0.8"></ScaleTransform>
+                                                </Expander.LayoutTransform>
+                                            </Expander>
+                                        </StackPanel>
+                                    </GroupBox.Content>
+                                </GroupBox>
+
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                </Grid>
+                            </StackPanel>
+                        </ScrollViewer>
+                        -->
+                    </Grid>
+                </TabItem.Content>
+            </TabItem>
+
+            <TabItem>
+                <TabItem.Header>
+                    <Grid>
+                        <TextBlock Text="Fitting" Margin="1"></TextBlock>
+                    </Grid>
+                </TabItem.Header>
+
+                <TabItem.Content>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="1"></RowDefinition>
+                            <RowDefinition Height="4*"></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <Expander Visibility="Collapsed">
+                            <Expander.Header>
+                                <TextBlock Text="Description"></TextBlock>
+                            </Expander.Header>
+
+                            <Expander.Content>
+                                <TextBox Text="Fitting Description"></TextBox>
+                            </Expander.Content>
+                        </Expander>
+
+                        <ScrollViewer Grid.Row="2">
+                            <Optimat.EveOnline.GBS:SictAutoKonfigFittingVerkürzt
+                                x:Name="SctoierelementFittingVerkürzt">
+                            </Optimat.EveOnline.GBS:SictAutoKonfigFittingVerkürzt>
+                        </ScrollViewer>
+                    </Grid>
+                </TabItem.Content>
+            </TabItem>
+
+            <TabItem
+                Visibility="Collapsed">
+                <TabItem.Header>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="3"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock 
+                            Text="Auto.General" Margin="1"></TextBlock>
+                    </Grid>
+                </TabItem.Header>
+
+                <TabItem.Content>
+                    <Grid>
+                        <StackPanel>
+                            <CheckBox Name="CheckBoxAutoShipRepairFraigaabe"
+                                      Margin="3">
+                                <TextBlock Text="Ship Repair"></TextBlock>
+                            </CheckBox>
+
+                            <CheckBox Name="CheckBoxAutoChatLocalVerbergeNict"
+                                      Margin="3"
+                                      Unchecked="CheckBoxAutoChatLocalVerbergeNict_Unchecked_1">
+                                <TextBlock Text="Chat.Local do not close"></TextBlock>
+                            </CheckBox>
+
+                            <CheckBox Name="CheckBoxAutoChatLocalÖfne"
+                                      Margin="3"
+                                      Checked="CheckBoxAutoChatLocalÖfne_Checked">
+                                <TextBlock Text="Chat.Local do open"></TextBlock>
+                            </CheckBox>
+                        </StackPanel>
+                    </Grid>
+                </TabItem.Content>
+            </TabItem>
+
+            <TabItem>
+                <TabItem.Header>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="6"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock 
+                            Text="Auto.Pilot" Margin="1"></TextBlock>
+
+                        <!--
+                        <CheckBox Name="CheckBoxAutoPilotFraigaabe"
+                                  Checked="CheckBoxAutoPilotFraigaabe_Checked"
+                                  Unchecked="CheckBoxAutoPilotFraigaabe_Unchecked"
+                                  Grid.Column="2"
+                                  VerticalAlignment="Center"></CheckBox>
+                        -->
+                        <RadioButton
+                            Name="RadioButtonAutoPilotFraigaabe"
+                            GroupName="GroupAutoTyp"
+                            Checked="RadioButtonAutoPilotFraigaabe_Checked"
+                            Grid.Column="2"
+                            VerticalAlignment="Center"></RadioButton>
+                    </Grid>
+                </TabItem.Header>
+
+                <TabItem.Content>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="1"></RowDefinition>
+                            <RowDefinition Height="4*"></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <Expander Visibility="Collapsed">
+                            <Expander.Header>
+                                <TextBlock Text="Description"></TextBlock>
+                            </Expander.Header>
+
+                            <Expander.Content>
+                                <TextBox Text="Auto.Pilot Description"></TextBox>
+                            </Expander.Content>
+                        </Expander>
+
+                        <ScrollViewer Grid.Row="2">
+                            <StackPanel>
+                                <CheckBox
+                                    Name="CheckBoxAutoPilotLowSecFraigaabe"
+                                    Margin="4">
+                                    <TextBlock Text="Allow to enter lowsec and nullsec"></TextBlock>
+                                </CheckBox>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="4"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+
+                                <Bib3.FCL.GBS:SictSymboolAkzeptanzFeelerWarnung
+                                    SymboolTyp="Warnung"
+                                    Width="16"
+                                    Height="16"
+                                    VerticalAlignment="Center">
+                                </Bib3.FCL.GBS:SictSymboolAkzeptanzFeelerWarnung>
+
+                                    <TextBox
+                                        Text="AutoPilot does not Undock. please Undock manually when using AutoPilot."
+                                        IsReadOnly="True"
+                                        Grid.Column="2"></TextBox>
+                            </Grid>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </Grid>
+                </TabItem.Content>
+            </TabItem>
+
+            <TabItem
+                IsSelected="True">
+                <TabItem.Header>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="6"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock 
+                            Text="Auto.Mine" Margin="1"></TextBlock>
+
+                        <!--
+                        <CheckBox
+                            Name="CheckBoxAutoMineFraigaabe"
+                            Checked="CheckBoxAutoMineFraigaabe_Checked"
+                            Unchecked="CheckBoxAutoMineFraigaabe_Unchecked"
+                            Grid.Column="2"
+                            VerticalAlignment="Center"></CheckBox>
+                        -->
+
+                        <RadioButton
+                            Name="RadioButtonAutoMineFraigaabe"
+                            GroupName="GroupAutoTyp"
+                            Checked="RadioButtonAutoMineFraigaabe_Checked"
+                            Grid.Column="2"
+                            VerticalAlignment="Center"></RadioButton>
+
+                    </Grid>
+                </TabItem.Header>
+
+                <TabItem.Content>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="1"></RowDefinition>
+                            <RowDefinition Height="4*"></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <Expander Visibility="Collapsed">
+                            <Expander.Header>
+                                <TextBlock Text="Description"></TextBlock>
+                            </Expander.Header>
+
+                            <Expander.Content>
+                                <TextBox Text="Auto.Mine Description"></TextBox>
+                            </Expander.Content>
+                        </Expander>
+
+                        <ScrollViewer Grid.Row="2">
+                            <Optimat.EveOnline.GBS:SictAutoKonfigMine
+                                x:Name="SctoierelementMine"></Optimat.EveOnline.GBS:SictAutoKonfigMine>
+                        </ScrollViewer>
+                    </Grid>
+                </TabItem.Content>
+            </TabItem>
+
+            <TabItem>
+                <TabItem.Header>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="6"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock 
+                            Text="Auto.Mission" Margin="1"></TextBlock>
+
+                        <!--
+                        <CheckBox Name="CheckBoxAutoMissionFraigaabe"
+                                  Checked="CheckBoxAutoMissionFraigaabe_Checked"
+                                  Unchecked="CheckBoxAutoMissionFraigaabe_Unchecked"
+                                  Grid.Column="2"
+                                  VerticalAlignment="Center"></CheckBox>
+                        -->
+
+                        <RadioButton
+                            Name="RadioButtonAutoMissionFraigaabe"
+                            GroupName="GroupAutoTyp"
+                            Checked="RadioButtonAutoMissionFraigaabe_Checked"
+                            Grid.Column="2"
+                            VerticalAlignment="Center"></RadioButton>
+                    </Grid>
+                </TabItem.Header>
+
+                <TabItem.Content>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="1"></RowDefinition>
+                            <RowDefinition Height="4*"></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <Expander Visibility="Collapsed">
+                            <Expander.Header>
+                                <TextBlock Text="Description"></TextBlock>
+                            </Expander.Header>
+
+                            <Expander.Content>
+                                <TextBox Text="Auto.Mission Description"></TextBox>
+                            </Expander.Content>
+                        </Expander>
+
+                        <Grid Grid.Row="2">
+                            <ScrollViewer>
+                                <Optimat.EveOnline.GBS:SictAutoKonfigMission
+                                x:Name="SctoierelementMission">
+                                </Optimat.EveOnline.GBS:SictAutoKonfigMission>
+                            </ScrollViewer>
+                        </Grid>
+                    </Grid>
+                </TabItem.Content>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</UserControl>

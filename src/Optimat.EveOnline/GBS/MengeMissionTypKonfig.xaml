@@ -1,0 +1,172 @@
+﻿<UserControl x:Class="Optimat.EveOnline.GBS.SictMengeMissionTypKonfig"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="555" d:DesignWidth="555">
+    <Grid>
+        <DataGrid>
+            <DataGrid.Columns>
+
+                <DataGridTemplateColumn IsReadOnly="True"
+                                        SortMemberPath="Wert.AgentLevel">
+                    <DataGridTemplateColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="Agent&#10;.Level" Margin="3" VerticalAlignment="Center"></TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.HeaderTemplate>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBox Text="{Binding Path=Wert.AgentLevel,Mode=OneWay}" IsReadOnly="True"
+                                Margin="0" Background="Transparent" BorderThickness="0"
+                                VerticalAlignment="Center"></TextBox>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn IsReadOnly="True"
+                                        SortMemberPath="Wert.MissionTitelRegexPattern">
+                    <DataGridTemplateColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="Title Filter" Margin="3" VerticalAlignment="Center"></TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.HeaderTemplate>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBox Text="{Binding Path=Wert.MissionTitelRegexPattern,Mode=OneWay}" IsReadOnly="True"
+                                Margin="0" Background="Transparent" BorderThickness="0"
+                                VerticalAlignment="Center"></TextBox>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn IsReadOnly="True"
+                                        SortMemberPath="Wert.MengeFactionAggrString">
+                    <DataGridTemplateColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="Factions" Margin="3" VerticalAlignment="Center"></TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.HeaderTemplate>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBox Text="{Binding Path=Wert.MengeFactionAggrString,Mode=OneWay}" IsReadOnly="True"
+                                Margin="0" Background="Transparent" BorderThickness="0"
+                                VerticalAlignment="Center"></TextBox>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn IsReadOnly="True"
+                                        SortMemberPath="Wert.MengeOfferAnzaal">
+                    <DataGridTemplateColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="offers&#10;count" Margin="3" VerticalAlignment="Center"></TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.HeaderTemplate>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBox Text="{Binding Path=Wert.MengeOfferAnzaal,Mode=OneWay}" IsReadOnly="True"
+                                Margin="0" Background="Transparent" BorderThickness="0"
+                                VerticalAlignment="Center"></TextBox>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn IsReadOnly="True"
+                                        SortMemberPath="Wert.FüüreAusFraigaabeInspekt">
+                    <DataGridTemplateColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="execute" Margin="3" VerticalAlignment="Center"></TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.HeaderTemplate>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <RadioButton IsChecked="{Binding Path=Wert.FüüreAusFraigaabeInspekt,Mode=OneWay}" IsEnabled="False"
+                                         VerticalAlignment="Center"></RadioButton>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn IsReadOnly="True"
+                                        SortMemberPath="Wert.OfferAcceptFraigaabeInspekt">
+                    <DataGridTemplateColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="accept" Margin="3" VerticalAlignment="Center"></TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.HeaderTemplate>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <RadioButton IsChecked="{Binding Path=Wert.OfferAcceptFraigaabeInspekt,Mode=OneWay}" IsEnabled="False"
+                                         VerticalAlignment="Center"></RadioButton>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn IsReadOnly="True"
+                                        SortMemberPath="Wert.OfferDeclineFraigaabeInspekt">
+                    <DataGridTemplateColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="decline" Margin="3" VerticalAlignment="Center"></TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.HeaderTemplate>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <RadioButton IsChecked="{Binding Path=Wert.OfferDeclineFraigaabeInspekt,Mode=OneWay}" IsEnabled="False"
+                                         VerticalAlignment="Center"></RadioButton>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <!--
+                <DataGridTemplateColumn IsReadOnly="True"
+                                                            SortMemberPath="Wert.Bezaicner">
+                    <DataGridTemplateColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="Id" Margin="3" VerticalAlignment="Center"></TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.HeaderTemplate>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBox Text="{Binding Path=Wert.Bezaicner,Mode=OneWay}" IsReadOnly="True"
+                                                                                 Margin="0" Background="Transparent" BorderThickness="0"
+                                                                                 VerticalAlignment="Center"></TextBox>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                -->
+
+                <!--
+                <DataGridTemplateColumn IsReadOnly="True">
+                    <DataGridTemplateColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="Aktioon" Margin="3"></TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.HeaderTemplate>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Click="DataGridMengeMissionColumnAktioonZeleClick">
+                                <Button.Content>
+                                    <TextBlock Text="Aktioon" Margin="0">
+                                        <TextBlock.LayoutTransform>
+                                            <ScaleTransform ScaleX="0.9" ScaleY="0.9"></ScaleTransform>
+                                        </TextBlock.LayoutTransform>
+                                    </TextBlock>
+                                </Button.Content>
+
+                                <Button.ContextMenu>
+                                    <ContextMenu>
+                                        <MenuItem Header="markiire in Zaitlaise"
+                                                                      Click="DataGridMengeMission_MenuItem_MarkiireInZaitlaiste" />
+                                    </ContextMenu>
+                                </Button.ContextMenu>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                -->
+
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

@@ -1,0 +1,84 @@
+﻿<UserControl x:Class="Optimat.EveOnline.GBS.SictKonfigInRaumAktioonVerzwaigungNaacShipZuusctand"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:Bib3.FCL.GBS="clr-namespace:Bib3.FCL.GBS;assembly=Bib3.FCL"
+             xmlns:Optimat.GBS="clr-namespace:Optimat.GBS"
+             xmlns:Optimat.EveOnline.GBS="clr-namespace:Optimat.EveOnline.GBS"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <StackPanel>
+            <WrapPanel>
+            <GroupBox>
+                <GroupBox.Header>
+                    <TextBlock Text="Thresholds for Emergency Warp Out" Margin="1"></TextBlock>
+                </GroupBox.Header>
+                
+                <GroupBox.Content>
+                    <Optimat.EveOnline.GBS:SictKonfigAntailShieldArmorStructCapacitorMitScalterBinär
+                        x:Name="AuswaalScwelwertGefectFortsaz"
+                        Width="244"></Optimat.EveOnline.GBS:SictKonfigAntailShieldArmorStructCapacitorMitScalterBinär>
+                </GroupBox.Content>
+            </GroupBox>
+
+            <GroupBox>
+                <GroupBox.Header>
+                    <TextBlock Text="Thresholds to attack" Margin="1"></TextBlock>
+                </GroupBox.Header>
+                <GroupBox.Content>
+                    <Optimat.EveOnline.GBS:SictKonfigAntailShieldArmorStructCapacitorMitScalterBinär
+                        x:Name="AuswaalScwelwertGefectBaitrit"
+                        Width="244"></Optimat.EveOnline.GBS:SictKonfigAntailShieldArmorStructCapacitorMitScalterBinär>
+                </GroupBox.Content>
+            </GroupBox>
+
+            </WrapPanel>
+            <GroupBox>
+                <GroupBox.Header>
+                    <TextBlock Text="Thresholds for Shield Booster and Armor Repairer" Margin="1"></TextBlock>
+                </GroupBox.Header>
+
+                <GroupBox.Content>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="4*" MaxWidth="166"></ColumnDefinition>
+                            <ColumnDefinition Width="4"></ColumnDefinition>
+                            <ColumnDefinition Width="4*" MaxWidth="166"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <GroupBox Grid.Column="0">
+                            <GroupBox.Header>
+                                <TextBlock Text="switch on" Margin="1"></TextBlock>
+                            </GroupBox.Header>
+
+                            <GroupBox.Content>
+                                <Bib3.FCL.GBS:SictAuswaalZaalGanzMitSliderUndTextBox
+                                    x:Name="AuswaalScwelwertModuleRegenAinProzent"
+                                    TextBoxWidth="33"
+                                    BescriftungAinhait="%"
+                                    ScalterBinärAktiiv="False"
+                                    Minimum="0" Maximum="100"></Bib3.FCL.GBS:SictAuswaalZaalGanzMitSliderUndTextBox>
+                            </GroupBox.Content>
+                        </GroupBox>
+
+                        <GroupBox Grid.Column="2">
+                            <GroupBox.Header>
+                                <TextBlock Text="switch off" Margin="1"></TextBlock>
+                            </GroupBox.Header>
+                            <GroupBox.Content>
+                                <Bib3.FCL.GBS:SictAuswaalZaalGanzMitSliderUndTextBox
+                                    x:Name="AuswaalScwelwertModuleRegenAusProzent"
+                                    TextBoxWidth="33"
+                                    BescriftungAinhait="%"
+                                    ScalterBinärAktiiv="False"
+                                    Minimum="0" Maximum="100"></Bib3.FCL.GBS:SictAuswaalZaalGanzMitSliderUndTextBox>
+                            </GroupBox.Content>
+                        </GroupBox>
+                    </Grid>
+                </GroupBox.Content>
+            </GroupBox>
+        </StackPanel>
+    </Grid>
+</UserControl>

@@ -1,0 +1,487 @@
+﻿<UserControl x:Class="Optimat.EveOnline.GBS.SictAutoKonfigMission"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="888" d:DesignWidth="555">
+    <Grid>
+        <StackPanel>
+            
+            <GroupBox
+                Margin="3"
+                BorderThickness="1.6">
+                <GroupBox.Header>
+                    <TextBlock Text="settings for all Missions" Margin="3">
+                        <TextBlock.LayoutTransform>
+                            <ScaleTransform ScaleX="1.1" ScaleY="1.1"></ScaleTransform>
+                        </TextBlock.LayoutTransform>
+                    </TextBlock>
+                </GroupBox.Header>
+                
+                <GroupBox.Content>
+                    <StackPanel>
+                        <GroupBox
+                            Margin="1">
+                            <GroupBox.Header>
+                                <TextBlock Text="Levels of Agents from which Missions to accept / execute" Margin="1"></TextBlock>
+                            </GroupBox.Header>
+                            
+                            <GroupBox.Content>
+                                <WrapPanel>
+                                    <CheckBox Name="CheckBoxAktioonFüüreAusOderAcceptAktiivFürAgentLevel1"
+                                              Margin="4">
+                                        <TextBlock Text="Level I"></TextBlock>
+                                    </CheckBox>
+
+                                    <CheckBox Name="CheckBoxAktioonFüüreAusOderAcceptAktiivFürAgentLevel2"
+                                              Margin="4">
+                                        <TextBlock Text="Level II"></TextBlock>
+                                    </CheckBox>
+                                    <CheckBox Name="CheckBoxAktioonFüüreAusOderAcceptAktiivFürAgentLevel3"
+                                              Margin="4">
+                                        <TextBlock Text="Level III"></TextBlock>
+                                    </CheckBox>
+                                    <CheckBox Name="CheckBoxAktioonFüüreAusOderAcceptAktiivFürAgentLevel4"
+                                              Margin="4">
+                                        <TextBlock Text="Level IV"></TextBlock>
+                                    </CheckBox>
+                                </WrapPanel>
+                            </GroupBox.Content>
+                        </GroupBox>
+                        
+                        <CheckBox Name="CheckBoxAktioonAcceptAktiiv"
+                                  Margin="1" VerticalAlignment="Center">
+                            <TextBlock Text="accept Missions enabled" Margin="1"></TextBlock>
+                        </CheckBox>
+
+                        <CheckBox Name="CheckBoxAktioonDeclineAktiiv"
+                                  Margin="1" VerticalAlignment="Center">
+                            <TextBlock Text="decline Missions enabled" Margin="1"></TextBlock>
+                        </CheckBox>
+
+                        <CheckBox Name="CheckBoxAktioonDeclineUnabhängigVonStandingLossFraigaabe"
+                                  Margin="1" VerticalAlignment="Center">
+                            <TextBlock Text="decline Missions ignoring standing loss enabled" Margin="1"></TextBlock>
+                        </CheckBox>
+
+                        <CheckBox Name="CheckBoxAktioonDeclineAlsSctandardFürSonstigeFraigaabe"
+                                          Margin="1">
+                            <TextBlock Text="decline Mission Offer if it does not fit any pattern to be accepted"
+                                       Margin="1"></TextBlock>
+                        </CheckBox>
+                    </StackPanel>
+                </GroupBox.Content>
+            </GroupBox>
+
+            <GroupBox
+                Margin="3"
+                BorderThickness="1.6">
+                <GroupBox.Header>
+                    <TextBlock Text="settings dependend on mission type" Margin="3">
+                        <TextBlock.LayoutTransform>
+                            <ScaleTransform ScaleX="1.1" ScaleY="1.1"></ScaleTransform>
+                        </TextBlock.LayoutTransform>
+                    </TextBlock>
+                </GroupBox.Header>
+                <GroupBox.Content>
+                    <StackPanel>
+                        
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="1"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <Grid Grid.Row="0"
+                                  ClipToBounds="True">
+                                <Canvas Grid.Row="0"
+                                        Height="{Binding Path=ActualHeight, ElementName=DataGridZuMissionGrupeVerhalteHeaderGridBerecnungHeight}">
+
+                                    <Grid Name="DataGridZuMissionGrupeVerhalteHeaderGridBerecnungHeight">
+                                        <Grid Height="{Binding Path=ActualHeight, ElementName=DataGridZuMissionGrupeVerhalteHeaderPanelFilter}"></Grid>
+                                        <Grid Height="{Binding Path=ActualHeight, ElementName=DataGridZuMissionGrupeVerhalteHeaderPanelAnzuwendendeAktioon}"></Grid>
+                                    </Grid>
+                                    <Grid
+                                        Name="DataGridZuMissionGrupeVerhalteHeaderPanelFilter">
+                                        <Grid Margin="1">
+                                            <Grid.Background>
+                                                <SolidColorBrush Color="Black" Opacity="0.3"></SolidColorBrush>
+                                            </Grid.Background>
+                                            <TextBlock Text="filtering criteria"
+                                                       FontWeight="Bold" TextWrapping="Wrap"
+                                               Margin="3" HorizontalAlignment="Center"></TextBlock>
+                                        </Grid>
+                                    </Grid>
+
+                                    <Grid
+                                        Name="DataGridZuMissionGrupeVerhalteHeaderPanelAnzuwendendeAktioon">
+                                        
+                                        <Grid Margin="1">
+                                            <Grid.Background>
+                                                <SolidColorBrush Color="Black" Opacity="0.3"></SolidColorBrush>
+                                            </Grid.Background>
+
+                                            <TextBlock Text="actions to be applied to matching missions"
+                                                       FontWeight="Bold" TextWrapping="Wrap"
+                                               Margin="3" HorizontalAlignment="Center"></TextBlock>
+                                        </Grid>
+                                    </Grid>
+                                </Canvas>
+                            </Grid>
+
+                            <DataGrid
+                                Name="DataGridZuMissionGrupeVerhalte"
+                                CanUserAddRows="False"
+                                CanUserReorderColumns="False"
+                                AutoGenerateColumns="False"
+                                CanUserDeleteRows="False"
+                                VerticalScrollBarVisibility="Visible"
+                                Height="300"
+                                Grid.Row="2"
+                                Grid.ColumnSpan="2"
+                                LayoutUpdated="DataGridZuMissionGrupeVerhalte_LayoutUpdated">
+                                <DataGrid.Columns>
+                                    <DataGridTemplateColumn IsReadOnly="True" Header="delete" Width="44" CanUserSort="False">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Grid Background="{Binding Path=Wert.CellBackgroundFilterKonstant}">
+                                                    <Button
+                                                    Visibility="{Binding Path=Wert.ButtonEntferneVisibility}"
+                                                    Click="DataGridZuMissionGrupeVerhalte_ButtonEntferne_Click"
+                                                    HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                        <TextBlock FontWeight="Bold">X</TextBlock>
+                                                    </Button>
+                                                </Grid>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+
+                                    <DataGridTemplateColumn
+                                        x:Name="DataGridMengeZuMissionFilterVerhalteColumnFilterAgentLevel"
+                                        Header="Filter&#10;.Agent Level"
+                                        IsReadOnly="True"
+                                        SortMemberPath="Wert.AgentLevel">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Grid Background="{Binding Path=Wert.CellBackgroundFilterKonstant}">
+                                                    <TextBox
+                                                        Text="{Binding Path=Wert.AgentLevelSictString, Mode=OneWay}"
+                                                        IsReadOnly="True"
+                                                        VerticalAlignment="Center">
+                                                    </TextBox>
+                                                </Grid>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+
+                                    <DataGridTemplateColumn
+                                        x:Name="DataGridMengeZuMissionFilterVerhalteColumnFilterMissionTitelRegexPattern"
+                                        Header="Filter&#10;.Mission Title Regex Pattern"
+                                        IsReadOnly="True"
+                                        SortMemberPath="Wert.MissionTitelRegexPattern">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Grid Background="{Binding Path=Wert.CellBackgroundFilterKonstant}">
+                                                    <TextBox
+                                                    Text="{Binding Path=Wert.MissionTitelRegexPattern, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                                    IsReadOnly="True"
+                                                    VerticalAlignment="Center">
+                                                        <!--
+                                                        2014.01.07  Vorersct nur Readonly
+                                                        IsReadOnly="{Binding Path=Wert.FilterIsReadonly}"
+                                                        TextChanged="DataGridZuMissionGrupeVerhalte_MissionTitelRegexPattern_OnTextChanged"
+                                                        -->
+                                                    </TextBox>
+                                                </Grid>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+
+                                    <DataGridTemplateColumn
+                                        x:Name="DataGridMengeZuMissionFilterVerhalteColumnAktioonFüüreAus"
+                                        Header="execute&#10;mission"
+                                        SortMemberPath="Wert.AktioonFüüreAusAktiiv"
+                                        IsReadOnly="False">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Grid Background="{Binding Path=Wert.CellBackgroundAktioonFüüreAus}">
+                                                    <CheckBox
+                                                    IsChecked="{Binding Path=Wert.AktioonFüüreAusAktiiv, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                    Checked="DataGridZuMissionGrupeVerhalte_CheckBox_Checked"
+                                                    Unchecked="DataGridZuMissionGrupeVerhalte_CheckBox_Unchecked"
+                                                    VerticalAlignment="Center" HorizontalAlignment="Center">
+                                                        <!--
+                                                    2014.01.07
+                                                    Vorersct imer Enabled
+                                                    IsEnabled="{Binding Path=Wert.AktioonFüüreAusIsEnabled}"
+                                                    -->
+                                                    </CheckBox>
+                                                </Grid>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+
+                                    <DataGridTemplateColumn
+                                        x:Name="DataGridMengeZuMissionFilterVerhalteColumnAktioonAccept"
+                                        Header="accept&#10;mission"
+                                        IsReadOnly="False"
+                                        SortMemberPath="Wert.AktioonAcceptAktiiv">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <CheckBox
+                                                IsChecked="{Binding Path=Wert.AktioonAcceptAktiiv, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                IsEnabled="True"
+                                                Checked="DataGridZuMissionGrupeVerhalte_CheckBox_Checked"
+                                                Unchecked="DataGridZuMissionGrupeVerhalte_CheckBox_Unchecked"
+                                                VerticalAlignment="Center" HorizontalAlignment="Center">
+                                                </CheckBox>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+
+                                    <DataGridTemplateColumn
+                                        x:Name="DataGridMengeZuMissionFilterVerhalteColumnAktioonDecline"
+                                        Header="decline&#10;mission"
+                                        IsReadOnly="False"
+                                        SortMemberPath="Wert.AktioonDeclineAktiiv">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <CheckBox
+                                                IsChecked="{Binding Path=Wert.AktioonDeclineAktiiv, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                IsEnabled="True"
+                                                Checked="DataGridZuMissionGrupeVerhalte_CheckBox_Checked"
+                                                Unchecked="DataGridZuMissionGrupeVerhalte_CheckBox_Unchecked"
+                                                VerticalAlignment="Center" HorizontalAlignment="Center">
+                                                </CheckBox>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Grid>
+
+                        <GroupBox Margin="3">
+                            <GroupBox.Header>
+                                <TextBlock Text="create new Mission pattern" Margin="1"></TextBlock>
+                            </GroupBox.Header>
+                            
+                            <GroupBox.Content>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="1"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                    </Grid.RowDefinitions>
+
+                                    <WrapPanel>
+                                        <GroupBox Margin="3">
+                                            <GroupBox.Header>
+                                                <TextBlock Text="Agent Level" Margin="1"></TextBlock>
+                                            </GroupBox.Header>
+
+                                            <GroupBox.Content>
+                                                <ComboBox Name="ComboBoxMissionFilterKonstruiireAuswaalAgentLevel"
+                                                          ItemsSource="{Binding RelativeSource={RelativeSource AncestorType=UserControl, Mode=FindAncestor}, Path=FürComboBoxAgentLevelItemsSource}"></ComboBox>
+                                            </GroupBox.Content>
+                                        </GroupBox>
+
+                                        <GroupBox Margin="3">
+                                            <GroupBox.Header>
+                                                <TextBlock Text="Mission Title Pattern" Margin="1"></TextBlock>
+                                            </GroupBox.Header>
+
+                                            <GroupBox.Content>
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                        <ColumnDefinition Width="33"></ColumnDefinition>
+                                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                    </Grid.ColumnDefinitions>
+
+                                                    <TextBox Name="TextBoxMissionFilterKonstruiireAuswaalMissionTitelPattern"
+                                                             Width="133"></TextBox>
+                                                    
+                                                    <Grid Grid.Column="2">
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                            <ColumnDefinition Width="11"></ColumnDefinition>
+                                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                        </Grid.ColumnDefinitions>
+
+                                                        <RadioButton Name="RadioButtonMissionFilterKonstruiireAuswaalFilterMissionTitelAlsEnthalte"
+                                                                     GroupName="RadioButtonMissionFilterKonstruiireAuswaalFilterMissionTitel"
+                                                                     VerticalAlignment="Center"
+                                                                     IsChecked="True">
+                                                            <TextBlock Text="match when contained"></TextBlock>
+                                                        </RadioButton>
+
+                                                        <RadioButton Name="RadioButtonMissionFilterKonstruiireAuswaalFilterMissionTitelAlsRegexPattern"
+                                                                     GroupName="RadioButtonMissionFilterKonstruiireAuswaalFilterMissionTitel"
+                                                                     Grid.Column="2"
+                                                                     VerticalAlignment="Center">
+                                                            <TextBlock Text="match as regex pattern"></TextBlock>
+                                                        </RadioButton>
+                                                    </Grid>
+                                                </Grid>
+                                            </GroupBox.Content>
+                                        </GroupBox>
+
+                                    </WrapPanel>
+                                    
+                                    <Button
+                                        Name="ButtonMissionFilterKonstruiire"
+                                        Click="ButtonMissionFilterKonstruiire_Click"
+                                        Grid.Row="2" Margin="3" HorizontalAlignment="Center">
+                                        <TextBlock Text="create" Margin="1"></TextBlock>
+                                    </Button>
+                                </Grid>
+                            </GroupBox.Content>
+                        </GroupBox>
+                    </StackPanel>
+                </GroupBox.Content>
+            </GroupBox>
+
+            <GroupBox
+                Margin="3"
+                BorderThickness="1.6">
+                <GroupBox.Header>
+                    <TextBlock Text="stations to search for agents" Margin="3">
+                        <TextBlock.LayoutTransform>
+                            <ScaleTransform ScaleX="1.1" ScaleY="1.1"></ScaleTransform>
+                        </TextBlock.LayoutTransform>
+                    </TextBlock>
+                </GroupBox.Header>
+                
+                <GroupBox.Content>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="4"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <DataGrid
+                            Name="DataGridSuuceAgentMengeStation"
+                            CanUserAddRows="False"
+                            CanUserReorderColumns="False"
+                            AutoGenerateColumns="False"
+                            CanUserDeleteRows="False"
+                            VerticalScrollBarVisibility="Visible"
+                            Height="133"
+                            Grid.Row="0"
+                            Grid.ColumnSpan="2">
+                            <DataGrid.Columns>
+                                <DataGridTemplateColumn IsReadOnly="True" Header="delete" Width="44" CanUserSort="False">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Grid>
+                                                <Button
+                                                    Click="DataGridSuuceAgentMengeStation_ButtonEntferne_Click"
+                                                    HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                    <TextBlock FontWeight="Bold">X</TextBlock>
+                                                </Button>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+
+                                <DataGridTemplateColumn
+                                    Header="Station Name"
+                                    IsReadOnly="True"
+                                    SortMemberPath="Wert.StationBezaicner"
+                                    Width="*">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Grid>
+                                                <TextBox
+                                                    Text="{Binding Path=Wert.StationBezaicner, Mode=OneWay}"
+                                                    IsReadOnly="True"
+                                                    VerticalAlignment="Center">
+                                                </TextBox>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+
+                                <DataGridTemplateColumn
+                                    Header="active"
+                                    SortMemberPath="Wert.AktioonSuuceAktiiv"
+                                    IsReadOnly="False">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Grid>
+                                                <CheckBox
+                                                    IsChecked="{Binding Path=Wert.AktioonSuuceAktiiv, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                    Checked="DataGridSuuceAgentMengeStation_CheckBox_Checked"
+                                                    Unchecked="DataGridSuuceAgentMengeStation_CheckBox_Unchecked"
+                                                    VerticalAlignment="Center" HorizontalAlignment="Center">
+                                                </CheckBox>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+
+                                <DataGridTemplateColumn
+                                    Header="exists"
+                                    SortMemberPath="Wert.VonServerInfoStationExistent"
+                                    IsReadOnly="True">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Grid>
+                                                <CheckBox
+                                                    IsChecked="{Binding Path=Wert.VonServerInfoStationExistent, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                    Checked="DataGridSuuceAgentMengeStation_CheckBox_Checked"
+                                                    Unchecked="DataGridSuuceAgentMengeStation_CheckBox_Unchecked"
+                                                    IsThreeState="True" IsEnabled="False"
+                                                    VerticalAlignment="Center" HorizontalAlignment="Center">
+                                                </CheckBox>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                        <Grid Grid.Row="2">
+                            <GroupBox>
+                                <GroupBox.Header>
+                                    <TextBlock Text="insert station" Margin="1"></TextBlock>
+                                </GroupBox.Header>
+
+                                <GroupBox.Content>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                            <ColumnDefinition Width="4"></ColumnDefinition>
+                                            <ColumnDefinition Width="4*"></ColumnDefinition>
+                                            <ColumnDefinition Width="33"></ColumnDefinition>
+                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+
+                                        <TextBlock Text="station name"
+                                               VerticalAlignment="Center" Margin="1"></TextBlock>
+
+                                        <ComboBox Name="ComboBoxSuuceAgentMengeStationFügeAin"
+                                              Grid.Column="2" VerticalAlignment="Center" IsEditable="True">
+                                        </ComboBox>
+
+                                        <Button Name="ButtonSuuceAgentMengeStationFügeAinJezt"
+                                                Click="ButtonSuuceAgentMengeStationFügeAinJezt_Click"
+                                                HorizontalAlignment="Center" Grid.Column="4">
+                                            <TextBlock Text="insert now" Margin="1"></TextBlock>
+                                        </Button>
+                                        
+                                    </Grid>
+                                </GroupBox.Content>
+                            </GroupBox>
+                        </Grid>
+                    </Grid>
+                </GroupBox.Content>
+            </GroupBox>
+        </StackPanel>
+    </Grid>
+</UserControl>

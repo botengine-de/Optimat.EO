@@ -1,0 +1,51 @@
+﻿<UserControl x:Class="Optimat.EveOnline.GBS.SictCharShipInspekt"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:Optimat.EveOnline.GBS="clr-namespace:Optimat.EveOnline.GBS"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="4*"></ColumnDefinition>
+            <ColumnDefinition Width="4"></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <GroupBox
+            VerticalAlignment="Top">
+            <GroupBox.Header>
+                <TextBlock Text="Hitpoints" Margin="1"></TextBlock>
+            </GroupBox.Header>
+            
+            <GroupBox.Content>
+                <Optimat.EveOnline.GBS:SictShipTreferpunkteUndCapacitorInspekt
+                    x:Name="TreferpunkteInspekt"
+                    Height="80"></Optimat.EveOnline.GBS:SictShipTreferpunkteUndCapacitorInspekt>
+            </GroupBox.Content>
+        </GroupBox>
+
+        <StackPanel Grid.Column="2">
+            <GroupBox>
+                <GroupBox.Header>
+                    <TextBlock Text="speed / (m/s)" Margin="1"></TextBlock>
+                </GroupBox.Header>
+
+                <GroupBox.Content>
+                    <TextBox Name="TextBoxSpeedInspekt"
+                             IsReadOnly="True"></TextBox>
+                </GroupBox.Content>
+            </GroupBox>
+
+            <CheckBox Name="CheckBoxDocked" IsEnabled="False" Margin="1">Docked</CheckBox>
+
+            <CheckBox Name="CheckBoxCloaked" IsEnabled="False" Margin="1">Cloaked</CheckBox>
+
+            <CheckBox Name="CheckBoxWarping" IsEnabled="False" Margin="1">Warping</CheckBox>
+
+            <CheckBox Name="CheckBoxJumping" IsEnabled="False" Margin="1">Jumping</CheckBox>
+        </StackPanel>
+
+    </Grid>
+</UserControl>

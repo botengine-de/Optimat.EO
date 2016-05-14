@@ -1,0 +1,590 @@
+﻿<UserControl x:Class="Optimat.EveOnline.GBS.SictDataGridMengeMission"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:Bib3.FCL.GBS="clr-namespace:Bib3.FCL.GBS;assembly=Bib3.FCL"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="1666"
+             LayoutUpdated="UserControl_LayoutUpdated">
+    <UserControl.Resources>
+        <Style TargetType="Bib3.FCL.GBS:CheckedOderHidden">
+            <Setter Property="Width" Value="{Binding Path=ActualHeight, RelativeSource={RelativeSource Self}}" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="MinHeight" Value="10" />
+            <Setter Property="MaxHeight" Value="30" />
+            <Setter Property="Margin" Value="2" />
+        </Style>
+        <Style TargetType="Bib3.FCL.GBS:BoolAbbildSymboolAkzeptanzFeelerWarnung">
+            <Setter Property="Width" Value="{Binding Path=ActualHeight, RelativeSource={RelativeSource Self}}" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="MinHeight" Value="10" />
+            <Setter Property="MaxHeight" Value="30" />
+            <Setter Property="Margin" Value="2" />
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="1"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0"
+                  ClipToBounds="True">
+                <Canvas Grid.Row="0"
+                        Height="{Binding Path=ActualHeight, ElementName=DataGridZuMissionGrupeVerhalteHeaderGridBerecnungHeight}">
+                    <Grid Name="DataGridZuMissionGrupeVerhalteHeaderGridBerecnungHeight">
+                        <Grid Height="{Binding Path=ActualHeight, ElementName=DataGridMengeMissionHeaderPanelAusPräferenzEntscaidungVerhalte}"></Grid>
+                    </Grid>
+                    <Grid
+                        Name="DataGridMengeMissionHeaderPanelAusPräferenzEntscaidungVerhalte">
+                        <Grid Margin="1">
+                            <Grid.Background>
+                                <SolidColorBrush Color="Black" Opacity="0.3"></SolidColorBrush>
+                            </Grid.Background>
+                            <TextBlock
+                                Text="Behavior defined in Preferences"
+                                TextWrapping="Wrap"
+                                FontWeight="Bold" Margin="3" HorizontalAlignment="Center"></TextBlock>
+                        </Grid>
+                    </Grid>
+                </Canvas>
+            </Grid>
+
+            <DataGrid
+                Name="DataGridMengeMission"
+                AutoGenerateColumns="False"
+                CanUserAddRows="False"
+                CanUserDeleteRows="False"
+                CanUserReorderColumns="False"
+                Grid.Row="2">
+
+                <DataGrid.Resources>
+                </DataGrid.Resources>
+
+                <DataGrid.CellStyle>
+                    <Style TargetType="DataGridCell">
+                        <Style.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Background" Value="#5040a0ff" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </DataGrid.CellStyle>
+
+
+                <DataGrid.Columns>
+
+                    <DataGridTemplateColumn
+                        x:Name="ColumnAktioon"
+                        IsReadOnly="True">
+                        <DataGridTemplateColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding RelativeSource={RelativeSource AncestorType=UserControl, Mode=FindAncestor}, Path=ColumnAktioonBescriftung}"
+                                           Margin="3"></TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.HeaderTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Click="ButtonDataGridMengeMissionColumnAktioonZele_Click">
+                                    <Button.Content>
+                                        <TextBlock
+                                            Text="{Binding RelativeSource={RelativeSource AncestorType=UserControl, Mode=FindAncestor}, Path=ColumnAktioonBescriftung}"
+                                            Margin="0">
+                                            <TextBlock.LayoutTransform>
+                                                <ScaleTransform ScaleX="0.9" ScaleY="0.9"></ScaleTransform>
+                                            </TextBlock.LayoutTransform>
+                                        </TextBlock>
+                                    </Button.Content>
+                                </Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn
+                        IsReadOnly="True"
+                        SortMemberPath="Wert.Ident">
+                        <DataGridTemplateColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="Id" Margin="3" VerticalAlignment="Center"></TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.HeaderTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox
+                                    Text="{Binding Path=Wert.Ident,Mode=OneWay}" IsReadOnly="True"
+                                    Margin="0" Background="Transparent" BorderThickness="0"
+                                    VerticalAlignment="Center"></TextBox>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn IsReadOnly="True"
+                                                                SortMemberPath="Wert.AgentLevel">
+                        <DataGridTemplateColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="Agent&#10;.Level" Margin="3" VerticalAlignment="Center"></TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.HeaderTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <!--
+                                                    <TextBox Text="{Binding Path=Wert.AgentLevelSictStringRöömisc,Mode=OneWay}" IsReadOnly="True"
+                                                            Margin="0" Background="Transparent" BorderThickness="0"
+                                                            VerticalAlignment="Center"
+                                                             FontWeight="Bold"></TextBox>
+                                                    -->
+                                <TextBlock  Text="{Binding Path=Wert.AgentLevelSictStringRöömisc,Mode=OneWay}"
+                                                            Margin="0" VerticalAlignment="Center" HorizontalAlignment="Center"
+                                                             FontWeight="Bold"></TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn IsReadOnly="True"
+                                                                SortMemberPath="Wert.AgentName">
+                        <DataGridTemplateColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="Agent.Name" Margin="3" VerticalAlignment="Center"></TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.HeaderTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Text="{Binding Path=Wert.AgentName,Mode=OneWay}" IsReadOnly="True"
+                                                                                     Margin="0" Background="Transparent" BorderThickness="0"
+                                                                                     VerticalAlignment="Center"></TextBox>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn IsReadOnly="True"
+                                                                SortMemberPath="Wert.AgentLocationLocationName">
+                        <DataGridTemplateColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="Agent.Location" Margin="3" VerticalAlignment="Center"></TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.HeaderTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Text="{Binding Path=Wert.AgentLocationLocationName,Mode=OneWay}" IsReadOnly="True"
+                                                                                     Margin="0" Background="Transparent" BorderThickness="0"
+                                                                                     VerticalAlignment="Center"></TextBox>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn IsReadOnly="True"
+                                            SortMemberPath="Wert.Titel">
+                        <DataGridTemplateColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <TextBlock
+                                    Text="{Binding RelativeSource={RelativeSource AncestorType=UserControl, Mode=FindAncestor}, Path=ColumnTitelBescriftung}"
+                                    Margin="3" VerticalAlignment="Center"></TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.HeaderTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Text="{Binding Path=Wert.Titel,Mode=OneWay}" IsReadOnly="True"
+                                                                                     Margin="0" Background="Transparent" BorderThickness="0"
+                                                                                     VerticalAlignment="Center"></TextBox>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn IsReadOnly="True"
+                                            SortMemberPath="Wert.SecurityLevelMiliMinimum">
+                        <DataGridTemplateColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="Security Level&#10;Minimum" Margin="3" VerticalAlignment="Center"></TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.HeaderTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid
+                                    Background="{Binding Path=Wert.CellBackgroundSecurityLevelMinimum}">
+                                    <TextBox
+                                        Text="{Binding Path=Wert.SecurityLevelMinimumSictString,Mode=OneWay}" IsReadOnly="True"
+                                        Margin="0" Background="Transparent" BorderThickness="0" FontWeight="Bold"
+                                        VerticalAlignment="Center"></TextBox>
+                                </Grid>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn IsReadOnly="True"
+                        SortMemberPath="Wert.MengeFactionAggrSictString">
+                        <DataGridTemplateColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="Faction&#10;expected to be&#10;encountered" Margin="3" VerticalAlignment="Center"></TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.HeaderTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Text="{Binding Path=Wert.MengeFactionAggrSictString,Mode=OneWay}" IsReadOnly="True"
+                                    Margin="0" Background="Transparent" BorderThickness="0"
+                                    VerticalAlignment="Center"></TextBox>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn IsReadOnly="True"
+                                            SortMemberPath="Wert.RewardMitBonusTailIskAnzaal">
+                        <DataGridTemplateColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="1"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Text="Reward &#10;/ ISK" Margin="3" VerticalAlignment="Center"></TextBlock>
+                                </Grid>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.HeaderTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Text="{Binding Path=Wert.RewardMitBonusTailIskAnzaal,Mode=OneWay,StringFormat='### ### ###'}" IsReadOnly="True"
+                                                        Margin="0" Background="Transparent" BorderThickness="0" TextAlignment="Right"
+                                                        VerticalAlignment="Center"></TextBox>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn IsReadOnly="True"
+                                            SortMemberPath="Wert.RewardTailLpAnzaal">
+                        <DataGridTemplateColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="1"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Text="Reward &#10;/ LP" Margin="3" VerticalAlignment="Center"></TextBlock>
+                                </Grid>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.HeaderTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Text="{Binding Path=Wert.RewardTailLpAnzaal,Mode=OneWay,StringFormat='### ### ###'}" IsReadOnly="True"
+                                                        Margin="0" Background="Transparent" BorderThickness="0" TextAlignment="Right"
+                                                        VerticalAlignment="Center"></TextBox>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn
+                        x:Name="ColumnZuMissionVerhalteAktioonFüüreAusAktiiv"
+                        IsReadOnly="True"
+                        SortMemberPath="Wert.ZuMissionVerhalteAktioonFüüreAusAktiiv">
+                        <DataGridTemplateColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <TextBlock
+                                    Text="execute"
+                                    Margin="3" VerticalAlignment="Center"></TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.HeaderTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <!--
+                                <CheckBox IsChecked="{Binding Path=Wert.ZuMissionVerhalteAktioonFüüreAusAktiiv,Mode=OneWay}" IsEnabled="False"
+                                          VerticalAlignment="Center" HorizontalAlignment="Center"></CheckBox>
+                                -->
+
+                                <Bib3.FCL.GBS:CheckedOderHidden
+                                    Checked="{Binding Path=Wert.ZuMissionVerhalteAktioonFüüreAusAktiiv,Mode=OneWay}"
+                                    ></Bib3.FCL.GBS:CheckedOderHidden>
+
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn
+                        x:Name="ColumnZuMissionVerhalteAktioonAcceptAktiiv"
+                        IsReadOnly="True"
+                        SortMemberPath="Wert.ZuMissionVerhalteAktioonAcceptAktiiv">
+                        <DataGridTemplateColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <TextBlock
+                                    Text="accept"
+                                    Margin="3" VerticalAlignment="Center"></TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.HeaderTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <!--
+                                <CheckBox IsChecked="{Binding Path=Wert.ZuMissionVerhalteAktioonAcceptAktiiv,Mode=OneWay}" IsEnabled="False"
+                                          VerticalAlignment="Center" HorizontalAlignment="Center"></CheckBox>
+                                -->
+
+                                <Bib3.FCL.GBS:CheckedOderHidden
+                                    Checked="{Binding Path=Wert.ZuMissionVerhalteAktioonAcceptAktiiv,Mode=OneWay}"
+                                    ></Bib3.FCL.GBS:CheckedOderHidden>
+
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn
+                        x:Name="ColumnZuMissionVerhalteAktioonDeclineAktiiv"
+                        IsReadOnly="True"
+                        SortMemberPath="Wert.ZuMissionVerhalteAktioonDeclineAktiiv">
+                        <DataGridTemplateColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <TextBlock
+                                    Text="decline"
+                                    Margin="3" VerticalAlignment="Center"></TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.HeaderTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <!--
+                                <CheckBox IsChecked="{Binding Path=Wert.ZuMissionVerhalteAktioonDeclineAktiiv,Mode=OneWay}" IsEnabled="False"
+                                          VerticalAlignment="Center" HorizontalAlignment="Center"></CheckBox>
+                                -->
+
+                                <Bib3.FCL.GBS:CheckedOderHidden
+                                    Checked="{Binding Path=Wert.ZuMissionVerhalteAktioonDeclineAktiiv,Mode=OneWay}"
+                                    ></Bib3.FCL.GBS:CheckedOderHidden>
+
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn
+                        x:Name="ColumnAusPräferenzEntscaidungFittingIdent"
+                        IsReadOnly="True"
+                        SortMemberPath="Wert.FittingIdent">
+                        <DataGridTemplateColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="name of Fitting&#10;to be applied" Margin="3" VerticalAlignment="Center"></TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.HeaderTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Text="{Binding Path=Wert.FittingIdent,Mode=OneWay}" IsReadOnly="True"
+                                    Margin="0" Background="Transparent" BorderThickness="0"
+                                    VerticalAlignment="Center"></TextBox>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn IsReadOnly="True"
+                                            SortMemberPath="Wert.VersuucFittingAktiiv">
+                        <DataGridTemplateColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <TextBlock
+                                    Text="trying to&#10;apply fitting"
+                                    Margin="3" VerticalAlignment="Center"></TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.HeaderTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <!--
+                                <Grid
+                                    Background="{Binding Path=Wert.CellBackgroundVersuucFittingAktiiv}">
+                                    <CheckBox IsChecked="{Binding Path=Wert.VersuucFittingAktiiv,Mode=OneWay}" IsEnabled="False"
+                                          VerticalAlignment="Center" HorizontalAlignment="Center"></CheckBox>
+                                </Grid>
+                                -->
+
+                                <Bib3.FCL.GBS:CheckedOderHidden
+                                    Checked="{Binding Path=Wert.VersuucFittingAktiiv,Mode=OneWay}"
+                                    ></Bib3.FCL.GBS:CheckedOderHidden>
+
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn
+                        IsReadOnly="True"
+                        SortMemberPath="Wert.ConstraintFittingSatisfied">
+                        <DataGridTemplateColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <TextBlock
+                                    Text="constraint&#10;fitting&#10;satisfied"
+                                    Margin="3" VerticalAlignment="Center"></TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.HeaderTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Bib3.FCL.GBS:BoolAbbildSymboolAkzeptanzFeelerWarnung
+                                    TrueSymbolTyp="Akzeptanz"
+                                    FalseSymbolTyp="Feeler"
+                                    Value="{Binding Path=Wert.ConstraintFittingSatisfied,Mode=OneWay}"
+                                    ></Bib3.FCL.GBS:BoolAbbildSymboolAkzeptanzFeelerWarnung>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn
+                        IsReadOnly="True"
+                        SortMemberPath="Wert.AktioonFüüreAusAktiiv">
+                        <DataGridTemplateColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <TextBlock
+                                    Text="trying to&#10;execute"
+                                    Margin="3" VerticalAlignment="Center"></TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.HeaderTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <!--
+                                <Grid
+                                     Background="{Binding Path=Wert.CellBackgroundAktioonFüüreAusAktiiv}">
+                                    <CheckBox IsChecked="{Binding Path=Wert.AktioonFüüreAusAktiiv,Mode=OneWay}" IsEnabled="False"
+                                          VerticalAlignment="Center" HorizontalAlignment="Center"></CheckBox>
+                                </Grid>
+                                -->
+
+                                <Bib3.FCL.GBS:CheckedOderHidden
+                                    Checked="{Binding Path=Wert.AktioonFüüreAusAktiiv,Mode=OneWay}"
+                                    ></Bib3.FCL.GBS:CheckedOderHidden>
+
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn IsReadOnly="True"
+                                            SortMemberPath="Wert.AcceptedFrühesteZaitMili">
+                        <DataGridTemplateColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <TextBlock
+                                    Text="Accepted"
+                                    Margin="3" VerticalAlignment="Center"></TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.HeaderTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <!--
+                                <CheckBox IsChecked="{Binding Path=Wert.Accepted,Mode=OneWay}" IsEnabled="False"
+                                          VerticalAlignment="Center" HorizontalAlignment="Center"></CheckBox>
+                                -->
+
+                                <Bib3.FCL.GBS:CheckedOderHidden
+                                    Checked="{Binding Path=Wert.Accepted,Mode=OneWay}"
+                                    ></Bib3.FCL.GBS:CheckedOderHidden>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn IsReadOnly="True"
+                                            SortMemberPath="Wert.InLocationSystemListePfaadAnzaal">
+                        <DataGridTemplateColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <TextBlock
+                                    Text="{Binding RelativeSource={RelativeSource AncestorType=UserControl, Mode=FindAncestor}, Path=ColumnInLocationSystemListePfaadAnzaalBescriftung}"
+                                    Margin="3" VerticalAlignment="Center"></TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.HeaderTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Text="{Binding Path=Wert.InLocationSystemListePfaadAnzaal,Mode=OneWay}" IsReadOnly="True"
+                                    Margin="0" Background="Transparent" BorderThickness="0"
+                                    VerticalAlignment="Center"></TextBox>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn
+                        IsReadOnly="True"
+                        SortMemberPath="Wert.EndeZaitMiliOderMaximum">
+                        <DataGridTemplateColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <TextBlock
+                                    Text="ended"
+                                    Margin="3" VerticalAlignment="Center"></TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.HeaderTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <!--
+                                    <CheckBox IsChecked="{Binding Path=Wert.Fertig,Mode=OneWay}" IsEnabled="False"
+                                          VerticalAlignment="Center" HorizontalAlignment="Center"></CheckBox>
+                                    -->
+
+                                    <Bib3.FCL.GBS:CheckedOderHidden
+                                        Checked="{Binding Path=Wert.Fertig,Mode=OneWay}"
+                                    ></Bib3.FCL.GBS:CheckedOderHidden>
+
+                                </Grid>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn IsReadOnly="True"
+                                            SortMemberPath="Wert.VonFüüreAusBeginBisCompleteDauer">
+                        <DataGridTemplateColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <TextBlock
+                                    Text="{Binding RelativeSource={RelativeSource AncestorType=UserControl, Mode=FindAncestor}, Path=ColumnDauerVonFüüreAusBeginBisCompleteBescriftung}"
+                                    Margin="3" VerticalAlignment="Center"></TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.HeaderTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Text="{Binding Path=Wert.VonAcceptBisCompleteDauer,Mode=OneWay}" IsReadOnly="True"
+                                                                                     Margin="0" Background="Transparent" BorderThickness="0"
+                                                                                     VerticalAlignment="Center"></TextBox>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn IsReadOnly="True"
+                                            SortMemberPath="Wert.RewardMitBonusTailIskDurcFüüreAusDauerSctunde">
+                        <DataGridTemplateColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="1"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Text="Reward &#10;/ ISK / h" Margin="3" VerticalAlignment="Center"></TextBlock>
+                                </Grid>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.HeaderTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Text="{Binding Path=Wert.RewardMitBonusTailIskDurcFüüreAusDauerSctunde,Mode=OneWay,StringFormat='### ### ###'}" IsReadOnly="True"
+                                                        Margin="0" Background="Transparent" BorderThickness="0" TextAlignment="Right"
+                                                        VerticalAlignment="Center"></TextBox>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn IsReadOnly="True"
+                                            SortMemberPath="Wert.RewardTailLpDurcFüüreAusDauerSctunde">
+                        <DataGridTemplateColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="1"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Text="Reward &#10;/ LP / h" Margin="3" VerticalAlignment="Center"></TextBlock>
+                                </Grid>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.HeaderTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Text="{Binding Path=Wert.RewardTailLpDurcFüüreAusDauerSctunde,Mode=OneWay,StringFormat='### ### ###'}" IsReadOnly="True"
+                                                        Margin="0" Background="Transparent" BorderThickness="0" TextAlignment="Right"
+                                                        VerticalAlignment="Center"></TextBox>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+    </Grid>
+</UserControl>

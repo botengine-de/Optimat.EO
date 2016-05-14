@@ -1,0 +1,214 @@
+﻿<UserControl x:Class="Optimat.EveOnline.GBS.SictAutoKonfigFittingVerkürzt"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:Bib3.FCL.GBS="clr-namespace:Bib3.FCL.GBS;assembly=Bib3.FCL"
+             xmlns:Optimat.GBS="clr-namespace:Optimat.GBS"
+             xmlns:Optimat.EveOnline.GBS="clr-namespace:Optimat.EveOnline.GBS"
+             mc:Ignorable="d" 
+             d:DesignHeight="666" d:DesignWidth="666">
+    <Grid>
+        <StackPanel>
+            
+            <!--
+
+            <GroupBox>
+                <GroupBox.Header>
+                    <TextBlock Text="Thresholds for Emergency Warp Out" Margin="1"></TextBlock>
+                </GroupBox.Header>
+            </GroupBox>
+
+            <GroupBox>
+                <GroupBox.Header>
+                    <TextBlock Text="Thresholds to attack" Margin="1"></TextBlock>
+                </GroupBox.Header>
+            </GroupBox>
+
+            <GroupBox>
+                <GroupBox.Header>
+                    <TextBlock Text="Thresholds for Shield Booster / Armor Repairer" Margin="1"></TextBlock>
+                </GroupBox.Header>
+                
+                <GroupBox.Content>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="4*" MaxWidth="166"></ColumnDefinition>
+                            <ColumnDefinition Width="4"></ColumnDefinition>
+                            <ColumnDefinition Width="4*" MaxWidth="166"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <GroupBox Grid.Column="0">
+                            <GroupBox.Header>
+                                <TextBlock Text="switch on" Margin="1"></TextBlock>
+                            </GroupBox.Header>
+
+                            <GroupBox.Content>
+                                <Bib3.FCL.GBS:SictAuswaalZaalGanzMitSliderUndTextBox
+                                    TextBoxWidth="33"
+                                    BescriftungAinhait="%"
+                                    Minimum="0" Maximum="100"></Bib3.FCL.GBS:SictAuswaalZaalGanzMitSliderUndTextBox>
+                            </GroupBox.Content>
+                        </GroupBox>
+
+                        <GroupBox Grid.Column="2">
+                            <GroupBox.Header>
+                                <TextBlock Text="switch off" Margin="1"></TextBlock>
+                            </GroupBox.Header>
+                            <GroupBox.Content>
+                                <Bib3.FCL.GBS:SictAuswaalZaalGanzMitSliderUndTextBox
+                                    TextBoxWidth="33"
+                                    BescriftungAinhait="%"
+                                    Minimum="0" Maximum="100"></Bib3.FCL.GBS:SictAuswaalZaalGanzMitSliderUndTextBox>
+                            </GroupBox.Content>
+                        </GroupBox>
+                    </Grid>
+                </GroupBox.Content>
+            </GroupBox>
+            
+            -->
+
+            <GroupBox Margin="3"
+                      BorderThickness="1.6">
+                <GroupBox.Header>
+                    <TextBlock Text="Behavioral Thresholds" Margin="3">
+                        <TextBlock.LayoutTransform>
+                            <ScaleTransform ScaleX="1.1" ScaleY="1.1"></ScaleTransform>
+                        </TextBlock.LayoutTransform>
+                    </TextBlock>
+                </GroupBox.Header>
+                
+                <GroupBox.Content>
+                    <Optimat.EveOnline.GBS:SictKonfigInRaumAktioonVerzwaigungNaacShipZuusctand
+                        x:Name="SctoierelementInRaumAktioonVerzwaigung">
+                    </Optimat.EveOnline.GBS:SictKonfigInRaumAktioonVerzwaigungNaacShipZuusctand>
+                </GroupBox.Content>
+            </GroupBox>
+            
+            <GroupBox Margin="3"
+                      BorderThickness="1.6">
+                <GroupBox.Header>
+                    <TextBlock Text="Faction dependent Fitting" Margin="3">
+                        <TextBlock.LayoutTransform>
+                            <ScaleTransform ScaleX="1.1" ScaleY="1.1"></ScaleTransform>
+                        </TextBlock.LayoutTransform>
+                    </TextBlock>
+                </GroupBox.Header>
+                
+                <GroupBox.Content>
+                    <StackPanel>
+                        
+                        <GroupBox>
+                            <GroupBox.Header>
+                                <TextBlock Text="existing mappings" Margin="1"></TextBlock>
+                            </GroupBox.Header>
+                            
+                            <GroupBox.Content>
+                                <DataGrid Name="DataGridMengeZuFactionFitting"
+                                          Height="188"
+                                          AutoGenerateColumns="False"
+                                          CanUserAddRows="False"
+                                          CanUserDeleteRows="True">
+                                    <DataGrid.Columns>
+                                        <DataGridTemplateColumn IsReadOnly="True" Header="delete" Width="44" CanUserSort="False">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Button Name="DataGridMengeZuFactionFittingBezaicnerButtonEntferne"
+                                                                        Click="DataGridMengeZuFactionFittingBezaicnerButtonEntferne_Click"
+                                                                        HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                        <TextBlock FontWeight="Bold">X</TextBlock>
+                                                    </Button>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+
+                                        <DataGridTemplateColumn IsReadOnly="True" Header="Faction encountered in Mission"
+                                                                            SortMemberPath="FactionSictString">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock
+                                                                    Text="{Binding Path=FactionSictString, Mode=OneWay}"
+                                                                    VerticalAlignment="Center"></TextBlock>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+
+                                        <DataGridTemplateColumn
+                                                    IsReadOnly="True" Header="Name of Fitting to load&#10;as seen in Window &quot;Fitting Management&quot;"
+                                                                            SortMemberPath="FittingBezaicner">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBox
+                                                                    Text="{Binding Path=FittingBezaicner, Mode=OneWay}"
+                                                                    IsReadOnly="True"
+                                                                    VerticalAlignment="Center"></TextBox>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </GroupBox.Content>
+                        </GroupBox>
+                        
+                        <GroupBox Margin="3">
+                            <GroupBox.Header>
+                                <TextBlock Text="create new mapping" Margin="1"></TextBlock>
+                            </GroupBox.Header>
+                            
+                            <GroupBox.Content>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="3"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                    </Grid.RowDefinitions>
+
+                                    <WrapPanel>
+                                        <GroupBox Margin="3"
+                                                  VerticalAlignment="Center">
+                                            <GroupBox.Header>
+                                                <TextBlock Text="Faction encountered in Mission" Grid.Column="0"
+                                               Margin="1" VerticalAlignment="Center"></TextBlock>
+                                            </GroupBox.Header>
+
+                                            <GroupBox.Content>
+                                                <ComboBox Name="ComboBoxMengeZuFactionFittingBezaicnerErscteleAuswaalFaction"
+                                              Grid.Column="2"
+                                              Width="144" VerticalAlignment="Center"></ComboBox>
+                                            </GroupBox.Content>
+                                        </GroupBox>
+
+                                        <GroupBox Margin="3"
+                                                  VerticalAlignment="Center">
+                                            <GroupBox.Header>
+                                                <TextBlock Text="Name of Fitting to load&#10;as seen in Window &quot;Fitting Management&quot;"
+                                               Grid.Column="4"
+                                               VerticalAlignment="Center"
+                                                           Margin="1"
+                                                   Panel.ZIndex="-1"></TextBlock>
+                                            </GroupBox.Header>
+                                            <GroupBox.Content>
+                                                <ComboBox Name="ComboBoxMengeZuFactionFittingBezaicnerErscteleAuswaalFittingBezaicner"
+                                              Grid.Column="6"
+                                              VerticalAlignment="Center" IsEditable="True"></ComboBox>
+                                            </GroupBox.Content>
+                                        </GroupBox>
+                                    </WrapPanel>
+
+                                    <Button
+                                        Name="ButtonZuFactionFittingBezaicnerErsctele"
+                                        Click="ButtonZuFactionFittingBezaicnerErsctele_Click"
+                                        Grid.Row="2">
+                                        <TextBlock Text="create"></TextBlock>
+                                    </Button>
+                                </Grid>
+                            </GroupBox.Content>
+                        </GroupBox>
+                    </StackPanel>
+                </GroupBox.Content>
+            </GroupBox>
+
+        </StackPanel>
+    </Grid>
+</UserControl>

@@ -1,0 +1,150 @@
+﻿<UserControl x:Class="Optimat.EveOnline.GBS.SictAutoKonfigMine"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="444">
+    <Grid>
+        <StackPanel>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="1"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="1"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="1"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="1"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="11"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock
+                    Text="Overview Preset to use for Asteroids"
+                    Margin="3"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Right"
+                    Visibility="Collapsed"></TextBlock>
+
+                <ComboBox
+                    Name="ComboBoxAutoMineOverviewPresetFürAsteroid"
+                    IsEditable="True"
+                    Grid.Column="2"
+                    VerticalAlignment="Center"
+                    Visibility="Collapsed"></ComboBox>
+
+                <TextBlock
+                                        Text="[from Bot]&#10;Overview Preset being used for Asteroids"
+                                        Margin="3"
+                                        Grid.Row="2"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Right"
+                                        Visibility="Collapsed"></TextBlock>
+
+                <Grid Grid.Row="2" Grid.Column="2"
+                                          Visibility="Collapsed">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="77"></ColumnDefinition>
+                        <ColumnDefinition Width="11"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBox
+                        Name="TextBoxAutoMineVonServerOverviewPresetFürAsteroidTailTyp"
+                        IsReadOnly="True"
+                        VerticalAlignment="Center"></TextBox>
+                    <TextBox
+                        Name="TextBoxAutoMineVonServerOverviewPresetFürAsteroidTailName"
+                        Grid.Column="2"
+                        IsReadOnly="True"
+                        VerticalAlignment="Center"></TextBox>
+                </Grid>
+
+                <TextBlock
+                    Text="use Survey Scanner"
+                    Margin="3"
+                    Grid.Row="4"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Right"></TextBlock>
+
+                <CheckBox
+                    Name="CheckBoxAutoMineSurveyScannerFraigaabe"
+                    Grid.Row="4"
+                    Grid.Column="2"
+                    Margin="3"
+                    VerticalAlignment="Center" HorizontalAlignment="Left">
+                </CheckBox>
+
+                <TextBlock
+                    Text="only mine Ore types&#10;suiting available Mining Crystal"
+                    Margin="3"
+                    Grid.Row="6"
+                    VerticalAlignment="Center"
+                    TextAlignment="Right"
+                    HorizontalAlignment="Right"></TextBlock>
+
+                <CheckBox
+                    Name="CheckBoxMengeOreTypBescrankeNaacMiningCrystal"
+                    Grid.Row="6"
+                    Grid.Column="2"
+                    Margin="3"
+                    VerticalAlignment="Center" HorizontalAlignment="Left">
+                </CheckBox>
+
+                <TextBlock
+                    Text="type of Ore to mine"
+                    Margin="3"
+                    Grid.Row="8"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Right"></TextBlock>
+
+                <Grid
+                    Grid.Row="8"
+                    Grid.Column="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="1"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <WrapPanel Name="PanelMengeTypOreFraigaabe"></WrapPanel>
+                    
+                    <Grid Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="11"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <Button
+                            Name="ButtonMengeTypOreFraigaabeKaine"
+                            Click="ButtonMengeTypOreFraigaabeKaine_Click"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Margin="1">
+                            <TextBlock Text="disable all"></TextBlock>
+                        </Button>
+
+                        <Button
+                            Name="ButtonMengeTypOreFraigaabeAle"
+                            Click="ButtonMengeTypOreFraigaabeAle_Click"
+                            Grid.Column="2"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Margin="1">
+                            <TextBlock Text="enable all"></TextBlock>
+                        </Button>
+                    </Grid>
+                </Grid>
+
+            </Grid>
+        </StackPanel>
+    </Grid>
+</UserControl>
