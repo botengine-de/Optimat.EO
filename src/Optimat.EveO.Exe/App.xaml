@@ -5,6 +5,6 @@
     xmlns:Bib3.Windows="clr-namespace:Bib3.Windows;assembly=Bib3.Windows"
     xmlns:Optimat.GBS="clr-namespace:Optimat.GBS;assembly=Optimat">
     <Application.Resources>
-        <ResourceDictionary Source="pack://application:,,,/Optimat.EveOnline.Knsl;component/GBS/Style.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="pack://application:,,,/Optimat.EveOnline.Exe;component/GBS/Style.xaml"></ResourceDictionary>
     </Application.Resources>
 </Bib3.Windows:ApplicationMitGbsUndTimer>
