@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Bib3;
 using VonSensor = Optimat.EveOnline.VonSensor;
 using Optimat.EveOnline.VonSensor;
+using ExtractFromOldAssembly.Bib3;
 
 namespace Optimat.EveOnline
 {
@@ -14,7 +15,7 @@ namespace Optimat.EveOnline
 	{
 		static public VonProcessMesung<T> AlsVonProcessMesung<T>(this BotEngine.Interface.FromProcessMeasurement<T> FromProcessMeasurement) =>
 			null == FromProcessMeasurement ? null :
-			new VonProcessMesung<T>(FromProcessMeasurement.Wert, FromProcessMeasurement.Begin, FromProcessMeasurement.Ende, FromProcessMeasurement.ProcessId);
+			new VonProcessMesung<T>(FromProcessMeasurement.Value, FromProcessMeasurement.Begin, FromProcessMeasurement.End, FromProcessMeasurement.ProcessId);
 
 		static public VonProcessMesung<AusT> Sict<AinT, AusT>(
 			this VonProcessMesung<AinT> Ain,
@@ -1035,7 +1036,7 @@ namespace Optimat.EveOnline
 			this object SuuceUrscprung)
 		{
 			return
-				Bib3.Extension.BaumEnumFlacListeNaacKnootePfaad(
+				ExtractFromOldAssembly.Bib3.Extension.BaumEnumFlacListeNaacKnootePfaad(
 				SuuceUrscprung,
 				Ast => Ast.ListeGbsKindBerecne())
 				.SelectNullable(Pfaad => Pfaad.SelectNullable(Ast => Ast as GbsElement).ToArrayNullable());
@@ -1056,7 +1057,7 @@ namespace Optimat.EveOnline
 			return
 				GbsBaumEnumFlacListeNaacKnootePfaad(
 				SuuceUrscprung)
-				.SelectNullable(Bib3.Extension.LastOrDefaultNullable);
+				.SelectNullable(ExtractFromOldAssembly.Bib3.Extension.LastOrDefaultNullable);
 		}
 
 		static public GbsElement SuuceFlacMengeGbsAstFrühesteMitIdent(
@@ -1476,7 +1477,7 @@ namespace Optimat.EveOnline
 			}
 
 			return
-				Bib3.Extension.FirstOrDefaultNullable(
+				ExtractFromOldAssembly.Bib3.Extension.FirstOrDefaultNullable(
 				ShipTreeEntryMengeChild,
 				(Kandidaat) => null == Kandidaat ? false : Regex.Match(Kandidaat.LabelTextTailObjektName ?? "", IdentString, RegexOptions.IgnoreCase).Success);
 		}

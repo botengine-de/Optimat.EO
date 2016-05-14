@@ -343,6 +343,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ExtractFromOldAssembly\ExtractFromOldAssembly.csproj">
+      <Project>{8cf69e77-7197-4812-af69-f1e206d82fa9}</Project>
+      <Name>ExtractFromOldAssembly</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Optimat.EveOnline.Base\Optimat.EveOnline.Base.csproj">
       <Project>{38e5633b-1aa6-4d03-90b6-9b672a17f32a}</Project>
       <Name>Optimat.EveOnline.Base</Name>

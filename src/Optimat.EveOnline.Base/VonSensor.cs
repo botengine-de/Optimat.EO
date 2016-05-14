@@ -9,6 +9,7 @@ using Newtonsoft.Json.Converters;
 using Optimat.EveOnline;
 using Bib3;
 using Optimat.EveOnline.Base;
+using ExtractFromOldAssembly.Bib3;
 
 namespace Optimat.EveOnline.VonSensor
 {
@@ -1521,7 +1522,7 @@ namespace Optimat.EveOnline.VonSensor
 			}
 
 			var LinxTreeListeEntryPasend =
-				Bib3.Extension.WhereNullable(
+				ExtractFromOldAssembly.Bib3.Extension.WhereNullable(
 				LinxTreeListeEntry,
 				(TreeEntry) => string.Equals(TreeEntry.LabelTextTailObjektName, AuswaalReczObjektPfaadListeAstFrüheste, StringComparison.InvariantCultureIgnoreCase))
 				.ToArrayNullable();
