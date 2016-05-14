@@ -8,8 +8,8 @@
     <ProjectGuid>{D95AA226-5FD2-44B1-9DE3-7E326E34CB18}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Optimat.EveO.Nuzer</RootNamespace>
-    <AssemblyName>Optimat.EveOnline.Knsl</AssemblyName>
+    <RootNamespace>Optimat.EveOnline.Exe</RootNamespace>
+    <AssemblyName>Optimat.EveOnline.Exe</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
