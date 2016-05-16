@@ -33,26 +33,27 @@
   <ItemGroup>
     <Reference Include="Bib3, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Optimat\Impl\Optimat\Optimat\bin\Debug\Bib3.dll</HintPath>
+      <HintPath>..\..\lib\Bib3.dll</HintPath>
     </Reference>
     <Reference Include="Bib3.RefNezDif, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Optimat\Impl\Optimat\Optimat\bin\Debug\Bib3.RefNezDif.dll</HintPath>
+      <HintPath>..\..\lib\Bib3.RefNezDif.dll</HintPath>
     </Reference>
     <Reference Include="BotEngine.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\BotEngine\Impl\BotEngine\BotEngine\BotEngine.Common\bin\Debug\BotEngine.Common.dll</HintPath>
+      <HintPath>..\..\lib\BotEngine.Common.dll</HintPath>
     </Reference>
     <Reference Include="BotEngine.EveOnline, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\lib\BotEngine.EveOnline.dll</HintPath>
+      <HintPath>..\..\lib\BotEngine.EveOnline.dll</HintPath>
     </Reference>
     <Reference Include="BotEngine.EveOnline.Interface, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\lib\BotEngine.EveOnline.Interface.dll</HintPath>
+      <HintPath>..\..\lib\BotEngine.EveOnline.Interface.dll</HintPath>
     </Reference>
-    <Reference Include="BotEngine.Interface">
-      <HintPath>..\..\..\..\..\..\BotEngine\EveOnline\Impl\BotEngine.EveOnline\lib\BotEngine.Interface.dll</HintPath>
+    <Reference Include="BotEngine.Interface, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\BotEngine.Interface.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -60,7 +61,7 @@
     </Reference>
     <Reference Include="Optimat, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Optimat\Impl\Optimat\Optimat\bin\Debug\Optimat.dll</HintPath>
+      <HintPath>..\..\lib\Optimat.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
