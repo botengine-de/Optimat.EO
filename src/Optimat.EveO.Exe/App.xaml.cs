@@ -10,6 +10,7 @@ using System.Text;
 using System.Windows.Input;
 using Bib3;
 using ExtractFromOldAssembly.Bib3;
+using Bib3.Synchronization;
 
 namespace Optimat.EveO.Nuzer
 {
@@ -18,12 +19,12 @@ namespace Optimat.EveO.Nuzer
 	/// </summary>
 	public partial class App
 	{
-        static  App()
-        {
+		static App()
+		{
 			new SensorAppDomainSetup();
-        }
+		}
 
-        public string VersioonSictString
+		public string VersioonSictString
 		{
 			get
 			{
@@ -183,6 +184,8 @@ namespace Optimat.EveO.Nuzer
 				GbsSctoierelementHaupt.KonfigLaadeVonDataiPfaadUndBericteNaacGbs();
 			}
 			catch { }
+
+			ConstructTimer();
 		}
 
 		void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
@@ -352,7 +355,7 @@ namespace Optimat.EveO.Nuzer
 			});
 		}
 
-		override protected void TimerElapsedLockedInRaameBerict()
+		protected void TimerElapsedLockedInRaameBerict()
 		{
 			this.Dispatcher.Invoke(new Action(TimerElapsedDispatched), new object[0]);
 
@@ -363,7 +366,7 @@ namespace Optimat.EveO.Nuzer
 			{
 				var CustomBotServer = this.CustomBotServer;
 
-                LicenseClientKümereRateBescranke.Call();
+				LicenseClientKümereRateBescranke.Call();
 
 				SensorKümereRateBescranke.Call();
 
@@ -386,5 +389,34 @@ namespace Optimat.EveO.Nuzer
 			}
 		}
 
+		System.Timers.Timer timer;
+
+		readonly object timerLock = new object();
+
+		void ConstructTimer()
+		{
+			timer = new System.Timers.Timer(1.0 / 16);
+
+			timer.Elapsed += Timer_Elapsed;
+			timer.AutoReset = true;
+			timer.Start();
+		}
+
+		private void Timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+		{
+			timerLock.InvokeIfNotLocked(() =>
+			{
+				try
+				{
+					TimerElapsedLockedInRaameBerict();
+				}
+				catch (Exception ex)
+				{
+					throw new Exception("in this place, the old exe would have handled the exception somehow.", ex);
+				}
+			});
+
+			Dispatcher.BeginInvoke(new Action(TimerElapsedDispatched));
+		}
 	}
 }
