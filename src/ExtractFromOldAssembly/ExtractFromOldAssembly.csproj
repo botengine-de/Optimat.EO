@@ -30,10 +30,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Bib3">
-      <HintPath>..\Optimat.EveOnline.TempAuswertGbs\bin\Debug\Bib3.dll</HintPath>
+    <Reference Include="Bib3, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Bib3.dll</HintPath>
     </Reference>
-    <Reference Include="Bib3.RefNezDif">
+    <Reference Include="Bib3.RefNezDif, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\Bib3.RefNezDif.dll</HintPath>
     </Reference>
     <Reference Include="System" />
