@@ -46,12 +46,6 @@
     <Reference Include="BotEngine.Common">
       <HintPath>..\..\lib\BotEngine.Common.dll</HintPath>
     </Reference>
-    <Reference Include="BotEngine.EveOnline">
-      <HintPath>..\..\lib\BotEngine.EveOnline.dll</HintPath>
-    </Reference>
-    <Reference Include="BotEngine.EveOnline.Interface">
-      <HintPath>..\..\lib\BotEngine.EveOnline.Interface.dll</HintPath>
-    </Reference>
     <Reference Include="BotEngine.Interface">
       <HintPath>..\..\lib\BotEngine.Interface.dll</HintPath>
     </Reference>

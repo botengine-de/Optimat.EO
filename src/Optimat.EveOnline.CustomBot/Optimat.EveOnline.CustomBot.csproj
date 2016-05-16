@@ -43,14 +43,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\BotEngine.Common.dll</HintPath>
     </Reference>
-    <Reference Include="BotEngine.EveOnline, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\BotEngine.EveOnline.dll</HintPath>
-    </Reference>
-    <Reference Include="BotEngine.EveOnline.Interface, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\BotEngine.EveOnline.Interface.dll</HintPath>
-    </Reference>
     <Reference Include="BotEngine.Interface, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\BotEngine.Interface.dll</HintPath>
@@ -62,6 +54,12 @@
     <Reference Include="Optimat, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\Optimat.dll</HintPath>
+    </Reference>
+    <Reference Include="Sanderling">
+      <HintPath>..\..\lib\Sanderling.dll</HintPath>
+    </Reference>
+    <Reference Include="Sanderling.Interface">
+      <HintPath>..\..\lib\Sanderling.Interface.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

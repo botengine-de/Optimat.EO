@@ -40,9 +40,6 @@
     <Reference Include="BotEngine.Common">
       <HintPath>..\..\lib\BotEngine.Common.dll</HintPath>
     </Reference>
-    <Reference Include="BotEngine.EveOnline.Interface">
-      <HintPath>..\..\lib\BotEngine.EveOnline.Interface.dll</HintPath>
-    </Reference>
     <Reference Include="BotEngine.Interface">
       <HintPath>..\..\lib\BotEngine.Interface.dll</HintPath>
     </Reference>
@@ -55,6 +52,9 @@
     </Reference>
     <Reference Include="Optimat">
       <HintPath>..\..\lib\Optimat.dll</HintPath>
+    </Reference>
+    <Reference Include="Sanderling.Interface">
+      <HintPath>..\..\lib\Sanderling.Interface.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
