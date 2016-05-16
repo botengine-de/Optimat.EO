@@ -40,7 +40,7 @@ namespace Optimat.EveO.Nuzer
 
 				return new FromSensorToConsumerMessage()
 				{
-					Time = MemoryMeasurementLast?.EndeZait ?? 0,
+					Time = MemoryMeasurementLast?.End ?? 0,
 					MemoryMeasurement = MemoryMeasurementLast,
 					WindowMeasurement = WindowMeasurementLast,
 				};
@@ -133,7 +133,7 @@ namespace Optimat.EveO.Nuzer
 						RequestedMeasurementProcessId = GbsAingaabeZiilProcessId,
 						MeasurementMemoryRequestTime = RequestedMeasurementTime,
 						MeasurementMemoryReceivedLastTime = AssumptionLastMeasurementTime,
-						MeasurementWindowRequestTime = SensorClient?.WindowMeasurementLast?.EndeZait,
+						MeasurementWindowRequestTime = SensorClient?.WindowMeasurementLast?.End,
 					};
 
 				/*

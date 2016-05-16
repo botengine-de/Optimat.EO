@@ -1012,7 +1012,7 @@ namespace Optimat.EveO.Nuzer
 			{
 				if (null != ListeOptimatScritLezte.VonProcessMesung)
 				{
-					if (ListeOptimatScritLezte.VonProcessMesung.BeginZait == SensorMeasurementInTimeframe.BeginZait)
+					if (ListeOptimatScritLezte.VonProcessMesung.BeginZait == SensorMeasurementInTimeframe.Begin)
 					{
 						ListeOptimatScritLezteAktuel = true;
 					}
@@ -1024,7 +1024,7 @@ namespace Optimat.EveO.Nuzer
 				return;
 			}
 
-			ListeOptimatScrit.Add(new EveOnline.SictOptimatScrit(SensorMeasurementInTimeframe.BeginZait,
+			ListeOptimatScrit.Add(new EveOnline.SictOptimatScrit(SensorMeasurementInTimeframe.Begin,
 				SensorMeasurementInTimeframe.AlsVonProcessMesung().Sict(MemoryStructMap.AlsVonSensorikMesung)));
 
 			ListeOptimatScrit.ListeKürzeBegin(30);
@@ -1091,7 +1091,7 @@ namespace Optimat.EveO.Nuzer
 
 				if (null != SensorMeasurementInTimeframe)
 				{
-					SensorSnapshotLastEndeZait = SensorMeasurementInTimeframe.EndeZait;
+					SensorSnapshotLastEndeZait = SensorMeasurementInTimeframe.End;
 				}
 			}
 
