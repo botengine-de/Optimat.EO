@@ -15,6 +15,7 @@ using Optimat.GBS;
 using Optimat.EveOnline;
 using Optimat.EveOnline.Base;
 using Optimat.EveOnline.CustomBot;
+using ExtractFromOldAssembly.Bib3;
 
 namespace Optimat.EveO.Nuzer
 {

@@ -87,5 +87,17 @@ namespace ExtractFromOldAssembly.Bib3
 
 			return Ergeebnis;
 		}
+
+		static public string ToStringNullable<T>(
+			this T Obj)
+			where T : class
+		{
+			if (null == Obj)
+			{
+				return null;
+			}
+
+			return Obj.ToString();
+		}
 	}
 }
