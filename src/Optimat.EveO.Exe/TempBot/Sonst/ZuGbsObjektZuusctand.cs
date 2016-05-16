@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Bib3;
 using Optimat.EveOnline.VonSensor;
+using ExtractFromOldAssembly.Bib3;
 
 namespace Optimat.EveOnline.Anwendung
 {

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Optimat.EveOnline;
 using Bib3;
+using ExtractFromOldAssembly.Bib3;
 
 namespace Optimat.EveO.Nuzer
 {

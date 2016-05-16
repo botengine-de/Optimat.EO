@@ -343,6 +343,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BotEngine.EveOnline.Interface\BotEngine.EveOnline.Interface\BotEngine.EveOnline.Interface.csproj">
+      <Project>{64123DFE-B5F0-4F23-B42D-B93A27B0C2A9}</Project>
+      <Name>BotEngine.EveOnline.Interface</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ExtractFromOldAssembly\ExtractFromOldAssembly.csproj">
       <Project>{8cf69e77-7197-4812-af69-f1e206d82fa9}</Project>
       <Name>ExtractFromOldAssembly</Name>

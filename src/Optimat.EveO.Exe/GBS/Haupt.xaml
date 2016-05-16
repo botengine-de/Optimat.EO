@@ -4,7 +4,6 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:Optimat.GBS="clr-namespace:Optimat.GBS;assembly=Optimat"
-             xmlns:Bib3.GBS="clr-namespace:Bib3.GBS;assembly=Bib3.Windows"
              xmlns:Bib3.FCL.GBS="clr-namespace:Bib3.FCL.GBS;assembly=Bib3.FCL"
              xmlns:Optimat.EveO.Nuzer.GBS="clr-namespace:Optimat.EveO.Nuzer.GBS"
              xmlns:Optimat.Inspektor.GBS="clr-namespace:Optimat.Inspektor.GBS;assembly=Optimat"

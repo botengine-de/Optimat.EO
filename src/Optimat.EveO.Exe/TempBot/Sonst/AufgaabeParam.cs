@@ -9,6 +9,7 @@ using Optimat.EveOnline.Anwendung.AuswertGbs;
 //using Optimat.EveOnline.AuswertGbs;
 using Optimat.EveOnline.VonSensor;
 using Optimat.ScpezEveOnln;
+using ExtractFromOldAssembly.Bib3;
 
 namespace Optimat.EveOnline.Anwendung
 {

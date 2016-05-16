@@ -10,7 +10,7 @@ using Optimat.ScpezEveOnln;
 using VonSensor = Optimat.EveOnline.VonSensor;
 using Optimat.EveO.Nuzer.TempBot.Sonst;
 using Optimat.EveOnline.CustomBot;
-
+using ExtractFromOldAssembly.Bib3;
 
 namespace Optimat.EveOnline.Anwendung
 {

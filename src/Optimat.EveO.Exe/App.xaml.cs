@@ -30,6 +30,9 @@ namespace Optimat.EveO.Nuzer
 			}
 		}
 
+		/*
+		 * 16.04.15
+		 * 
 		override public string AnwendungTitel
 		{
 			get
@@ -61,6 +64,7 @@ namespace Optimat.EveO.Nuzer
 				return ".\\..\\Anwendung.Berict";
 			}
 		}
+		*/
 
 		readonly string ListeOptimatScritScraibeNaacDataiDataiNaameSctandardEnde = "List Optimat Step";
 

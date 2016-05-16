@@ -6,11 +6,11 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Optimat.EveOnline.Anwendung;
-using VonSensor=Optimat.EveOnline.VonSensor;
+using VonSensor = Optimat.EveOnline.VonSensor;
 using Optimat.ScpezEveOnln;
 using Optimat.EveOnline.VonSensor;
 using Bib3;
-
+using ExtractFromOldAssembly.Bib3;
 
 namespace Optimat.EveOnline.Anwendung
 {

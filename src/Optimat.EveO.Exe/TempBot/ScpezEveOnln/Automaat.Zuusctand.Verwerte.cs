@@ -12,7 +12,7 @@ using Optimat.EveOnline.Base;
 using Optimat.EveOnline.VonSensor;
 using VonSensor = Optimat.EveOnline.VonSensor;
 using Optimat.EveO.Nuzer.TempBot.Sonst;
-
+using ExtractFromOldAssembly.Bib3;
 
 namespace Optimat.ScpezEveOnln
 {
@@ -733,7 +733,7 @@ namespace Optimat.ScpezEveOnln
 					}
 
 					var WindowZuErhalteKandidaatOklusioon =
-						Bib3.Extension.FirstOrDefaultNullable(MengeKandidaatOklusioon,
+						ExtractFromOldAssembly.Bib3.Extension.FirstOrDefaultNullable(MengeKandidaatOklusioon,
 						(Kandidaat) => Kandidaat.GbsElementIdent == WindowZuErhalteHerkunftAdrese);
 
 					if (null != WindowZuErhalteKandidaatOklusioon)

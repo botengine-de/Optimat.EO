@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Bib3;
 using Optimat.EveOnline;
 using Optimat.EveOnline.VonSensor;
+using ExtractFromOldAssembly.Bib3;
 
 namespace Optimat.EveO.Nuzer.TempBot.Sonst
 {

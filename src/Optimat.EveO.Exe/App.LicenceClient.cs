@@ -9,6 +9,9 @@ namespace Optimat.EveO.Nuzer
 {
 	public partial class App
 	{
+		/*
+		 * 16.04.15
+		 * 
 		//	const string TestServerUri = @"http://localhost:1138/api";
 
 		WertZuZaitpunktStruct<BotEngine.Interface.LicenseClient> LicenseClient;
@@ -95,5 +98,6 @@ namespace Optimat.EveO.Nuzer
 				});
 			}
 		}
+		*/
 	}
 }
