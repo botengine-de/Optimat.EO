@@ -1,5 +1,6 @@
 ﻿using Bib3;
 using BotEngine.EveOnline.Interface.MemoryStruct;
+using ExtractFromOldAssembly.Bib3;
 using System;
 using System.Collections.Generic;
 using System.Linq;

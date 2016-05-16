@@ -42,9 +42,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\lib\BotEngine.Common.dll</HintPath>
     </Reference>
-    <Reference Include="BotEngine.EveOnline.Interface">
-      <HintPath>..\..\..\lib.intermediate\BotEngine.EveOnline.Interface.dll</HintPath>
-    </Reference>
     <Reference Include="BotEngine.Interface, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\lib\BotEngine.Interface.dll</HintPath>
@@ -72,7 +69,6 @@
     <Compile Include="Parse\Distance.cs" />
     <Compile Include="Parse\Inventory.cs" />
     <Compile Include="Parse\Number.cs" />
-    <Compile Include="SimpleSensorServerDispatcher.cs" />
     <Compile Include="UIStatic.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -80,6 +76,16 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\BotEngine.EveOnline.Interface\BotEngine.EveOnline.Interface\BotEngine.EveOnline.Interface.csproj">
+      <Project>{64123dfe-b5f0-4f23-b42d-b93a27b0c2a9}</Project>
+      <Name>BotEngine.EveOnline.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ExtractFromOldAssembly\ExtractFromOldAssembly.csproj">
+      <Project>{8cf69e77-7197-4812-af69-f1e206d82fa9}</Project>
+      <Name>ExtractFromOldAssembly</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,4 +1,4 @@
-﻿using Bib3;
+﻿using ExtractFromOldAssembly.Bib3;
 using System;
 
 namespace BotEngine.EveOnline.Interface.MemoryStruct

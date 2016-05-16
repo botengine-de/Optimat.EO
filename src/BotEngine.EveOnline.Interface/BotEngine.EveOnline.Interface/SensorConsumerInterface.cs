@@ -1,6 +1,6 @@
-﻿using Bib3;
-using BotEngine.EveOnline.Interface.MemoryStruct;
+﻿using BotEngine.EveOnline.Interface.MemoryStruct;
 using BotEngine.Interface;
+using ExtractFromOldAssembly.Bib3;
 using System;
 using System.Text;
 

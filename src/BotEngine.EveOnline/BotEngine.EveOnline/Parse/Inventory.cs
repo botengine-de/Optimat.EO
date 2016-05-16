@@ -1,6 +1,7 @@
 ﻿using Bib3;
 using BotEngine.Common;
 using BotEngine.EveOnline.Interface.MemoryStruct;
+using ExtractFromOldAssembly.Bib3;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
