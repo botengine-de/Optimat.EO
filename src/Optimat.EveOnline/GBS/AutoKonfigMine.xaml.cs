@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Bib3;
+using ExtractFromOldAssembly.Bib3;
 
 namespace Optimat.EveOnline.GBS
 {

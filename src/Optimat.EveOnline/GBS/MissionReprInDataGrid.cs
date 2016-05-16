@@ -8,6 +8,7 @@ using System.Windows.Media;
 using Bib3;
 using Newtonsoft.Json;
 using Optimat.EveOnline.VonSensor;
+using ExtractFromOldAssembly.Bib3;
 
 namespace Optimat.EveOnline.GBS
 {

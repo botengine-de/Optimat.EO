@@ -110,7 +110,7 @@ namespace Optimat.EveOnline
 						return null;
 					}
 
-					var KomponenteBetraagNulbar = Bib3.Glob.TryParseInt(KomponenteBetraagSictString);
+					var KomponenteBetraagNulbar = ExtractFromOldAssembly.Bib3.Glob.TryParseInt(KomponenteBetraagSictString);
 
 					if (!KomponenteBetraagNulbar.HasValue)
 					{

@@ -726,7 +726,7 @@ namespace Optimat.EveOnline.GBS
 
 			public Int64? GrööseBerecne()
 			{
-				return Bib3.Extension.CountNullable(SictSeriel);
+				return ExtractFromOldAssembly.Bib3.Extension.CountNullable(SictSeriel);
 			}
 		}
 
@@ -856,7 +856,7 @@ namespace Optimat.EveOnline.GBS
 					return;
 				}
 
-				var Zaitpunkt = Bib3.Glob.TryParseInt64(ZaitpunktSictString.Replace(" ", ""), System.Globalization.CultureInfo.CurrentCulture.NumberFormat);
+				var Zaitpunkt = ExtractFromOldAssembly.Bib3.Glob.TryParseInt64(ZaitpunktSictString.Replace(" ", ""), System.Globalization.CultureInfo.CurrentCulture.NumberFormat);
 
 				if (!Zaitpunkt.HasValue)
 				{
@@ -1045,7 +1045,7 @@ namespace Optimat.EveOnline.GBS
 
 			var ListeKomponenteInt =
 				ListeKomponenteString
-				.Select((KomponenteString) => Bib3.Glob.TryParseInt(KomponenteString))
+				.Select((KomponenteString) => ExtractFromOldAssembly.Bib3.Glob.TryParseInt(KomponenteString))
 				.TakeWhile((Komponente) => Komponente.HasValue)
 				.ToArray();
 

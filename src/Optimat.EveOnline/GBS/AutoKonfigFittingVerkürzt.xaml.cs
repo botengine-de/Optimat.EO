@@ -108,7 +108,7 @@ namespace Optimat.EveOnline.GBS
 				VonOptimatZuusctand.FittingManagementMengeFittingPfaadListeGrupeNaame;
 
 			var FittingManagementMengeFittingNaame =
-				Bib3.Extension.SelectNullable(
+				ExtractFromOldAssembly.Bib3.Extension.SelectNullable(
 				FittingManagementMengeFittingPfaadListeGrupeNaame,
 				(FittingListeGrupeNaame) => FittingListeGrupeNaame.LastOrDefault())
 				.ToArrayNullable();

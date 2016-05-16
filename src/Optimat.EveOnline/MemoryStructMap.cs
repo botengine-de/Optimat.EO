@@ -2,6 +2,7 @@
 using BotEngine.Common;
 using BotEngine.EveOnline;
 using BotEngine.EveOnline.Parse;
+using ExtractFromOldAssembly.Bib3;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -732,7 +733,7 @@ namespace Optimat.EveOnline
 
 			if (HeaderLabelTextMatch.Success)
 			{
-				MengeEntryAnzaal = Bib3.Glob.TryParseInt(HeaderLabelTextMatch.Groups[1].Value);
+				MengeEntryAnzaal = ExtractFromOldAssembly.Bib3.Glob.TryParseInt(HeaderLabelTextMatch.Groups[1].Value);
 			}
 
 			var Header = Group.Key.Caption.AlsGbsElementMitBescriftung();
@@ -809,7 +810,7 @@ namespace Optimat.EveOnline
 				{
 					ShortcutModifierNict = ShortcutMatch.Groups[1].Value.Length < 1;
 
-					ShortcutTasteFIndex = Bib3.Glob.TryParseInt(ShortcutMatch.Groups[2].Value);
+					ShortcutTasteFIndex = ExtractFromOldAssembly.Bib3.Glob.TryParseInt(ShortcutMatch.Groups[2].Value);
 				}
 			}
 
@@ -846,8 +847,8 @@ namespace Optimat.EveOnline
 			var SctundeString = Match.Groups[1].Value;
 			var MinuuteString = Match.Groups[2].Value;
 
-			var Sctunde = Bib3.Glob.TryParseInt(SctundeString);
-			var Minuute = Bib3.Glob.TryParseInt(MinuuteString);
+			var Sctunde = ExtractFromOldAssembly.Bib3.Glob.TryParseInt(SctundeString);
+			var Minuute = ExtractFromOldAssembly.Bib3.Glob.TryParseInt(MinuuteString);
 
 			if (!Sctunde.HasValue || !Minuute.HasValue)
 			{
@@ -1145,7 +1146,7 @@ namespace Optimat.EveOnline
 					}
 				}
 
-				Quantity = Bib3.Glob.TryParseInt(
+				Quantity = ExtractFromOldAssembly.Bib3.Glob.TryParseInt(
 					QuantitySictStringAbbild,
 					SctandardNumberFormatInfo,
 					System.Globalization.NumberStyles.Integer | System.Globalization.NumberStyles.AllowThousands);
@@ -1240,8 +1241,8 @@ namespace Optimat.EveOnline
 					return;
 				}
 
-				LabelTextTailObjektName = Bib3.Glob.TrimNullable(LabelTextMatch.Groups[1].Value);
-				LabelTextTailObjektDistance = Bib3.Glob.TrimNullable(LabelTextMatch.Groups[3].Value);
+				LabelTextTailObjektName = ExtractFromOldAssembly.Bib3.Glob.TrimNullable(LabelTextMatch.Groups[1].Value);
+				LabelTextTailObjektDistance = ExtractFromOldAssembly.Bib3.Glob.TrimNullable(LabelTextMatch.Groups[3].Value);
 			}
 			finally
 			{
@@ -1607,7 +1608,7 @@ namespace Optimat.EveOnline
 			var SolarSystemSecurityLevelMili = (int?)(SolarSystemSecurityLevel * 1000);
 
 			var Ergeebnis = new SictAusGbsLocationInfo(
-				Bib3.Glob.TrimNullable(ErsazNearestName),
+				ExtractFromOldAssembly.Bib3.Glob.TrimNullable(ErsazNearestName),
 				SolarSystemName,
 				SolarSystemSecurityLevelString,
 				SolarSystemSecurityLevelMili,
@@ -1631,7 +1632,7 @@ namespace Optimat.EveOnline
 
 				if (NearestNameMatch.Success)
 				{
-					NearestName = Bib3.Glob.TrimNullable(NearestNameMatch.Groups[2].Value);
+					NearestName = ExtractFromOldAssembly.Bib3.Glob.TrimNullable(NearestNameMatch.Groups[2].Value);
 				}
 			}
 

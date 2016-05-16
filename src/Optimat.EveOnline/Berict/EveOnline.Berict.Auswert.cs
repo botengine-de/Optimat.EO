@@ -407,7 +407,7 @@ namespace Optimat.EveOnline.Berict.Auswert
 			lock (Lock)
 			{
 				return
-					Bib3.Extension.SelectNullable(
+					ExtractFromOldAssembly.Bib3.Extension.SelectNullable(
 					Optimat.Glob.AusListeOrdnungWertListeElementNääxte(
 					ListeZuVonProcessLeeseBeginZaitScritInfo,
 					(ScritInfo) => ScritInfo.Key,

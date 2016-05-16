@@ -231,12 +231,12 @@ namespace Optimat.EveOnline.GBS
 			var EveWeltTopologiiMengeStation =
 				(null == EveWeltTopologiiMengeSystem) ? null :
 				Bib3.Glob.ListeEnumerableAgregiirt(
-				Bib3.Extension.SelectNullable(
+				ExtractFromOldAssembly.Bib3.Extension.SelectNullable(
 				EveWeltTopologiiMengeSystem, (System) => (null	== System)	?	null	: System.MengeStation));
 
 			var EveWeltTopologiiMengeStationName =
-				Bib3.Extension.WhereNullable(
-				Bib3.Extension.SelectNullable(
+				ExtractFromOldAssembly.Bib3.Extension.WhereNullable(
+				ExtractFromOldAssembly.Bib3.Extension.SelectNullable(
 				EveWeltTopologiiMengeStation,
 				(Station) => (null == Station) ? null : Station.StationName),
 				(StationName) => null	!= StationName);

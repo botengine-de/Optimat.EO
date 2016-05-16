@@ -354,7 +354,7 @@ namespace Optimat.EveOnline.AuswertGbs
 
 					if (Match.Success)
 					{
-						ItemName = Bib3.Glob.TrimNullable(Match.Groups[2].Value);
+						ItemName = ExtractFromOldAssembly.Bib3.Glob.TrimNullable(Match.Groups[2].Value);
 					}
 				}
 
