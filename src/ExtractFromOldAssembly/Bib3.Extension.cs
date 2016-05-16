@@ -506,7 +506,7 @@ namespace ExtractFromOldAssembly.Bib3
 		}
 
 		static public IEnumerable<T> ConcatNullable<T>(
-			this IEnumerable<T> Liste0,
+			IEnumerable<T> Liste0,
 			IEnumerable<T> Liste1)
 		{
 			if (null == Liste0)
@@ -1644,7 +1644,7 @@ namespace ExtractFromOldAssembly.Bib3
 		}
 
 		static public IEnumerable<Nullable<T>> CastToNullable<T>(
-			this IEnumerable<T> Source)
+			IEnumerable<T> Source)
 			where T : struct
 		{
 			if (null == Source)
