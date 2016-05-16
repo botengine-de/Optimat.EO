@@ -99,5 +99,31 @@ namespace ExtractFromOldAssembly.Bib3
 
 			return Obj.ToString();
 		}
+
+		static public string ScteleSicerEndung(
+			this string String, string Endung)
+		{
+			if (String == null)
+			{
+				return Endung;
+			}
+
+			for (int EndungRestLänge = 0; EndungRestLänge < Endung.Length; EndungRestLänge++)
+			{
+				var InStringZaiceIndex = String.Length - Endung.Length + EndungRestLänge;
+
+				if (InStringZaiceIndex < 0)
+				{
+					continue;
+				}
+
+				if (String.Substring(InStringZaiceIndex) == Endung.Substring(0, Endung.Length - EndungRestLänge))
+				{
+					return String + Endung.Substring(Endung.Length - EndungRestLänge);
+				}
+			}
+
+			return String + Endung;
+		}
 	}
 }
