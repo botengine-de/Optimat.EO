@@ -484,7 +484,7 @@ namespace ExtractFromOldAssembly.Bib3
 		}
 
 		static public IEnumerable<T> ConcatNullable<T>(
-			this IEnumerable<IEnumerable<T>> Liste)
+			IEnumerable<IEnumerable<T>> Liste)
 		{
 			if (null == Liste)
 			{
@@ -749,7 +749,7 @@ namespace ExtractFromOldAssembly.Bib3
 		}
 
 		static public bool NullOderLeer(
-			this IEnumerable Enumerable)
+			IEnumerable Enumerable)
 		{
 			if (null == Enumerable)
 			{
@@ -1249,7 +1249,7 @@ namespace ExtractFromOldAssembly.Bib3
 		}
 
 		static public IEnumerable<T> Yield<T>(
-			this T w)
+			T w)
 		{
 			yield return w;
 		}
@@ -1656,7 +1656,7 @@ namespace ExtractFromOldAssembly.Bib3
 		}
 
 		static public IEnumerable<T> EmptyIfNull<T>(
-			this IEnumerable<T> Source)
+			IEnumerable<T> Source)
 		{
 			if (null == Source)
 			{
