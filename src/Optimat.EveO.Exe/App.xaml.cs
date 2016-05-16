@@ -9,6 +9,7 @@ using System.Diagnostics;
 using System.Text;
 using System.Windows.Input;
 using Bib3;
+using ExtractFromOldAssembly.Bib3;
 
 namespace Optimat.EveO.Nuzer
 {

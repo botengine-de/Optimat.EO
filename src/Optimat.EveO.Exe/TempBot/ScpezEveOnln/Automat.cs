@@ -12,7 +12,7 @@ using Optimat.EveOnline.Anwendung.AuswertGbs;
 using Optimat.EveOnline.CustomBot;
 //using Optimat.EveOnline.AuswertGbs;
 using VonSensor = Optimat.EveOnline.VonSensor;
-
+using ExtractFromOldAssembly.Bib3;
 
 namespace Optimat.ScpezEveOnln
 {
@@ -206,7 +206,7 @@ namespace Optimat.ScpezEveOnln
 			var HerkunftMengeType = HerkunftAssembly.GetTypes();
 
 			var MengeZuHerkunftTypeZiilType =
-				Bib3.Extension.WhereNullable(
+				ExtractFromOldAssembly.Bib3.Extension.WhereNullable(
 				Optimat.Glob.ZuMengeTypeBerecneBaseTypeAusAssembly(HerkunftMengeType, BaseTypeAssembly),
 				(Kandidaat) => null != Kandidaat.Value)
 				.ToArrayNullable();

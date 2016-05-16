@@ -797,7 +797,7 @@ namespace Optimat.EveO.Nuzer
 
 					if (null != GbsAingaabeKonfig)
 					{
-						if (!(0 < Bib3.Extension.CountNullable(ZiilProcessWirkungPauseMengeKeyKombi)))
+						if (!(0 < ExtractFromOldAssembly.Bib3.Extension.CountNullable(ZiilProcessWirkungPauseMengeKeyKombi)))
 						{
 							ZiilProcessWirkungPauseAuswaalMengeKeyKombi.ScteleSicerKeyKombiEnthalte(ZiilProcessWirkungPauseKeyKombiSctandard);
 						}

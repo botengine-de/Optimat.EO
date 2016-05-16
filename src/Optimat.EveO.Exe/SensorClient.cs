@@ -11,6 +11,7 @@ using BotEngine.Common;
 using BotEngine.EveOnline.Interface;
 using BotEngine.EveOnline.Interface.MemoryStruct;
 using BotEngine.Interface;
+using ExtractFromOldAssembly.Bib3;
 
 namespace Optimat.EveO.Nuzer
 {
