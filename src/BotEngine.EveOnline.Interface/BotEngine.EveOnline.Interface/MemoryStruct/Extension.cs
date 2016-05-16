@@ -22,6 +22,7 @@ namespace BotEngine.EveOnline.Interface.MemoryStruct
 
 		static public T CopyByPolicyMemoryMeasurement<T>(this T ToBeCopied)
 			where T : class =>
-			Bib3.SictRefBaumKopii.ObjektKopiiErsctele(ToBeCopied, new Bib3.SictRefBaumKopiiParam(null, FromSensorToConsumerMessage.SerialisPolicyCache));
+			//	Bib3.SictRefBaumKopii.ObjektKopiiErsctele(ToBeCopied, new Bib3.SictRefBaumKopiiParam(null, FromSensorToConsumerMessage.SerialisPolicyCache));
+			Bib3.SictRefNezKopii.ObjektKopiiErsctele(ToBeCopied, new Bib3.RefBaumKopii.Param(null, FromSensorToConsumerMessage.SerialisPolicyCache), null); //	This should work as well....
 	}
 }
