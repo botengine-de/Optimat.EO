@@ -74,6 +74,12 @@
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="Sanderling">
+      <HintPath>..\..\lib\Sanderling.dll</HintPath>
+    </Reference>
+    <Reference Include="Sanderling.Interface">
+      <HintPath>..\..\lib\Sanderling.Interface.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.IO.Compression" />

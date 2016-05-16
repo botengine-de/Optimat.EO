@@ -296,7 +296,7 @@ namespace Optimat.EveOnline
 			{
 				return default(VonSensor.ScrollHeaderInfoFürItem);
 			}
-
+            
 			return new VonSensor.ScrollHeaderInfoFürItem(Header.ColumnIndex ?? -1, Header.Label, (int)Header.Region.Min0, (int)Header.Region.Max0);
 		}
 
