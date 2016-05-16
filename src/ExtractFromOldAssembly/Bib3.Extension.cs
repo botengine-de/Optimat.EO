@@ -620,7 +620,7 @@ namespace ExtractFromOldAssembly.Bib3
 		}
 
 		static public void ListeKürzeBegin<T>(
-			this Queue<T> Liste, int? ItemAnzaalScrankeMax)
+			Queue<T> Liste, int? ItemAnzaalScrankeMax)
 		{
 			if (null == Liste)
 			{
@@ -660,7 +660,7 @@ namespace ExtractFromOldAssembly.Bib3
 		/// <param name="Liste"></param>
 		/// <param name="ItemAnzaalScrankeMax"></param>
 		static public void ListeKürzeBegin<T>(
-			this IList<T> Liste, int? ItemAnzaalScrankeMax)
+			IList<T> Liste, int? ItemAnzaalScrankeMax)
 		{
 			if (null == Liste)
 			{
