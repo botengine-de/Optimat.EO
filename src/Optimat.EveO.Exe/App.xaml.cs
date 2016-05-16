@@ -177,6 +177,7 @@ namespace Optimat.EveO.Nuzer
 			LicenseClientKümereRateBescranke = new Action(LicenseClientKümere).CallRateScrankeStopwatchMili(LicenseClientKümereZaitDistanz);
 			SensorKümereRateBescranke = new Action(SensorKümere).CallRateScrankeStopwatchMili(SensorKümereZaitDistanz);
 
+			CreateWindow();
 			this.GbsSctoierelementHauptErsctele();
 
 			try
@@ -186,8 +187,6 @@ namespace Optimat.EveO.Nuzer
 			catch { }
 
 			ConstructTimer();
-
-			CreateWindow();
 		}
 
 		void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
