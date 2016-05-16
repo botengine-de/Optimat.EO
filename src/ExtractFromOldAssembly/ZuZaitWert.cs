@@ -23,25 +23,6 @@ namespace ExtractFromOldAssembly.Bib3
 	}
 	 * */
 
-	public struct WertZuZaitpunktStruct<T>
-	{
-		/*
-		 * 2015.02.25
-		 * !!!!	Vorersct verzict auf readonly da Bib3.RefNezDif diise in Struct noc nit kopiire kan.	!!!!
-		 * */
-		public T Wert;
-
-		public Int64 Zait;
-
-		public WertZuZaitpunktStruct(
-			T Wert,
-			Int64 Zait)
-		{
-			this.Wert = Wert;
-			this.Zait = Zait;
-		}
-	}
-
 	public class IntervalInt64
 	{
 		readonly public Int64 Begin;
