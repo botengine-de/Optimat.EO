@@ -219,14 +219,12 @@ namespace Optimat.EveO.Nuzer
 		{
 			set
 			{
-				this.SctoierelementMitBerict.Sctoierelement = value;
+				MainWindow.Content = value;
 			}
 
 			get
 			{
-				var SctoierelementMitBerict = this.SctoierelementMitBerict;
-
-				return SctoierelementMitBerict == null ? null : SctoierelementMitBerict.Sctoierelement as GBS.Haupt;
+				return MainWindow?.Content as GBS.Haupt;
 			}
 		}
 
@@ -696,11 +694,16 @@ namespace Optimat.EveO.Nuzer
 
 		void GbsAktualisiireTailLicenseClient()
 		{
+			/*
+			 * 16.04.15
+			 * This propagated license information to UI.
+			 * 
 			GbsSctoierelementHaupt.LicenseClientStatusInspect.Value = this.LicenseClientStatusOk;
 
 			GbsSctoierelementHaupt.LicenseClientStateIcon.Value = this.LicenseClientStatusOk;
 
 			GbsSctoierelementHaupt.LicenseClientInspect.Present(LicenseClient.Wert);
+			*/
 		}
 
 		void GbsAktualisiireTailSensorClient()
@@ -910,8 +913,13 @@ namespace Optimat.EveO.Nuzer
 				GbsSctoierelementHaupt.ButtonZiilProzesWirkungUnterbreceTooltipTextBlock.Text =
 					ButtonZiilProzesWirkungUnterbreceTooltipText;
 
+				/*
+				 * 16.04.15
+				 * This propagated info about selected eve client process to UI.
+				 * 
 				GbsSctoierelementHaupt.ZiilProcessSctaatusInspekt.Repräsentiire(
 					Optimat.GBS.Glob.MengeMeldungAkzeptanzFeelerWarnungAgregatioon(ZiilProcessMengeMeldungTyp));
+				*/
 
 				/*
 				 * 2015.03.04

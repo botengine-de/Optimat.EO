@@ -186,6 +186,8 @@ namespace Optimat.EveO.Nuzer
 			catch { }
 
 			ConstructTimer();
+
+			CreateWindow();
 		}
 
 		void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
@@ -417,6 +419,11 @@ namespace Optimat.EveO.Nuzer
 			});
 
 			Dispatcher.BeginInvoke(new Action(TimerElapsedDispatched));
+		}
+
+		void CreateWindow()
+		{
+			MainWindow = new Window();
 		}
 	}
 }
