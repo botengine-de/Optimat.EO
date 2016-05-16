@@ -174,6 +174,8 @@ namespace Optimat.EveO.Nuzer
 
 			SizungBerictVerzaicnisNaameKonstrukt();
 
+			SanderlingMemreadInitConnection();
+
 			SensorKümereRateBescranke = new Action(SensorKümere).CallRateScrankeStopwatchMili(SensorKümereZaitDistanz);
 
 			CreateWindow();
