@@ -9,6 +9,7 @@ using Optimat.ScpezEveOnln;
 using Bib3;
 using Optimat.EveOnline.AuswertGbs;
 using Optimat.EveOnline.Anwendung.AuswertGbs;
+using ExtractFromOldAssembly.Bib3;
 
 namespace Optimat.EveOnline.Anwendung
 {
@@ -499,7 +500,7 @@ namespace Optimat.EveOnline.Anwendung
 		{
 			get
 			{
-				return Bib3.Extension.LastOrDefaultNullable(ListeAusShipUIIndicationMitZait);
+				return ExtractFromOldAssembly.Bib3.Extension.LastOrDefaultNullable(ListeAusShipUIIndicationMitZait);
 			}
 		}
 

@@ -11,6 +11,7 @@ using Bib3;
 using Optimat.EveOnline.Base;
 //using Optimat.EveOnline.AuswertGbs;
 using Optimat.EveOnline.Anwendung.AuswertGbs;
+using ExtractFromOldAssembly.Bib3;
 
 namespace Optimat.EveOnline.Anwendung
 {
@@ -269,7 +270,7 @@ namespace Optimat.EveOnline.Anwendung
 			var TargetBescriftungAgregiirt =
 				string.Join(" ", TargetBescriftungOoberhalbDistanceListeZaile);
 
-			var TargetBescriftungAgregiirtOoneXml = Bib3.Glob.TrimNullable(Optimat.Glob.StringEntferneMengeXmlTag(TargetBescriftungAgregiirt));
+			var TargetBescriftungAgregiirtOoneXml = ExtractFromOldAssembly.Bib3.Glob.TrimNullable(Optimat.Glob.StringEntferneMengeXmlTag(TargetBescriftungAgregiirt));
 
 			var Match = Regex.Match(
 				TargetBescriftungAgregiirtOoneXml, TargetBescriftungIstAsteroidRegexPattern, RegexOptions.IgnoreCase);
@@ -355,7 +356,7 @@ namespace Optimat.EveOnline.Anwendung
 				var WindowOverviewScnapscusLeztePresetIdent = (null == WindowOverviewScnapscusLezte) ? null : WindowOverviewScnapscusLezte.OverviewPresetIdent;
 
 				var GbsWindowOverview =
-					Bib3.Extension.FirstOrDefaultNullable(
+					ExtractFromOldAssembly.Bib3.Extension.FirstOrDefaultNullable(
 					GbsMengeWindow,
 					(Kandidaat) => Kandidaat.GbsAstHerkunftAdrese == WindowOverviewHerkunftAdrese);
 
@@ -431,7 +432,7 @@ namespace Optimat.EveOnline.Anwendung
 							ListeAusOverviewMenuLoadPresetListeEntry.Clear();
 						}
 
-						if (1 < Bib3.Extension.CountNullable(GbsMenuKaskaadeLezteListeMenu) &&
+						if (1 < ExtractFromOldAssembly.Bib3.Extension.CountNullable(GbsMenuKaskaadeLezteListeMenu) &&
 							GbsMenuKaskaadeLezteBeginZait.HasValue)
 						{
 							var AintraagZuMenuKaskaadeBeraitsVorhande = ListeAusOverviewMenuLoadPresetListeEntry.Any((Kandidaat) => Kandidaat.Zait == GbsMenuKaskaadeLezteBeginZait);
@@ -756,7 +757,7 @@ namespace Optimat.EveOnline.Anwendung
 		void AktualisiireTailRelatioonTargetZuOverviewRow()
 		{
 			var TargetInputFookusExklusiiv =
-				Bib3.Extension.FirstOrDefaultNullable(
+				ExtractFromOldAssembly.Bib3.Extension.FirstOrDefaultNullable(
 				MengeTargetNocSictbar, (Kandidaat) => true == Kandidaat.InputFookusTransitioonLezteZiilWert);
 
 			var OverviewRowInputFookusExklusiiv = this.AusOverviewObjektInputFookusExklusiiv;

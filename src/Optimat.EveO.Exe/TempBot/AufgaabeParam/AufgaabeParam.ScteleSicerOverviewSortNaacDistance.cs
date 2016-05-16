@@ -88,7 +88,7 @@ namespace Optimat.EveOnline.Anwendung
 
 			AufgaabeParamZerleegungErgeebnis.ZerleegungVolsctändigSezeAin();
 
-			if (!(4 < Bib3.Extension.CountNullable(ScnapscusWindowOverviewAusTabListeZaileOrdnetNaacLaage)))
+			if (!(4 < ExtractFromOldAssembly.Bib3.Extension.CountNullable(ScnapscusWindowOverviewAusTabListeZaileOrdnetNaacLaage)))
 			{
 				return AufgaabeParamZerleegungErgeebnis;
 			}

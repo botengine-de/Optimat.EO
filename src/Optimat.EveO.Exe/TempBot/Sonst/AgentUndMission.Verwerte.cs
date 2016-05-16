@@ -447,7 +447,7 @@ namespace Optimat.EveOnline.Anwendung
 			if (null != LobbyAgentEntryStartConversation)
 			{
 				var WindowAgentDialoguePasendZuAgentEntry =
-					Bib3.Extension.FirstOrDefaultNullable(
+					ExtractFromOldAssembly.Bib3.Extension.FirstOrDefaultNullable(
 					MengeWindowAgentDialogue,
 					(Kandidaat) => string.Equals(Kandidaat.AgentName, LobbyAgentEntryStartConversation.AgentName, StringComparison.InvariantCultureIgnoreCase));
 

@@ -720,7 +720,7 @@ namespace ExtractFromOldAssembly.Bib3
 		}
 
 		static public void ListeKürzeBegin<T>(
-			this Queue<T> Liste,
+			Queue<T> Liste,
 			Func<T, bool> Prädikaat)
 		{
 			if (null == Liste)

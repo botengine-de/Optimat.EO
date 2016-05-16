@@ -12,6 +12,7 @@ using Optimat.EveOnline.Anwendung.AuswertGbs;
 using Optimat.EveOnline.Base;
 using VonSensor = Optimat.EveOnline.VonSensor;
 using Optimat.EveOnline.VonSensor;
+using ExtractFromOldAssembly.Bib3;
 
 namespace Optimat.EveOnline.Anwendung
 {
@@ -27,8 +28,8 @@ namespace Optimat.EveOnline.Anwendung
 			}
 
 			return
-				string.Equals(Bib3.Glob.TrimNullable(KandidaatMenuEntry.AgentMissionTitel), Bib3.Glob.TrimNullable(Mission.Titel)) &&
-				string.Equals(Bib3.Glob.TrimNullable(KandidaatMenuEntry.AgentName), Bib3.Glob.TrimNullable(Mission.AgentName));
+				string.Equals(ExtractFromOldAssembly.Bib3.Glob.TrimNullable(KandidaatMenuEntry.AgentMissionTitel), ExtractFromOldAssembly.Bib3.Glob.TrimNullable(Mission.Titel)) &&
+				string.Equals(ExtractFromOldAssembly.Bib3.Glob.TrimNullable(KandidaatMenuEntry.AgentName), ExtractFromOldAssembly.Bib3.Glob.TrimNullable(Mission.AgentName));
 		}
 
 		static	public	VonSensor.MenuEntryScpez	AusMenuEntryRepräsentiirendMission(
@@ -146,7 +147,7 @@ namespace Optimat.EveOnline.Anwendung
 					var	GbsListeMenu	= Gbs.ListeMenuNocOfeBerecne();
 
 					if (null != AusButtonListSurroundingsMenuLezteMitBeginZait.Wert	&&
-						1 < Bib3.Extension.CountNullable(GbsListeMenu))
+						1 < ExtractFromOldAssembly.Bib3.Extension.CountNullable(GbsListeMenu))
 					{
 						if (GbsListeMenu.FirstOrDefault() == AusButtonListSurroundingsMenuLezteMitBeginZait.Wert)
 						{
@@ -989,7 +990,7 @@ namespace Optimat.EveOnline.Anwendung
 								}
 
 								var AtomSctruktuur =
-									Bib3.Extension.FirstOrDefaultNullable(
+									ExtractFromOldAssembly.Bib3.Extension.FirstOrDefaultNullable(
 									RaumMengeZuBezaicnerAtom,
 									(Kandidaat) => Kandidaat.Key == AtomBezaicner)
 									.Value;
@@ -1143,7 +1144,7 @@ namespace Optimat.EveOnline.Anwendung
 								}
 								else
 								{
-									if (1 == Bib3.Extension.CountNullable(WindowInventoryAuswaalReczMengeKandidaatOverviewObjekt))
+									if (1 == ExtractFromOldAssembly.Bib3.Extension.CountNullable(WindowInventoryAuswaalReczMengeKandidaatOverviewObjekt))
 									{
 										if (null != RaumAktuelStrategikonInstanzLezte)
 										{

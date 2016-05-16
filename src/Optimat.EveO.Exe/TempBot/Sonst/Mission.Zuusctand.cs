@@ -12,6 +12,7 @@ using Optimat.EveOnline.Base;
 //using Optimat.EveOnline.AuswertGbs;
 using Optimat.EveOnline.Anwendung.AuswertGbs;
 using Optimat.EveOnline.VonSensor;
+using ExtractFromOldAssembly.Bib3;
 
 namespace Optimat.EveOnline.Anwendung
 {
@@ -242,7 +243,7 @@ namespace Optimat.EveOnline.Anwendung
 			var MengeAufgaabeZuusctand = (null == Automaat) ? null : Automaat.MengeAufgaabeZuusctand;
 
 			var MengeAufgaabeAccGateActivateErfolg =
-				Bib3.Extension.WhereNullable(
+				ExtractFromOldAssembly.Bib3.Extension.WhereNullable(
 				MengeAufgaabeZuusctand,
 				(KandidaatAufgaabe) =>
 				{
@@ -409,7 +410,7 @@ namespace Optimat.EveOnline.Anwendung
 			if (KandidaatEnde.HasValue)
 			{
 				var MengeOverviewObjektInGrid =
-					Bib3.Extension.WhereNullable(
+					ExtractFromOldAssembly.Bib3.Extension.WhereNullable(
 					MengeOverviewObjekt,
 					(KandidaatObjekt) => KandidaatObjekt.SictungLezteDistanceScrankeMinScpezOverview < 1000 * 1000);
 
@@ -747,8 +748,8 @@ namespace Optimat.EveOnline.Anwendung
 
 					ConstraintFittingSatisfied =
 						string.Equals(
-						Bib3.Glob.TrimNullable(FittingFitLoadedLezteNocAktiivMitZait.Value.Wert),
-						Bib3.Glob.TrimNullable(FittingBezaicner),
+						ExtractFromOldAssembly.Bib3.Glob.TrimNullable(FittingFitLoadedLezteNocAktiivMitZait.Value.Wert),
+						ExtractFromOldAssembly.Bib3.Glob.TrimNullable(FittingBezaicner),
 						StringComparison.InvariantCultureIgnoreCase);
 				}
 				finally
@@ -1096,7 +1097,7 @@ namespace Optimat.EveOnline.Anwendung
 				return null;
 			}
 
-			return string.Equals(Bib3.Glob.TrimNullable(TailFürNuzer.AgentName), Bib3.Glob.TrimNullable(WindowAgentName));
+			return string.Equals(ExtractFromOldAssembly.Bib3.Glob.TrimNullable(TailFürNuzer.AgentName), ExtractFromOldAssembly.Bib3.Glob.TrimNullable(WindowAgentName));
 		}
 
 		public bool? LobbyAgentEntryPasendZuMission(VonSensor.LobbyAgentEntry AgentEntry)
@@ -1570,7 +1571,7 @@ namespace Optimat.EveOnline.Anwendung
 
 			if (null != ListePfaad)
 			{
-				if (5 < Bib3.Extension.CountNullable(ListePfaad))
+				if (5 < ExtractFromOldAssembly.Bib3.Extension.CountNullable(ListePfaad))
 				{
 					return true;
 				}

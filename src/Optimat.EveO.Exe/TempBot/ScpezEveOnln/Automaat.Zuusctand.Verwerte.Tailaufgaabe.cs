@@ -13,6 +13,7 @@ using Optimat.EveOnline.Anwendung;
 using Optimat.EveOnline.VonSensor;
 using VonSensor = Optimat.EveOnline.VonSensor;
 using Optimat.EveO.Nuzer.TempBot.Sonst;
+using ExtractFromOldAssembly.Bib3;
 
 namespace Optimat.ScpezEveOnln
 {
@@ -184,15 +185,15 @@ namespace Optimat.ScpezEveOnln
 					.ToArray();
 
 			var GbsListeWindowAgentDialogue =
-				Bib3.Extension.WhereNullable(
+				ExtractFromOldAssembly.Bib3.Extension.WhereNullable(
 				GbsListeWindow,
 				(KandidaatWindow) => KandidaatWindow.AingangScnapscusTailObjektIdentLezteBerecne() is VonSensor.WindowAgentDialogue)
 				.ToArrayNullable();
 
 			var GbsListeWindowAgentDialogueFrüüheste =
-				Bib3.Extension.FirstOrDefaultNullable(GbsListeWindowAgentDialogue);
+				ExtractFromOldAssembly.Bib3.Extension.FirstOrDefaultNullable(GbsListeWindowAgentDialogue);
 
-			var GbsListeMenuFrüheste = Bib3.Extension.FirstOrDefaultNullable(GbsListeMenu);
+			var GbsListeMenuFrüheste = ExtractFromOldAssembly.Bib3.Extension.FirstOrDefaultNullable(GbsListeMenu);
 
 			var GbsListeMenuFrühesteScnapscus =
 				(null == GbsListeMenuFrüheste) ? null :
@@ -613,11 +614,11 @@ namespace Optimat.ScpezEveOnln
 								AufgaabeVersuucMinimizeZaitScranke);
 
 							var MengeAufgaabeVersuucMinimizeTailmengeMitVorsclaagWirkungTastatur =
-								Bib3.Extension.WhereNullable(
+								ExtractFromOldAssembly.Bib3.Extension.WhereNullable(
 								MengeAufgaabeVersuucMinimize,
 								(Kandidaat) => Kandidaat.EnthaltVorsclaagWirkungKey());
 
-							if (Bib3.Extension.CountNullable(MengeAufgaabeVersuucMinimizeTailmengeMitVorsclaagWirkungTastatur) < 4)
+							if (ExtractFromOldAssembly.Bib3.Extension.CountNullable(MengeAufgaabeVersuucMinimizeTailmengeMitVorsclaagWirkungTastatur) < 4)
 							{
 								VersuucPerTastatur = true;
 							}
@@ -1302,7 +1303,7 @@ namespace Optimat.ScpezEveOnln
 										break;
 									}
 
-									if (1 < Bib3.Extension.CountNullable(WindowInventoryZuAuswaalReczMengeKandidaatLinxTreeEntry))
+									if (1 < ExtractFromOldAssembly.Bib3.Extension.CountNullable(WindowInventoryZuAuswaalReczMengeKandidaatLinxTreeEntry))
 									{
 										AufgaabeParamZerleegungErgeebnis.ZerleegungVolsctändigSezeAus();
 
@@ -1393,7 +1394,7 @@ namespace Optimat.ScpezEveOnln
 					}
 
 					if (!DroneLaunchVolsctändig &&
-						0 < Bib3.Extension.CountNullable(MengeTargetNocSictbar) || (ScritNääxteJammed ?? false))
+						0 < ExtractFromOldAssembly.Bib3.Extension.CountNullable(MengeTargetNocSictbar) || (ScritNääxteJammed ?? false))
 					{
 						//	Drones Launch
 
@@ -1426,9 +1427,9 @@ namespace Optimat.ScpezEveOnln
 					}
 
 					var MengeModuleAinSol =
-						Bib3.Extension.IntersectNullable(
+						ExtractFromOldAssembly.Bib3.Extension.IntersectNullable(
 						MengeModuleUmscaltFraigaabe,
-						Bib3.Extension.WhereNullable(MengeModuleRepr, (KandidaatModule) =>
+						ExtractFromOldAssembly.Bib3.Extension.WhereNullable(MengeModuleRepr, (KandidaatModule) =>
 							(((true == KandidaatModule.IstWirkmitelDestrukt) &&
 							(true == KandidaatModule.ChargeLoaded)) ||
 							(true == KandidaatModule.IstTargetPainter)) &&
@@ -1452,7 +1453,7 @@ namespace Optimat.ScpezEveOnln
 					{
 						if (null != OverViewObjektZuBearbaite)
 						{
-							if (!(GefectListeLockedTargetScranke <= Bib3.Extension.CountNullable(MengeTargetNocSictbar)))
+							if (!(GefectListeLockedTargetScranke <= ExtractFromOldAssembly.Bib3.Extension.CountNullable(MengeTargetNocSictbar)))
 							{
 								if (true == OverViewObjektZuBearbaite.TargetingOderTargeted &&
 									7777 < OverViewObjektZuBearbaiteSictungLezteAlterMili)
@@ -1463,7 +1464,7 @@ namespace Optimat.ScpezEveOnln
 								{
 									var DistanceHinraicendGeringFürLock = true;
 
-									if (0 < Bib3.Extension.CountNullable(MengeTargetNocSictbar))
+									if (0 < ExtractFromOldAssembly.Bib3.Extension.CountNullable(MengeTargetNocSictbar))
 									{
 										if (OverViewObjektZuBearbaite.SaitSictbarkaitLezteListeScritAnzaal < 1)
 										{
@@ -1980,16 +1981,16 @@ namespace Optimat.ScpezEveOnln
 				}
 
 				var ZuMissionStartConversationMengeWindowAgentDialogue =
-					Bib3.Extension.WhereNullable(
+					ExtractFromOldAssembly.Bib3.Extension.WhereNullable(
 					ScnapscusMengeWindowAgentDialogue,
 					(KandidaatWindowAgentDialogue) => true == MissionStartConversation.WindowAgentDialoguePasendZuAgent(KandidaatWindowAgentDialogue));
 
 				var ZuMissionStartConversationWindowAgentDialogue =
-					Bib3.Extension.FirstOrDefaultNullable(ZuMissionStartConversationMengeWindowAgentDialogue);
+					ExtractFromOldAssembly.Bib3.Extension.FirstOrDefaultNullable(ZuMissionStartConversationMengeWindowAgentDialogue);
 
 				if (null == ZuMissionStartConversationWindowAgentDialogue)
 				{
-					var WindowLobbyAgentEntry = Bib3.Extension.FirstOrDefaultNullable(WindowLobbyMengeAgentEntry,
+					var WindowLobbyAgentEntry = ExtractFromOldAssembly.Bib3.Extension.FirstOrDefaultNullable(WindowLobbyMengeAgentEntry,
 						(Kandidaat) => true == MissionStartConversation.LobbyAgentEntryPasendZuMission(Kandidaat));
 
 					if (null == WindowLobbyAgentEntry)
@@ -2034,7 +2035,7 @@ namespace Optimat.ScpezEveOnln
 
 			if (null != FittingZuApliziire)
 			{
-				var FittingZuApliziireAusFittingManagementFittingZuLaade = Bib3.Glob.TrimNullable(FittingZuApliziire.AusFittingManagementFittingZuLaade);
+				var FittingZuApliziireAusFittingManagementFittingZuLaade = ExtractFromOldAssembly.Bib3.Glob.TrimNullable(FittingZuApliziire.AusFittingManagementFittingZuLaade);
 
 				if (null != FittingZuApliziireAusFittingManagementFittingZuLaade)
 				{
@@ -2089,7 +2090,7 @@ namespace Optimat.ScpezEveOnln
 						var WindowFittingMgmtMengeFittingEntry = ScnapscusWindowFittingMgmt.MengeFittingEntry;
 
 						var FittingEntry =
-							Bib3.Extension.FirstOrDefaultNullable(
+							ExtractFromOldAssembly.Bib3.Extension.FirstOrDefaultNullable(
 							WindowFittingMgmtMengeFittingEntry,
 							(Kandidaat) => string.Equals(
 								Kandidaat.Bescriftung,
@@ -2109,7 +2110,7 @@ namespace Optimat.ScpezEveOnln
 							var ListeAusGbsAbovemainMessage = ListeAusGbsAbovemainMessageMitZait();
 
 							var ListeAusGbsAbovemainMessageNocAngezaigt =
-								Bib3.Extension.WhereNullable(ListeAusGbsAbovemainMessage, (Kandidaat) => !Kandidaat.EndeZait.HasValue);
+								ExtractFromOldAssembly.Bib3.Extension.WhereNullable(ListeAusGbsAbovemainMessage, (Kandidaat) => !Kandidaat.EndeZait.HasValue);
 
 							if (ListeAusGbsAbovemainMessageNocAngezaigt.NullOderLeer())
 							{
@@ -2202,12 +2203,12 @@ namespace Optimat.ScpezEveOnln
 				var InventoryItemTransportMengeItem = InventoryItemTransport.MengeItem;
 				var InventoryItemTransportZiilObjektTreeViewEntry = InventoryItemTransport.ZiilObjektTreeViewEntry;
 
-				var InventoryItemTransportItem = Bib3.Extension.FirstOrDefaultNullable(InventoryItemTransportMengeItem);
+				var InventoryItemTransportItem = ExtractFromOldAssembly.Bib3.Extension.FirstOrDefaultNullable(InventoryItemTransportMengeItem);
 
 				if (null != InventoryItemTransportItem &&
 					null != InventoryItemTransportZiilObjektTreeViewEntry)
 				{
-					if (1 < Bib3.Extension.CountNullable(InventoryItemTransportMengeItem))
+					if (1 < ExtractFromOldAssembly.Bib3.Extension.CountNullable(InventoryItemTransportMengeItem))
 					{
 						AufgaabeParamZerleegungErgeebnis.ZerleegungVolsctändigSezeAus();
 					}
@@ -2301,14 +2302,14 @@ namespace Optimat.ScpezEveOnln
 					var GrupeDronesInLocalSpaceMengeDroneEntry = (null == WindowDroneViewGrupeDronesInLocalSpace) ? null : WindowDroneViewGrupeDronesInLocalSpace.MengeDroneEntry;
 
 					var GrupeDronesInLocalSpaceMengeDroneEntryReturnNict =
-						Bib3.Extension.WhereNullable(GrupeDronesInLocalSpaceMengeDroneEntry,
+						ExtractFromOldAssembly.Bib3.Extension.WhereNullable(GrupeDronesInLocalSpaceMengeDroneEntry,
 						(KandidaatDroneEntry) => !(DroneEntryStatusSictEnum.Returning == KandidaatDroneEntry.StatusSictEnum))
 						.ToArrayNullable();
 
 					var VersuucAnforderungReturnFälig = true;
 
 					if (Bib3.Extension.NullOderLeer(GrupeDronesInLocalSpaceMengeDroneEntryReturnNict) &&
-						DronesInLocalSpaceAnzaal <= Bib3.Extension.CountNullable(GrupeDronesInLocalSpaceMengeDroneEntry))
+						DronesInLocalSpaceAnzaal <= ExtractFromOldAssembly.Bib3.Extension.CountNullable(GrupeDronesInLocalSpaceMengeDroneEntry))
 					{
 						VersuucAnforderungReturnFälig = false;
 					}
@@ -2324,7 +2325,7 @@ namespace Optimat.ScpezEveOnln
 			if (null != AktioonInOverviewTabZuAktiviire)
 			{
 				var WindowOverviewTabZuAktiviire =
-					Bib3.Extension.FirstOrDefaultNullable(WindowOverviewMengeTab,
+					ExtractFromOldAssembly.Bib3.Extension.FirstOrDefaultNullable(WindowOverviewMengeTab,
 					(Kandidaat) =>
 					{
 						if (null == Kandidaat)

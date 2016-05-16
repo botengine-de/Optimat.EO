@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Optimat.ScpezEveOnln;
+using ExtractFromOldAssembly.Bib3;
 //using Optimat.EveOnline.AuswertGbs;
 
 
@@ -173,7 +174,7 @@ namespace Optimat.EveOnline.Anwendung
 					{
 						//	Sicersctele das AnforderungLeereCargoWindowInventoryLinxTreeEntryActiveShip expanded.
 
-						if (0 < Bib3.Extension.CountNullable(ScnapscusShipWindowInventoryLinxTreeEntryActiveShip.MengeChild))
+						if (0 < ExtractFromOldAssembly.Bib3.Extension.CountNullable(ScnapscusShipWindowInventoryLinxTreeEntryActiveShip.MengeChild))
 						{
 							//	ist beraits Expanded.
 
@@ -200,7 +201,7 @@ namespace Optimat.EveOnline.Anwendung
 						var ZuAuswaalReczLinxTreeEntry = ZuAuswaalReczMengeKandidaatLinxTreeEntry.FirstOrDefaultNullable();
 						var AuswaalReczInventory = ScnapscusShipWindowInventory.AuswaalReczInventory;
 
-						if (1 == Bib3.Extension.CountNullable(ZuAuswaalReczMengeKandidaatLinxTreeEntry) &&
+						if (1 == ExtractFromOldAssembly.Bib3.Extension.CountNullable(ZuAuswaalReczMengeKandidaatLinxTreeEntry) &&
 							ZuCargoTypTreeEntry == ZuAuswaalReczLinxTreeEntry)
 						{
 							if (null == AuswaalReczInventory)

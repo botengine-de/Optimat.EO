@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Bib3;
 using Newtonsoft.Json;
 using Optimat.ScpezEveOnln;
-
+using ExtractFromOldAssembly.Bib3;
 
 namespace Optimat.EveOnline.Anwendung
 {
@@ -159,7 +159,7 @@ namespace Optimat.EveOnline.Anwendung
 			}
 
 			if (!DroneLaunchVolsctändig &&
-				0 < Bib3.Extension.CountNullable(MengeTargetNocSictbar) || (ScritNääxteJammed ?? false))
+				0 < ExtractFromOldAssembly.Bib3.Extension.CountNullable(MengeTargetNocSictbar) || (ScritNääxteJammed ?? false))
 			{
 				//	Drones Launch
 
@@ -215,7 +215,7 @@ namespace Optimat.EveOnline.Anwendung
 			{
 				if (null != ZiilOverviewObjekt)
 				{
-					if (!(GefectListeLockedTargetScranke <= Bib3.Extension.CountNullable(MengeTargetNocSictbar)))
+					if (!(GefectListeLockedTargetScranke <= ExtractFromOldAssembly.Bib3.Extension.CountNullable(MengeTargetNocSictbar)))
 					{
 						if (true == ZiilOverviewObjekt.TargetingOderTargeted &&
 							7777 < ZiilOverviewObjektSictungLezteAlterMili)
@@ -226,7 +226,7 @@ namespace Optimat.EveOnline.Anwendung
 						{
 							var DistanceHinraicendGeringFürLock = true;
 
-							if (0 < Bib3.Extension.CountNullable(MengeTargetNocSictbar))
+							if (0 < ExtractFromOldAssembly.Bib3.Extension.CountNullable(MengeTargetNocSictbar))
 							{
 								if (ZiilOverviewObjekt.SaitSictbarkaitLezteListeScritAnzaal < 1)
 								{

@@ -8,7 +8,7 @@ using Bib3;
 using Newtonsoft.Json;
 //using Optimat.EveOnline.AuswertGbs;
 using Optimat.EveOnline.Base;
-
+using ExtractFromOldAssembly.Bib3;
 
 namespace Optimat.EveOnline.Anwendung
 {
@@ -981,7 +981,7 @@ namespace Optimat.EveOnline.Anwendung
 			Int64? BeruhigungszaitMili = null)
 		{
 			var ObjektDurcsuuceCargoMengeFilterMitPrio =
-				Bib3.Extension.SelectNullable(
+				ExtractFromOldAssembly.Bib3.Extension.SelectNullable(
 				ObjektDurcsuuceCargoMengeFilter,
 				(ObjektDurcsuuceCargoFilter) => new KeyValuePair<SictStrategikonOverviewObjektFilter, SictInRaumObjektBearbaitungPrio>(
 					ObjektDurcsuuceCargoFilter,
@@ -1090,7 +1090,7 @@ namespace Optimat.EveOnline.Anwendung
 			Int64? BeruhigungszaitMili = null)
 		{
 			var ObjektDurcsuuceCargoMengeFilterMitPrio =
-				Bib3.Extension.SelectNullable(
+				ExtractFromOldAssembly.Bib3.Extension.SelectNullable(
 				ObjektDurcsuuceCargoMengeFilter,
 				(ObjektDurcsuuceCargoFilter) => new KeyValuePair<SictStrategikonOverviewObjektFilter, SictInRaumObjektBearbaitungPrio>(
 					ObjektDurcsuuceCargoFilter, new SictInRaumObjektBearbaitungPrio()))
@@ -1112,7 +1112,7 @@ namespace Optimat.EveOnline.Anwendung
 			var Prioritäät = default(SictInRaumObjektBearbaitungPrio);
 
 			var MengeAtomZersctöreBezaicnerUndSctruktur =
-					Bib3.Extension.SelectNullable(
+					ExtractFromOldAssembly.Bib3.Extension.SelectNullable(
 					ObjektZuZersctööreMengeFilterMitPrio,
 					(ObjektFilterMitPrio,	AtomZersctööreTailIndex) =>
 					new KeyValuePair<int, SictMissionStrategikonInRaumSctruktuur>(101 + AtomZersctööreTailIndex,
@@ -1120,7 +1120,7 @@ namespace Optimat.EveOnline.Anwendung
 					.ToArrayNullable();
 
 			var MengeAtomCargoDurcsuuceBezaicnerUndSctruktur =
-					Bib3.Extension.SelectNullable(
+					ExtractFromOldAssembly.Bib3.Extension.SelectNullable(
 					ObjektDurcsuuceCargoMengeFilterMitPrio, (ObjektFilterMitPrio, AtomCargoDurcsuuceTailIndex) =>
 					new KeyValuePair<int, SictMissionStrategikonInRaumSctruktuur>(301 + AtomCargoDurcsuuceTailIndex,
 					SictMissionStrategikonInRaumSctruktuur.AtomDurcsuuceCargo(ObjektFilterMitPrio.Key, ObjektFilterMitPrio.Value, BeruhigungszaitMili)))
@@ -1129,7 +1129,7 @@ namespace Optimat.EveOnline.Anwendung
 			var AtomZersctöreKonjunktBezaicnerUndSctruktur =
 				new KeyValuePair<int, SictMissionStrategikonInRaumSctruktuur>(100,
 				new	SictMissionStrategikonInRaumSctruktuur(null,
-					Bib3.Extension.SelectNullable(
+					ExtractFromOldAssembly.Bib3.Extension.SelectNullable(
 					MengeAtomZersctöreBezaicnerUndSctruktur,
 					(AtomZersctöreBezaicnerUndSctruktur) => new	KeyValuePair<int,	bool>(AtomZersctöreBezaicnerUndSctruktur.Key, false))
 					.ToArrayNullable()));
@@ -1137,13 +1137,13 @@ namespace Optimat.EveOnline.Anwendung
 			var AtomCargoDurcsuuceKonjunktBezaicnerUndSctruktur =
 				new KeyValuePair<int, SictMissionStrategikonInRaumSctruktuur>(300,
 				new SictMissionStrategikonInRaumSctruktuur(null,
-					Bib3.Extension.SelectNullable(
+					ExtractFromOldAssembly.Bib3.Extension.SelectNullable(
 					MengeAtomCargoDurcsuuceBezaicnerUndSctruktur,
 					(AtomCargoDurcsuuceBezaicnerUndSctruktur) => new KeyValuePair<int, bool>(AtomCargoDurcsuuceBezaicnerUndSctruktur.Key, false))
 					.ToArrayNullable()));
 
 			var MengeAtomObjektExistentBezaicnerUndSctruktur =
-					Bib3.Extension.SelectNullable(
+					ExtractFromOldAssembly.Bib3.Extension.SelectNullable(
 					ObjektExistentMengeObjektFilter, (ObjektFilter, AtomTailIndex) =>
 					new KeyValuePair<int, SictMissionStrategikonInRaumSctruktuur>(401 + AtomTailIndex,
 					SictMissionStrategikonInRaumSctruktuur.AtomObjektExistent(ObjektFilter, new	SictInRaumObjektBearbaitungPrio(), BeruhigungszaitMili)))
@@ -1155,7 +1155,7 @@ namespace Optimat.EveOnline.Anwendung
 				new SictMissionStrategikonInRaumSctruktuur(
 					null,
 					null,
-					Bib3.Extension.SelectNullable(
+					ExtractFromOldAssembly.Bib3.Extension.SelectNullable(
 					MengeAtomObjektExistentBezaicnerUndSctruktur,
 					(AtomBezaicnerUndSctruktur) => new KeyValuePair<int, bool>(AtomBezaicnerUndSctruktur.Key, false))
 					.ToArrayNullable()));

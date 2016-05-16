@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Optimat.ScpezEveOnln;
 using Bib3;
 using Newtonsoft.Json;
+using ExtractFromOldAssembly.Bib3;
 
 namespace Optimat.EveOnline.Anwendung
 {

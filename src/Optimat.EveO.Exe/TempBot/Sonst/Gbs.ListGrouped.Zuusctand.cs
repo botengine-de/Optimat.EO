@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Bib3;
 using System.Text.RegularExpressions;
+using ExtractFromOldAssembly.Bib3;
 //using Optimat.EveOnline.AuswertGbs;
 
 namespace Optimat.EveOnline.Anwendung

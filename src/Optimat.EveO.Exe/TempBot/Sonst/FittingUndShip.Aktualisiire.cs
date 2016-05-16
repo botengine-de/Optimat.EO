@@ -11,6 +11,7 @@ using Optimat.EveOnline.Base;
 //using Optimat.EveOnline.AuswertGbs;
 using Optimat.EveOnline.Anwendung.AuswertGbs;
 using Optimat.EveOnline.VonSensor;
+using ExtractFromOldAssembly.Bib3;
 
 namespace Optimat.EveOnline.Anwendung
 {
@@ -931,7 +932,7 @@ namespace Optimat.EveOnline.Anwendung
 							continue;
 						}
 
-						if (!(1 == Bib3.Extension.CountNullable(WindowInventoryZuAuswaalReczMengeKandidaatLinxTreeEntry)))
+						if (!(1 == ExtractFromOldAssembly.Bib3.Extension.CountNullable(WindowInventoryZuAuswaalReczMengeKandidaatLinxTreeEntry)))
 						{
 							continue;
 						}
@@ -1071,7 +1072,7 @@ namespace Optimat.EveOnline.Anwendung
 				}
 
 				var ShipType =
-					Bib3.Glob.TrimNullable(
+					ExtractFromOldAssembly.Bib3.Glob.TrimNullable(
 					Optimat.EveOnline.Extension.AusLinxTreeEntryShipExtraktShipType(
 					ScnapscusWindowInventory.LinxTreeEntryActiveShip));
 
@@ -1678,7 +1679,7 @@ namespace Optimat.EveOnline.Anwendung
 				var	ScrankeMaxTotal	= Int64.MaxValue;
 				 * */
 
-				if (SicerhaitIndex <= Bib3.Extension.CountNullable(ZuScrankeMinAnzaalScrankeBetraag))
+				if (SicerhaitIndex <= ExtractFromOldAssembly.Bib3.Extension.CountNullable(ZuScrankeMinAnzaalScrankeBetraag))
 				{
 					/*
 					 * 2014.01.00
@@ -1696,7 +1697,7 @@ namespace Optimat.EveOnline.Anwendung
 
 						var VarianteScrankeMax = Int64.MaxValue;
 
-						if (VarianteInListeAnzaalIndex < Bib3.Extension.CountNullable(ZuScrankeMaxAnzaalScrankeBetraag))
+						if (VarianteInListeAnzaalIndex < ExtractFromOldAssembly.Bib3.Extension.CountNullable(ZuScrankeMaxAnzaalScrankeBetraag))
 						{
 							VarianteScrankeMax = ZuScrankeMaxAnzaalScrankeBetraag.ElementAt(VarianteInListeAnzaalIndex).Wert;
 						}
@@ -1721,7 +1722,7 @@ namespace Optimat.EveOnline.Anwendung
 					}
 				}
 
-				if (SicerhaitIndex <= Bib3.Extension.CountNullable(ZuScrankeMaxAnzaalScrankeBetraag))
+				if (SicerhaitIndex <= ExtractFromOldAssembly.Bib3.Extension.CountNullable(ZuScrankeMaxAnzaalScrankeBetraag))
 				{
 					var ListeVarianteScrankeMax = new SictWertMitZait<Int64>[ZuScrankeMaxAnzaalScrankeBetraag.Count() - SicerhaitIndex + 1];
 
@@ -1733,7 +1734,7 @@ namespace Optimat.EveOnline.Anwendung
 
 						var VarianteScrankeMin = Int64.MinValue;
 
-						if (VarianteInListeAnzaalIndex < Bib3.Extension.CountNullable(ZuScrankeMinAnzaalScrankeBetraag))
+						if (VarianteInListeAnzaalIndex < ExtractFromOldAssembly.Bib3.Extension.CountNullable(ZuScrankeMinAnzaalScrankeBetraag))
 						{
 							VarianteScrankeMin = ZuScrankeMinAnzaalScrankeBetraag.ElementAt(VarianteInListeAnzaalIndex).Wert;
 						}

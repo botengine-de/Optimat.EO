@@ -9,6 +9,7 @@ using Bib3;
 using Newtonsoft.Json;
 using Optimat.EveOnline;
 using Optimat.EveOnline.Anwendung;
+using ExtractFromOldAssembly.Bib3;
 
 namespace Optimat.EveO.Nuzer
 {
@@ -41,7 +42,7 @@ namespace Optimat.EveO.Nuzer
 					return null;
 				}
 
-				return Bib3.Glob.ScteleSicerEndung(MengeSizungBerictVerzaicnisPfaad, @"\") + SizungBerictVerzaicnisNaame;
+				return	ExtractFromOldAssembly.Bib3.Glob.ScteleSicerEndung(MengeSizungBerictVerzaicnisPfaad, @"\") + SizungBerictVerzaicnisNaame;
 			}
 		}
 
@@ -169,11 +170,11 @@ namespace Optimat.EveO.Nuzer
 				return;
 			}
 
-			var VonSensorikScnapscus = MemoryMeasurementLast.Wert;
+			var VonSensorikScnapscus = MemoryMeasurementLast.Value;
 
 			var ScritBerecneLezteNuzerAlterMili = Zait - AutomatScritBerecneLezteNuzerZaitMili;
 
-			if (AutomatScritBerecneLezteSensorikMesungZaitMili < MemoryMeasurementLast.EndeZait &&
+			if (AutomatScritBerecneLezteSensorikMesungZaitMili < MemoryMeasurementLast.End &&
 				((AutomatScritBerecneLezteNuzerZaitMili < BerecnungVorsclaagZaitScrankeMin && 500 <= ScritBerecneLezteNuzerAlterMili) ||
 				5000 <= ScritBerecneLezteNuzerAlterMili))
 			{
@@ -212,10 +213,10 @@ namespace Optimat.EveO.Nuzer
 
 			AutomatScritBerecneLezteNuzerZaitMili = Zait;
 
-			AutomatScritBerecneLezteSensorikMesungZaitMili = Automat?.VonSensorikMesungLezte?.MemoryMeasurement?.EndeZait ?? 0;
+			AutomatScritBerecneLezteSensorikMesungZaitMili = Automat?.VonSensorikMesungLezte?.MemoryMeasurement?.End ?? 0;
 
 			Automat.ServerZaitMili = Zait;
-			Automat.NuzerZaitMili = Automat?.VonSensorikMesungLezte?.MemoryMeasurement?.EndeZait ?? 0;
+			Automat.NuzerZaitMili = Automat?.VonSensorikMesungLezte?.MemoryMeasurement?.End ?? 0;
 
 			var VonNuzerMeldungZuusctand = Automat.VonNuzerMeldungZuusctand;
 
@@ -289,7 +290,7 @@ namespace Optimat.EveO.Nuzer
 			out Int64? AssumptionLastMeasurementTime)
 		{
 			AssumptionLastMeasurementTime = null;
-			AssumptionLastMeasurementTime = SensorClient?.MemoryMeasurementLast?.EndeZait;
+			AssumptionLastMeasurementTime = SensorClient?.MemoryMeasurementLast?.End;
 
 			var VonAutomatMeldungZuusctandLezte = this.VonOptimatMeldungZuusctandLezte;
 

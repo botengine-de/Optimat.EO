@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 using Optimat.ScpezEveOnln;
 using Bib3;
 using System.Text.RegularExpressions;
+using ExtractFromOldAssembly.Bib3;
 
 namespace Optimat.EveOnline.Anwendung
 {

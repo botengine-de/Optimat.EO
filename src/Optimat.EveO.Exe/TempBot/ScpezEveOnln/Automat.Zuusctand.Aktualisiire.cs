@@ -14,6 +14,7 @@ using Optimat.EveOnline.Base;
 using Optimat.EveOnline.Anwendung.AuswertGbs;
 using Optimat.EveOnline.VonSensor;
 using VonSensor = Optimat.EveOnline.VonSensor;
+using ExtractFromOldAssembly.Bib3;
 
 namespace Optimat.ScpezEveOnln
 {
@@ -194,7 +195,7 @@ namespace Optimat.ScpezEveOnln
 			}
 
 			var GbsMengeNaacNuzerMeldungTailmengeZuÜbertraage =
-				Bib3.Extension.WhereNullable(
+				ExtractFromOldAssembly.Bib3.Extension.WhereNullable(
 				GbsMengeNaacNuzerMeldung,
 				(Kandidaat) =>
 					//	nur Meldunge übertraage welce scon mindesctens in zwai Scrite aktiiv waare.
@@ -205,7 +206,7 @@ namespace Optimat.ScpezEveOnln
 				MengeMeldungZuEveOnline);
 
 			var MengeMissionTailNuzer =
-				Bib3.Extension.SelectNullable(
+				ExtractFromOldAssembly.Bib3.Extension.SelectNullable(
 				MengeMission,
 				(Mission) => Mission.TailFürNuzer)
 				.ToArrayNullable();
@@ -422,7 +423,7 @@ namespace Optimat.ScpezEveOnln
 
 			var GbsMengeMenuMitBeginZait = InternZuusctand.GbsListeMenuNocOfeMitBeginZaitBerecne() ?? new SictWertMitZait<VonSensor.Menu>[0];
 
-			if (Bib3.Extension.NullOderLeer(ListeMenu) && 0 < Bib3.Extension.CountNullable(VorherListeMenu))
+			if (Bib3.Extension.NullOderLeer(ListeMenu) && 0 < ExtractFromOldAssembly.Bib3.Extension.CountNullable(VorherListeMenu))
 			{
 				//	MengeVersuucMenuEntryKlikErfolg	werd zurzait waiter unte berecnet
 			}
@@ -1204,7 +1205,7 @@ namespace Optimat.ScpezEveOnln
 
 			var ListeAusShipUIIndicationMitZaitLezte =
 				(null == FittingUndShipZuusctand) ? null :
-				Bib3.Extension.LastOrDefaultNullable(FittingUndShipZuusctand.ListeAusShipUIIndicationMitZait);
+				ExtractFromOldAssembly.Bib3.Extension.LastOrDefaultNullable(FittingUndShipZuusctand.ListeAusShipUIIndicationMitZait);
 
 			if (null == MengeAufgaabeZuusctand)
 			{
@@ -1354,7 +1355,7 @@ namespace Optimat.ScpezEveOnln
 				{
 					var MengeKandidaatAsteroidBeltBescriftung =
 						ListeMenu1.ListeEntryBerecne()
-						.SelectNullable((Kandidaat) => Bib3.Glob.TrimNullable(Kandidaat.Bescriftung))
+						.SelectNullable((Kandidaat) => ExtractFromOldAssembly.Bib3.Glob.TrimNullable(Kandidaat.Bescriftung))
 						.WhereNullable((KandidaatBescriftung) => !KandidaatBescriftung.NullOderLeer())
 						.ToArrayNullable();
 
@@ -1393,7 +1394,7 @@ namespace Optimat.ScpezEveOnln
 				return;
 			}
 
-			var ScnapscusNearestName = Bib3.Glob.TrimNullable(CurrentLocationInfo.NearestName);
+			var ScnapscusNearestName = ExtractFromOldAssembly.Bib3.Glob.TrimNullable(CurrentLocationInfo.NearestName);
 
 			if (ScnapscusNearestName.NullOderLeer())
 			{
@@ -1975,7 +1976,7 @@ namespace Optimat.ScpezEveOnln
 				var MengeTargetNocSictbar = (null == OverviewUndTarget) ? null : OverviewUndTarget.MengeTargetNocSictbar;
 
 				var TargetInputFookusAktiiv =
-					Bib3.Extension.FirstOrDefaultNullable(
+					ExtractFromOldAssembly.Bib3.Extension.FirstOrDefaultNullable(
 					MengeTargetNocSictbar,
 					(KandidaatTarget) => true == KandidaatTarget.InputFookusTransitioonLezteZiilWert);
 
@@ -2121,7 +2122,7 @@ namespace Optimat.ScpezEveOnln
 
 								foreach (var WirkungAufgaabePfaadZuBlatMitGrupePrioNaame in ScritLezteWirkungMengeAufgaabePfaadZuBlatMitGrupePrioNaame)
 								{
-									var WirkungAufgaabePfaadBlat = Bib3.Extension.LastOrDefaultNullable(WirkungAufgaabePfaadZuBlatMitGrupePrioNaame.Key);
+									var WirkungAufgaabePfaadBlat = ExtractFromOldAssembly.Bib3.Extension.LastOrDefaultNullable(WirkungAufgaabePfaadZuBlatMitGrupePrioNaame.Key);
 
 									if (null == WirkungAufgaabePfaadBlat)
 									{
@@ -2406,7 +2407,7 @@ namespace Optimat.ScpezEveOnln
 											})
 											.ToArrayNullable();
 
-										var KomponenteManöver = Bib3.Extension.FirstOrDefaultNullable(MengeKomponenteManööver);
+										var KomponenteManöver = ExtractFromOldAssembly.Bib3.Extension.FirstOrDefaultNullable(MengeKomponenteManööver);
 
 										if (null != KomponenteManöver)
 										{

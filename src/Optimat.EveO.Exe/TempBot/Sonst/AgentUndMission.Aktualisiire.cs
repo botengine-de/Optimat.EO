@@ -10,6 +10,7 @@ using Bib3;
 using Optimat.EveOnline.Base;
 //using Optimat.EveOnline.AuswertGbs;
 using Optimat.EveOnline.VonSensor;
+using ExtractFromOldAssembly.Bib3;
 
 namespace Optimat.EveOnline.Anwendung
 {
@@ -47,7 +48,7 @@ namespace Optimat.EveOnline.Anwendung
 
 			var MengeWindowAgentDialogue =
 				(null == Gbs) ? null :
-				Bib3.Extension.WhereNullable(
+				ExtractFromOldAssembly.Bib3.Extension.WhereNullable(
 				Gbs.MengeWindow, (KandidaatWindow) => KandidaatWindow.AingangScnapscusTailObjektIdentLezteBerecne() is VonSensor.WindowAgentDialogue)
 				.ToArrayNullable();
 
@@ -126,14 +127,14 @@ namespace Optimat.EveOnline.Anwendung
 			Bib3.Extension.ListeKürzeBegin(ListeMissionDeclineZait, 30);
 
 			var ListeMissionDeclineAlterMili =
-				Bib3.Extension.SelectNullable(
+				ExtractFromOldAssembly.Bib3.Extension.SelectNullable(
 				ListeMissionDeclineZait,
 				(DeclineZait) => ZaitMili - DeclineZait)
 				.ToArrayNullable();
 
 			//	Fraigaabe wen in lezte Sctunde weeniger als 8 Decline durcgefüürt wurde.
 			MissionDeclineUnabhängigVonStandingLossFraigaabe =
-				!(8 < Bib3.Extension.CountNullable(
+				!(8 < ExtractFromOldAssembly.Bib3.Extension.CountNullable(
 				ListeMissionDeclineAlterMili,
 				(DeclineAlterMili) => DeclineAlterMili < 1000 * 60 * 60));
 
@@ -1686,7 +1687,7 @@ namespace Optimat.EveOnline.Anwendung
 
 				var ScnapscusCurrentLocationInfo = AusScnapscusAuswertungZuusctand.CurrentLocationInfo();
 
-				if (0 < Bib3.Extension.CountNullable(AusGbsWindowLobbyMengeAgentEntry))
+				if (0 < ExtractFromOldAssembly.Bib3.Extension.CountNullable(AusGbsWindowLobbyMengeAgentEntry))
 				{
 					if (null != ScnapscusCurrentLocationInfo &&
 						true == AusScnapscusAuswertungZuusctand.Docked() &&

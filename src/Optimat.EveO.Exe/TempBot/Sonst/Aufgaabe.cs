@@ -300,7 +300,7 @@ namespace Optimat.EveOnline.Anwendung
 		{
 			return
 				0	<
-				Bib3.Extension.CountNullable(MengeKomponenteBerecneTransitiivTailmengeAufgaabeParamPasendZuPrädikaat(
+				ExtractFromOldAssembly.Bib3.Extension.CountNullable(MengeKomponenteBerecneTransitiivTailmengeAufgaabeParamPasendZuPrädikaat(
 				(KandidaatAufgaabeParam) =>
 				{
 					if (null == KandidaatAufgaabeParam)
@@ -317,7 +317,7 @@ namespace Optimat.EveOnline.Anwendung
 
 					var VorsclaagWirkungMengeWirkungKey = NaacNuzerVorsclaagWirkung.MengeWirkungKey;
 
-					return 0 < Bib3.Extension.CountNullable(VorsclaagWirkungMengeWirkungKey);
+					return 0 < ExtractFromOldAssembly.Bib3.Extension.CountNullable(VorsclaagWirkungMengeWirkungKey);
 				}));
 		}
 
@@ -403,7 +403,7 @@ namespace Optimat.EveOnline.Anwendung
 			});
 
 			return
-				Bib3.Extension.WhereNullable(
+				ExtractFromOldAssembly.Bib3.Extension.WhereNullable(
 				MengeKomponenteTransitiivBerecne(),
 				PrädikaatKomponente);
 		}

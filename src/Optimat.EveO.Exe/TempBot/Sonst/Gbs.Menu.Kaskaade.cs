@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 using Bib3;
 //using Optimat.EveOnline.AuswertGbs;
 using Optimat.EveOnline.VonSensor;
+using ExtractFromOldAssembly.Bib3;
 
 namespace Optimat.EveOnline.Anwendung
 {
@@ -229,7 +230,7 @@ namespace Optimat.EveOnline.Anwendung
 
 			base.AingangScnapscus(
 				Zait,
-				Bib3.Extension.FirstOrDefaultNullable(ListeMenuScnapscus),
+				ExtractFromOldAssembly.Bib3.Extension.FirstOrDefaultNullable(ListeMenuScnapscus),
 				ListeMenuScnapscus);
 
 		}
@@ -241,7 +242,7 @@ namespace Optimat.EveOnline.Anwendung
 			return
 				base.AingangScnapscus(
 				Zait,
-				Bib3.Extension.FirstOrDefaultNullable(ListeMenu),
+				ExtractFromOldAssembly.Bib3.Extension.FirstOrDefaultNullable(ListeMenu),
 				ListeMenu);
 		}
 

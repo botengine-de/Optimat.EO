@@ -151,7 +151,7 @@ namespace Optimat.EveOnline.Anwendung.AuswertGbs
 					{
 						DistanceSictString = KandidaatDistanceSictString;
 						Distance = KandidaatDistance;
-						InRaumObjektNaame = Bib3.Glob.TrimNullable(InRaumObjektNaameUndDistanceMatch.Groups[1].Value);
+						InRaumObjektNaame = ExtractFromOldAssembly.Bib3.Glob.TrimNullable(InRaumObjektNaameUndDistanceMatch.Groups[1].Value);
 					}
 				}
 			}

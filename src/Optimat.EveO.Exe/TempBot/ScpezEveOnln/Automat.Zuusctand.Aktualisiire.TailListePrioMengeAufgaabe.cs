@@ -11,6 +11,7 @@ using Optimat.EveOnline.Base;
 //using Optimat.EveOnline.AuswertGbs;
 using VonSensor = Optimat.EveOnline.VonSensor;
 using Optimat.EveOnline.VonSensor;
+using ExtractFromOldAssembly.Bib3;
 
 namespace Optimat.ScpezEveOnln
 {
@@ -252,7 +253,7 @@ namespace Optimat.ScpezEveOnln
 					}
 				}
 
-				if (0 < Bib3.Extension.CountNullable(MengeOverviewPresetFeelend))
+				if (0 < ExtractFromOldAssembly.Bib3.Extension.CountNullable(MengeOverviewPresetFeelend))
 				{
 					var MengeMeldungAufgaabeParam =
 						MengeOverviewPresetFeelend
@@ -655,13 +656,13 @@ namespace Optimat.ScpezEveOnln
 								ModuleMenuLezteAlter < 900 &&
 								(ModuleMenuLezteJüngerAlsModuleButtonHint || ModuleMenuLezteJüngerAlsAmmoLoadLezte))
 							{
-								if (null == Bib3.Extension.CountNullable(ModuleMenuLezteMengeZuDamageTypePrioHööcsteMengeMenuEntry))
+								if (null == ExtractFromOldAssembly.Bib3.Extension.CountNullable(ModuleMenuLezteMengeZuDamageTypePrioHööcsteMengeMenuEntry))
 								{
 									//	kain Menu Entry zu Damage Type vorhande. Diis isc z.B. dan der Fal wen nur ain Typ von Munitioon in Cargo und diiser beraits in Module gelaade.
 									continue;
 								}
 
-								if (0 < Bib3.Extension.CountNullable(ModuleMenuLezteMengeZuDamageTypePrioHööcsteMengeMenuEntry))
+								if (0 < ExtractFromOldAssembly.Bib3.Extension.CountNullable(ModuleMenuLezteMengeZuDamageTypePrioHööcsteMengeMenuEntry))
 								{
 									if (!(ModuleMenuLezteMengeZuDamageTypePrioHööcsteMengeMenuEntry.Key < BisherModuleDamageTypeRangPrio))
 									{
@@ -792,7 +793,7 @@ namespace Optimat.ScpezEveOnln
 				foreach (var ScnapscusTargetUndPrio in InRaumAktioonUndGefectMengeTargetZuUnLockeMitPrio)
 				{
 					var TargetZuusctand =
-						Bib3.Extension.FirstOrDefaultNullable(
+						ExtractFromOldAssembly.Bib3.Extension.FirstOrDefaultNullable(
 						MengeTargetNocSictbar, (KandidaatTarget) => KandidaatTarget.PasendZuBisherige(ScnapscusTargetUndPrio.Key));
 
 					if (null == TargetZuusctand)

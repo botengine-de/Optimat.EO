@@ -56,7 +56,7 @@ namespace Optimat.EveOnline.Anwendung
 			string Instanz0OreTypSictString,
 			string Instanz1OreTypSictString)
 		{
-			return string.Equals(Bib3.Glob.TrimNullable(Instanz0OreTypSictString), Bib3.Glob.TrimNullable(Instanz1OreTypSictString), StringComparison.InvariantCultureIgnoreCase);
+			return string.Equals(ExtractFromOldAssembly.Bib3.Glob.TrimNullable(Instanz0OreTypSictString), ExtractFromOldAssembly.Bib3.Glob.TrimNullable(Instanz1OreTypSictString), StringComparison.InvariantCultureIgnoreCase);
 		}
 
 		public ZuOreTypAusSurveyScanInfo()

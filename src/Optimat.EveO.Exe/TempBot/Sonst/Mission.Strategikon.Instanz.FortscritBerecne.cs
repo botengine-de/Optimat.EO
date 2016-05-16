@@ -182,7 +182,7 @@ namespace Optimat.EveOnline.Anwendung
 					 * 
 					var InStrategikonAtomSctruktuur = Optimat.Glob.TAD(StrategikonRaumMengeZuBezaicnerAtom, InStrategikonAtomBezaicner);
 					 * */
-					var InStrategikonAtomSctruktuur = Bib3.Extension.FirstOrDefaultNullable(
+					var InStrategikonAtomSctruktuur = ExtractFromOldAssembly.Bib3.Extension.FirstOrDefaultNullable(
 						StrategikonRaumMengeZuBezaicnerAtom,
 						(Kandidaat) => Kandidaat.Key == InStrategikonAtomBezaicner).Value;
 

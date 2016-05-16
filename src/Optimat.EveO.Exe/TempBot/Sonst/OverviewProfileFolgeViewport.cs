@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Bib3;
 using Newtonsoft.Json;
 using Optimat.EveOnline.AuswertGbs;
-
+using ExtractFromOldAssembly.Bib3;
 
 namespace Optimat.EveOnline.Anwendung
 {
@@ -138,16 +138,16 @@ namespace Optimat.EveOnline.Anwendung
 			}
 
 			var WindowOverviewNoiAusTabListeZaileFiltert =
-				Bib3.Extension.WhereNullable(
+				ExtractFromOldAssembly.Bib3.Extension.WhereNullable(
 				WindowOverviewNoiAusTabListeZaile,
 				(Kandidaat) => Kandidaat.DistanceMax.HasValue)
 				.ToArrayNullable();
 
 			var WindowOverviewNoiAusTabListeZaileFiltertFrüheste =
-				Bib3.Extension.FirstOrDefaultNullable(WindowOverviewNoiAusTabListeZaileFiltert);
+				ExtractFromOldAssembly.Bib3.Extension.FirstOrDefaultNullable(WindowOverviewNoiAusTabListeZaileFiltert);
 
 			var EndeObjekt =
-				Bib3.Extension.LastOrDefaultNullable(
+				ExtractFromOldAssembly.Bib3.Extension.LastOrDefaultNullable(
 				WindowOverviewNoiAusTabListeZaileFiltert,
 				(Zaile) => Zaile.DistanceMin.HasValue);
 

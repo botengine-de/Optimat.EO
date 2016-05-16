@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Bib3;
 using Newtonsoft.Json;
+using ExtractFromOldAssembly.Bib3;
 
 namespace Optimat.EveOnline.Anwendung.Berict.Auswert
 {

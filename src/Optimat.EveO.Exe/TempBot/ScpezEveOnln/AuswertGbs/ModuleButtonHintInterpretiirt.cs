@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Bib3;
 using Newtonsoft.Json;
 using Optimat.EveOnline.VonSensor;
+using ExtractFromOldAssembly.Bib3;
 
 namespace Optimat.EveOnline.AuswertGbs
 {
@@ -395,7 +396,7 @@ namespace Optimat.EveOnline.AuswertGbs
 				return null;
 			}
 
-			var DamageBetraag = Bib3.Glob.TryParseInt(DamageBetraagSictString);
+			var DamageBetraag = ExtractFromOldAssembly.Bib3.Glob.TryParseInt(DamageBetraagSictString);
 			var DamageType = MengeDamageTypeZuordnung[0].Key;
 
 			if (!DamageBetraag.HasValue)
@@ -472,7 +473,7 @@ namespace Optimat.EveOnline.AuswertGbs
 
 						if (BescriftungMultiMatch.Success)
 						{
-							ModuleAnzaal = Bib3.Glob.TryParseInt(BescriftungMultiMatch.Groups[1].Value);
+							ModuleAnzaal = ExtractFromOldAssembly.Bib3.Glob.TryParseInt(BescriftungMultiMatch.Groups[1].Value);
 						}
 					}
 

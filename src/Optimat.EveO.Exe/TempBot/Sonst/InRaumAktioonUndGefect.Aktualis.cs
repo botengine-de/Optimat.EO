@@ -10,6 +10,7 @@ using Bib3;
 using Optimat.EveOnline.Base;
 //using Optimat.EveOnline.AuswertGbs;
 using Optimat.EveOnline.VonSensor;
+using ExtractFromOldAssembly.Bib3;
 
 namespace Optimat.EveOnline.Anwendung
 {
@@ -1345,7 +1346,7 @@ Probleem:Automaat Tail Msn wartet auf in RaumAktioonUndGefect.GefectBaitritFraig
 				GefectModusAngraifendeObjekteAufDistanzHalte =
 					!(true == GefectUnabhängigVonBeweegungFraigaabe) &&
 					!(false == InRaumAktioonFortsaz) &&
-					0 < Bib3.Extension.CountNullable(MengeInRaumObjektAttackingMe);
+					0 < ExtractFromOldAssembly.Bib3.Extension.CountNullable(MengeInRaumObjektAttackingMe);
 
 				if (null != MengeInRaumObjektAttackingMe &&
 					!(false == InRaumAktioonFortsaz))
@@ -2148,7 +2149,7 @@ Probleem:Automaat Tail Msn wartet auf in RaumAktioonUndGefect.GefectBaitritFraig
 					AnforderungDroneReturn = true;
 				}
 
-				if (0 < Bib3.Extension.CountNullable(PrioHööcsteGrupeMengeAufgaabeObjektActivate))
+				if (0 < ExtractFromOldAssembly.Bib3.Extension.CountNullable(PrioHööcsteGrupeMengeAufgaabeObjektActivate))
 				{
 					//	Es gebt mindesctens än Objekt welces aktiviirt were sol.
 					//	Aktiviirung des Objekt könte zum verlase des Raum füüre (Acceleration Gate)

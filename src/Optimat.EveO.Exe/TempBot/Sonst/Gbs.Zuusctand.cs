@@ -8,6 +8,7 @@ using Newtonsoft.Json;
 using Optimat.EveOnline.Anwendung;
 using Optimat.ScpezEveOnln;
 using Bib3;
+using ExtractFromOldAssembly.Bib3;
 //using Optimat.EveOnline.AuswertGbs;
 
 namespace Optimat.EveOnline.Anwendung
@@ -68,7 +69,7 @@ namespace Optimat.EveOnline.Anwendung
 		{
 			get
 			{
-				return Bib3.Extension.LastOrDefaultNullable(ListeMenuKaskaade);
+				return ExtractFromOldAssembly.Bib3.Extension.LastOrDefaultNullable(ListeMenuKaskaade);
 			}
 		}
 
@@ -288,8 +289,8 @@ namespace Optimat.EveOnline.Anwendung
 			var MinuteAnzaalSictString = Match.Groups[1].Value;
 			var SekundeAnzaalSictString = Match.Groups[1].Value;
 
-			var MinuteAnzaal = Bib3.Glob.TryParseInt(MinuteAnzaalSictString);
-			var SekundeAnzaal = Bib3.Glob.TryParseInt(SekundeAnzaalSictString);
+			var MinuteAnzaal = ExtractFromOldAssembly.Bib3.Glob.TryParseInt(MinuteAnzaalSictString);
+			var SekundeAnzaal = ExtractFromOldAssembly.Bib3.Glob.TryParseInt(SekundeAnzaalSictString);
 
 			return MinuteAnzaal * 60 + SekundeAnzaal;
 		}

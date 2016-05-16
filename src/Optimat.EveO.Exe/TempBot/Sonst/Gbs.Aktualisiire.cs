@@ -12,6 +12,7 @@ using Optimat.EveOnline.Base;
 //using Optimat.EveOnline.AuswertGbs;
 using Optimat.EveOnline.VonSensor;
 using Optimat.EveOnline.TempAuswertGbs;
+using ExtractFromOldAssembly.Bib3;
 
 namespace Optimat.EveOnline.Anwendung
 {
@@ -174,7 +175,7 @@ namespace Optimat.EveOnline.Anwendung
 				AusScnapscusAuswertungZuusctand.MengeWindowBerecne();
 
 			var ScnapscusMengeWindowSictbar =
-				Bib3.Extension.WhereNullable(ScnapscusMengeWindow, (Kandidaat) => null == Kandidaat ? false : (true == Kandidaat.Sictbar))
+				ExtractFromOldAssembly.Bib3.Extension.WhereNullable(ScnapscusMengeWindow, (Kandidaat) => null == Kandidaat ? false : (true == Kandidaat.Sictbar))
 				.ToArrayNullable();
 
 			var ScnapscusMengeMenu = (null == AusScnapscusAuswertungZuusctand) ? null : AusScnapscusAuswertungZuusctand.MengeMenu;
@@ -308,7 +309,7 @@ namespace Optimat.EveOnline.Anwendung
 					}
 
 					var AbovemainMessageMitZait =
-						Bib3.Extension.FirstOrDefaultNullable(
+						ExtractFromOldAssembly.Bib3.Extension.FirstOrDefaultNullable(
 						ListeAusGbsAbovemainMessageMitZait,
 						(Kandidaat) => Kandidaat.BeginZait == AbovemainMessageAuswertMitZait.BeginZait);
 
@@ -351,13 +352,13 @@ namespace Optimat.EveOnline.Anwendung
 					.ToArray();
 
 				var ScnapscusListeMenuFrüüheste =
-					Bib3.Extension.FirstOrDefaultNullable(ScnapscusListeMenu);
+					ExtractFromOldAssembly.Bib3.Extension.FirstOrDefaultNullable(ScnapscusListeMenu);
 
 				var ScnapscusListeMenuFrüühesteListeEntry =
 					(null == ScnapscusListeMenuFrüüheste) ? null :
 					ScnapscusListeMenuFrüüheste.ListeEntry;
 
-				var MenuKaskaadeLezte = Bib3.Extension.LastOrDefaultNullable(ListeMenuKaskaade);
+				var MenuKaskaadeLezte = ExtractFromOldAssembly.Bib3.Extension.LastOrDefaultNullable(ListeMenuKaskaade);
 
 				if (null == ScnapscusListeMenuFrüühesteListeEntry)
 				{
@@ -613,7 +614,7 @@ namespace Optimat.EveOnline.Anwendung
 					MenuKaskaadeLezte.ListeMenu;
 
 				var AusButtonListSurroundingsMenu =
-					Bib3.Extension.FirstOrDefaultNullable(
+					ExtractFromOldAssembly.Bib3.Extension.FirstOrDefaultNullable(
 					ListeMenu, ButtonListSurroundingsMenuPrädikaatTailSctaatisc);
 
 				if (null != AusButtonListSurroundingsMenu)

@@ -18,7 +18,7 @@ using Newtonsoft.Json;
 using Optimat.EveOnline;
 using Optimat.EveOnline.Base;
 using Optimat.GBS;
-
+using ExtractFromOldAssembly.Bib3;
 
 namespace Optimat.EveO.Nuzer.GBS
 {

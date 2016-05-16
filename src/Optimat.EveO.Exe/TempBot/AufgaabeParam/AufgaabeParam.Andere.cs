@@ -1119,7 +1119,7 @@ namespace Optimat.EveOnline.Anwendung
 					{
 						//	Sicersctele das AnforderungLeereCargoWindowInventoryLinxTreeEntryActiveShip expanded.
 
-						if (0 < Bib3.Extension.CountNullable(ScnapscusShipWindowInventoryLinxTreeEntryActiveShip.MengeChild))
+						if (0 < ExtractFromOldAssembly.Bib3.Extension.CountNullable(ScnapscusShipWindowInventoryLinxTreeEntryActiveShip.MengeChild))
 						{
 							//	ist beraits Expanded.
 						}
@@ -1139,7 +1139,7 @@ namespace Optimat.EveOnline.Anwendung
 					}
 					else
 					{
-						if (1 == Bib3.Extension.CountNullable(ZuAuswaalReczMengeKandidaatLinxTreeEntry))
+						if (1 == ExtractFromOldAssembly.Bib3.Extension.CountNullable(ZuAuswaalReczMengeKandidaatLinxTreeEntry))
 						{
 							var ZuAuswaalReczLinxTreeEntry = ZuAuswaalReczMengeKandidaatLinxTreeEntry.FirstOrDefault();
 							var AuswaalReczInventory = ScnapscusShipWindowInventory.AuswaalReczInventory;

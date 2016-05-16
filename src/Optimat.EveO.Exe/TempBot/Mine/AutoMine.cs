@@ -8,6 +8,7 @@ using Bib3;
 using Optimat.EveOnline.Base;
 using Optimat.ScpezEveOnln;
 using Newtonsoft.Json;
+using ExtractFromOldAssembly.Bib3;
 //using Optimat.EveOnline.AuswertGbs;
 
 namespace Optimat.EveOnline.Anwendung
@@ -719,7 +720,7 @@ namespace Optimat.EveOnline.Anwendung
 					{
 						if (string.Equals(
 							OverviewDefaultMiningIdent,
-							Bib3.Glob.TrimNullable(OverviewPresetFolgeViewportFertigLezte.OverviewPresetName) ?? "",
+							ExtractFromOldAssembly.Bib3.Glob.TrimNullable(OverviewPresetFolgeViewportFertigLezte.OverviewPresetName) ?? "",
 							StringComparison.InvariantCultureIgnoreCase))
 						{
 							OverviewDefaultMiningFolgeViewportFertigLezte = OverviewPresetFolgeViewportFertigLezte;
