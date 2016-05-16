@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="Bib3.Extension.cs" />
     <Compile Include="Bib3.Glob.cs" />
+    <Compile Include="Bridge.cs" />
     <Compile Include="Geometrik.cs" />
     <Compile Include="Ortogoon.Int.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

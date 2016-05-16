@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ExtractFromOldAssembly;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,6 +18,6 @@ namespace Optimat.EveOnline.CustomBot
 
 		static public WindowMesung AlsWindowMesung(this BotEngine.Interface.WindowMeasurement WindowMeasurement) =>
 			null == WindowMeasurement ? null :
-			new WindowMesung(WindowMeasurement.ClientRectRaster, WindowMeasurement.ClientRect, WindowMeasurement.WindowTitle);
+			new WindowMesung(WindowMeasurement.ClientRectRaster, WindowMeasurement.ClientRect.AsOrtogoonInt(), WindowMeasurement.WindowTitle);
 	}
 }
