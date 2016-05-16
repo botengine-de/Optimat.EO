@@ -10,6 +10,7 @@ using System.Windows.Media;
 using Optimat.EveOnline.GBS;
 //using Optimat.EveOnline.Berict.Auswert;
 using Bib3;
+using ExtractFromOldAssembly.Bib3;
 
 namespace Optimat.EveO.Nuzer
 {
@@ -148,7 +149,7 @@ namespace Optimat.EveO.Nuzer
 
 				var VonServerMeldungAutomaatZuusctandLezteMengeMeldungZuEveOnline =
 					(null == VonOptimatMeldungZuusctandLezte) ? null :
-					Bib3.Extension.WhereNullable(
+					ExtractFromOldAssembly.Bib3.Extension.WhereNullable(
 					VonOptimatMeldungZuusctandLezte.MengeMeldungZuEveOnline,
 					(Kandidaat) => null	!= Kandidaat)
 					.ToArrayNullable();
@@ -181,7 +182,7 @@ namespace Optimat.EveO.Nuzer
 					foreach (var Meldung in AnwendungSizungMengeNaacNuzerMeldungZuEveOnline)
 					{
 						Meldung.VonServerNocExistent =
-							null != Bib3.Extension.FirstOrDefaultNullable(VonServerMeldungAutomaatZuusctandLezteMengeMeldungZuEveOnline,
+							null != ExtractFromOldAssembly.Bib3.Extension.FirstOrDefaultNullable(VonServerMeldungAutomaatZuusctandLezteMengeMeldungZuEveOnline,
 							(Kandidaat) => SictNaacNuzerMeldungZuEveOnlineSictNuzer.GlaicwertigPerIdent(Meldung, Kandidaat));
 					}
 
@@ -232,6 +233,10 @@ namespace Optimat.EveO.Nuzer
 						ZuEveOnlineGbsUndKonfigMengeMeldungTyp})
 					.ToArrayNullable();
 
+				/*
+				 * 16.04.15
+				 * Deactivate UI.
+				 * 
 				GbsSctoierelementHaupt.EveOnlineSctaatusInspekt.Repräsentiire(
 					Optimat.GBS.Glob.MengeMeldungAkzeptanzFeelerWarnungAgregatioon(ZuEveOnlineMengeMeldungTyp));
 
@@ -240,6 +245,7 @@ namespace Optimat.EveO.Nuzer
 
 				GbsSctoierelementHaupt.EveOnlineSimuSctaatusInspekt.Repräsentiire(
 					Optimat.GBS.Glob.MengeMeldungAkzeptanzFeelerWarnungAgregatioon(ZuEveOnlineSimuMengeMeldungTyp));
+				*/
 
 				GbsSctoierelementHaupt.EveOnlineMengeNaacNuzerMeldung.Repräsentiire(
 					AnwendungSizungMengeNaacNuzerMeldungZuEveOnline,
