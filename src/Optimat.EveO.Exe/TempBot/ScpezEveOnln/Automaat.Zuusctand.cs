@@ -748,11 +748,18 @@ namespace Optimat.ScpezEveOnln
 
 		override	public SictAutomatZuusctand KopiiBerecne()
 		{
+			/*
+			 * 16.04.15
+			 * 
 			var Param = new SictRefBaumKopiiParam(new SictRefBaumKopiiProfile(), SictAutomat.ZuusctandSictDiferenzSictParam.TypeBehandlungRictliinieMitScatescpaicer);
 
 			var Kopii = SictRefNezKopii.ObjektKopiiErsctele(this, Param, null);
 
 			return Kopii;
+			*/
+
+			//	This should do as well....
+			return Bib3.RefNezDiferenz.Extension.ObjektKopiiKonstrukt(this, SictAutomat.ZuusctandSictDiferenzSictParam.TypeBehandlungRictliinieMitScatescpaicer);
 		}
 
 		public	void	VonNuzerListeBerictWindowClientRasterFüügeAin(IEnumerable<SictWertMitZait<SictDataiIdentUndSuuceHinwais>> VonNuzerBerictMengeWindowClientRaster)
