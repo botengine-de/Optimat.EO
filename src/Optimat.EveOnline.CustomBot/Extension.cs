@@ -8,6 +8,7 @@ namespace Optimat.EveOnline.CustomBot
 {
 	static public class Extension
 	{
+		/*
 		static public ToCustomBotSnapshot AlsToCustomBotSnapshot(this BotEngine.EveOnline.Interface.FromSensorToConsumerMessage Message) =>
 			null == Message ? null :
 			new ToCustomBotSnapshot(
@@ -18,7 +19,7 @@ namespace Optimat.EveOnline.CustomBot
 		static public WindowMesung AlsWindowMesung(this BotEngine.Interface.WindowMeasurement WindowMeasurement) =>
 			null == WindowMeasurement ? null :
 			new WindowMesung(WindowMeasurement.ClientRectRaster, WindowMeasurement.ClientRect, WindowMeasurement.WindowTitle);
-
+		*/
 
 	}
 }

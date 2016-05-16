@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Bib3;
 using Optimat.EveOnline.CustomBot;
+using ExtractFromOldAssembly.Bib3;
 
 namespace Optimat.EveOnline.UI.CustomBot
 {

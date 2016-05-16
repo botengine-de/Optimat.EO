@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Bib3;
 using BotEngine.Common;
 using BotEngine;
+using ExtractFromOldAssembly.Bib3;
 
 namespace Optimat.EveOnline.CustomBot
 {
