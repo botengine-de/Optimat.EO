@@ -6,6 +6,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Bib3;
+using ExtractFromOldAssembly.Bib3;
 using Optimat.EveOnline.VonSensor;
 
 namespace Optimat.EveOnline.TempAuswertGbs
@@ -577,7 +578,7 @@ namespace Optimat.EveOnline.TempAuswertGbs
 			}
 
 			var Location = new SictAusGbsLocationInfo(
-				Bib3.Glob.TrimNullable(MissionLocationName),
+                MissionLocationName.TrimNullable(),
 				SolarSystemName);
 
 			return Location;
