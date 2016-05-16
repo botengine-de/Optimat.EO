@@ -5,6 +5,19 @@ namespace ExtractFromOldAssembly.Bib3
 {
 	static public class Glob
 	{
+		static public System.Globalization.NumberFormatInfo NumberFormat
+		{
+			get
+			{
+				var NumberFormat = new System.Globalization.NumberFormatInfo();
+				NumberFormat.NegativeSign = "-";
+				NumberFormat.PositiveSign = "+";
+				NumberFormat.NumberDecimalSeparator = ".";
+
+				return NumberFormat;
+			}
+		}
+
 		static public string TrimNullable(
 			this string String)
 		{
@@ -46,6 +59,28 @@ namespace ExtractFromOldAssembly.Bib3
 			Int64 Ergeebnis;
 
 			if (!Int64.TryParse(ZuParsende, NumberStyle, NumberFormat, out Ergeebnis))
+			{
+				return null;
+			}
+
+			return Ergeebnis;
+		}
+
+		static public double? TryParseDoubleNulbar(
+			this string ZuParsende,
+			NumberStyles NumberStyle = NumberStyles.Float)
+		{
+			return TryParseDoubleNulbar(ZuParsende, Bib3.Glob.NumberFormat, NumberStyle);
+		}
+
+		static public double? TryParseDoubleNulbar(
+			this string ZuParsende,
+			NumberFormatInfo NumberFormat,
+			NumberStyles NumberStyle = NumberStyles.Float)
+		{
+			double Ergeebnis;
+
+			if (!double.TryParse(ZuParsende, NumberStyle, NumberFormat, out Ergeebnis))
 			{
 				return null;
 			}
