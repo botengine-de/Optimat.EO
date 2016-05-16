@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using MemoryStruct = Sanderling.Interface.MemoryStruct;
+using MemoryStruct = BotEngine.EveOnline.Interface.MemoryStruct;
 
 namespace Optimat.EveOnline
 {
@@ -290,7 +290,7 @@ namespace Optimat.EveOnline
 			return null;
 		}
 
-		static public VonSensor.ScrollHeaderInfoFürItem AlsScrollHeader(this MemoryStruct.ColumnHeader Header)
+		static public VonSensor.ScrollHeaderInfoFürItem AlsScrollHeader(this MemoryStruct.ListColumnHeader Header)
 		{
 			if (null == Header)
 			{
