@@ -119,6 +119,9 @@ public class SensorAppDomainSetup
 		}
         */
 
+		/*
+		* 16.04.15
+		* 
 		public void FromServer(BotEngine.Interface.FromServerToInterfaceAppManagerMessage Message)
 		{
 			SensorAppManager.FromServer(Message);
@@ -128,6 +131,7 @@ public class SensorAppDomainSetup
 		{
 			return SensorAppManager.ToServer();
 		}
+		*/
 
 		public FromSensorToConsumerMessage SensorExchange(
 			FromConsumerToSensorMessage ToSensorMessage)

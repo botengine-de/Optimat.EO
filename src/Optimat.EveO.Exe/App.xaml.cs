@@ -174,7 +174,6 @@ namespace Optimat.EveO.Nuzer
 
 			SizungBerictVerzaicnisNaameKonstrukt();
 
-			LicenseClientKümereRateBescranke = new Action(LicenseClientKümere).CallRateScrankeStopwatchMili(LicenseClientKümereZaitDistanz);
 			SensorKümereRateBescranke = new Action(SensorKümere).CallRateScrankeStopwatchMili(SensorKümereZaitDistanz);
 
 			CreateWindow();
@@ -367,7 +366,12 @@ namespace Optimat.EveO.Nuzer
 			{
 				var CustomBotServer = this.CustomBotServer;
 
+				/*
+				* 16.04.15
+				* This is probably the place to call licensensing communication dispatch.
+				* 
 				LicenseClientKümereRateBescranke.Call();
+				*/
 
 				SensorKümereRateBescranke.Call();
 
