@@ -167,7 +167,7 @@ namespace Optimat.EveO.Nuzer
 		}
 		 * */
 
-		override protected void NaacGbsErscteltVorTimerErsctelt()
+		protected void NaacGbsErscteltVorTimerErsctelt()
 		{
 			AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
 			AppDomain.MonitoringIsEnabled = true;
@@ -423,6 +423,11 @@ namespace Optimat.EveO.Nuzer
 		void CreateWindow()
 		{
 			MainWindow = new Window();
+		}
+
+		private void Application_Startup(object sender, StartupEventArgs e)
+		{
+			NaacGbsErscteltVorTimerErsctelt();
 		}
 	}
 }
