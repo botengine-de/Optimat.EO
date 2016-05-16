@@ -160,7 +160,7 @@ namespace Optimat.EveO.Nuzer
 		void AktualisiireAutomat()
 		{
 			var Zait = Bib3.Glob.StopwatchZaitMiliSictInt();
-
+			
 			var MemoryMeasurementLast = SensorClient.MemoryMeasurementLast;
 
 			Automat.VonSensorikMesungLezte = SensorSnapshotLastAgr.OoneMesungWindow();

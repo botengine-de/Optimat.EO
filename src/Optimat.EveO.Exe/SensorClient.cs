@@ -101,7 +101,7 @@ public class SensorAppDomainSetup
 
 		public FromProcessMeasurement<MemoryMeasurement> MemoryMeasurementLast
 		{
-			private set;
+			set;
 			get;
 		}
 
@@ -136,6 +136,8 @@ public class SensorAppDomainSetup
 		public FromSensorToConsumerMessage SensorExchange(
 			FromConsumerToSensorMessage ToSensorMessage)
 		{
+			return null;    //	16.04.16
+
 			FromSensorToConsumerMessage SensorMessageLast = this.SensorMessageLast;
 
 			try

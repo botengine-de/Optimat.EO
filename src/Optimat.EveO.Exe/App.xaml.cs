@@ -373,6 +373,8 @@ namespace Optimat.EveO.Nuzer
 				LicenseClientKümereRateBescranke.Call();
 				*/
 
+				GetMeasurement();
+
 				SensorKümereRateBescranke.Call();
 
 				if (null != CustomBotServer)

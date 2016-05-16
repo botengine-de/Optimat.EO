@@ -147,6 +147,7 @@
     <Compile Include="App.Gbs.cs" />
     <Compile Include="App.Gbs.EveOnln.cs" />
     <Compile Include="App.LicenceClient.cs" />
+    <Compile Include="App.NewInterface.cs" />
     <Compile Include="App.Sensor.cs" />
     <Compile Include="App.Wirkung.cs" />
     <Compile Include="App.xaml.cs">
@@ -351,6 +352,10 @@
     <ProjectReference Include="..\ExtractFromOldAssembly\ExtractFromOldAssembly.csproj">
       <Project>{8cf69e77-7197-4812-af69-f1e206d82fa9}</Project>
       <Name>ExtractFromOldAssembly</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MapToOldInterface\MapToOldInterface.csproj">
+      <Project>{dc546845-193e-439b-8d3a-abd585def67b}</Project>
+      <Name>MapToOldInterface</Name>
     </ProjectReference>
     <ProjectReference Include="..\Optimat.EveOnline.Base\Optimat.EveOnline.Base.csproj">
       <Project>{38e5633b-1aa6-4d03-90b6-9b672a17f32a}</Project>
