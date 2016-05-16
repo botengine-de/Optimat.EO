@@ -31,15 +31,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Bib3">
-      <HintPath>..\..\..\..\..\..\Bib3.FCL\Impl\Bib3.FCL\Bib3\bin\Debug\Bib3.dll</HintPath>
+    <Reference Include="Bib3, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Bib3.dll</HintPath>
     </Reference>
     <Reference Include="Optimat, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Optimat\Impl\Optimat\Optimat\bin\Debug\Optimat.dll</HintPath>
-    </Reference>
-    <Reference Include="Optimat.EveOnline.Base">
-      <HintPath>..\..\..\..\..\Impl\Assembly\Optimat.EveOnline\Optimat.EveOnline.Base\bin\Debug\Optimat.EveOnline.Base.dll</HintPath>
+      <HintPath>..\..\lib\Optimat.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -52,6 +50,12 @@
   <ItemGroup>
     <Compile Include="Extension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Optimat.EveOnline.Base\Optimat.EveOnline.Base.csproj">
+      <Project>{38e5633b-1aa6-4d03-90b6-9b672a17f32a}</Project>
+      <Name>Optimat.EveOnline.Base</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
