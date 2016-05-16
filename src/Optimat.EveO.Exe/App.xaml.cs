@@ -426,7 +426,11 @@ namespace Optimat.EveO.Nuzer
 
 		void CreateWindow()
 		{
-			MainWindow = new Window();
+			var window = new Window();
+
+			window.Visibility = Visibility.Visible;
+
+			MainWindow = window;
 		}
 
 		private void Application_Startup(object sender, StartupEventArgs e)
