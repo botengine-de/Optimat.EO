@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sanderling.Parse;
+using System;
 
 namespace MapToOldInterface
 {
@@ -7,6 +8,8 @@ namespace MapToOldInterface
 		static public BotEngine.EveOnline.Interface.MemoryStruct.MemoryMeasurement AsOld(
 			this Sanderling.Interface.MemoryStruct.IMemoryMeasurement memoryMeasurement)
 		{
+			var parsed = memoryMeasurement?.Parse();
+
 			throw new NotImplementedException();
 		}
 	}
