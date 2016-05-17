@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Optimat.EveO.Exe", "Optimat.EveO.Exe\Optimat.EveO.Exe.csproj", "{D95AA226-5FD2-44B1-9DE3-7E326E34CB18}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Optimat.EveO.Exe", "Optimat.EveO.Ex\Optimat.EveO.Exe.csproj", "{D95AA226-5FD2-44B1-9DE3-7E326E34CB18}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Optimat.EveO", "Optimat.EveO\Optimat.EveO.csproj", "{2582079F-554E-463B-8422-F9FD2E4E6ED9}"
 EndProject
