@@ -30,6 +30,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Bib3, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+    <Reference Include="BotEngine.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\BotEngine.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="BotEngine.Interface, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
     <Reference Include="Sanderling">
       <HintPath>..\..\lib\Sanderling.dll</HintPath>
     </Reference>
