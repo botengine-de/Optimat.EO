@@ -1,6 +1,7 @@
 ﻿using Bib3;
 using Bib3.Geometrik;
 using BotEngine;
+using BotEngine.Common;
 using ExtractFromOldAssembly.Bib3;
 using Sanderling.Interface.MemoryStruct;
 using Sanderling.Parse;
@@ -35,6 +36,16 @@ namespace MapToOldInterface
 				InfoPanelMissions = parsed?.InfoPanelMissions?.AsOld(),
 				ModuleButtonTooltip = parsed?.ModuleButtonTooltip?.AsOld(),
 				Neocom = parsed?.Neocom?.AsOld(),
+				ShipUi = parsed?.ShipUi?.AsOld(),
+				SystemMenu = parsed?.SystemMenu?.AsOldSystemMenu(),
+				Target = parsed?.Target?.Select(AsOld)?.ToArray(),
+				UtilmenuMission = parsed?.Utilmenu?.Select(c => c.AsOldUtilmenuMission(parsed))?.WhereNotDefault()?.FirstOrDefault(),
+				VersionString = parsed?.VersionString,
+				WindowAgentDialogue = parsed?.WindowAgentDialogue?.Select(AsOld)?.ToArray(),
+				WindowChatChannel = parsed?.WindowChatChannel?.Select(AsOld)?.ToArray(),
+				WindowDroneView = parsed?.WindowDroneView?.Select(AsOld)?.ToArray(),
+				WindowFittingMgmt = parsed?.WindowFittingMgmt?.Select(AsOld)?.ToArray(),
+				WindowFittingWindow = parsed?.WindowShipFitting?.Select(AsOld)?.ToArray(),
 			};
 		}
 
@@ -61,6 +72,15 @@ namespace MapToOldInterface
 				return null;
 
 			return new BotEngine.EveOnline.Interface.MemoryStruct.UIElementLabelString(Base: uiElement.AsOldUIElement(), Label: uiElement?.Text);
+		}
+
+		static public BotEngine.EveOnline.Interface.MemoryStruct.UIElementTextBox AsOldUIElementTextBox(
+			this IUIElementInputText uiElement)
+		{
+			if (uiElement == null)
+				return null;
+
+			return new BotEngine.EveOnline.Interface.MemoryStruct.UIElementTextBox(Base: uiElement.AsOldUIElement(), Label: uiElement?.Text);
 		}
 
 		static public BotEngine.EveOnline.Interface.MemoryStruct.MenuEntry AsOld(
@@ -228,5 +248,324 @@ namespace MapToOldInterface
 				Clock = neocom.Clock?.AsOldUIElementLabelString(),
 			};
 		}
+
+		static public BotEngine.EveOnline.Interface.MemoryStruct.ShipUiEWarElement AsOld(
+			this ShipUiEWarElement ewarElement) =>
+			ewarElement == null ? null :
+			new BotEngine.EveOnline.Interface.MemoryStruct.ShipUiEWarElement
+			{
+				EWarType = ewarElement.EWarType,
+				IconTexture = ewarElement.IconTexture.AsOld(),
+			};
+
+		static public BotEngine.EveOnline.Interface.MemoryStruct.ShipHitpointsAndEnergy AsOld(
+			this IShipHitpointsAndEnergy shipHitpointsAndEnergy) =>
+			shipHitpointsAndEnergy == null ? null :
+			new BotEngine.EveOnline.Interface.MemoryStruct.ShipHitpointsAndEnergy
+			{
+				Shield = shipHitpointsAndEnergy.Shield,
+				Armor = shipHitpointsAndEnergy.Armor,
+				Struct = shipHitpointsAndEnergy.Struct,
+				Capacitor = shipHitpointsAndEnergy.Capacitor,
+			};
+
+		static public BotEngine.EveOnline.Interface.MemoryStruct.ShipUiIndication AsOld(
+			this IShipUiIndication shipUiIndication) =>
+			shipUiIndication == null ? null :
+			new BotEngine.EveOnline.Interface.MemoryStruct.ShipUiIndication(shipUiIndication.AsOldUIElement())
+			{
+				ListLabelString = shipUiIndication.LabelText?.Select(AsOldUIElementLabelString)?.ToArray(),
+			};
+
+		static public BotEngine.EveOnline.Interface.MemoryStruct.ShipUiModule AsOld(
+			this IShipUiModule module) =>
+			module == null ? null :
+			new BotEngine.EveOnline.Interface.MemoryStruct.ShipUiModule(module.AsOldUIElement())
+			{
+				BusyVisible = module.BusyVisible,
+				GlowVisible = module.GlowVisible,
+				HiliteVisible = module.HiliteVisible,
+				ModuleButtonIconTexture = module.ModuleButtonIconTexture.AsOld(),
+				ModuleButtonQuantity = module.ModuleButtonQuantity,
+				ModuleButtonVisible = module.ModuleButtonVisible,
+				RampActive = module.RampActive,
+				RampRotationMilli = module.RampRotationMilli,
+			};
+
+		static public BotEngine.EveOnline.Interface.MemoryStruct.ShipUiTimer AsOld(
+			this IShipUiTimer timer) =>
+			timer == null ? null :
+			new BotEngine.EveOnline.Interface.MemoryStruct.ShipUiTimer(timer.AsOldUIElement())
+			{
+				Label = timer.LabelText?.Select(AsOldUIElementLabelString)?.ToArray(),
+				Name = timer.Name,
+			};
+
+		static public BotEngine.EveOnline.Interface.MemoryStruct.ShipUi AsOld(
+			this Sanderling.Parse.IShipUi shipUI) =>
+			shipUI == null ? null :
+			new BotEngine.EveOnline.Interface.MemoryStruct.ShipUi(shipUI.AsOldUIElement())
+			{
+				ButtonSpeed0 = shipUI.ButtonSpeed0?.AsOldUIElement(),
+				ButtonSpeedMax = shipUI.ButtonSpeedMax?.AsOldUIElement(),
+				Center = shipUI.Center?.AsOldUIElement(),
+				EWarElement = shipUI.EWarElement?.Select(AsOld)?.ToArray(),
+				Hitpoints = shipUI.HitpointsAndEnergy?.AsOld(),
+				Indication = shipUI.Indication?.AsOld(),
+				Module = shipUI.Module?.Select(AsOld)?.ToArray(),
+				Readout = shipUI.Readout?.Select(AsOldUIElementLabelString)?.ToArray(),
+				SpeedLabel = shipUI.SpeedLabel?.AsOldUIElementLabelString(),
+				SpeedMilli = shipUI.SpeedMilli,
+				Timer = shipUI.Timer?.Select(AsOld)?.ToArray(),
+			};
+
+		static public BotEngine.EveOnline.Interface.MemoryStruct.Window AsOldWindow(this IWindow window) =>
+			window == null ? null :
+			new BotEngine.EveOnline.Interface.MemoryStruct.Window(window.AsOldUIElement())
+			{
+				Button = window?.ButtonText?.Select(AsOldUIElementLabelString)?.ToArray(),
+				Caption = window?.Caption,
+				HeaderButton = window?.HeaderButton?.Select(AsOld)?.ToArray(),
+				HeaderButtonsVisible = window?.HeaderButtonsVisible,
+				isModal = window?.isModal,
+				Label = window?.LabelText?.Select(AsOldUIElementLabelString)?.ToArray(),
+				TextBox = window?.InputText?.Select(AsOldUIElementTextBox)?.ToArray(),
+			};
+
+		static public BotEngine.EveOnline.Interface.MemoryStruct.SystemMenu AsOldSystemMenu(this IWindow window) =>
+			window == null ? null :
+			new BotEngine.EveOnline.Interface.MemoryStruct.SystemMenu(window.AsOldWindow());
+
+		static public BotEngine.EveOnline.Interface.MemoryStruct.ShipUiTargetAssignedGroup AsOld(this ShipUiTargetAssignedGroup assignedGroup) =>
+			assignedGroup == null ? null :
+			new BotEngine.EveOnline.Interface.MemoryStruct.ShipUiTargetAssignedGroup(assignedGroup.AsOldUIElement())
+			{
+				IconTexture = assignedGroup.IconTexture?.AsOld(),
+			};
+
+		static public BotEngine.EveOnline.Interface.MemoryStruct.ShipUiTarget AsOld(this Sanderling.Parse.IShipUiTarget target) =>
+			target == null ? null :
+			new BotEngine.EveOnline.Interface.MemoryStruct.ShipUiTarget(target.AsOldUIElement())
+			{
+				Active = target?.IsSelected,
+				Assigned = target?.Assigned?.Select(AsOld)?.ToArray(),
+				Hitpoints = target?.Hitpoints?.AsOld(),
+				ListLabelString = target?.LabelText?.Select(AsOldUIElementLabelString)?.ToArray(),
+				RegionInteraction = target?.RegionInteraction?.AsOldUIElement(),
+			};
+
+		static public BotEngine.EveOnline.Interface.MemoryStruct.UtilmenuMission AsOldUtilmenuMission(
+			this IContainer container,
+			Sanderling.Parse.IMemoryMeasurement measurement)
+		{
+			if (container == null)
+				return null;
+
+			var buttonReadDetails = container?.LabelText?.FirstOrDefault(c => c?.Text?.RegexMatchSuccessIgnoreCase("read details") ?? false);
+			var buttonStartConversation = container?.LabelText?.FirstOrDefault(c => c?.Text?.RegexMatchSuccessIgnoreCase("start conversation") ?? false);
+
+			if (buttonReadDetails == null && buttonStartConversation == null)
+				return null;    //	assume it is not a mission utilmenu
+
+			var labelTopmost = container?.LabelText?.OrderByCenterVerticalDown()?.FirstOrDefault();
+
+			//	header is not contained in container, take the label which was most likely clicked to open the menu.
+			var header = measurement?.EnumerateReferencedUIElementTransitive()?.OfType<IUIElementText>()?.Where(c =>
+			{
+				var leftDist = c.Region.Min0 - labelTopmost.Region.Min0;
+				var rightDist = c.Region.Max0 - labelTopmost.Region.Max0;
+
+				var topDist = c.Region.Max1 - labelTopmost.Region.Min1;
+
+				return new[] { leftDist, rightDist, topDist }.All(dist => Math.Abs(dist) < 4);
+			})?.FirstOrDefault();
+
+			var listLocationBottom =
+				new[] { buttonReadDetails, buttonStartConversation }.WhereNotDefault().Select(elem => elem.Region.Min1).Min();
+
+			var listLocationListUIElement =
+				new[]
+				{
+					(IEnumerable<IUIElement>)container?.LabelText,
+					container?.ButtonText,
+					container?.Sprite,
+				}
+				.ConcatNullable().WhereNotDefault()
+				.Where(elem => elem.Region.Max1 <= listLocationBottom)
+				.OrderByCenterVerticalDown()
+				.ToArray();
+
+			var listLocation = new List<BotEngine.EveOnline.Interface.MemoryStruct.UtilmenuMissionLocationInfo>();
+
+			var inLocationListElement = new List<IUIElement>();
+
+			var locationConstruct = new Action(() =>
+			{
+				if (inLocationListElement.Count < 1)
+					return;
+
+				var labelMatching = new Func<string, IUIElementText>(pattern =>
+				inLocationListElement.OfType<IUIElementText>().FirstOrDefault(elem => elem.Text?.RegexMatchSuccessIgnoreCase(pattern) ?? false));
+
+				listLocation.Add(new BotEngine.EveOnline.Interface.MemoryStruct.UtilmenuMissionLocationInfo
+				{
+					ButtonApproach = labelMatching("approach").AsOldUIElementLabelString(),
+					ButtonDock = labelMatching("dock").AsOldUIElementLabelString(),
+					ButtonSetDestination = labelMatching("set destination").AsOldUIElementLabelString(),
+					ButtonWarpTo = labelMatching("warp to").AsOldUIElementLabelString(),
+
+					HeaderLabel = inLocationListElement.OfType<IUIElementText>()?.FirstOrDefault().Text,
+					ButtonLocation = inLocationListElement.OfType<IUIElementText>()?.FirstOrDefault(c => c?.Text?.RegexMatchSuccessIgnoreCase(@"url=showinfo:\d") ?? false).AsOldUIElementLabelString(),
+				});
+
+				inLocationListElement.Clear();
+			});
+
+			//	group UIElements into locations.
+			foreach (var elem in listLocationListUIElement)
+			{
+				if ((elem as IUIElementText)?.Text?.RegexMatchSuccessIgnoreCase(@"objective.*\(") ?? false)
+					locationConstruct();
+
+				inLocationListElement.Add(elem);
+			}
+
+			return new BotEngine.EveOnline.Interface.MemoryStruct.UtilmenuMission(container.AsOldUIElement())
+			{
+				ButtonReadDetails = buttonReadDetails?.AsOldUIElementLabelString(),
+				ButtonStartConversation = buttonStartConversation?.AsOldUIElementLabelString(),
+				Header = header.AsOldUIElementLabelString(),
+				Location = listLocation?.ToArray(),
+			};
+		}
+
+		static public BotEngine.EveOnline.Interface.MemoryStruct.WindowAgent AsOldWindowAgent(this IWindowAgent window) =>
+			window == null ? null :
+			new BotEngine.EveOnline.Interface.MemoryStruct.WindowAgent(window.AsOldWindow());
+
+		static public BotEngine.EveOnline.Interface.MemoryStruct.WindowAgentPane AsOld(this Sanderling.Parse.IWindowAgentPane pane) =>
+			pane == null ? null :
+			new BotEngine.EveOnline.Interface.MemoryStruct.WindowAgentPane(pane.AsOldUIElement())
+			{
+				Html = pane?.Html,
+			};
+
+		static public BotEngine.EveOnline.Interface.MemoryStruct.WindowAgentDialogue AsOld(this Sanderling.Parse.IWindowAgentDialogue window) =>
+			window == null ? null :
+			new BotEngine.EveOnline.Interface.MemoryStruct.WindowAgentDialogue(window.AsOldWindowAgent())
+			{
+				LeftPane = window?.LeftPane?.AsOld(),
+				RightPane = window?.RightPane?.AsOld(),
+			};
+
+		static public BotEngine.EveOnline.Interface.MemoryStruct.WindowChatChannel AsOld(this WindowChatChannel window) =>
+			window == null ? null :
+			new BotEngine.EveOnline.Interface.MemoryStruct.WindowChatChannel(window.AsOldWindow())
+			{
+				//	at the moment I guess the bot does not use those anyway.
+			};
+
+		static public BotEngine.EveOnline.Interface.MemoryStruct.Scroll AsOld(this IScroll scroll)
+		{
+			if (scroll == null)
+				return null;
+
+			return new BotEngine.EveOnline.Interface.MemoryStruct.Scroll(scroll.AsOldUIElement())
+			{
+				Clipper = scroll?.Clipper?.AsOldUIElement(),
+				ScrollHandleBound = scroll?.ScrollHandleBound?.AsOldUIElement(),
+				ScrollHandle = scroll?.ScrollHandle?.AsOldUIElement(),
+			};
+		}
+
+		static public BotEngine.EveOnline.Interface.MemoryStruct.ListColumnHeader AsOld(this IColumnHeader columnHeader)
+		{
+			if (columnHeader == null)
+				return null;
+
+			return new BotEngine.EveOnline.Interface.MemoryStruct.ListColumnHeader(columnHeader.AsOldUIElementLabelString())
+			{
+				ColumnIndex = columnHeader.ColumnIndex,
+				SortDirection = columnHeader.SortDirection,
+			};
+		}
+
+		static public BotEngine.EveOnline.Interface.MemoryStruct.ListEntry AsOldListEntry(
+			this Sanderling.Interface.MemoryStruct.IListEntry entry,
+			bool toDrone)
+		{
+			if (entry == null)
+				return null;
+
+			var @base = new BotEngine.EveOnline.Interface.MemoryStruct.ListEntry(entry.AsOldUIElement())
+			{
+				ContentBoundLeft = entry?.ContentBoundLeft,
+				GroupExpander = entry?.GroupExpander?.AsOldUIElement(),
+				IsExpanded = entry?.IsExpanded,
+				IsGroup = entry?.IsGroup,
+				IsSelected = entry?.IsSelected,
+				SetSprite = entry?.SetSprite?.Select(AsOld)?.ToArray(),
+				ListBackgroundColor = entry?.ListBackgroundColor,
+				ListColumnCellLabel = entry?.ListColumnCellLabel?.Select(c => new KeyValuePair<BotEngine.EveOnline.Interface.MemoryStruct.ListColumnHeader, string>(c.Key.AsOld(), c.Value))?.ToArray(),
+			};
+
+			var droneEntry = entry as IDroneViewEntryItem;
+			var overviewEntry = entry as Sanderling.Parse.IOverviewEntry;
+
+			if (overviewEntry != null)
+				return new BotEngine.EveOnline.Interface.MemoryStruct.OverviewEntry(@base)
+				{
+					RightIcon = overviewEntry?.RightIcon?.Select(AsOld)?.ToArray(),
+				};
+
+			if (droneEntry != null)
+				return new BotEngine.EveOnline.Interface.MemoryStruct.DroneViewEntryItem(@base)
+				{
+					Hitpoints = droneEntry?.Hitpoints?.AsOld(),
+				};
+
+			if (toDrone && (entry?.IsGroup ?? false))
+				return new BotEngine.EveOnline.Interface.MemoryStruct.DroneViewEntryGroup(@base)
+				{
+					Caption = entry?.LabelTextLargest()?.AsOldUIElementLabelString(),
+				};
+
+			return @base;
+		}
+
+		static public BotEngine.EveOnline.Interface.MemoryStruct.ListViewport AsOld(this IListViewAndControl listView)
+		{
+			//	this is a case of the graph probably not being a tree since the entries refer to the column headers too.
+
+			if (listView == null)
+				return null;
+
+			var toDrone = listView?.Entry?.Any(entry => entry is IDroneViewEntryItem) ?? false;
+
+			return new BotEngine.EveOnline.Interface.MemoryStruct.ListViewport()
+			{
+				Scroll = listView?.Scroll?.AsOld(),
+				Entry = listView?.Entry?.Select(entry => entry?.AsOldListEntry(toDrone))?.ToArray(),
+				ColumnHeader = listView?.ColumnHeader?.Select(AsOld)?.ToArray(),
+			};
+		}
+
+		static public BotEngine.EveOnline.Interface.MemoryStruct.WindowDroneView AsOld(this IWindowDroneView window) =>
+			window == null ? null :
+			new BotEngine.EveOnline.Interface.MemoryStruct.WindowDroneView(window.AsOldWindow())
+			{
+				ListViewport = window?.ListView?.AsOld(),
+			};
+
+		static public BotEngine.EveOnline.Interface.MemoryStruct.WindowFittingMgmt AsOld(this WindowFittingMgmt window) =>
+			window == null ? null :
+			new BotEngine.EveOnline.Interface.MemoryStruct.WindowFittingMgmt(window.AsOldWindow())
+			{
+				FittingViewport = window?.FittingView?.AsOld(),
+			};
+
+		static public BotEngine.EveOnline.Interface.MemoryStruct.WindowFittingWindow AsOld(this WindowShipFitting window) =>
+			window == null ? null :
+			new BotEngine.EveOnline.Interface.MemoryStruct.WindowFittingWindow(window.AsOldWindow());
 	}
 }
