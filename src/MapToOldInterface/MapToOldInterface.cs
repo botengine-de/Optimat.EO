@@ -24,7 +24,7 @@ namespace MapToOldInterface
 			return new BotEngine.EveOnline.Interface.MemoryStruct.MemoryMeasurement
 			{
 				Menu = parsed?.Menu?.Select(AsOld)?.ToArray(),
-				AbovemainMessage = parsed?.AbovemainMessage?.Select(AsOldUIElementLabelString)?.ToArray(),
+				AbovemainMessage = parsed?.AbovemainMessage?.AsOldUIElementLabelString()?.ToArray(),
 				AbovemainPanelEveMenu = parsed?.AbovemainPanelEveMenu?.Select(AsOld)?.ToArray(),
 				AbovemainPanelGroup = parsed?.AbovemainPanelGroup?.Select(AsOld)?.ToArray(),
 				InfoPanelButtonIncursions = parsed?.InfoPanelButtonIncursions?.AsOldUIElement(),
@@ -41,11 +41,23 @@ namespace MapToOldInterface
 				Target = parsed?.Target?.Select(AsOld)?.ToArray(),
 				UtilmenuMission = parsed?.Utilmenu?.Select(c => c.AsOldUtilmenuMission(parsed))?.WhereNotDefault()?.FirstOrDefault(),
 				VersionString = parsed?.VersionString,
+				WindowAgentBrowser = parsed?.WindowAgentBrowser?.Select(AsOldWindowAgentBrowser)?.ToArray(),
 				WindowAgentDialogue = parsed?.WindowAgentDialogue?.Select(AsOld)?.ToArray(),
 				WindowChatChannel = parsed?.WindowChatChannel?.Select(AsOld)?.ToArray(),
 				WindowDroneView = parsed?.WindowDroneView?.Select(AsOld)?.ToArray(),
 				WindowFittingMgmt = parsed?.WindowFittingMgmt?.Select(AsOld)?.ToArray(),
 				WindowFittingWindow = parsed?.WindowShipFitting?.Select(AsOld)?.ToArray(),
+				WindowInventory = parsed?.WindowInventory?.Select(AsOld)?.ToArray(),
+				WindowItemSell = parsed?.WindowItemSell?.Select(AsOld)?.ToArray(),
+				WindowMarketAction = parsed?.WindowMarketAction?.Select(AsOld)?.ToArray(),
+				WindowOverview = parsed?.WindowOverview?.Select(AsOld)?.ToArray(),
+				WindowOther = parsed?.WindowOther?.Select(AsOldWindow)?.ToArray(),
+				WindowRegionalMarket = parsed?.WindowRegionalMarket?.Select(AsOld)?.ToArray(),
+				WindowSelectedItemView = parsed?.WindowSelectedItemView?.Select(AsOld)?.ToArray(),
+				WindowStack = parsed?.WindowStack?.Select(AsOld)?.ToArray(),
+				WindowStationLobby = parsed?.WindowStation?.Select(AsOld)?.ToArray(),
+				WindowSurveyScanView = parsed?.WindowSurveyScanView?.Select(AsOld)?.ToArray(),
+				WindowTelecom = parsed?.WindowTelecom?.Select(AsOld)?.ToArray(),
 			};
 		}
 
@@ -73,6 +85,9 @@ namespace MapToOldInterface
 
 			return new BotEngine.EveOnline.Interface.MemoryStruct.UIElementLabelString(Base: uiElement.AsOldUIElement(), Label: uiElement?.Text);
 		}
+
+		static public IEnumerable<BotEngine.EveOnline.Interface.MemoryStruct.UIElementLabelString> AsOldUIElementLabelString(
+			this IEnumerable<IUIElementText> seq) => seq?.Select(AsOldUIElementLabelString);
 
 		static public BotEngine.EveOnline.Interface.MemoryStruct.UIElementTextBox AsOldUIElementTextBox(
 			this IUIElementInputText uiElement)
@@ -120,7 +135,7 @@ namespace MapToOldInterface
 			return new BotEngine.EveOnline.Interface.MemoryStruct.InfoPanel(infoPanel.AsOldUIElement())
 			{
 				IsExpanded = infoPanel?.IsExpanded,
-				ExpandedContentLabel = infoPanel?.ExpandedContent?.LabelText?.Select(AsOldUIElementLabelString)?.ToArray(),
+				ExpandedContentLabel = infoPanel?.ExpandedContent?.LabelText?.AsOldUIElementLabelString()?.ToArray(),
 				HeaderButtonExpand = infoPanel?.ExpandToggleButton?.AsOldUIElement(),
 				HeaderLabel = infoPanel?.HeaderContent?.LabelText?.Largest()?.AsOldUIElementLabelString(),
 			};
@@ -160,7 +175,7 @@ namespace MapToOldInterface
 
 			return new BotEngine.EveOnline.Interface.MemoryStruct.InfoPanelMissions(infoPanelMissions.AsOldInfoPanel())
 			{
-				ListMissionButton = infoPanelMissions?.ListMissionButton?.Select(AsOldUIElementLabelString)?.ToArray(),
+				ListMissionButton = infoPanelMissions?.ListMissionButton?.AsOldUIElementLabelString()?.ToArray(),
 			};
 		}
 
@@ -196,7 +211,7 @@ namespace MapToOldInterface
 
 				listRow.Add(new BotEngine.EveOnline.Interface.MemoryStruct.ModuleButtonTooltipRow
 				{
-					ListLabelString = rowContainerListElement?.OfType<IUIElementText>()?.Select(AsOldUIElementLabelString)?.ToArray(),
+					ListLabelString = rowContainerListElement?.OfType<IUIElementText>()?.AsOldUIElementLabelString()?.ToArray(),
 					IconTextureId = rowContainerListElement?.OfType<ISprite>()?.Select(AsOld)?.ToArray(),
 					ShortcutText = rowContainerListElement.Contains(moduleButtonTooltip.ToggleKeyTextLabel) ? moduleButtonTooltip?.ToggleKeyTextLabel?.Text : null,
 				});
@@ -218,7 +233,7 @@ namespace MapToOldInterface
 
 			return new BotEngine.EveOnline.Interface.MemoryStruct.ModuleButtonTooltip(moduleButtonTooltip.AsOldUIElement())
 			{
-				ListLabelString = moduleButtonTooltip?.LabelText?.Select(AsOldUIElementLabelString)?.ToArray(),
+				ListLabelString = moduleButtonTooltip?.LabelText?.AsOldUIElementLabelString()?.ToArray(),
 				ListRow = listRow?.ToArray(),
 			};
 		}
@@ -274,7 +289,7 @@ namespace MapToOldInterface
 			shipUiIndication == null ? null :
 			new BotEngine.EveOnline.Interface.MemoryStruct.ShipUiIndication(shipUiIndication.AsOldUIElement())
 			{
-				ListLabelString = shipUiIndication.LabelText?.Select(AsOldUIElementLabelString)?.ToArray(),
+				ListLabelString = shipUiIndication.LabelText?.AsOldUIElementLabelString()?.ToArray(),
 			};
 
 		static public BotEngine.EveOnline.Interface.MemoryStruct.ShipUiModule AsOld(
@@ -297,7 +312,7 @@ namespace MapToOldInterface
 			timer == null ? null :
 			new BotEngine.EveOnline.Interface.MemoryStruct.ShipUiTimer(timer.AsOldUIElement())
 			{
-				Label = timer.LabelText?.Select(AsOldUIElementLabelString)?.ToArray(),
+				Label = timer.LabelText?.AsOldUIElementLabelString()?.ToArray(),
 				Name = timer.Name,
 			};
 
@@ -313,7 +328,7 @@ namespace MapToOldInterface
 				Hitpoints = shipUI.HitpointsAndEnergy?.AsOld(),
 				Indication = shipUI.Indication?.AsOld(),
 				Module = shipUI.Module?.Select(AsOld)?.ToArray(),
-				Readout = shipUI.Readout?.Select(AsOldUIElementLabelString)?.ToArray(),
+				Readout = shipUI.Readout?.AsOldUIElementLabelString()?.ToArray(),
 				SpeedLabel = shipUI.SpeedLabel?.AsOldUIElementLabelString(),
 				SpeedMilli = shipUI.SpeedMilli,
 				Timer = shipUI.Timer?.Select(AsOld)?.ToArray(),
@@ -323,12 +338,12 @@ namespace MapToOldInterface
 			window == null ? null :
 			new BotEngine.EveOnline.Interface.MemoryStruct.Window(window.AsOldUIElement())
 			{
-				Button = window?.ButtonText?.Select(AsOldUIElementLabelString)?.ToArray(),
+				Button = window?.ButtonText?.AsOldUIElementLabelString()?.ToArray(),
 				Caption = window?.Caption,
 				HeaderButton = window?.HeaderButton?.Select(AsOld)?.ToArray(),
 				HeaderButtonsVisible = window?.HeaderButtonsVisible,
 				isModal = window?.isModal,
-				Label = window?.LabelText?.Select(AsOldUIElementLabelString)?.ToArray(),
+				Label = window?.LabelText?.AsOldUIElementLabelString()?.ToArray(),
 				TextBox = window?.InputText?.Select(AsOldUIElementTextBox)?.ToArray(),
 			};
 
@@ -443,6 +458,10 @@ namespace MapToOldInterface
 			window == null ? null :
 			new BotEngine.EveOnline.Interface.MemoryStruct.WindowAgent(window.AsOldWindow());
 
+		static public BotEngine.EveOnline.Interface.MemoryStruct.WindowAgentBrowser AsOldWindowAgentBrowser(this IWindow window) =>
+			window == null ? null :
+			new BotEngine.EveOnline.Interface.MemoryStruct.WindowAgentBrowser(new BotEngine.EveOnline.Interface.MemoryStruct.WindowAgent(window.AsOldWindow()));
+
 		static public BotEngine.EveOnline.Interface.MemoryStruct.WindowAgentPane AsOld(this Sanderling.Parse.IWindowAgentPane pane) =>
 			pane == null ? null :
 			new BotEngine.EveOnline.Interface.MemoryStruct.WindowAgentPane(pane.AsOldUIElement())
@@ -533,7 +552,7 @@ namespace MapToOldInterface
 			return @base;
 		}
 
-		static public BotEngine.EveOnline.Interface.MemoryStruct.ListViewport AsOld(this IListViewAndControl listView)
+		static public BotEngine.EveOnline.Interface.MemoryStruct.ListViewport AsOldListView(this IListViewAndControl listView)
 		{
 			//	this is a case of the graph probably not being a tree since the entries refer to the column headers too.
 
@@ -549,6 +568,8 @@ namespace MapToOldInterface
 				ColumnHeader = listView?.ColumnHeader?.Select(AsOld)?.ToArray(),
 			};
 		}
+
+		static public BotEngine.EveOnline.Interface.MemoryStruct.ListViewport AsOld(this IListViewAndControl listView) => AsOldListView(listView);
 
 		static public BotEngine.EveOnline.Interface.MemoryStruct.WindowDroneView AsOld(this IWindowDroneView window) =>
 			window == null ? null :
@@ -567,5 +588,100 @@ namespace MapToOldInterface
 		static public BotEngine.EveOnline.Interface.MemoryStruct.WindowFittingWindow AsOld(this WindowShipFitting window) =>
 			window == null ? null :
 			new BotEngine.EveOnline.Interface.MemoryStruct.WindowFittingWindow(window.AsOldWindow());
+
+		static public BotEngine.EveOnline.Interface.MemoryStruct.TreeViewEntry AsOld(this ITreeViewEntry entry) =>
+			entry == null ? null :
+			new BotEngine.EveOnline.Interface.MemoryStruct.TreeViewEntry(entry.AsOldUIElement())
+			{
+				Child = entry?.Child?.Select(AsOld)?.ToArray(),
+				ExpandCollapseToggleRegion = entry?.ExpandToggleButton?.AsOldUIElement(),
+				TopContLabel = entry?.LabelText?.OrderByCenterVerticalDown()?.FirstOrDefault()?.AsOldUIElementLabelString(),
+			};
+
+		static public BotEngine.EveOnline.Interface.MemoryStruct.Inventory AsOld(this IInventory inventory) =>
+			inventory == null ? null :
+			new BotEngine.EveOnline.Interface.MemoryStruct.Inventory(inventory.AsOldUIElement())
+			{
+				ViewList = inventory?.ListView?.AsOld(),
+			};
+
+		static public BotEngine.EveOnline.Interface.MemoryStruct.WindowInventory AsOld(this Sanderling.Parse.IWindowInventory window) =>
+			window == null ? null :
+			new BotEngine.EveOnline.Interface.MemoryStruct.WindowInventory(window.AsOldWindow())
+			{
+				LeftTreeListEntry = window?.LeftTreeListEntry?.Select(AsOld)?.ToArray(),
+				LeftTreeViewportScroll = window?.LeftTreeViewportScroll?.AsOld(),
+				SelectedRightControlViewButton = window?.SelectedRightControlViewButton?.Select(AsOld)?.ToArray(),
+				SelectedRightFilterButtonClear = window?.SelectedRightFilterButtonClear?.AsOldUIElement(),
+				SelectedRightFilterTextBox = window?.SelectedRightFilterTextBox?.AsOldUIElementTextBox(),
+				SelectedRightInventory = window?.SelectedRightInventory?.AsOld(),
+				SelectedRightInventoryCapacity = window?.SelectedRightInventoryCapacity?.AsOldUIElementLabelString(),
+				SelectedRightInventoryPathLabel = window?.SelectedRightInventoryPathLabel?.AsOldUIElementLabelString(),
+				SelectedRightItemDisplayedCount = null,
+				SelectedRightItemFilteredCount = null,
+			};
+
+		static public BotEngine.EveOnline.Interface.MemoryStruct.WindowItemSell AsOld(this WindowItemSell window) =>
+			window == null ? null :
+			new BotEngine.EveOnline.Interface.MemoryStruct.WindowItemSell(window.AsOldWindow());
+
+		static public BotEngine.EveOnline.Interface.MemoryStruct.WindowMarketAction AsOld(this WindowMarketAction window) =>
+			window == null ? null :
+			new BotEngine.EveOnline.Interface.MemoryStruct.WindowMarketAction(window.AsOldWindow());
+
+		static public BotEngine.EveOnline.Interface.MemoryStruct.Tab AsOld(this Tab tab) =>
+			tab == null ? null :
+			new BotEngine.EveOnline.Interface.MemoryStruct.Tab(tab.AsOldUIElement(), tab?.Label?.AsOldUIElementLabelString(), tab?.LabelColorOpacityMilli, tab?.BackgroundOpacityMilli);
+
+		static public BotEngine.EveOnline.Interface.MemoryStruct.WindowOverView AsOld(this Sanderling.Parse.IWindowOverview window) =>
+			window == null ? null :
+			new BotEngine.EveOnline.Interface.MemoryStruct.WindowOverView(window.AsOldWindow())
+			{
+				ListViewport = window?.ListView?.AsOldListView(),
+				ViewportOverallLabelString = window?.ViewportOverallLabelString,
+				PresetTab = window?.PresetTab?.Select(AsOld)?.ToArray(),
+			};
+
+		static public BotEngine.EveOnline.Interface.MemoryStruct.WindowRegionalMarket AsOld(this WindowRegionalMarket window) =>
+			window == null ? null :
+			new BotEngine.EveOnline.Interface.MemoryStruct.WindowRegionalMarket(window.AsOldWindow());
+
+		static public BotEngine.EveOnline.Interface.MemoryStruct.WindowSelectedItemView AsOld(this IWindowSelectedItemView window) =>
+			window == null ? null :
+			new BotEngine.EveOnline.Interface.MemoryStruct.WindowSelectedItemView(window.AsOldWindow());
+
+		static public BotEngine.EveOnline.Interface.MemoryStruct.WindowStack AsOld(this WindowStack window) =>
+			window == null ? null :
+			new BotEngine.EveOnline.Interface.MemoryStruct.WindowStack(window.AsOldWindow())
+			{
+				Tab = window?.Tab?.Select(AsOld)?.ToArray(),
+				TabSelectedWindow = window?.TabSelectedWindow?.AsOldWindow(),
+			};
+
+		static public BotEngine.EveOnline.Interface.MemoryStruct.LobbyAgentEntry AsOld(this LobbyAgentEntry entry) =>
+			entry == null ? null :
+			new BotEngine.EveOnline.Interface.MemoryStruct.LobbyAgentEntry(
+				entry.AsOldUIElement(),
+				entry?.LabelText?.AsOldUIElementLabelString()?.ToArray(),
+				entry?.StartConversationButton?.AsOldUIElement());
+
+		static public BotEngine.EveOnline.Interface.MemoryStruct.WindowStationLobby AsOld(this IWindowStation window) =>
+			window == null ? null :
+			new BotEngine.EveOnline.Interface.MemoryStruct.WindowStationLobby(window.AsOldWindow())
+			{
+				AboveServicesLabel = window?.AboveServicesLabel?.AsOldUIElementLabelString()?.ToArray(),
+				AgentEntry = window?.AgentEntry?.Select(AsOld)?.ToArray(),
+				AgentEntryHeader = window?.AgentEntryHeader?.AsOldUIElementLabelString()?.ToArray(),
+				ButtonUndock = window?.UndockButton?.AsOldUIElement(),
+				ServiceButton = window?.ServiceButton?.Select(AsOld)?.ToArray(),
+			};
+
+		static public BotEngine.EveOnline.Interface.MemoryStruct.WindowSurveyScanView AsOld(this IWindowSurveyScanView window) =>
+			window == null ? null :
+			new BotEngine.EveOnline.Interface.MemoryStruct.WindowSurveyScanView(window.AsOldWindow());
+
+		static public BotEngine.EveOnline.Interface.MemoryStruct.WindowTelecom AsOld(this WindowTelecom window) =>
+			window == null ? null :
+			new BotEngine.EveOnline.Interface.MemoryStruct.WindowTelecom(window.AsOldWindow());
 	}
 }

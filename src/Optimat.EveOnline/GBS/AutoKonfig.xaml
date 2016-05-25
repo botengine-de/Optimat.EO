@@ -345,30 +345,47 @@
 
                         <ScrollViewer Grid.Row="2">
                             <StackPanel>
-                                <CheckBox
+                                <StackPanel Visibility="Collapsed">
+                                    <CheckBox
                                     Name="CheckBoxAutoPilotLowSecFraigaabe"
                                     Margin="4">
-                                    <TextBlock Text="Allow to enter lowsec and nullsec"></TextBlock>
-                                </CheckBox>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-                                    <ColumnDefinition Width="4"></ColumnDefinition>
-                                    <ColumnDefinition Width="*"></ColumnDefinition>
-                                </Grid.ColumnDefinitions>
+                                        <TextBlock Text="Allow to enter lowsec and nullsec"></TextBlock>
+                                    </CheckBox>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                            <ColumnDefinition Width="4"></ColumnDefinition>
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
 
-                                <Bib3.FCL.GBS:SictSymboolAkzeptanzFeelerWarnung
+                                        <Bib3.FCL.GBS:SictSymboolAkzeptanzFeelerWarnung
                                     SymboolTyp="Warnung"
                                     Width="16"
                                     Height="16"
                                     VerticalAlignment="Center">
-                                </Bib3.FCL.GBS:SictSymboolAkzeptanzFeelerWarnung>
+                                        </Bib3.FCL.GBS:SictSymboolAkzeptanzFeelerWarnung>
 
-                                    <TextBox
+                                        <TextBox
                                         Text="AutoPilot does not Undock. please Undock manually when using AutoPilot."
                                         IsReadOnly="True"
                                         Grid.Column="2"></TextBox>
-                            </Grid>
+                                    </Grid>
+                                </StackPanel>
+                                <RichTextBox
+                                IsReadOnly="True"
+                                IsDocumentEnabled="True">
+                                    <FlowDocument>
+                                        <Paragraph>
+                                            <Run>
+                                                For the eve online 0km auto pilot, see:
+                                            </Run>
+                                            <LineBreak></LineBreak>
+                                            <Run>
+                                                https://github.com/Arcitectus/Sanderling/wiki/Getting-Started
+                                            </Run>
+                                        </Paragraph>
+                                    </FlowDocument>
+                                </RichTextBox>
                             </StackPanel>
                         </ScrollViewer>
                     </Grid>
