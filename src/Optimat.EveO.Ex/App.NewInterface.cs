@@ -44,15 +44,21 @@ namespace Optimat.EveO.Nuzer
 
 		const int measurementTimeDistanceMin = 1000;
 
-		void GetMeasurement()
+		void GetMeasurementIfDue()
 		{
 			sensorServerDispatcher?.Exchange();
+
+			Int64? assumptionLastMeasurementTime;
+
+			var requestedMeasurementTime =
+				this.RequestedMeasurementTimeKapseltInLog(
+					out assumptionLastMeasurementTime);
 
 			var time = Bib3.Glob.StopwatchZaitMiliSictInt();
 
 			var lastMeasurementAttemptAge = time - LastMeasurementAttemptTime;
 
-			if (lastMeasurementAttemptAge < measurementTimeDistanceMin)
+			if (lastMeasurementAttemptAge < 4000 && (lastMeasurementAttemptAge < measurementTimeDistanceMin || !(requestedMeasurementTime < time)))
 				return;
 
 			LastMeasurementAttemptTime = time;

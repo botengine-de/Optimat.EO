@@ -375,7 +375,7 @@ namespace Optimat.EveO.Nuzer
 				LicenseClientKümereRateBescranke.Call();
 				*/
 
-				GetMeasurement();
+				GetMeasurementIfDue();
 
 				SensorKümereRateBescranke.Call();
 
