@@ -187,6 +187,8 @@ namespace Optimat.EveO.Nuzer
 			}
 			catch { }
 
+			GbsSctoierelementHaupt?.LicenseView?.LicenseClientConfigViewModel?.PropagateFromClrMemberToDependencyProperty(Sanderling.ExeConfig.LicenseClientDefault);
+
 			ConstructTimer();
 		}
 

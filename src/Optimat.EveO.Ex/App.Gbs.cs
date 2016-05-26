@@ -16,6 +16,7 @@ using Optimat.EveOnline;
 using Optimat.EveOnline.Base;
 using Optimat.EveOnline.CustomBot;
 using ExtractFromOldAssembly.Bib3;
+using Sanderling;
 
 namespace Optimat.EveO.Nuzer
 {
@@ -548,8 +549,13 @@ namespace Optimat.EveO.Nuzer
 			}
 		}
 
+		void MemoryreadInterfaceConfigApplyFromUI() =>
+			sensorServerDispatcher.LicenseClientConfig = GbsSctoierelementHaupt?.LicenseView?.LicenseClientConfigViewModel?.PropagateFromDependencyPropertyToClrMember().CompletedWithDefault();
+
 		void GbsAingaabeLeese()
 		{
+			MemoryreadInterfaceConfigApplyFromUI();
+
 			var GbsSctoierelementHaupt = this.GbsSctoierelementHaupt;
 
 			IntPtr GbsAingaabeWaalZiilProcessMainWindowHandle = IntPtr.Zero;
@@ -694,6 +700,8 @@ namespace Optimat.EveO.Nuzer
 
 		void GbsAktualisiireTailLicenseClient()
 		{
+			GbsSctoierelementHaupt.LicenseClientStateIcon.Value = sensorServerDispatcher?.AppInterfaceAvailable ?? false;
+
 			/*
 			 * 16.04.15
 			 * This propagated license information to UI.
@@ -1086,7 +1094,7 @@ namespace Optimat.EveO.Nuzer
 		{
 			Int64? AssumptionLastMeasurementTime;
 
-            var RequestedMeasurementTime = this.RequestedMeasurementTimeKapseltInLog(
+			var RequestedMeasurementTime = this.RequestedMeasurementTimeKapseltInLog(
 				out AssumptionLastMeasurementTime);
 
 			var SensorSnapshotLast = this.SensorSnapshotLastAgr;
@@ -1133,6 +1141,8 @@ namespace Optimat.EveO.Nuzer
 
 			try
 			{
+				GbsSctoierelementHaupt?.LicenseView?.Present(sensorServerDispatcher);
+
 				GbsZiilProcessAktualisiire();
 
 				GbsAktualisiireTailLicenseClient();

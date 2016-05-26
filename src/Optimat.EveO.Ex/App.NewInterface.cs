@@ -1,43 +1,31 @@
 ﻿using BotEngine.Interface;
 using Sanderling;
 using System;
-using System.Threading;
 
 namespace Optimat.EveO.Nuzer
 {
+	/// <summary>
+	/// This Type must reside in an Assembly that can be resolved by the default assembly resolver.
+	/// </summary>
+	public class InterfaceAppDomainSetup
+	{
+		static InterfaceAppDomainSetup()
+		{
+			BotEngine.Interface.InterfaceAppDomainSetup.Setup();
+		}
+	}
+
 	public partial class App
 	{
-		Sanderling.SimpleInterfaceServerDispatcher sensorServerDispatcher = new Sanderling.SimpleInterfaceServerDispatcher();
+		readonly Sanderling.SimpleInterfaceServerDispatcher sensorServerDispatcher = new Sanderling.SimpleInterfaceServerDispatcher
+		{
+			InterfaceAppDomainSetupType = typeof(InterfaceAppDomainSetup),
+			InterfaceAppDomainSetupTypeLoadFromMainModule = false,
+		};
 
 		void SanderlingMemreadInitConnection()
 		{
-			var licenseClientConfig = new BotEngine.Client.LicenseClientConfig
-			{
-				ApiVersionAddress = ExeConfig.ConfigApiVersionAddressDefault,
-				Request = new BotEngine.Client.AuthRequest
-				{
-					ServiceId = ExeConfig.ConfigServiceId,
-					LicenseKey = ExeConfig.ConfigLicenseKeyFree,
-					Consume = true,
-				},
-			};
-
-			var licenseClient = new Func<LicenseClient>(() => sensorServerDispatcher.LicenseClient);
-
-			while (!(licenseClient()?.AuthCompleted ?? false))
-			{
-				sensorServerDispatcher.Exchange(licenseClientConfig);
-
-				Thread.Sleep(1111);
-			}
-
-			var AuthResult = licenseClient()?.ExchangeAuthLast?.Value?.Response;
-
-			var LicenseServerSessionId = AuthResult?.SessionId;
-
-			Console.WriteLine("Auth completed, SessionId = " + (LicenseServerSessionId ?? "null"));
-
-			Console.WriteLine("\nstarting to set up the sensor and read from memory.\nthe initial measurement takes longer.");
+			sensorServerDispatcher.CyclicExchangeStart();
 		}
 
 		Int64 LastMeasurementAttemptTime = 0;

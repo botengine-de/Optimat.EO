@@ -925,7 +925,14 @@
                                 </Style>
                             </StackPanel.Resources>
 
-                            <GroupBox Grid.Row="0" BorderThickness="2">
+                            <BotEngine.UI:LicenseInfoLink></BotEngine.UI:LicenseInfoLink>
+                            <BotEngine.UI:SimpleInterfaceServerDispatcher
+                                x:Name="LicenseView"
+                                x:FieldModifier="public"></BotEngine.UI:SimpleInterfaceServerDispatcher>
+
+                            <GroupBox
+                                Grid.Row="0" BorderThickness="2"
+                                Visibility="Collapsed">
                                 <GroupBox.Header>
                                     <Border
                                          Style="{StaticResource HeaderStyle}">
@@ -943,16 +950,16 @@
                                             <RowDefinition Height="4"></RowDefinition>
                                             <RowDefinition Height="Auto"></RowDefinition>
                                         </Grid.RowDefinitions>
-										
-										<GroupBox>
-											<GroupBox.Header>
-												<TextBlock Text="API URI"></TextBlock>
-											</GroupBox.Header>
 
-											<GroupBox.Content>
-												<TextBox Name="TextBoxSensorServerApiUri" Text=""></TextBox>
-											</GroupBox.Content>
-										</GroupBox>
+                                        <GroupBox>
+                                            <GroupBox.Header>
+                                                <TextBlock Text="API URI"></TextBlock>
+                                            </GroupBox.Header>
+
+                                            <GroupBox.Content>
+                                                <TextBox Name="TextBoxSensorServerApiUri" Text=""></TextBox>
+                                            </GroupBox.Content>
+                                        </GroupBox>
 
                                         <GroupBox
 											Grid.Row="0"
@@ -986,7 +993,8 @@
                                 </GroupBox.Content>
                             </GroupBox>
 
-                            <GroupBox>
+                            <GroupBox
+                                Visibility="Collapsed">
                                 <GroupBox.Header>
 
                                     <Border
