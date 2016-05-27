@@ -148,8 +148,13 @@ namespace Optimat.EveOnline.Anwendung.AuswertGbs
 
 						if (!(Optimat.Glob.Betraag(HueDistanz) < 10))
 						{
+							/*
+							 * 16.04.26
+							 * Seems color in inventory does not anymore match color in overview.
+							 * 
 							//	Farbtoon mus sco äänlic sain.
 							continue;
+							*/
 						}
 
 						FürEntryMengeOverviewZaile.Add(OverviewZaile);

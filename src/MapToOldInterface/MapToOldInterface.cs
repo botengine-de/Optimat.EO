@@ -629,14 +629,24 @@ namespace MapToOldInterface
 			window == null ? null :
 			new BotEngine.EveOnline.Interface.MemoryStruct.WindowFittingWindow(window.AsOldWindow());
 
-		static public BotEngine.EveOnline.Interface.MemoryStruct.TreeViewEntry AsOld(this ITreeViewEntry entry) =>
-			entry == null ? null :
-			new BotEngine.EveOnline.Interface.MemoryStruct.TreeViewEntry(entry.AsOldUIElement())
-			{
-				Child = entry?.Child?.Select(AsOld)?.ToArray(),
-				ExpandCollapseToggleRegion = entry?.ExpandToggleButton?.AsOldUIElement(),
-				TopContLabel = entry?.LabelText?.OrderByCenterVerticalDown()?.FirstOrDefault()?.AsOldUIElementLabelString(),
-			};
+		static public BotEngine.EveOnline.Interface.MemoryStruct.TreeViewEntry AsOld(this ITreeViewEntry entry)
+		{
+			if (entry == null)
+				return null;
+
+			var topContLabel = entry?.LabelText?.OrderByCenterVerticalDown()?.FirstOrDefault();
+
+			return
+				new BotEngine.EveOnline.Interface.MemoryStruct.TreeViewEntry(entry.AsOldUIElement())
+				{
+					Child = entry?.Child?.Select(AsOld)?.ToArray(),
+					ExpandCollapseToggleRegion = entry?.ExpandToggleButton?.AsOldUIElement(),
+					TopContLabel = topContLabel?.AsOldUIElementLabelString(),
+					TopContRegion = entry?.RegionInteraction?.AsOldUIElement(),
+					IsSelected = entry?.IsSelected,
+					LabelText = topContLabel?.Text,
+				};
+		}
 
 		static public BotEngine.EveOnline.Interface.MemoryStruct.Inventory AsOld(this IInventory inventory) =>
 			inventory == null ? null :
