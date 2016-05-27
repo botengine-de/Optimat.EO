@@ -70,7 +70,7 @@ namespace MapToOldInterface
 			if (uiElement == null)
 				return null;
 
-			return new BotEngine.EveOnline.Interface.MemoryStruct.UIElement(Base: uiElement as ObjectIdInt64)
+			return new BotEngine.EveOnline.Interface.MemoryStruct.UIElement(Base: ((IObjectIdInMemory)uiElement).AsOld())
 			{
 				Region = uiElement.Region.AsOrtogoon(),
 				InTreeIndex = uiElement.InTreeIndex,
