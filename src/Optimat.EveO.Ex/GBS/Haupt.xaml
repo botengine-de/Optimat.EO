@@ -910,7 +910,7 @@
                             </Bib3.FCL.GBS:BoolAbbildSymboolAkzeptanzFeelerWarnung>
                         </Grid>
                         <TextBlock
-                            Text="Optimization Service"
+                            Text="License"
                             Grid.Column="0" VerticalAlignment="Center" Margin="1"></TextBlock>
                     </Grid>
                 </TabItem.Header>
