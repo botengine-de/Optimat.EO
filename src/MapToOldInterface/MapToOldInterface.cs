@@ -195,7 +195,7 @@ namespace MapToOldInterface
 				(IEnumerable<IUIElement>)moduleButtonTooltip.LabelText,
 				moduleButtonTooltip.Sprite,
 			}
-			.ConcatNullable()
+			.ConcatNullable().WhereNotDefault()
 			.OrderByCenterVerticalDown()
 			.ToArray();
 
