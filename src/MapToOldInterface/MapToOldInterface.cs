@@ -212,7 +212,7 @@ namespace MapToOldInterface
 				listRow.Add(new BotEngine.EveOnline.Interface.MemoryStruct.ModuleButtonTooltipRow
 				{
 					ListLabelString = rowContainerListElement?.OfType<IUIElementText>()?.AsOldUIElementLabelString()?.ToArray(),
-					IconTextureId = rowContainerListElement?.OfType<ISprite>()?.Select(AsOld)?.ToArray(),
+					IconTextureId = rowContainerListElement?.OfType<ISprite>()?.Select(sprite => sprite.Texture0Id.AsOld())?.ToArray(),
 					ShortcutText = rowContainerListElement.Contains(moduleButtonTooltip.ToggleKeyTextLabel) ? moduleButtonTooltip?.ToggleKeyTextLabel?.Text : null,
 				});
 
