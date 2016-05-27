@@ -8,6 +8,7 @@ using Sanderling.Parse;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace MapToOldInterface
 {
@@ -369,6 +370,32 @@ namespace MapToOldInterface
 				RegionInteraction = target?.RegionInteraction?.AsOldUIElement(),
 			};
 
+		static string UtilmenuMission_AusAstLocationTextLocationNameRegexPattern = Regex.Escape(">") + "([^<]{1,999})" + Regex.Escape("<");
+
+		static string UtilmenuMission_AusAstLocationTextLocationName(string AstLocationText)
+		{
+			if (null == AstLocationText)
+				return null;
+
+			var MengeMatch = Regex.Matches(AstLocationText, UtilmenuMission_AusAstLocationTextLocationNameRegexPattern);
+
+			var Match =
+				MengeMatch
+				.OfType<Match>()
+				.OrderByDescending((Kandidaat) => Kandidaat.Groups[1].Length)
+				.FirstOrDefault();
+
+			if (!(Match?.Success ?? false))
+				return null;
+
+			return Match.Groups[1].Value;
+		}
+
+		static public IUIElementText WithText(
+			this IUIElementText orig, string text) =>
+			orig == null ? null :
+			new UIElementText((IUIElement)orig, text);
+
 		static public BotEngine.EveOnline.Interface.MemoryStruct.UtilmenuMission AsOldUtilmenuMission(
 			this IContainer container,
 			Sanderling.Parse.IMemoryMeasurement measurement)
@@ -385,15 +412,24 @@ namespace MapToOldInterface
 			var labelTopmost = container?.LabelText?.OrderByCenterVerticalDown()?.FirstOrDefault();
 
 			//	header is not contained in container, take the label which was most likely clicked to open the menu.
-			var header = measurement?.EnumerateReferencedUIElementTransitive()?.OfType<IUIElementText>()?.Where(c =>
-			{
-				var leftDist = c.Region.Min0 - labelTopmost.Region.Min0;
-				var rightDist = c.Region.Max0 - labelTopmost.Region.Max0;
+			//	search for this label by distance to UIElement contained in menu while assuming that the menu is opened under the clicked label.
+			var listUIElementTextWithDistance =
+				measurement?.EnumerateReferencedUIElementTransitive()?.OfType<IUIElementText>()?.Select(c =>
+				{
+					var leftDist = c.Region.Min0 - labelTopmost.Region.Min0;
+					var heightDist = c.Region.Max1 - labelTopmost.Region.Min1;
 
-				var topDist = c.Region.Max1 - labelTopmost.Region.Min1;
+					return new
+					{
+						uiElement = c,
+						dist = new[] { leftDist, heightDist }.Select(dist => Math.Abs(dist)).Max(),
+					};
+				})
+				?.OrderBy(c => c.dist)
+				?.Take(4)
+				?.ToArray();
 
-				return new[] { leftDist, rightDist, topDist }.All(dist => Math.Abs(dist) < 4);
-			})?.FirstOrDefault();
+			var header = listUIElementTextWithDistance?.FirstOrDefault(c => c.dist <= 4)?.uiElement;
 
 			var listLocationBottom =
 				new[] { buttonReadDetails, buttonStartConversation }.WhereNotDefault().Select(elem => elem.Region.Min1).Min();
@@ -422,6 +458,8 @@ namespace MapToOldInterface
 				var labelMatching = new Func<string, IUIElementText>(pattern =>
 				inLocationListElement.OfType<IUIElementText>().FirstOrDefault(elem => elem.Text?.RegexMatchSuccessIgnoreCase(pattern) ?? false));
 
+				var buttonLocation = inLocationListElement.OfType<IUIElementText>()?.FirstOrDefault(c => c?.Text?.RegexMatchSuccessIgnoreCase(@"url=showinfo:\d") ?? false);
+
 				listLocation.Add(new BotEngine.EveOnline.Interface.MemoryStruct.UtilmenuMissionLocationInfo
 				{
 					ButtonApproach = labelMatching("approach").AsOldUIElementLabelString(),
@@ -430,7 +468,7 @@ namespace MapToOldInterface
 					ButtonWarpTo = labelMatching("warp to").AsOldUIElementLabelString(),
 
 					HeaderLabel = inLocationListElement.OfType<IUIElementText>()?.FirstOrDefault().Text,
-					ButtonLocation = inLocationListElement.OfType<IUIElementText>()?.FirstOrDefault(c => c?.Text?.RegexMatchSuccessIgnoreCase(@"url=showinfo:\d") ?? false).AsOldUIElementLabelString(),
+					ButtonLocation = buttonLocation?.WithText(UtilmenuMission_AusAstLocationTextLocationName(buttonLocation?.Text)?.Trim()).AsOldUIElementLabelString(),
 				});
 
 				inLocationListElement.Clear();
@@ -439,11 +477,13 @@ namespace MapToOldInterface
 			//	group UIElements into locations.
 			foreach (var elem in listLocationListUIElement)
 			{
-				if ((elem as IUIElementText)?.Text?.RegexMatchSuccessIgnoreCase(@"objective.*\(") ?? false)
+				if ((elem as IUIElementText)?.Text?.RegexMatchSuccessIgnoreCase(@"(objective|encounter)") ?? false)
 					locationConstruct();
 
 				inLocationListElement.Add(elem);
 			}
+
+			locationConstruct();
 
 			return new BotEngine.EveOnline.Interface.MemoryStruct.UtilmenuMission(container.AsOldUIElement())
 			{
