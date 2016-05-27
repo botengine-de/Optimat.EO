@@ -392,8 +392,7 @@
                 </TabItem.Content>
             </TabItem>
 
-            <TabItem
-                IsSelected="True">
+            <TabItem>
                 <TabItem.Header>
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -450,7 +449,8 @@
                 </TabItem.Content>
             </TabItem>
 
-            <TabItem>
+            <TabItem
+                IsSelected="True">
                 <TabItem.Header>
                     <Grid>
                         <Grid.ColumnDefinitions>
