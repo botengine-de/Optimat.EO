@@ -28,7 +28,7 @@ namespace Optimat.EveO.Nuzer
 		{
 			get
 			{
-				return "16.00.01";
+				return "16.04.26";
 			}
 		}
 
@@ -432,9 +432,11 @@ namespace Optimat.EveO.Nuzer
 
 		void CreateWindow()
 		{
-			var window = new Window();
-
-			window.Visibility = Visibility.Visible;
+			var window = new Window
+			{
+				Visibility = Visibility.Visible,
+				Title = "Optimat.EveOnline v" + VersioonSictString,
+			};
 
 			MainWindow = window;
 		}
