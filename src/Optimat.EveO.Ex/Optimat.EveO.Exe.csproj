@@ -81,6 +81,9 @@
     <Reference Include="BotEngine.Interface">
       <HintPath>..\..\lib\BotEngine.Interface.dll</HintPath>
     </Reference>
+    <Reference Include="BotEngine.Interface.Web">
+      <HintPath>..\..\lib\BotEngine.Interface.Web.dll</HintPath>
+    </Reference>
     <Reference Include="BotEngine.UI">
       <HintPath>..\..\lib\BotEngine.UI.dll</HintPath>
     </Reference>
