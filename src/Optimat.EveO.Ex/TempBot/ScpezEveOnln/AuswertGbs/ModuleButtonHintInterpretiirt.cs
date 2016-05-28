@@ -325,8 +325,9 @@ namespace Optimat.EveOnline.AuswertGbs
 		/// <summary>
 		/// 2013.10.16	Bsp:
 		/// Zaile[0]:"<b>Large Shield Booster II</b> [ALT-F5]" 
+		/// http://forum.botengine.de/thread/mission-running-bot/: "Small C5-L Emergency Shield Overload I"
 		/// </summary>
-		static readonly public string ShieldBoosterTitelRegexPattern = "Shield Booster";
+		static readonly public string ShieldBoosterTitelRegexPattern = @"Shield\s*(Booster|Overload)";
 
 		/// <summary>
 		/// 2014.01.26	Bsp:
