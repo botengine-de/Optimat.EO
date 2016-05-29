@@ -566,6 +566,7 @@ namespace MapToOldInterface
 				SetSprite = entry?.SetSprite?.Select(AsOld)?.ToArray(),
 				ListBackgroundColor = entry?.ListBackgroundColor,
 				ListColumnCellLabel = entry?.ListColumnCellLabel?.Select(c => new KeyValuePair<BotEngine.EveOnline.Interface.MemoryStruct.ListColumnHeader, string>(c.Key.AsOld(), c.Value))?.ToArray(),
+				Label = entry?.LabelText?.Largest()?.AsOldUIElementLabelString(),
 			};
 
 			var droneEntry = entry as IDroneViewEntryItem;
