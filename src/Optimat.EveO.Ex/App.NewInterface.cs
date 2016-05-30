@@ -1,4 +1,5 @@
 ﻿using BotEngine.Interface;
+using MapToOldInterface;
 using Sanderling;
 using System;
 
@@ -32,6 +33,8 @@ namespace Optimat.EveO.Nuzer
 
 		const int measurementTimeDistanceMin = 1000;
 
+		Sanderling.Interface.MemoryStruct.IMemoryMeasurement SimulateMemoryMeasurement;
+
 		void GetMeasurementIfDue()
 		{
 			sensorServerDispatcher?.Exchange();
@@ -59,6 +62,11 @@ namespace Optimat.EveO.Nuzer
 					Bib3.Glob.StopwatchZaitMiliSictInt());
 
 			var measurementNewStructure = response?.MemoryMeasurement;
+
+			var simulateMemoryMeasurement = this.SimulateMemoryMeasurement;
+
+			if (null != simulateMemoryMeasurement)
+				measurementNewStructure = new FromProcessMeasurement<Sanderling.Interface.MemoryStruct.IMemoryMeasurement>(simulateMemoryMeasurement, time, time, eveOnlineClientProcessId);
 
 			SensorClient.MemoryMeasurementLast = measurementNewStructure.MapValue(MapToOldInterface.MapToOldInterface.AsOld);
 		}

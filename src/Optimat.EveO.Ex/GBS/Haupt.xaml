@@ -12,13 +12,14 @@
              xmlns:Optimat.EveOnline.UI="clr-namespace:Optimat.EveOnline.UI;assembly=Optimat.EveOnline.UI"
              xmlns:Optimat.EveOnline.UI.CustomBot="clr-namespace:Optimat.EveOnline.UI.CustomBot;assembly=Optimat.EveOnline.UI"
              xmlns:BotEngine.UI="clr-namespace:BotEngine.UI;assembly=BotEngine.UI"
+             xmlns:Bib3.FCL.UI="clr-namespace:Bib3.FCL.UI;assembly=Bib3.FCL"
              PreviewKeyDown="UserControl_PreviewKeyDown"
              KeyUp="UserControl_KeyUp"
              mc:Ignorable="d" 
              d:DesignHeight="1111" d:DesignWidth="555"
              Loaded="UserControl_Loaded">
     <UserControl.Resources>
-        
+
         <Style TargetType="TextBlock">
             <Setter Property="Margin" Value="3,1,3,1"></Setter>
         </Style>
@@ -257,13 +258,13 @@
                                                 <Optimat.EveOnline.GBS:SictCharShipInspekt
                                                 x:Name="EveOnlnCharShipStateInspekt"
                                                 Width="333"></Optimat.EveOnline.GBS:SictCharShipInspekt>
-                                                
+
                                                 <GroupBox
                                                     Grid.Row="1">
                                                     <GroupBox.Header>
                                                         <TextBlock Text="Fitting"></TextBlock>
                                                     </GroupBox.Header>
-                                                    
+
                                                     <GroupBox.Content>
                                                         <TextBox
                                                             Name="TextBoxEveOnlnShipInspektFitting"
@@ -769,7 +770,7 @@
                                         </Bib3.FCL.GBS:BoolAbbildSymboolAkzeptanzFeelerWarnung>
                                         
                                         -->
-                                        
+
                                         <Bib3.FCL.GBS:SictSymboolAkzeptanzFeelerWarnung
                                             x:Name="SensorClientStatusInspect"
                                             Grid.Column="2"></Bib3.FCL.GBS:SictSymboolAkzeptanzFeelerWarnung>
@@ -778,8 +779,31 @@
 
                                 <TabItem.Content>
                                     <StackPanel>
-                                        <Optimat.EveOnline.UI.CustomBot:InputSnapshot
-                                            x:Name="VonProcessLeeseLezteInspekt"></Optimat.EveOnline.UI.CustomBot:InputSnapshot>
+                                        <GroupBox Header="simulation">
+                                            <WrapPanel>
+                                                <Button
+                                                    AllowDrop="True"
+                                                    Drop="MemoryMeasurementSimulationEnableButton_Drop">
+                                                    <TextBlock Text="load measurement (Sanderling.Interface.MemoryStruct.IMemoryMeasurement)"></TextBlock>
+                                                </Button>
+
+                                                <StackPanel
+                                                    x:Name="MemoryMeasurementSimulationEnabledPanel"
+                                                    Orientation="Horizontal">
+                                                    <Bib3.FCL.UI:StatusIcon Status="Warn"></Bib3.FCL.UI:StatusIcon>
+                                                    <TextBlock Text="simulation enabled"></TextBlock>
+                                                    <Button
+                                                        Click="MemoryMeasurementSimulationDisableButton_Click">
+                                                        <TextBlock Text="disable"></TextBlock>
+                                                    </Button>
+                                                </StackPanel>
+                                            </WrapPanel>
+                                        </GroupBox>
+
+                                        <GroupBox Header="old structure">
+                                            <Optimat.EveOnline.UI.CustomBot:InputSnapshot
+                                                x:Name="VonProcessLeeseLezteInspekt"></Optimat.EveOnline.UI.CustomBot:InputSnapshot>
+                                        </GroupBox>
                                     </StackPanel>
                                 </TabItem.Content>
                             </TabItem>
@@ -1186,10 +1210,10 @@
                                     </StackPanel>
                                 </GroupBox.Content>
                             </GroupBox>
-                            
+
                             <Grid Height="111" Grid.Row="2">
                             </Grid>
-                            
+
                             <GroupBox
                                 Grid.Row="4">
                                 <GroupBox.Header>
@@ -1205,7 +1229,7 @@
                                     </Button>
                                 </GroupBox.Content>
                             </GroupBox>
-                            
+
                         </Grid>
                     </ScrollViewer>
                 </TabItem.Content>
@@ -1218,7 +1242,7 @@
                 <TabItem.Header>
                     <TextBlock Text="Advanced"></TextBlock>
                 </TabItem.Header>
-                
+
                 <TabItem.Content>
                     <ScrollViewer>
                         <Optimat.EveO.Nuzer.GBS:Erwaitert
@@ -1314,7 +1338,7 @@
                                 </WrapPanel>
                             </GroupBox.Content>
                         </GroupBox>
-                        
+
                         <GroupBox>
                             <GroupBox.Header>
                                 <TextBlock Text="Scrit.Zait"></TextBlock>
@@ -1327,7 +1351,7 @@
                                     Height="77"></TextBox>
                             </GroupBox.Content>
                         </GroupBox>
-                        
+
                     </StackPanel>
                 </TabItem.Content>
             </TabItem>

@@ -19,6 +19,8 @@ using Optimat.EveOnline;
 using Optimat.EveOnline.Base;
 using Optimat.GBS;
 using ExtractFromOldAssembly.Bib3;
+using Bib3.FCL;
+using BotEngine.Interface;
 
 namespace Optimat.EveO.Nuzer.GBS
 {
@@ -52,6 +54,8 @@ namespace Optimat.EveO.Nuzer.GBS
 		public Haupt()
 		{
 			InitializeComponent();
+
+			MemoryMeasurementSimulationUIUpdate();
 
 			ZiilProcessAuswaalZiilProcess.BewertungMainModuleDataiNaameAingaabe = "ExeFile.exe";
 
@@ -174,10 +178,10 @@ namespace Optimat.EveO.Nuzer.GBS
 
 			var SensorServerApiUri = Konfig?.SensorServerApiUri;
 
-            if(SensorServerApiUri.NullOderLeer())
-            {
-                SensorServerApiUri = App.BotEngineApiUriDefault;
-            }
+			if(SensorServerApiUri.NullOderLeer())
+			{
+				SensorServerApiUri = App.BotEngineApiUriDefault;
+			}
 
 			TextBoxSensorServerApiUri.Text = SensorServerApiUri;
 			/*
@@ -721,6 +725,43 @@ namespace Optimat.EveO.Nuzer.GBS
 		private void SizungBerictVerzaicnisPfaad_Drop(object sender, DragEventArgs e)
 		{
 			TextBoxSizungBerictVerzaicnisPfaad.Text = Bib3.FCL.Glob.FrüühestDataiPfaadAusDropFileDrop(e);
+		}
+
+		public PropertyGenTimespanInt64<Sanderling.Interface.MemoryStruct.IMemoryMeasurement> MemoryMeasurementSimulationValue
+		{
+			private set;
+			get;
+		}
+
+		void MemoryMeasurementSimulationUIUpdate() =>
+			MemoryMeasurementSimulationEnabledPanel.Visibility = null == MemoryMeasurementSimulationValue ? Visibility.Hidden : Visibility.Visible;
+
+		private void MemoryMeasurementSimulationDisableButton_Click(object sender, RoutedEventArgs e)
+		{
+			MemoryMeasurementSimulationValue = null;
+			MemoryMeasurementSimulationUIUpdate();
+		}
+
+		private void MemoryMeasurementSimulationEnableButton_Drop(object sender, DragEventArgs e)
+		{
+			Bib3.FCL.GBS.Extension.CatchNaacMessageBoxException(() =>
+			{
+				var filePathAndContent = e?.LaadeMengeDataiInhaltAusDropFileDrop()?.FirstOrDefault();
+
+				var fileContentUTF8 = Encoding.UTF8.GetString(filePathAndContent?.Value);
+
+				var setRoot = Bib3.RefNezDiferenz.Extension.ListeWurzelDeserialisiireVonJson(fileContentUTF8);
+
+				var root = setRoot?.FirstOrDefault();
+
+				var memoryMeasurement =
+					root as Sanderling.Interface.MemoryStruct.IMemoryMeasurement ??
+					(root as FromProcessMeasurement<Sanderling.Interface.MemoryStruct.IMemoryMeasurement>)?.Value;
+
+				MemoryMeasurementSimulationValue = new PropertyGenTimespanInt64<Sanderling.Interface.MemoryStruct.IMemoryMeasurement>(memoryMeasurement, Bib3.Glob.StopwatchZaitMiliSictInt());
+			});
+
+			MemoryMeasurementSimulationUIUpdate();
 		}
 	}
 }

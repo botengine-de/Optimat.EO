@@ -558,6 +558,8 @@ namespace Optimat.EveO.Nuzer
 
 			var GbsSctoierelementHaupt = this.GbsSctoierelementHaupt;
 
+			SimulateMemoryMeasurement = GbsSctoierelementHaupt?.MemoryMeasurementSimulationValue?.Value;
+
 			IntPtr GbsAingaabeWaalZiilProcessMainWindowHandle = IntPtr.Zero;
 
 			bool GbsAingaabeEveOnlnAutoWirkungFraigaabe = false;
