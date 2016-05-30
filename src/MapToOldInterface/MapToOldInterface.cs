@@ -843,5 +843,13 @@ namespace MapToOldInterface
 		static public BotEngine.EveOnline.Interface.MemoryStruct.WindowTelecom AsOld(this WindowTelecom window) =>
 			window == null ? null :
 			new BotEngine.EveOnline.Interface.MemoryStruct.WindowTelecom(window.AsOldWindowBase());
+
+		static public BotEngine.EveOnline.Interface.MemoryStruct.MessageBox AsOld(this MessageBox messageBox) =>
+			messageBox == null ? null :
+			new BotEngine.EveOnline.Interface.MemoryStruct.MessageBox(messageBox.AsOldWindowBase())
+			{
+				MainEditText = messageBox?.MainEditText,
+				TopCaptionText = messageBox?.TopCaptionText,
+			};
 	}
 }
