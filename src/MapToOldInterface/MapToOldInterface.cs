@@ -1,6 +1,5 @@
 ﻿using Bib3;
 using Bib3.Geometrik;
-using BotEngine;
 using BotEngine.Common;
 using ExtractFromOldAssembly.Bib3;
 using Sanderling.Interface.MemoryStruct;
@@ -12,10 +11,115 @@ using System.Text.RegularExpressions;
 
 namespace MapToOldInterface
 {
+	public class MappingContext
+	{
+		readonly IDictionary<object, object> mappedFromOrigin = new Dictionary<object, object>();
+
+		public Func<Type, Func<object, Func<object, object>, object>> GetMappingFuncFromTypeDelegate;
+
+		public object Map(object origin)
+		{
+			var mappingFunc = GetMappingFuncFromTypeDelegate(origin?.GetType());
+
+			object mapped = null;
+
+			if (null != origin)
+				if (mappedFromOrigin.TryGetValue(origin, out mapped))
+					return mapped;
+
+			mapped = mappingFunc(origin, Map);
+
+			if (null != origin) //	the used IDictionary implementation seems to not accept null as key.
+				mappedFromOrigin[origin] = mapped;
+
+			return mapped;
+		}
+	}
+
+	public class AssignmentDirectionComparer : IComparer<Type>
+	{
+		public int Compare(Type x, Type y)
+		{
+			return Math.Sign(
+				(x.IsAssignableFrom(y) ? 1 : -1) +
+				(y.IsAssignableFrom(x) ? -1 : 1));
+		}
+	}
+
 	static public class MapToOldInterface
 	{
+		static SictScatenscpaicerDict<Type, Func<object, Func<object, object>, object>> MappingFuncFromTypeCache = new SictScatenscpaicerDict<Type, Func<object, Func<object, object>, object>>();
+
+		static Func<object, Func<object, object>, object> MappingFuncFromType(Type type)
+		{
+			var elementContainerType = typeof(MapToOldInterfaceElement);
+
+			var setSuitable = new List<System.Reflection.MethodInfo>();
+
+			var listParamExpectedType = new[]
+			{
+				type,
+				typeof(Func<object, object>)
+			};
+
+			foreach (var method in elementContainerType.GetMethods())
+			{
+				if (method.DeclaringType != elementContainerType)
+					continue;
+
+				var listParam = method.GetParameters();
+
+				if (!(1 <= listParam?.Length && listParam?.Length <= 2))
+					continue;
+
+				var paramOriginType = listParam?.FirstOrDefault()?.ParameterType;
+
+				var paramMappingContextType = listParam?.ElementAtOrDefault(1)?.ParameterType;
+
+				if (!paramOriginType.IsAssignableFrom(type))
+					continue;
+
+				if (null != paramMappingContextType && !(paramMappingContextType == typeof(Func<object, object>)))
+					continue;
+
+				setSuitable.Add(method);
+			}
+
+			//	select the method whose param type is closest.
+
+			var bestMethod = setSuitable.OrderBy(method => method?.GetParameters()?.FirstOrDefault()?.ParameterType, new AssignmentDirectionComparer())?.FirstOrDefault();
+
+			if (null != bestMethod)
+				return (origin, mappingContext) => bestMethod.Invoke(null, new[] { origin }.Concat(1 < bestMethod.GetParameters().Length ? new[] { mappingContext } : new object[0]).ToArray());
+
+			throw new NotImplementedException("no mapping method found for type " + type);
+		}
+
 		static public BotEngine.EveOnline.Interface.MemoryStruct.MemoryMeasurement AsOld(
 			this Sanderling.Interface.MemoryStruct.IMemoryMeasurement memoryMeasurement)
+		{
+			var parsed = memoryMeasurement?.Parse();
+
+			if (parsed == null)
+				return null;
+
+			var mappingContext = new MappingContext
+			{
+				GetMappingFuncFromTypeDelegate = type => MappingFuncFromTypeCache.ValueFürKey(type, MappingFuncFromType),
+			};
+
+			return (BotEngine.EveOnline.Interface.MemoryStruct.MemoryMeasurement)mappingContext.Map(memoryMeasurement);
+		}
+
+		static public Func<object, ReturnT> CastReturn<ReturnT>(this Func<object, object> func) =>
+			null == func ? null : new Func<object, ReturnT>(orig => (ReturnT)func(orig));
+	}
+
+	static public class MapToOldInterfaceElement
+	{
+		static public BotEngine.EveOnline.Interface.MemoryStruct.MemoryMeasurement AsOld(
+			this Sanderling.Interface.MemoryStruct.IMemoryMeasurement memoryMeasurement,
+			Func<object, object> mapDelegate)
 		{
 			var parsed = memoryMeasurement?.Parse();
 
@@ -42,23 +146,24 @@ namespace MapToOldInterface
 				Target = parsed?.Target?.Select(AsOld)?.ToArray(),
 				UtilmenuMission = parsed?.Utilmenu?.Select(c => c.AsOldUtilmenuMission(parsed))?.WhereNotDefault()?.FirstOrDefault(),
 				VersionString = parsed?.VersionString,
-				WindowAgentBrowser = parsed?.WindowAgentBrowser?.Select(AsOldWindowAgentBrowser)?.ToArray(),
-				WindowAgentDialogue = parsed?.WindowAgentDialogue?.Select(AsOld)?.ToArray(),
-				WindowChatChannel = parsed?.WindowChatChannel?.Select(AsOld)?.ToArray(),
-				WindowDroneView = parsed?.WindowDroneView?.Select(AsOld)?.ToArray(),
-				WindowFittingMgmt = parsed?.WindowFittingMgmt?.Select(AsOld)?.ToArray(),
-				WindowFittingWindow = parsed?.WindowShipFitting?.Select(AsOld)?.ToArray(),
-				WindowInventory = parsed?.WindowInventory?.Select(AsOld)?.ToArray(),
-				WindowItemSell = parsed?.WindowItemSell?.Select(AsOld)?.ToArray(),
-				WindowMarketAction = parsed?.WindowMarketAction?.Select(AsOld)?.ToArray(),
-				WindowOverview = parsed?.WindowOverview?.Select(AsOld)?.ToArray(),
-				WindowOther = parsed?.WindowOther?.Select(AsOldWindow)?.ToArray(),
-				WindowRegionalMarket = parsed?.WindowRegionalMarket?.Select(AsOld)?.ToArray(),
-				WindowSelectedItemView = parsed?.WindowSelectedItemView?.Select(AsOld)?.ToArray(),
-				WindowStack = parsed?.WindowStack?.Select(AsOld)?.ToArray(),
-				WindowStationLobby = parsed?.WindowStation?.Select(AsOld)?.ToArray(),
-				WindowSurveyScanView = parsed?.WindowSurveyScanView?.Select(AsOld)?.ToArray(),
-				WindowTelecom = parsed?.WindowTelecom?.Select(AsOld)?.ToArray(),
+
+				WindowAgentBrowser = parsed?.WindowAgentBrowser?.Select(mapDelegate.CastReturn<BotEngine.EveOnline.Interface.MemoryStruct.WindowAgentBrowser>())?.ToArray(),
+				WindowAgentDialogue = parsed?.WindowAgentDialogue?.Select(mapDelegate.CastReturn<BotEngine.EveOnline.Interface.MemoryStruct.WindowAgentDialogue>())?.ToArray(),
+				WindowChatChannel = parsed?.WindowChatChannel?.Select(mapDelegate.CastReturn<BotEngine.EveOnline.Interface.MemoryStruct.WindowChatChannel>())?.ToArray(),
+				WindowDroneView = parsed?.WindowDroneView?.Select(mapDelegate.CastReturn<BotEngine.EveOnline.Interface.MemoryStruct.WindowDroneView>())?.ToArray(),
+				WindowFittingMgmt = parsed?.WindowFittingMgmt?.Select(mapDelegate.CastReturn<BotEngine.EveOnline.Interface.MemoryStruct.WindowFittingMgmt>())?.ToArray(),
+				WindowFittingWindow = parsed?.WindowShipFitting?.Select(mapDelegate.CastReturn<BotEngine.EveOnline.Interface.MemoryStruct.WindowFittingWindow>())?.ToArray(),
+				WindowInventory = parsed?.WindowInventory?.Select(mapDelegate.CastReturn<BotEngine.EveOnline.Interface.MemoryStruct.WindowInventory>())?.ToArray(),
+				WindowItemSell = parsed?.WindowItemSell?.Select(mapDelegate.CastReturn<BotEngine.EveOnline.Interface.MemoryStruct.WindowItemSell>())?.ToArray(),
+				WindowMarketAction = parsed?.WindowMarketAction?.Select(mapDelegate.CastReturn<BotEngine.EveOnline.Interface.MemoryStruct.WindowMarketAction>())?.ToArray(),
+				WindowOverview = parsed?.WindowOverview?.Select(mapDelegate.CastReturn<BotEngine.EveOnline.Interface.MemoryStruct.WindowOverView>())?.ToArray(),
+				WindowOther = parsed?.WindowOther?.Select(mapDelegate.CastReturn<BotEngine.EveOnline.Interface.MemoryStruct.Window>())?.ToArray(),
+				WindowRegionalMarket = parsed?.WindowRegionalMarket?.Select(mapDelegate.CastReturn<BotEngine.EveOnline.Interface.MemoryStruct.WindowRegionalMarket>())?.ToArray(),
+				WindowSelectedItemView = parsed?.WindowSelectedItemView?.Select(mapDelegate.CastReturn<BotEngine.EveOnline.Interface.MemoryStruct.WindowSelectedItemView>())?.ToArray(),
+				WindowStack = parsed?.WindowStack?.Select(mapDelegate.CastReturn<BotEngine.EveOnline.Interface.MemoryStruct.WindowStack>())?.ToArray(),
+				WindowStationLobby = parsed?.WindowStation?.Select(mapDelegate.CastReturn<BotEngine.EveOnline.Interface.MemoryStruct.WindowStationLobby>())?.ToArray(),
+				WindowSurveyScanView = parsed?.WindowSurveyScanView?.Select(mapDelegate.CastReturn<BotEngine.EveOnline.Interface.MemoryStruct.WindowSurveyScanView>())?.ToArray(),
+				WindowTelecom = parsed?.WindowTelecom?.Select(mapDelegate.CastReturn<BotEngine.EveOnline.Interface.MemoryStruct.WindowTelecom>())?.ToArray(),
 			};
 		}
 
@@ -79,7 +184,7 @@ namespace MapToOldInterface
 		}
 
 		static public BotEngine.EveOnline.Interface.MemoryStruct.UIElementLabelString AsOldUIElementLabelString(
-			this IUIElementText uiElement)
+		this IUIElementText uiElement)
 		{
 			if (uiElement == null)
 				return null;
@@ -335,7 +440,7 @@ namespace MapToOldInterface
 				Timer = shipUI.Timer?.Select(AsOld)?.ToArray(),
 			};
 
-		static public BotEngine.EveOnline.Interface.MemoryStruct.Window AsOldWindow(this IWindow window) =>
+		static public BotEngine.EveOnline.Interface.MemoryStruct.Window AsOldWindowBase(this IWindow window) =>
 			window == null ? null :
 			new BotEngine.EveOnline.Interface.MemoryStruct.Window(window.AsOldUIElement())
 			{
@@ -350,7 +455,7 @@ namespace MapToOldInterface
 
 		static public BotEngine.EveOnline.Interface.MemoryStruct.SystemMenu AsOldSystemMenu(this IWindow window) =>
 			window == null ? null :
-			new BotEngine.EveOnline.Interface.MemoryStruct.SystemMenu(window.AsOldWindow());
+			new BotEngine.EveOnline.Interface.MemoryStruct.SystemMenu(window.AsOldWindowBase());
 
 		static public BotEngine.EveOnline.Interface.MemoryStruct.ShipUiTargetAssignedGroup AsOld(this ShipUiTargetAssignedGroup assignedGroup) =>
 			assignedGroup == null ? null :
@@ -496,11 +601,11 @@ namespace MapToOldInterface
 
 		static public BotEngine.EveOnline.Interface.MemoryStruct.WindowAgent AsOldWindowAgent(this IWindowAgent window) =>
 			window == null ? null :
-			new BotEngine.EveOnline.Interface.MemoryStruct.WindowAgent(window.AsOldWindow());
+			new BotEngine.EveOnline.Interface.MemoryStruct.WindowAgent(window.AsOldWindowBase());
 
 		static public BotEngine.EveOnline.Interface.MemoryStruct.WindowAgentBrowser AsOldWindowAgentBrowser(this IWindow window) =>
 			window == null ? null :
-			new BotEngine.EveOnline.Interface.MemoryStruct.WindowAgentBrowser(new BotEngine.EveOnline.Interface.MemoryStruct.WindowAgent(window.AsOldWindow()));
+			new BotEngine.EveOnline.Interface.MemoryStruct.WindowAgentBrowser(new BotEngine.EveOnline.Interface.MemoryStruct.WindowAgent(window.AsOldWindowBase()));
 
 		static public BotEngine.EveOnline.Interface.MemoryStruct.WindowAgentPane AsOld(this Sanderling.Parse.IWindowAgentPane pane) =>
 			pane == null ? null :
@@ -509,7 +614,8 @@ namespace MapToOldInterface
 				Html = pane?.Html,
 			};
 
-		static public BotEngine.EveOnline.Interface.MemoryStruct.WindowAgentDialogue AsOld(this Sanderling.Parse.IWindowAgentDialogue window) =>
+		static public BotEngine.EveOnline.Interface.MemoryStruct.WindowAgentDialogue AsOld(
+			this Sanderling.Parse.IWindowAgentDialogue window) =>
 			window == null ? null :
 			new BotEngine.EveOnline.Interface.MemoryStruct.WindowAgentDialogue(window.AsOldWindowAgent())
 			{
@@ -519,7 +625,7 @@ namespace MapToOldInterface
 
 		static public BotEngine.EveOnline.Interface.MemoryStruct.WindowChatChannel AsOld(this WindowChatChannel window) =>
 			window == null ? null :
-			new BotEngine.EveOnline.Interface.MemoryStruct.WindowChatChannel(window.AsOldWindow())
+			new BotEngine.EveOnline.Interface.MemoryStruct.WindowChatChannel(window.AsOldWindowBase())
 			{
 				//	at the moment I guess the bot does not use those anyway.
 			};
@@ -614,21 +720,21 @@ namespace MapToOldInterface
 
 		static public BotEngine.EveOnline.Interface.MemoryStruct.WindowDroneView AsOld(this IWindowDroneView window) =>
 			window == null ? null :
-			new BotEngine.EveOnline.Interface.MemoryStruct.WindowDroneView(window.AsOldWindow())
+			new BotEngine.EveOnline.Interface.MemoryStruct.WindowDroneView(window.AsOldWindowBase())
 			{
 				ListViewport = window?.ListView?.AsOld(),
 			};
 
 		static public BotEngine.EveOnline.Interface.MemoryStruct.WindowFittingMgmt AsOld(this WindowFittingMgmt window) =>
 			window == null ? null :
-			new BotEngine.EveOnline.Interface.MemoryStruct.WindowFittingMgmt(window.AsOldWindow())
+			new BotEngine.EveOnline.Interface.MemoryStruct.WindowFittingMgmt(window.AsOldWindowBase())
 			{
 				FittingViewport = window?.FittingView?.AsOld(),
 			};
 
 		static public BotEngine.EveOnline.Interface.MemoryStruct.WindowFittingWindow AsOld(this WindowShipFitting window) =>
 			window == null ? null :
-			new BotEngine.EveOnline.Interface.MemoryStruct.WindowFittingWindow(window.AsOldWindow());
+			new BotEngine.EveOnline.Interface.MemoryStruct.WindowFittingWindow(window.AsOldWindowBase());
 
 		static public BotEngine.EveOnline.Interface.MemoryStruct.TreeViewEntry AsOld(this ITreeViewEntry entry)
 		{
@@ -658,7 +764,7 @@ namespace MapToOldInterface
 
 		static public BotEngine.EveOnline.Interface.MemoryStruct.WindowInventory AsOld(this Sanderling.Parse.IWindowInventory window) =>
 			window == null ? null :
-			new BotEngine.EveOnline.Interface.MemoryStruct.WindowInventory(window.AsOldWindow())
+			new BotEngine.EveOnline.Interface.MemoryStruct.WindowInventory(window.AsOldWindowBase())
 			{
 				LeftTreeListEntry = window?.LeftTreeListEntry?.Select(AsOld)?.ToArray(),
 				LeftTreeViewportScroll = window?.LeftTreeViewportScroll?.AsOld(),
@@ -674,11 +780,11 @@ namespace MapToOldInterface
 
 		static public BotEngine.EveOnline.Interface.MemoryStruct.WindowItemSell AsOld(this WindowItemSell window) =>
 			window == null ? null :
-			new BotEngine.EveOnline.Interface.MemoryStruct.WindowItemSell(window.AsOldWindow());
+			new BotEngine.EveOnline.Interface.MemoryStruct.WindowItemSell(window.AsOldWindowBase());
 
 		static public BotEngine.EveOnline.Interface.MemoryStruct.WindowMarketAction AsOld(this WindowMarketAction window) =>
 			window == null ? null :
-			new BotEngine.EveOnline.Interface.MemoryStruct.WindowMarketAction(window.AsOldWindow());
+			new BotEngine.EveOnline.Interface.MemoryStruct.WindowMarketAction(window.AsOldWindowBase());
 
 		static public BotEngine.EveOnline.Interface.MemoryStruct.Tab AsOld(this Tab tab) =>
 			tab == null ? null :
@@ -686,7 +792,7 @@ namespace MapToOldInterface
 
 		static public BotEngine.EveOnline.Interface.MemoryStruct.WindowOverView AsOld(this Sanderling.Parse.IWindowOverview window) =>
 			window == null ? null :
-			new BotEngine.EveOnline.Interface.MemoryStruct.WindowOverView(window.AsOldWindow())
+			new BotEngine.EveOnline.Interface.MemoryStruct.WindowOverView(window.AsOldWindowBase())
 			{
 				ListViewport = window?.ListView?.AsOldListView(),
 				ViewportOverallLabelString = window?.ViewportOverallLabelString,
@@ -695,18 +801,20 @@ namespace MapToOldInterface
 
 		static public BotEngine.EveOnline.Interface.MemoryStruct.WindowRegionalMarket AsOld(this WindowRegionalMarket window) =>
 			window == null ? null :
-			new BotEngine.EveOnline.Interface.MemoryStruct.WindowRegionalMarket(window.AsOldWindow());
+			new BotEngine.EveOnline.Interface.MemoryStruct.WindowRegionalMarket(window.AsOldWindowBase());
 
 		static public BotEngine.EveOnline.Interface.MemoryStruct.WindowSelectedItemView AsOld(this IWindowSelectedItemView window) =>
 			window == null ? null :
-			new BotEngine.EveOnline.Interface.MemoryStruct.WindowSelectedItemView(window.AsOldWindow());
+			new BotEngine.EveOnline.Interface.MemoryStruct.WindowSelectedItemView(window.AsOldWindowBase());
 
-		static public BotEngine.EveOnline.Interface.MemoryStruct.WindowStack AsOld(this WindowStack window) =>
+		static public BotEngine.EveOnline.Interface.MemoryStruct.WindowStack AsOld(
+			this WindowStack window,
+			Func<object, object> mapDelegate) =>
 			window == null ? null :
-			new BotEngine.EveOnline.Interface.MemoryStruct.WindowStack(window.AsOldWindow())
+			new BotEngine.EveOnline.Interface.MemoryStruct.WindowStack(window.AsOldWindowBase())
 			{
 				Tab = window?.Tab?.Select(AsOld)?.ToArray(),
-				TabSelectedWindow = window?.TabSelectedWindow?.AsOldWindow(),
+				TabSelectedWindow = (BotEngine.EveOnline.Interface.MemoryStruct.Window)mapDelegate(window?.TabSelectedWindow),
 			};
 
 		static public BotEngine.EveOnline.Interface.MemoryStruct.LobbyAgentEntry AsOld(this LobbyAgentEntry entry) =>
@@ -716,9 +824,10 @@ namespace MapToOldInterface
 				entry?.LabelText?.AsOldUIElementLabelString()?.ToArray(),
 				entry?.StartConversationButton?.AsOldUIElement());
 
-		static public BotEngine.EveOnline.Interface.MemoryStruct.WindowStationLobby AsOld(this IWindowStation window) =>
+		static public BotEngine.EveOnline.Interface.MemoryStruct.WindowStationLobby AsOld(
+			this IWindowStation window) =>
 			window == null ? null :
-			new BotEngine.EveOnline.Interface.MemoryStruct.WindowStationLobby(window.AsOldWindow())
+			new BotEngine.EveOnline.Interface.MemoryStruct.WindowStationLobby(window.AsOldWindowBase())
 			{
 				AboveServicesLabel = window?.AboveServicesLabel?.AsOldUIElementLabelString()?.ToArray(),
 				AgentEntry = window?.AgentEntry?.Select(AsOld)?.ToArray(),
@@ -729,10 +838,10 @@ namespace MapToOldInterface
 
 		static public BotEngine.EveOnline.Interface.MemoryStruct.WindowSurveyScanView AsOld(this IWindowSurveyScanView window) =>
 			window == null ? null :
-			new BotEngine.EveOnline.Interface.MemoryStruct.WindowSurveyScanView(window.AsOldWindow());
+			new BotEngine.EveOnline.Interface.MemoryStruct.WindowSurveyScanView(window.AsOldWindowBase());
 
 		static public BotEngine.EveOnline.Interface.MemoryStruct.WindowTelecom AsOld(this WindowTelecom window) =>
 			window == null ? null :
-			new BotEngine.EveOnline.Interface.MemoryStruct.WindowTelecom(window.AsOldWindow());
+			new BotEngine.EveOnline.Interface.MemoryStruct.WindowTelecom(window.AsOldWindowBase());
 	}
 }
