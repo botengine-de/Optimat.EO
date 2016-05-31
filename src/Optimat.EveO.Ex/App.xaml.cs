@@ -28,21 +28,16 @@ namespace Optimat.EveO.Nuzer
 		{
 			get
 			{
-				return "16.04.26";
+				return "16.04.30";
 			}
 		}
+
+		public string AnwendungTitel	=>
+			"Optimat.EveOnline v" + VersioonSictString;
 
 		/*
 		 * 16.04.15
 		 * 
-		override public string AnwendungTitel
-		{
-			get
-			{
-				return "Optimat.EVE v" + VersioonSictString;
-			}
-		}
-
 		override public double TimerInterval
 		{
 			get
@@ -435,7 +430,7 @@ namespace Optimat.EveO.Nuzer
 			var window = new Window
 			{
 				Visibility = Visibility.Visible,
-				Title = "Optimat.EveOnline v" + VersioonSictString,
+				Title = AnwendungTitel,
 			};
 
 			MainWindow = window;
