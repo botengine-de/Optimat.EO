@@ -21,7 +21,7 @@ namespace Optimat.EveO.Nuzer
 		readonly Sanderling.SimpleInterfaceServerDispatcher sensorServerDispatcher = new Sanderling.SimpleInterfaceServerDispatcher
 		{
 			InterfaceAppDomainSetupType = typeof(InterfaceAppDomainSetup),
-			InterfaceAppDomainSetupTypeLoadFromMainModule = false,
+			InterfaceAppDomainSetupTypeLoadFromMainModule = true,
 		};
 
 		void SanderlingMemreadInitConnection()
