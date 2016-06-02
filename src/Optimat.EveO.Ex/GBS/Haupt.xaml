@@ -1235,6 +1235,24 @@
                 </TabItem.Content>
             </TabItem>
 
+            <TabItem Header="About">
+                <RichTextBox
+                                IsReadOnly="True"
+                                IsDocumentEnabled="True">
+                    <FlowDocument>
+                        <Paragraph>
+                            <Run>
+                                For support and information about eve online bots, see:
+                            </Run>
+                            <Bib3.FCL.UI:HyperlinkProcessStartFilename
+                                NavigateUri="http://forum.botengine.de/cat/eve-online/">
+                                <Run>http://forum.botengine.de/cat/eve-online/</Run>
+                            </Bib3.FCL.UI:HyperlinkProcessStartFilename>
+                        </Paragraph>
+                    </FlowDocument>
+                </RichTextBox>
+            </TabItem>
+
             <TabItem
                 Name="TabItemErwaitert"
                 Visibility="Collapsed"

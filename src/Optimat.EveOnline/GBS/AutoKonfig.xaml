@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:Bib3.FCL.GBS="clr-namespace:Bib3.FCL.GBS;assembly=Bib3.FCL"
              xmlns:Optimat.EveOnline.GBS="clr-namespace:Optimat.EveOnline.GBS"
+             xmlns:Bib3.FCL.UI="clr-namespace:Bib3.FCL.UI;assembly=Bib3.FCL"
              mc:Ignorable="d" 
              d:DesignHeight="555" d:DesignWidth="555">
     <UserControl.Resources>
@@ -321,7 +322,8 @@
                             GroupName="GroupAutoTyp"
                             Checked="RadioButtonAutoPilotFraigaabe_Checked"
                             Grid.Column="2"
-                            VerticalAlignment="Center"></RadioButton>
+                            VerticalAlignment="Center"
+                            IsEnabled="False"></RadioButton>
                     </Grid>
                 </TabItem.Header>
 
@@ -383,6 +385,16 @@
                                             <Run>
                                                 https://github.com/Arcitectus/Sanderling/wiki/Getting-Started
                                             </Run>
+                                            <LineBreak></LineBreak>
+                                            <LineBreak></LineBreak>
+                                            <Run>
+                                                For other eve online bots and support, see:
+                                            </Run>
+                                            <LineBreak></LineBreak>
+                                            <Bib3.FCL.UI:HyperlinkProcessStartFilename
+                                                NavigateUri="http://forum.botengine.de/cat/eve-online/">
+                                                <Run>http://forum.botengine.de/cat/eve-online/</Run>
+                                            </Bib3.FCL.UI:HyperlinkProcessStartFilename>
                                         </Paragraph>
                                     </FlowDocument>
                                 </RichTextBox>
@@ -418,7 +430,8 @@
                             GroupName="GroupAutoTyp"
                             Checked="RadioButtonAutoMineFraigaabe_Checked"
                             Grid.Column="2"
-                            VerticalAlignment="Center"></RadioButton>
+                            VerticalAlignment="Center"
+                            IsEnabled="False"></RadioButton>
 
                     </Grid>
                 </TabItem.Header>
@@ -475,7 +488,8 @@
                             GroupName="GroupAutoTyp"
                             Checked="RadioButtonAutoMissionFraigaabe_Checked"
                             Grid.Column="2"
-                            VerticalAlignment="Center"></RadioButton>
+                            VerticalAlignment="Center"
+                            IsChecked="True"></RadioButton>
                     </Grid>
                 </TabItem.Header>
 

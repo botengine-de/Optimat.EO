@@ -160,6 +160,16 @@
                     <Run>
                         https://github.com/Arcitectus/Sanderling/wiki/Getting-Started
                     </Run>
+                    <LineBreak></LineBreak>
+                    <LineBreak></LineBreak>
+                    <Run>
+                        For other eve online bots and support, see:
+                    </Run>
+                    <LineBreak></LineBreak>
+                    <Bib3.FCL.UI:HyperlinkProcessStartFilename
+                                NavigateUri="http://forum.botengine.de/cat/eve-online/">
+                        <Run>http://forum.botengine.de/cat/eve-online/</Run>
+                    </Bib3.FCL.UI:HyperlinkProcessStartFilename>
                 </Paragraph>
             </FlowDocument>
         </RichTextBox>
