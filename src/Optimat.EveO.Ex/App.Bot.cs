@@ -42,7 +42,7 @@ namespace Optimat.EveO.Nuzer
 					return null;
 				}
 
-				return	ExtractFromOldAssembly.Bib3.Glob.ScteleSicerEndung(MengeSizungBerictVerzaicnisPfaad, @"\") + SizungBerictVerzaicnisNaame;
+				return ExtractFromOldAssembly.Bib3.Glob.ScteleSicerEndung(MengeSizungBerictVerzaicnisPfaad, @"\") + SizungBerictVerzaicnisNaame;
 			}
 		}
 
@@ -160,7 +160,7 @@ namespace Optimat.EveO.Nuzer
 		void AktualisiireAutomat()
 		{
 			var Zait = Bib3.Glob.StopwatchZaitMiliSictInt();
-			
+
 			var MemoryMeasurementLast = SensorClient.MemoryMeasurementLast;
 
 			Automat.VonSensorikMesungLezte = SensorSnapshotLastAgr.OoneMesungWindow();
@@ -263,6 +263,7 @@ namespace Optimat.EveO.Nuzer
 			var RequestedMeasurementTime = this.RequestedMeasurementTime(
 				out AssumptionLastMeasurementTime);
 
+			lock (RequestedMeasurementTimeLog)
 			{
 				var LogNit = false;
 
