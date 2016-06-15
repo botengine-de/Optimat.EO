@@ -241,253 +241,7 @@ namespace Optimat.EveO.Nuzer
 			SctoierelementHaupt.EveOnlinePräferenzSctandardWert = EveOnlinePräferenzSctandardWertBerecne();
 
 			SctoierelementHaupt.KonfigSctandardWert = KonfigSctandardWertBerecne();
-
-			/*
-			 * 2015.03.03
-			 * 
-				SctoierelementHaupt.ButtonOptimatServerListeVerbindungLezteTreneJezt.Click +=
-					ButtonOptimatServerListeVerbindungLezteTreneJezt_Click;
-
-				SctoierelementHaupt.ButtonInspektOptimatScritZwiscescpaicerVonProcessGbsBaumScraibeNaacDatai.Drop +=
-					ButtonInspektOptimatScritZwiscescpaicerVonProcessGbsBaumScraibeNaacDatai_Drop;
-			 * */
-
-			SctoierelementHaupt.ButtonInspektOptimatScritZwiscescpaicerWindowClientRasterScraibeNaacDatai.Drop += ButtonInspektOptimatScritZwiscescpaicerWindowClientRasterScraibeNaacDatai_Drop;
 		}
-
-		void ButtonInspektOptimatScritZwiscescpaicerWindowClientRasterScraibeNaacDatai_Drop(object sender, DragEventArgs e)
-		{
-			try
-			{
-				var ZiilPfaad = Bib3.FCL.Glob.DataiPfaadAlsKombinatioonAusSctandardPfaadUndFileDrop("Optimat.Scrit.Window.Client.Raster", e);
-
-				var OptimatScritZwiscescpaicer = this.OptimatScritZwiscescpaicer;
-
-				if (null == OptimatScritZwiscescpaicer)
-				{
-					throw new ArgumentNullException("OptimatScritZwiscescpaicer");
-				}
-
-				var VonWindowLeese = OptimatScritZwiscescpaicer.VonWindowLeese;
-
-				if (null == VonWindowLeese)
-				{
-					throw new ArgumentNullException("VonWindowLeese");
-				}
-
-				var ClientRasterDataiPfaad = VonWindowLeese.ClientRasterZiilDataiPfaad;
-
-				if (null == ClientRasterDataiPfaad)
-				{
-					throw new ArgumentNullException("ClientRasterDataiPfaad");
-				}
-
-				File.Copy(ClientRasterDataiPfaad, ZiilPfaad, true);
-			}
-			catch (System.Exception Exception)
-			{
-				Optimat.Glob.ZaigeMessageBoxException(Exception);
-			}
-		}
-
-		/*
-		 * 2015.03.03
-		 * 
-		void ButtonEveOnlineAutoVonNuzerParamScraibeNaacDatai_Drop(object sender, DragEventArgs e)
-		{
-			try
-			{
-				var ZiilPfaad = Bib3.FCL.Glob.DataiPfaadAlsKombinatioonAusSctandardPfaadUndFileDrop("Auto.VonNuzerParam", e);
-
-				var AutoVonNuzerParam = this.TempNaacAnwendungZuMeldeAutomaatParam;
-
-				if (null == AutoVonNuzerParam)
-				{
-					throw new ArgumentNullException("AutoVonNuzerParam");
-				}
-
-				var AutoVonNuzerParamSictStringAbbild = JsonConvert.SerializeObject(AutoVonNuzerParam, Formatting.Indented);
-
-				Bib3.Glob.ScraibeInhaltNaacDataiPfaad(ZiilPfaad, Encoding.UTF8.GetBytes(AutoVonNuzerParamSictStringAbbild));
-			}
-			catch (System.Exception Exception)
-			{
-				Optimat.Glob.ZaigeMessageBoxException(Exception);
-			}
-		}
-
-		void ButtonInspektOptimatScritZwiscescpaicerVonProcessGbsBaumScraibeNaacDatai_Drop(object sender, DragEventArgs e)
-		{
-			try
-			{
-				var ZiilPfaad = Bib3.FCL.Glob.DataiPfaadAlsKombinatioonAusSctandardPfaadUndFileDrop("Optimat.Scrit.GBS.Baum", e);
-
-				var OptimatScritZwiscescpaicer = this.OptimatScritZwiscescpaicer;
-
-				if (null == OptimatScritZwiscescpaicer)
-				{
-					throw new ArgumentNullException("OptimatScritZwiscescpaicer");
-				}
-
-				var VonZiilProcessLeese = OptimatScritZwiscescpaicer.VonProcessLeese;
-
-				if (null == VonZiilProcessLeese)
-				{
-					throw new ArgumentNullException("VonZiilProcessLeese");
-				}
-
-				var GbsBaum = VonZiilProcessLeese.ErgeebnisGbsBaum;
-
-				if (null == GbsBaum)
-				{
-					throw new ArgumentNullException("GbsBaum");
-				}
-
-				var SerializerSettings = new JsonSerializerSettings()
-				{
-					DefaultValueHandling = Newtonsoft.Json.DefaultValueHandling.Ignore,
-					Formatting = Formatting.Indented
-				};
-
-				var GbsBaumSictStringAbbild = JsonConvert.SerializeObject(GbsBaum, SerializerSettings);
-
-				Bib3.Glob.ScraibeInhaltNaacDataiPfaad(ZiilPfaad, Encoding.UTF8.GetBytes(GbsBaumSictStringAbbild));
-			}
-			catch (System.Exception Exception)
-			{
-				Optimat.Glob.ZaigeMessageBoxException(Exception);
-			}
-		}
-
-		static public byte[] FürScnapscusTailGbsBaumSictSeriel(GbsAstInfo GbsBaumWurzelAst)
-		{
-			if (null == GbsBaumWurzelAst)
-			{
-				return null;
-			}
-
-			var SerializeSettings = new JsonSerializerSettings();
-
-			SerializeSettings.DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate;
-
-			var WurzelAstSictStringAbbild = JsonConvert.SerializeObject(GbsBaumWurzelAst, Formatting.Indented, SerializeSettings);
-
-			var WurzelAstSictUTF8 = Encoding.UTF8.GetBytes(WurzelAstSictStringAbbild);
-
-			return WurzelAstSictUTF8;
-		}
-
-		void ButtonEveOnlineSensoScnapscusUnabhängigScraibeNaacDatai_Drop(object sender, DragEventArgs e)
-		{
-			try
-			{
-				var EveOnlnSensoScnapscusUnabhängigAuswertLezteFertig = this.EveOnlnSensoScnapscusUnabhängigAuswertLezteFertig;
-
-				if (null == EveOnlnSensoScnapscusUnabhängigAuswertLezteFertig)
-				{
-					throw new ArgumentNullException("EveOnlnSensoScnapscusUnabhängigAuswertLezteFertig");
-				}
-
-				var GbsBaumWurzelInfo = EveOnlnSensoScnapscusUnabhängigAuswertLezteFertig.Wert;
-
-				if (null == GbsBaumWurzelInfo)
-				{
-					throw new ArgumentNullException("GbsBaumWurzelInfo");
-				}
-
-				var ZiilPfaad = Bib3.FCL.Glob.DataiPfaadAlsKombinatioonAusSctandardPfaadUndFileDrop("Scnapscus.Auswert.Unabhängig", e);
-
-				var SictSerielAbbild = FürScnapscusTailGbsBaumSictSeriel(GbsBaumWurzelInfo);
-
-				Bib3.Glob.ScraibeInhaltNaacDataiPfaad(ZiilPfaad, SictSerielAbbild);
-			}
-			catch (System.Exception Exception)
-			{
-				Optimat.Glob.ZaigeMessageBoxException(Exception);
-			}
-		}
-
-		void ButtonEveOnlineSensoScnapscusUnabhängigErscteleJezt_Click(object sender, RoutedEventArgs e)
-		{
-			try
-			{
-				var ProcessId = GbsFürZiilprozesWaalWindowProzesId();
-
-				var ScnapscusAuswert = new SictProzesAuswertZuusctandScpezGbsBaum(ProcessId, EveOnlnSensoWurzelSuuceLezteTask.Wert.Result);
-
-				ScnapscusAuswert.BerecneScrit();
-
-				EveOnlnSensoScnapscusUnabhängigAuswertLezteFertig =
-					new SictVerlaufBeginUndEndeRef<GbsAstInfo>(
-						ScnapscusAuswert.ScritLezteBeginZaitMili,
-						ScnapscusAuswert.ScritLezteEndeZaitMili,
-						(ScnapscusAuswert.MengeGbsWurzelInfo ?? new GbsAstInfo[0]).FirstOrDefault());
-			}
-			catch (System.Exception Exception)
-			{
-				Optimat.Glob.ZaigeMessageBoxException(Exception);
-			}
-		}
-
-		void ButtonEveOnlineSensoorikScnapscusErscteleJezt_Click(object sender, RoutedEventArgs e)
-		{
-			try
-			{
-				ScnapscusErscteleAinzelLezteZaitMili = Bib3.Glob.StopwatchZaitMikroSictInt() / 1000;
-			}
-			catch (System.Exception Exception)
-			{
-				Optimat.Glob.ZaigeMessageBoxException(Exception);
-			}
-		}
-
-		void ButtonEveOnlnSimuVonSensoScnapscus_Drop(object sender, DragEventArgs e)
-		{
-			try
-			{
-				var ZaitMikro = Bib3.Glob.StopwatchZaitMikroSictInt();
-
-				var ZaitMili = ZaitMikro / 1000;
-
-				var Datai = Bib3.FCL.Glob.LaadeFrüühestInhaltDataiAusDropFileDrop(e);
-
-				var SictString = Encoding.UTF8.GetString(Datai.Value);
-
-				var GbsAst = JsonConvert.DeserializeObject<GbsAstInfo>(SictString);
-
-				NaacAnwendungZuMeldeGbsBaumWurzel = new SictVerlaufBeginUndEndeRef<GbsAstInfo>(
-					ZaitMili, ZaitMili, GbsAst);
-			}
-			catch (System.Exception Exception)
-			{
-				Optimat.Glob.ZaigeMessageBoxException(Exception);
-			}
-		}
-
-		void GbsEveOnlnButtonEveOnlnSensoWurzelBerecne_Click(object sender, RoutedEventArgs e)
-		{
-			try
-			{
-				var GbsAingaabeZiilProcessId = this.GbsAingaabeZiilProcessId;
-
-				if (!GbsAingaabeZiilProcessId.HasValue)
-				{
-					throw new ArgumentNullException("GbsAingaabeZiilProcessId");
-				}
-
-				EveOnlnSensoWurzelSuuceErsctele(GbsAingaabeZiilProcessId.Value);
-			}
-			catch (System.Exception Exception)
-			{
-				Optimat.Glob.ZaigeMessageBoxException(Exception);
-			}
-		}
-
-		void ButtonOptimatServerListeVerbindungLezteTreneJezt_Click(object sender, System.Windows.RoutedEventArgs e)
-		{
-			ScnitOptimatServerListeVerbindungLezteScnitTcpSezeTrenungZaitJezt();
-		}
-		 * */
 
 		static public void VersuucScraibeNaacDataiMitBerictNaacTextBoxAnim(
 			string ZiilDataiPfaad,
@@ -1051,80 +805,7 @@ namespace Optimat.EveO.Nuzer
 			ListeOptimatScrit.ListeKürzeBegin(30);
 		}
 
-		void GbsInspektAktualisiire()
-		{
-			var GbsSctoierelementHaupt = this.GbsSctoierelementHaupt;
-
-			if (null == GbsSctoierelementHaupt)
-			{
-				return;
-			}
-
-			if (!GbsSctoierelementHaupt.IsInitialized)
-			{
-				return;
-			}
-
-			Int64? OptimatScritAlter = null;
-
-			try
-			{
-				var BeginZaitMikro = Bib3.Glob.StopwatchZaitMikroSictInt();
-
-				var BeginZaitMili = BeginZaitMikro / 1000;
-
-				var OptimatScritZwiscescpaicer = this.OptimatScritZwiscescpaicer;
-
-				if (null != OptimatScritZwiscescpaicer)
-				{
-					var VonProcessLeese = OptimatScritZwiscescpaicer.VonProcessMesung;
-
-					if (null != VonProcessLeese)
-					{
-						var OptimatScritVonProcessLeeseBeginZaitMili = VonProcessLeese.BeginZait;
-
-						OptimatScritAlter = (BeginZaitMili - OptimatScritVonProcessLeeseBeginZaitMili) / 1000;
-					}
-				}
-			}
-			finally
-			{
-				GbsSctoierelementHaupt.TextBoxInspektOptimatScritZwiscescpaicerAlter.Text = OptimatScritAlter.ToString();
-			}
-		}
-
 		Int64 GbsAktualisatioonLezteZaitMili;
-
-		string InspektScritZaitBerecne()
-		{
-			Int64? AssumptionLastMeasurementTime;
-
-			var RequestedMeasurementTime = this.RequestedMeasurementTimeKapseltInLog(
-				out AssumptionLastMeasurementTime);
-
-			var SensorSnapshotLast = this.SensorSnapshotLastAgr;
-
-			Int64? SensorSnapshotLastEndeZait = null;
-
-			if (null != SensorSnapshotLast)
-			{
-				var SensorMeasurementInTimeframe = SensorSnapshotLast.MemoryMeasurement;
-
-				if (null != SensorMeasurementInTimeframe)
-				{
-					SensorSnapshotLastEndeZait = SensorMeasurementInTimeframe.End;
-				}
-			}
-
-			return
-				"SensorSnapshotLastEndeZait = " + SensorSnapshotLastEndeZait.ToString() + Environment.NewLine +
-				"RequestedMeasurementTime = " + RequestedMeasurementTime.ToString() + Environment.NewLine;
-		}
-
-		void GbsAktualisiireTailInspektScritZait()
-		{
-			GbsSctoierelementHaupt.TextBoxInspektScritZait.Text = InspektScritZaitBerecne();
-		}
 
 		void GbsAktualisiire()
 		{
@@ -1137,12 +818,7 @@ namespace Optimat.EveO.Nuzer
 			var GbsSctoierelementHaupt = this.GbsSctoierelementHaupt;
 
 			if (null == GbsSctoierelementHaupt)
-			{
 				return;
-			}
-
-			Int64? TimerElapsedLockedInRaameBerictExceptionLezteAlter = null;
-			string TimerElapsedLockedInRaameBerictExceptionLezteSictString = null;
 
 			try
 			{
@@ -1152,36 +828,17 @@ namespace Optimat.EveO.Nuzer
 
 				GbsAktualisiireTailLicenseClient();
 
-				var TimerElapsedLockedInRaameBerictExceptionLezte = this.TimerElapsedLockedInRaameBerictExceptionLezte;
-
-				if (null != TimerElapsedLockedInRaameBerictExceptionLezte.Wert)
-				{
-					TimerElapsedLockedInRaameBerictExceptionLezteSictString =
-						Optimat.Glob.ExceptionSictString(TimerElapsedLockedInRaameBerictExceptionLezte.Wert);
-
-					TimerElapsedLockedInRaameBerictExceptionLezteAlter =
-						(BeginZaitMili - TimerElapsedLockedInRaameBerictExceptionLezte.Zait) / 1000;
-				}
-
 				var GbsEveOnlnAktualisiireBeginZaitMikro = Bib3.Glob.StopwatchZaitMikroSictInt();
 
 				GbsEveOnlnAktualisiire();
 
 				var GbsSchnitOptimatServerAktualisiireBeginZaitMikro = Bib3.Glob.StopwatchZaitMikroSictInt();
 
-				/*
-				 * 2015.03.04
-				 * 
-						GbsSchnitOptimatServerAktualisiire();
-				 * */
-
 				var GbsDebugAktualisiireBeginZaitMikro = Bib3.Glob.StopwatchZaitMikroSictInt();
 
 				AktualisiireListeOptimatScrit();
 
 				ListeOptimatScritInspektAktualisiireTailWirkung();
-
-				GbsInspektAktualisiire();
 
 				var GbsDebugAktualisiireEndeZaitMikro = Bib3.Glob.StopwatchZaitMikroSictInt();
 
@@ -1190,16 +847,9 @@ namespace Optimat.EveO.Nuzer
 				var GbsDebugAktualisiireDauerMikro = GbsDebugAktualisiireEndeZaitMikro - GbsDebugAktualisiireBeginZaitMikro;
 
 				GbsSctoierelementHaupt.RepräsentiireErwaitert();
-
-				GbsAktualisiireTailInspektScritZait();
 			}
 			finally
 			{
-				GbsSctoierelementHaupt.TextBoxDbgTimerElapsedLockedInRaameBerictExceptionLezteAlter.Text =
-					TimerElapsedLockedInRaameBerictExceptionLezteAlter.ToString();
-
-				GbsSctoierelementHaupt.TextBoxDbgTimerElapsedLockedInRaameBerictExceptionLezteSictString.Text =
-					TimerElapsedLockedInRaameBerictExceptionLezteSictString;
 			}
 		}
 	}

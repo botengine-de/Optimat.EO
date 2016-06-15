@@ -28,7 +28,7 @@ namespace Optimat.EveO.Nuzer
 		{
 			get
 			{
-				return "16.05.01";
+				return "16.05.14";
 			}
 		}
 

@@ -1,23 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Bib3;
 using Newtonsoft.Json;
 using Optimat.EveOnline;
-using Optimat.EveOnline.Base;
-using Optimat.GBS;
 using ExtractFromOldAssembly.Bib3;
 using Bib3.FCL;
 using BotEngine.Interface;
@@ -49,8 +38,6 @@ namespace Optimat.EveO.Nuzer.GBS
 			}
 		}
 
-		readonly Queue<char> ListeTasteCharAin = new Queue<char>();
-
 		public Func<FromProcessMeasurement<Sanderling.Interface.MemoryStruct.IMemoryMeasurement>> FromProcessMeasurementLastGetDelegate;
 
 		public Haupt()
@@ -72,9 +59,9 @@ namespace Optimat.EveO.Nuzer.GBS
 
 			ComboBoxSimuMausAufWindowVordersteEkeIndex.Items.Add("none");
 
-			Enumerable.Range(0, 8).ForEachNullable((EkeIndex) =>
+			Enumerable.Range(0, 8).ForEachNullable((ekeIndex) =>
 				{
-					ComboBoxSimuMausAufWindowVordersteEkeIndex.Items.Add(EkeIndex);
+					ComboBoxSimuMausAufWindowVordersteEkeIndex.Items.Add(ekeIndex);
 				});
 		}
 
@@ -101,11 +88,6 @@ namespace Optimat.EveO.Nuzer.GBS
 			Key[][] ZiilProcessWirkungPauseMengeKeyKombi = null;
 
 			string ScnitOptimatServerLizenzDataiPfaad = TextBoxOptimatServerVerbindungLizenzDataiPfaad.Text;
-			/*
-			 * 2015.03.04
-			 * 
-				Int64? ScnitOptimatServerVersuucVerbindungZaitDistanz = (int)(SliderScnitOptimatServerKonfigVersuucVerbindungZaitDistanz.Value);
-			 * */
 			string BerictHauptPersistVerzaicnisPfaad = BerictPersistAingaabeBerictHaupt.Pfaad;
 			Int64? BerictHauptPersistKapazitäätScranke = BerictPersistAingaabeBerictHaupt.Kapazitäät;
 			string BerictWindowClientRasterPersistVerzaicnisPfaad = BerictPersistAingaabeBerictWindowClientRaster.Pfaad;
@@ -136,12 +118,6 @@ namespace Optimat.EveO.Nuzer.GBS
 
 			Konfig.SensorServerApiUri = TextBoxSensorServerApiUri?.Text;
 
-			/*
-			 * 2015.03.04
-			 * 
-				Konfig.ScnitOptimatServerVersuucVerbindungZaitDistanz = ScnitOptimatServerVersuucVerbindungZaitDistanz;
-			 * */
-
 			Konfig.BerictHauptPersistVerzaicnisPfaad = BerictHauptPersistVerzaicnisPfaad;
 			Konfig.BerictHauptPersistKapazitäätScranke = BerictHauptPersistKapazitäätScranke;
 
@@ -153,24 +129,24 @@ namespace Optimat.EveO.Nuzer.GBS
 			return Konfig;
 		}
 
-		public void KonfigScraibeNaacGbs(SictKonfiguratioon Konfig)
+		public void KonfigScraibeNaacGbs(SictKonfiguratioon konfig)
 		{
 			if (!IsInitialized)
 			{
 				return;
 			}
 
-			var AuswaalZiilProcess = (null == Konfig) ? null : Konfig.AuswaalZiilProcess;
+			var AuswaalZiilProcess = (null == konfig) ? null : konfig.AuswaalZiilProcess;
 
-			var ZiilProcessWirkungPauseMengeKeyKombi = (null == Konfig) ? null : Konfig.ZiilProcessWirkungPauseMengeKeyKombi;
+			var ZiilProcessWirkungPauseMengeKeyKombi = (null == konfig) ? null : konfig.ZiilProcessWirkungPauseMengeKeyKombi;
 
-			var ScnitOptimatServerLizenzDataiPfaad = (null == Konfig) ? null : Konfig.ScnitOptimatServerLizenzDataiPfaad;
-			var ScnitOptimatServerVersuucVerbindungZaitDistanz = (null == Konfig) ? null : Konfig.ScnitOptimatServerVersuucVerbindungZaitDistanz;
-			var BerictHauptPersistVerzaicnisPfaad = (null == Konfig) ? null : Konfig.BerictHauptPersistVerzaicnisPfaad;
-			var BerictHauptPersistKapazitäätScranke = (null == Konfig) ? null : Konfig.BerictHauptPersistKapazitäätScranke;
-			var BerictWindowClientRasterPersistVerzaicnisPfaad = (null == Konfig) ? null : Konfig.BerictWindowClientRasterPersistVerzaicnisPfaad;
-			var BerictWindowClientRasterPersistKapazitäätScranke = (null == Konfig) ? null : Konfig.BerictWindowClientRasterPersistKapazitäätScranke;
-			var BerictSizungPersistVerzaicnisPfaad = (null == Konfig) ? null : Konfig.BerictSizungPersistVerzaicnisPfaad;
+			var ScnitOptimatServerLizenzDataiPfaad = (null == konfig) ? null : konfig.ScnitOptimatServerLizenzDataiPfaad;
+			var ScnitOptimatServerVersuucVerbindungZaitDistanz = (null == konfig) ? null : konfig.ScnitOptimatServerVersuucVerbindungZaitDistanz;
+			var BerictHauptPersistVerzaicnisPfaad = (null == konfig) ? null : konfig.BerictHauptPersistVerzaicnisPfaad;
+			var BerictHauptPersistKapazitäätScranke = (null == konfig) ? null : konfig.BerictHauptPersistKapazitäätScranke;
+			var BerictWindowClientRasterPersistVerzaicnisPfaad = (null == konfig) ? null : konfig.BerictWindowClientRasterPersistVerzaicnisPfaad;
+			var BerictWindowClientRasterPersistKapazitäätScranke = (null == konfig) ? null : konfig.BerictWindowClientRasterPersistKapazitäätScranke;
+			var BerictSizungPersistVerzaicnisPfaad = (null == konfig) ? null : konfig.BerictSizungPersistVerzaicnisPfaad;
 
 			ZiilProcessAuswaalZiilProcess.PräferenzScraibeNaacGbs(AuswaalZiilProcess);
 
@@ -178,19 +154,14 @@ namespace Optimat.EveO.Nuzer.GBS
 
 			TextBoxOptimatServerVerbindungLizenzDataiPfaad.Text = ScnitOptimatServerLizenzDataiPfaad;
 
-			var SensorServerApiUri = Konfig?.SensorServerApiUri;
+			var SensorServerApiUri = konfig?.SensorServerApiUri;
 
-			if(SensorServerApiUri.NullOderLeer())
+			if(SensorServerApiUri.IsNullOrEmpty())
 			{
 				SensorServerApiUri = App.BotEngineApiUriDefault;
 			}
 
 			TextBoxSensorServerApiUri.Text = SensorServerApiUri;
-			/*
-			 * 2015.03.04
-			 * 
-				SliderScnitOptimatServerKonfigVersuucVerbindungZaitDistanz.Value = ScnitOptimatServerVersuucVerbindungZaitDistanz ?? 10;
-			 * */
 
 			BerictPersistAingaabeBerictHaupt.Pfaad = BerictHauptPersistVerzaicnisPfaad;
 			BerictPersistAingaabeBerictHaupt.Kapazitäät = BerictHauptPersistKapazitäätScranke;
@@ -202,42 +173,10 @@ namespace Optimat.EveO.Nuzer.GBS
 		}
 
 		void ZiilProcessAuswaalZiilProcessRicteMengeProcessBegin(
-			bool SortiireNaacBewertungPunkteAnzaal,
-			bool SelectedItemsSezeAufGrupeBewertungPunktAnzaalMax)
+			bool sortiireNaacBewertungPunkteAnzaal,
+			bool selectedItemsSezeAufGrupeBewertungPunktAnzaalMax)
 		{
-			ZiilProcessAuswaalZiilProcess.MengeProcessRicteNaacSelbsctBegin(SortiireNaacBewertungPunkteAnzaal, SelectedItemsSezeAufGrupeBewertungPunktAnzaalMax);
-		}
-
-		/*
-		 * 2015.03.04
-		 * 
-		private void SliderScnitOptimatServerKonfigVersuucVerbindungZaitDistanz_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-		{
-			TextBoxScnitOptimatServerKonfigVersuucVerbindungZaitDistanzAktualisiire();
-		}
-		 * */
-
-		/*
-		 * 2015.03.04
-		 * 
-		public void TextBoxScnitOptimatServerKonfigVersuucVerbindungZaitDistanzAktualisiire()
-		{
-			if (!IsInitialized)
-			{
-				return;
-			}
-
-			TextBoxScnitOptimatServerKonfigVersuucVerbindungZaitDistanz.Text = ((int)SliderScnitOptimatServerKonfigVersuucVerbindungZaitDistanz.Value).ToString();
-		}
-		 * */
-
-		private void UserControl_Loaded(object sender, RoutedEventArgs e)
-		{
-			/*
-			 * 2015.03.04
-			 * 
-				TextBoxScnitOptimatServerKonfigVersuucVerbindungZaitDistanzAktualisiire();
-			 * */
+			ZiilProcessAuswaalZiilProcess.MengeProcessRicteNaacSelbsctBegin(sortiireNaacBewertungPunkteAnzaal, selectedItemsSezeAufGrupeBewertungPunktAnzaalMax);
 		}
 
 		private void TextBoxOptimatServerVerbindungLizenzDataiPfaad_Drop(object sender, DragEventArgs e)
@@ -274,9 +213,9 @@ namespace Optimat.EveO.Nuzer.GBS
 			{
 			}
 
-			public SictMengeScnapscusZuZait(SictWertMitZait<object>[] MengeScnapscus)
+			public SictMengeScnapscusZuZait(SictWertMitZait<object>[] mengeScnapscus)
 			{
-				this.MengeScnapscus = MengeScnapscus;
+				this.MengeScnapscus = mengeScnapscus;
 			}
 		}
 
@@ -308,35 +247,31 @@ namespace Optimat.EveO.Nuzer.GBS
 			}
 		}
 
-		public string KonfigSictSeriel(object Konfig)
+		public string KonfigSictSeriel(object konfig)
 		{
-			if (null == Konfig)
-			{
+			if (null == konfig)
 				return null;
-			}
 
-			var KonfigSictSeriel = JsonConvert.SerializeObject(Konfig, Formatting.Indented);
+			var KonfigSictSeriel = JsonConvert.SerializeObject(konfig, Formatting.Indented);
 
 			return KonfigSictSeriel;
 		}
 
-		public byte[] KonfigSictListeOktet(object Konfig)
+		public byte[] KonfigSictListeOktet(object konfig)
 		{
-			var KonfigSictSerielAbbild = KonfigSictSeriel(Konfig);
+			var KonfigSictSerielAbbild = KonfigSictSeriel(konfig);
 
 			if (null == KonfigSictSerielAbbild)
-			{
 				return null;
-			}
 
 			var KonfigSictListeOktet = Encoding.UTF8.GetBytes(KonfigSictSerielAbbild);
 
 			return KonfigSictListeOktet;
 		}
 
-		public SictOptimatParam VonSictListeOktetKonfig(byte[] SictListeOktetAbbild)
+		public SictOptimatParam VonSictListeOktetKonfig(byte[] sictListeOktetAbbild)
 		{
-			return Optimat.Glob.ParseJsonUTF8<SictOptimatParam>(SictListeOktetAbbild);
+			return Optimat.Glob.ParseJsonUTF8<SictOptimatParam>(sictListeOktetAbbild);
 		}
 
 		public string EveOnlinePräferenzDataiNaame = "EveOnline.Preference";
@@ -359,37 +294,29 @@ namespace Optimat.EveO.Nuzer.GBS
 				KonfigDataiNaame;
 		}
 
-		public void EveOnlinePräferenzScraibeNaacDataiUndBericteNaacGbs(string DataiPfaad)
+		public void EveOnlinePräferenzScraibeNaacDataiUndBericteNaacGbs(string dataiPfaad)
 		{
 			var Aktioon = new Action(() =>
 			{
-				/*
-				 * 2014.09.20
-				 * 
-				var Konfig = SctoierelementEveOnlinePräferenz.KonfigBerecneAusGbs();
-				 * */
-
 				var Konfig = EveOnlinePräferenzAingaabeLezte;
 
-				Optimat.Glob.ScraibeNaacDataiMitPfaad(DataiPfaad, KonfigSictListeOktet(Konfig));
+				Optimat.Glob.ScraibeNaacDataiMitPfaad(dataiPfaad, KonfigSictListeOktet(Konfig));
 			});
 
 			Optimat.GBS.Glob.VersuucAktioonMitBerictNaacTextBoxAnim(
 				Aktioon,
-				"write preferences to file (path= \"" + DataiPfaad + "\")",
+				"write preferences to file (path= \"" + dataiPfaad + "\")",
 				EveOnlineAutoKonfigAktioonErgeebnisBerict);
 		}
 
-		public void EveOnlinePräferenzLaadeVonDataiPfaadUndBericteNaacGbs(string DataiPfaad = null)
+		public void EveOnlinePräferenzLaadeVonDataiPfaadUndBericteNaacGbs(string dataiPfaad = null)
 		{
-			if (null == DataiPfaad)
-			{
-				DataiPfaad = EveOnlinePräferenzDataiPfaad();
-			}
+			if (null == dataiPfaad)
+				dataiPfaad = EveOnlinePräferenzDataiPfaad();
 
 			var Aktioon = new Action(() =>
 			{
-				var KonfigSictListeOktetAbbild = Bib3.Glob.InhaltAusDataiMitPfaad(DataiPfaad);
+				var KonfigSictListeOktetAbbild = Bib3.Glob.InhaltAusDataiMitPfaad(dataiPfaad);
 
 				var Konfig = VonSictListeOktetKonfig(KonfigSictListeOktetAbbild);
 
@@ -398,7 +325,7 @@ namespace Optimat.EveO.Nuzer.GBS
 
 			Optimat.GBS.Glob.VersuucAktioonMitBerictNaacTextBoxAnim(
 				Aktioon,
-				"load preferences from file (path= \"" + DataiPfaad + "\")",
+				"load preferences from file (path= \"" + dataiPfaad + "\")",
 				EveOnlineAutoKonfigAktioonErgeebnisBerict);
 		}
 
@@ -544,38 +471,34 @@ namespace Optimat.EveO.Nuzer.GBS
 			}
 		}
 
-		public void KonfigScraibeNaacDataiUndBericteNaacGbs(string DataiPfaad = null)
+		public void KonfigScraibeNaacDataiUndBericteNaacGbs(string dataiPfaad = null)
 		{
-			if (null == DataiPfaad)
-			{
-				DataiPfaad = KonfigDataiPfaad();
-			}
+			if (null == dataiPfaad)
+				dataiPfaad = KonfigDataiPfaad();
 
 			var Aktioon = new Action(() =>
 			{
 				var Konfig = KonfigBerecneAusGbs();
 
-				Optimat.Glob.ScraibeNaacDataiMitPfaad(DataiPfaad, KonfigSictListeOktet(Konfig));
+				Optimat.Glob.ScraibeNaacDataiMitPfaad(dataiPfaad, KonfigSictListeOktet(Konfig));
 			});
 
 			Optimat.GBS.Glob.VersuucAktioonMitBerictNaacTextBoxAnim(
 				Aktioon,
-				"write Settings to file (path= \"" + DataiPfaad + "\")",
+				"write Settings to file (path= \"" + dataiPfaad + "\")",
 				KonfigAktioonErgeebnisBerict);
 		}
 
-		public void KonfigLaadeVonDataiPfaadUndBericteNaacGbs(string DataiPfaad = null)
+		public void KonfigLaadeVonDataiPfaadUndBericteNaacGbs(string dataiPfaad = null)
 		{
-			if (null == DataiPfaad)
-			{
-				DataiPfaad = KonfigDataiPfaad();
-			}
+			if (null == dataiPfaad)
+				dataiPfaad = KonfigDataiPfaad();
 
 			KonfigSezeZurük();
 
 			var Aktioon = new Action(() =>
 			{
-				var KonfigSictListeOktetAbbild = Bib3.Glob.InhaltAusDataiMitPfaad(DataiPfaad);
+				var KonfigSictListeOktetAbbild = Bib3.Glob.InhaltAusDataiMitPfaad(dataiPfaad);
 
 				var Konfig = Optimat.Glob.ParseJsonUTF8<SictKonfiguratioon>(KonfigSictListeOktetAbbild);
 
@@ -584,40 +507,22 @@ namespace Optimat.EveO.Nuzer.GBS
 
 			Optimat.GBS.Glob.VersuucAktioonMitBerictNaacTextBoxAnim(
 				Aktioon,
-				"load Settings from file (path= \"" + DataiPfaad + "\")",
+				"load Settings from file (path= \"" + dataiPfaad + "\")",
 				KonfigAktioonErgeebnisBerict);
 		}
 
-		static char? ZuKeyBerecneChar(Key Key)
+		static char? ZuKeyBerecneChar(Key key)
 		{
-			if (Key.A <= Key && Key <= Key.Z)
-			{
-				return (char)((int)Key - Key.A + (int)'A');
-			}
+			if (Key.A <= key && key <= Key.Z)
+				return (char)((int)key - Key.A + (int)'A');
 
-			if (Key.D0 <= Key && Key <= Key.D9)
-			{
-				return (char)((int)Key - Key.D0 + (int)'0');
-			}
+			if (Key.D0 <= key && key <= Key.D9)
+				return (char)((int)key - Key.D0 + (int)'0');
 
-			if (Key.Space == Key)
-			{
+			if (Key.Space == key)
 				return ' ';
-			}
 
 			return null;
-		}
-
-		static readonly string TabInspektVisibilitySclüsel = "INSPEKT AIN";
-
-		void TabInspektVisibilityAktualisiire()
-		{
-			var ListeTasteCharAinAggr = string.Join("", ListeTasteCharAin.ToArray());
-
-			if (ListeTasteCharAinAggr.Contains(TabInspektVisibilitySclüsel))
-			{
-				TabItemInspekt.Visibility = System.Windows.Visibility.Visible;
-			}
 		}
 
 		private void UserControl_KeyUp(object sender, KeyEventArgs e)
@@ -633,23 +538,7 @@ namespace Optimat.EveO.Nuzer.GBS
 		private void UserControl_PreviewKeyDown(object sender, KeyEventArgs e)
 		{
 			if (!IsInitialized)
-			{
 				return;
-			}
-
-			if (null != e)
-			{
-				var Char = ZuKeyBerecneChar(e.Key);
-
-				if (Char.HasValue)
-				{
-					ListeTasteCharAin.Enqueue(Char.Value);
-
-					Bib3.Extension.ListeKürzeBegin(ListeTasteCharAin, 100);
-
-					TabInspektVisibilityAktualisiire();
-				}
-			}
 
 			ZiilProcessWirkungPauseAuswaalMengeKeyKombi.Aktualisiire();
 		}
@@ -662,30 +551,6 @@ namespace Optimat.EveO.Nuzer.GBS
 
 			ButtonErwaitertFraigaabe.IsEnabled = false;
 		}
-
-		/*
-		 * 2015.02.16
-		 * 
-		public UserscriptHost UserscriptHost
-		{
-			get
-			{
-				if (!ErwaitertFraigaabe)
-				{
-					return	null;
-				}
-
-				var ControlErwaitert = this.ControlErwaitert;
-
-				if (null == ControlErwaitert)
-				{
-					return null;
-				}
-
-				return ControlErwaitert.UserscriptHost;
-			}
-		}
-		 * */
 
 		public Optimat.EveO.Nuzer.CustomBotServer CustomBotServer
 		{

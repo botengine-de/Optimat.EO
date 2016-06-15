@@ -16,8 +16,7 @@
              PreviewKeyDown="UserControl_PreviewKeyDown"
              KeyUp="UserControl_KeyUp"
              mc:Ignorable="d" 
-             d:DesignHeight="1111" d:DesignWidth="555"
-             Loaded="UserControl_Loaded">
+             d:DesignHeight="1111" d:DesignWidth="555">
     <UserControl.Resources>
 
         <Style TargetType="TextBlock">
@@ -84,34 +83,6 @@
     </UserControl.Resources>
 
     <Grid>
-        <!--
-                2014.01.09
-                Nit meer benöötigt sait ainfüürung ButtonZiilProzesWirkungSezeFort
-                
-        <Grid
-            Panel.ZIndex="4"
-            HorizontalAlignment="Right" VerticalAlignment="Top">
-            <WrapPanel>
-                <Button Name="ButtonEveOnlnAutoWirkungFraigaabeSezeAin"
-                Click="ButtonEveOnlnAutoWirkungFraigaabeSezeAin_Click"
-                 Visibility="Collapsed">
-                    <Button.LayoutTransform>
-                        <ScaleTransform ScaleX="0.9" ScaleY="0.9"></ScaleTransform>
-                    </Button.LayoutTransform>
-                    <TextBlock Text="Auto.Wirkung.Ain" Margin="1"></TextBlock>
-                </Button>
-
-                <Button Name="ButtonEveOnlnAutoSensoNaacServerFraigaabeSezeAin"
-                        Click="ButtonEveOnlnAutoSensoNaacServerFraigaabeSezeAin_Click"
-                        Margin="3">
-                    <Button.LayoutTransform>
-                        <ScaleTransform ScaleX="0.9" ScaleY="0.9"></ScaleTransform>
-                    </Button.LayoutTransform>
-                    <TextBlock Text="Auto.Senso.Ain" Margin="1"></TextBlock>
-                </Button>
-            </WrapPanel>
-        </Grid>
-                -->
         <TabControl>
             <TabItem>
                 <TabItem.Header>
@@ -124,15 +95,6 @@
                         </Grid.ColumnDefinitions>
 
                         <TextBlock Text="Eve Online" Grid.Column="0" VerticalAlignment="Center" Margin="1"></TextBlock>
-
-                        <!--
-
-                        <Ellipse Name="EllipseEveOnlineSctaatusAnzaige"
-								VerticalAlignment="Center" HorizontalAlignment="Center"
-									 Stroke="Black" StrokeThickness="1.4" Width="13" Height="13"
-                                 Grid.Column="2"
-                                 Visibility="Visible"></Ellipse>
-                        -->
 
                         <Bib3.FCL.GBS:SictListeSymboolMeldungAkzeptanzFeelerWarnung
                             x:Name="EveOnlineSctaatusInspekt"
@@ -181,65 +143,9 @@
                                                     Width="199" Height="Auto"
                                                 ></Optimat.EveOnline.GBS:SictLocationInfo>
 
-                                                <!--
-                                                <WrapPanel>
-                                                    <CheckBox Name="CheckBoxEveOnlineZuusctandInspektDocked"
-                                                          IsEnabled="False" VerticalAlignment="Center" Margin="3">
-                                                        <TextBlock Text="Docked" Margin="1"></TextBlock>
-                                                    </CheckBox>
-                                                    <CheckBox Name="CheckBoxEveOnlineZuusctandInspektUnDocking"
-                                                          IsEnabled="False" VerticalAlignment="Center"  Margin="3" Visibility="Collapsed">
-                                                        <TextBlock Text="Undocking" Margin="1"></TextBlock>
-                                                    </CheckBox>
-                                                </WrapPanel>
-                                                -->
                                             </StackPanel>
                                         </GroupBox.Content>
                                     </GroupBox>
-
-                                    <!--
-                                    <GroupBox VerticalAlignment="Center"
-                                              Margin="3">
-                                        <GroupBox.Header>
-                                            <TextBlock Text="Hitpoints and Capacitor" Margin="3"></TextBlock>
-                                        </GroupBox.Header>
-
-                                        <GroupBox.Content>
-                                            <Optimat.EveOnline.GBS:SictShipTreferpunkteUndCapacitorInspekt
-                                                x:Name="EveOnlnCharShipSctaatusShipTreferpunkteInspekt"
-                                                Width="160" Height="80"></Optimat.EveOnline.GBS:SictShipTreferpunkteUndCapacitorInspekt>
-                                        </GroupBox.Content>
-                                    </GroupBox>
-                                    
-                                    <GroupBox VerticalAlignment="Center"
-                                              Margin="3">
-                                        <GroupBox.Header>
-                                            <TextBlock Text="Travel" Margin="3"></TextBlock>
-                                        </GroupBox.Header>
-                                        
-                                        <GroupBox.Content>
-                                            <StackPanel>
-                                                
-                                                <GroupBox>
-                                                    <GroupBox.Header>
-                                                        <TextBlock Text="speed" Margin="1"></TextBlock>
-                                                    </GroupBox.Header>
-                                                    
-                                                    <GroupBox.Content>
-                                                        <TextBox Name="TextBoxEveOnlnCharShipStateShipSpeedInspekt" IsReadOnly="True" Width="66"></TextBox>
-                                                    </GroupBox.Content>
-                                                </GroupBox>
-
-                                                <CheckBox Name="CeckBoxEveOnlnCharShipStateShipWarpingInspekt" IsEnabled="False" Margin="3">
-                                                    <TextBlock Text="Warping"></TextBlock>
-                                                </CheckBox>
-                                                <CheckBox Name="CeckBoxEveOnlnCharShipStateShipJumpingInspekt" IsEnabled="False" Margin="3">
-                                                    <TextBlock Text="Jumping"></TextBlock>
-                                                </CheckBox>
-                                            </StackPanel>
-                                        </GroupBox.Content>
-                                    </GroupBox>
-                                    -->
 
                                     <GroupBox
                                         VerticalAlignment="Center"
@@ -430,13 +336,6 @@
                                     <CheckBox Name="CheckBoxEveOnlineSimuFraigaabe"
                                               Grid.Column="2" VerticalAlignment="Center"></CheckBox>
 
-                                    <!--
-                                    <Ellipse Name="EllipseEveOnlineSimuSctaatusAnzaige"
-								VerticalAlignment="Center" HorizontalAlignment="Center"
-									 Stroke="Black" StrokeThickness="1.4" Width="13" Height="13"
-                                 Grid.Column="4"
-                                             Visibility="Visible"></Ellipse>
--->
                                     <Bib3.FCL.GBS:SictListeSymboolMeldungAkzeptanzFeelerWarnung
                                         x:Name="EveOnlineSimuSctaatusInspekt"
                                         Grid.Column="4"
@@ -514,37 +413,6 @@
                                             </GroupBox.Content>
                                         </GroupBox>
 
-                                        <!--
-                                    <CheckBox Name="CheckBoxEveOnlineSimuMissionIgnoriireAnforderungFitting"
-                                              VerticalAlignment="Center"
-                                              Margin="3">
-                                        <TextBlock Text="Mission Ignoriire Anforderung Fitting" Margin="1"></TextBlock>
-                                    </CheckBox>
-                                    -->
-
-                                        <!--
-                                    <GroupBox>
-                                        <GroupBox.Header>
-                                            <Grid Margin="1">
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-                                                    <ColumnDefinition Width="4"></ColumnDefinition>
-                                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-                                                </Grid.ColumnDefinitions>
-
-                                                <TextBlock Text="Aufgaabe.Distance Ainzusctele"></TextBlock>
-
-                                                <CheckBox Name="CheckBoxEveOnlineSimuAufgaabeDistanceAinzuscteleFraigaabe"
-                                                          Grid.Column="2" VerticalAlignment="Center"></CheckBox>
-                                            </Grid>
-                                        </GroupBox.Header>
-
-                                        <GroupBox.Content>
-                                            <TextBox Name="TextBoxEveOnlineSimuAufgaabeDistanceAinzuscteleDistanceSol"
-                                                     Text="1000"></TextBox>
-                                        </GroupBox.Content>
-                                    </GroupBox>
-                                    -->
                                     </StackPanel>
                                 </ScrollViewer>
                             </TabItem.Content>
@@ -578,11 +446,6 @@
                         <Grid
                             Grid.Column="2"
                             Margin="-1">
-                            <!--
-                        <Viewbox
-                            Grid.Column="2"
-                            Stretch="Uniform">
-                            -->
                             <Grid
                                 Margin="0">
                                 <Optimat.GBS:ToggleButtonSctabBinär
@@ -596,9 +459,6 @@
                                         <TextBlock Text="pause">
                                             <TextBlock.ToolTip>
                                                 <TextBlock></TextBlock>
-                                                <!--
-                                            x:Name="ButtonZiilProzesWirkungUnterbreceTooltipTextBlock"
-                                        -->
                                             </TextBlock.ToolTip>
                                     </TextBlock>
                                     </Optimat.GBS:ToggleButtonSctabBinär.ButtonLinxContent>
@@ -612,54 +472,7 @@
                                     </Optimat.GBS:ToggleButtonSctabBinär.ButtonReczContent>
                                 </Optimat.GBS:ToggleButtonSctabBinär>
                             </Grid>
-                            <!--
-                        </Viewbox>
-                            -->
                         </Grid>
-                        <!--
-                        <Border Grid.Column="4" BorderBrush="Black" BorderThickness="1" VerticalAlignment="Center" CornerRadius="3">
-                            <Grid Grid.Column="4" VerticalAlignment="Center">
-                                <Grid.LayoutTransform>
-                                    <ScaleTransform ScaleX="0.8" ScaleY="0.8"></ScaleTransform>
-                                </Grid.LayoutTransform>
-
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-                                    <ColumnDefinition Width="4"></ColumnDefinition>
-                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-                                </Grid.ColumnDefinitions>
-
-                                <Optimat.GBS:SichtToggleButton
-                                    x:Name="ButtonZiilProzesWirkungUnterbrece"
-                                    IsChecked="True"
-                                    VerticalAlignment="Center" Width="44"
-                                    Style="{StaticResource Flat}"
-                                    DisallowUncheck="True"
-                                    Checked="ButtonZiilProzesWirkungUnterbrece_Checked"
-                                    Click="ButtonZiilProzesWirkungUnterbrece_Click">
-                                    <TextBlock Text="pause" Margin="1">
-                                        <TextBlock.ToolTip>
-                                            <TextBlock
-                                                Name="ButtonZiilProzesWirkungUnterbreceTooltipTextBlock"
-                                                Text=""></TextBlock>
-                                        </TextBlock.ToolTip>
-                                    </TextBlock>
-                                </Optimat.GBS:SichtToggleButton>
-
-                                <Optimat.GBS:SichtToggleButton
-                                    x:Name="ButtonZiilProzesWirkungSezeFort" Grid.Column="2" VerticalAlignment="Center" IsChecked="False"  Width="44"
-                                    Style="{StaticResource Flat}"
-                                    DisallowUncheck="True"
-                                    Checked="ButtonZiilProzesWirkungSezeFort_Checked">
-                                    <TextBlock Text="play" Margin="1">
-                                        <TextBlock.ToolTip>
-                                            <TextBlock Text="resume generating input according to the recommendation of the optimization Service." Margin="1"></TextBlock>
-                                        </TextBlock.ToolTip>
-                                    </TextBlock>
-                                </Optimat.GBS:SichtToggleButton>
-                            </Grid>
-                        </Border>
-                        -->
                     </Grid>
                 </TabItem.Header>
 
@@ -671,23 +484,6 @@
                             <RowDefinition Height="4*"></RowDefinition>
                         </Grid.RowDefinitions>
 
-                        <!--
-                        <Border
-                            BorderBrush="Black"
-                            BorderThickness="1">
-                            <Expander
-                            IsExpanded="True"
-                            BorderThickness="1.6">
-                                <Expander.Header>
-                                    <TextBlock Text="Log of optimization steps">
-                                        <TextBlock.LayoutTransform>
-                                            <ScaleTransform ScaleX="1.1" ScaleY="1.1"></ScaleTransform>
-                                        </TextBlock.LayoutTransform>
-                                    </TextBlock>
-                                </Expander.Header>
-                            </Expander>
-                        </Border>
--->
                         <TabControl
                             Grid.Row="2">
                             <TabItem>
@@ -752,25 +548,6 @@
 
                                         <TextBlock Text="reading from Process"></TextBlock>
 
-                                        <!--
-                                        <Ellipse Name="EllipseZiilProcessLeeseSctaatusInspekt"
-                                        VerticalAlignment="Center" HorizontalAlignment="Center"
-                                        Stroke="Black" StrokeThickness="1.4" Width="11" Height="11"
-                                        Grid.Column="2"></Ellipse>
-                                        -->
-
-                                        <!--
-                                        <Bib3.FCL.GBS:BoolAbbildSymboolAkzeptanzFeelerWarnung
-                                            x:Name="SensorClientStatusInspect"
-                                            NullSymbolTyp="InArbait"
-                                            FalseSymbolTyp="Feeler"
-                                            TrueSymbolTyp="Akzeptanz"
-                                            Grid.Column="2"
-                                            >
-                                        </Bib3.FCL.GBS:BoolAbbildSymboolAkzeptanzFeelerWarnung>
-                                        
-                                        -->
-
                                         <Bib3.FCL.GBS:SictSymboolAkzeptanzFeelerWarnung
                                             x:Name="SensorClientStatusInspect"
                                             Grid.Column="2"></Bib3.FCL.GBS:SictSymboolAkzeptanzFeelerWarnung>
@@ -825,19 +602,11 @@
 
                                         <TextBlock Text="input to Process"></TextBlock>
 
-                                        <!--
-                                        <Ellipse Name="EllipseZiilProcessAingaabeSctaatusInspekt"
-                                        VerticalAlignment="Center" HorizontalAlignment="Center"
-                                        Stroke="Black" StrokeThickness="1.4" Width="11" Height="11"
-                                        Grid.Column="2"></Ellipse>
-                                        -->
-
                                         <Bib3.FCL.GBS:SictListeSymboolMeldungAkzeptanzFeelerWarnung
                                             x:Name="ZiilProcessSctaatusTailAingaabeInspekt"
                                             Grid.Column="2"
                                             >
                                         </Bib3.FCL.GBS:SictListeSymboolMeldungAkzeptanzFeelerWarnung>
-
 
                                     </Grid>
                                 </TabItem.Header>
@@ -926,13 +695,6 @@
                         </Grid.ColumnDefinitions>
 
                         <Grid Grid.Column="2">
-                            <!--
-							<Ellipse Name="EllipseScnitOptimatServerSctaatusAnzaige"
-								VerticalAlignment="Center" HorizontalAlignment="Center"
-									 Stroke="Black" StrokeThickness="1.4" Width="13" Height="13"
-                                      ></Ellipse>
-                            -->
-
                             <Bib3.FCL.GBS:BoolAbbildSymboolAkzeptanzFeelerWarnung
                                 x:Name="LicenseClientStateIcon"
                                 FalseSymbolTyp="Feeler"
@@ -1164,10 +926,6 @@
                                         <TextBlock Text="contains the settings from all Tabs except the Tab titled &quot;Eve Online&quot;"
                                                Margin="1"></TextBlock>
 
-                                        <!--
-                                        <Button Name="ButtonPersistenzScraibeKonfiguratioonNaacDatai"
-                                                AllowDrop="True">save current state to File</Button>
--->
                                         <WrapPanel>
                                             <Button
                                                 Name="ButtonKonfigScraibeNaacDatai"
@@ -1202,16 +960,6 @@
                                                 <Optimat.GBS:BerictTextUndAnim
                                                     x:Name="KonfigAktioonErgeebnisBerict"
                                                     Height="77"></Optimat.GBS:BerictTextUndAnim>
-                                                <!--
-                                                <Grid>
-                                                    <TextBox Name="TextBoxPersistenzScraibeKonfigNaacDataiBerict"
-                                                         IsReadOnly="True" Height="66" VerticalScrollBarVisibility="Visible"
-                                                         Panel.ZIndex="1"></TextBox>
-
-                                                    <Rectangle Name="RectanglePersistenzScraibeKonfigNaacDataiBerict"
-                                                           Opacity="0" IsHitTestVisible="False" Panel.ZIndex="4"></Rectangle>
-                                                </Grid>
-                                                -->
                                             </GroupBox.Content>
                                         </GroupBox>
                                     </StackPanel>
@@ -1273,111 +1021,6 @@
                         <Optimat.EveO.Nuzer.GBS:Erwaitert
                             x:Name="ControlErwaitert"></Optimat.EveO.Nuzer.GBS:Erwaitert>
                     </ScrollViewer>
-                </TabItem.Content>
-            </TabItem>
-
-            <TabItem
-                Name="TabItemInspekt"
-                Margin="10,3,-10,0"
-                Visibility="Collapsed">
-                <TabItem.Header>
-                    <TextBlock Text="Inspekt" Margin="1">
-                        <TextBlock.LayoutTransform>
-                            <ScaleTransform ScaleX="0.9" ScaleY="0.9"></ScaleTransform>
-                        </TextBlock.LayoutTransform>
-                    </TextBlock>
-                </TabItem.Header>
-
-                <TabItem.Content>
-                    <StackPanel>
-
-                        <GroupBox
-                            Margin="3">
-                            <GroupBox.Header>
-                                <TextBlock Text="Exception" Margin="3"></TextBlock>
-                            </GroupBox.Header>
-
-                            <GroupBox.Content>
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto"></RowDefinition>
-                                        <RowDefinition Height="1"></RowDefinition>
-                                        <RowDefinition Height="Auto"></RowDefinition>
-                                    </Grid.RowDefinitions>
-
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
-                                            <ColumnDefinition Width="11"></ColumnDefinition>
-                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
-                                        </Grid.ColumnDefinitions>
-
-                                        <TextBlock Text="Alter" Margin="3"></TextBlock>
-
-                                        <TextBox Name="TextBoxDbgTimerElapsedLockedInRaameBerictExceptionLezteAlter"
-                                                 IsReadOnly="True"
-                                                 Grid.Column="2" Width="77"></TextBox>
-                                    </Grid>
-
-                                    <TextBox
-                                        Name="TextBoxDbgTimerElapsedLockedInRaameBerictExceptionLezteSictString"
-                                        Grid.Row="2"
-                                         IsReadOnly="True"
-                                        VerticalScrollBarVisibility="Visible"
-                                        Height="44"></TextBox>
-                                </Grid>
-                            </GroupBox.Content>
-                        </GroupBox>
-
-                        <GroupBox
-                            Margin="3">
-                            <GroupBox.Header>
-                                <TextBlock Text="OptimatScrit.Zwiscescpaicer" Margin="3"></TextBlock>
-                            </GroupBox.Header>
-
-                            <GroupBox.Content>
-                                <WrapPanel>
-                                    <GroupBox
-                                        Margin="1" VerticalAlignment="Center">
-                                        <GroupBox.Header>
-                                            <TextBlock Text="Alter" Margin="1"></TextBlock>
-                                        </GroupBox.Header>
-
-                                        <GroupBox.Content>
-                                            <TextBox Name="TextBoxInspektOptimatScritZwiscescpaicerAlter"
-                                                     IsReadOnly="True" Width="55"></TextBox>
-                                        </GroupBox.Content>
-                                    </GroupBox>
-
-                                    <Button Name="ButtonInspektOptimatScritZwiscescpaicerWindowClientRasterScraibeNaacDatai"
-                                            Margin="3" VerticalAlignment="Center"
-                                            AllowDrop="True">
-                                        <TextBlock Text="Window.Client.Raster scraibe naac Datai" Margin="1"></TextBlock>
-                                    </Button>
-
-                                    <Button Name="ButtonInspektOptimatScritZwiscescpaicerVonProcessGbsBaumScraibeNaacDatai"
-                                            Margin="3" VerticalAlignment="Center"
-                                            AllowDrop="True">
-                                        <TextBlock Text="GBS Baum scraibe naac Datai" Margin="1"></TextBlock>
-                                    </Button>
-                                </WrapPanel>
-                            </GroupBox.Content>
-                        </GroupBox>
-
-                        <GroupBox>
-                            <GroupBox.Header>
-                                <TextBlock Text="Scrit.Zait"></TextBlock>
-                            </GroupBox.Header>
-
-                            <GroupBox.Content>
-                                <TextBox
-                                    Name="TextBoxInspektScritZait"
-                                    IsReadOnly="True"
-                                    Height="77"></TextBox>
-                            </GroupBox.Content>
-                        </GroupBox>
-
-                    </StackPanel>
                 </TabItem.Content>
             </TabItem>
         </TabControl>
