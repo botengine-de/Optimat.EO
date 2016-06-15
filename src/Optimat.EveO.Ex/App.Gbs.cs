@@ -231,7 +231,10 @@ namespace Optimat.EveO.Nuzer
 
 		void GbsSctoierelementHauptErsctele()
 		{
-			var SctoierelementHaupt = new GBS.Haupt();
+			var SctoierelementHaupt = new GBS.Haupt
+			{
+				FromProcessMeasurementLastGetDelegate = () => FromProcessMeasurementLast,
+			};
 
 			this.GbsSctoierelementHaupt = SctoierelementHaupt;
 

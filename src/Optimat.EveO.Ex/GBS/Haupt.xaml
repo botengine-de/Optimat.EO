@@ -779,6 +779,13 @@
 
                                 <TabItem.Content>
                                     <StackPanel>
+                                        <GroupBox Header="export">
+                                            <Button
+                                                    AllowDrop="True"
+                                                    Drop="MemoryMeasurementLastToFileButton_Drop">
+                                                <TextBlock Text="write last measurement to file"></TextBlock>
+                                            </Button>
+                                        </GroupBox>
                                         <GroupBox Header="simulation">
                                             <WrapPanel>
                                                 <Button

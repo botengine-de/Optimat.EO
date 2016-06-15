@@ -35,6 +35,8 @@ namespace Optimat.EveO.Nuzer
 
 		Sanderling.Interface.MemoryStruct.IMemoryMeasurement SimulateMemoryMeasurement;
 
+		FromProcessMeasurement<Sanderling.Interface.MemoryStruct.IMemoryMeasurement> FromProcessMeasurementLast;
+
 		void GetMeasurementIfDue()
 		{
 			sensorServerDispatcher?.Exchange();
@@ -61,7 +63,7 @@ namespace Optimat.EveO.Nuzer
 					eveOnlineClientProcessId,
 					Bib3.Glob.StopwatchZaitMiliSictInt());
 
-			var measurementNewStructure = response?.MemoryMeasurement;
+			var measurementNewStructure = FromProcessMeasurementLast = response?.MemoryMeasurement;
 
 			var simulateMemoryMeasurement = this.SimulateMemoryMeasurement;
 

@@ -51,6 +51,8 @@ namespace Optimat.EveO.Nuzer.GBS
 
 		readonly Queue<char> ListeTasteCharAin = new Queue<char>();
 
+		public Func<FromProcessMeasurement<Sanderling.Interface.MemoryStruct.IMemoryMeasurement>> FromProcessMeasurementLastGetDelegate;
+
 		public Haupt()
 		{
 			InitializeComponent();
@@ -759,6 +761,24 @@ namespace Optimat.EveO.Nuzer.GBS
 					(root as FromProcessMeasurement<Sanderling.Interface.MemoryStruct.IMemoryMeasurement>)?.Value;
 
 				MemoryMeasurementSimulationValue = new PropertyGenTimespanInt64<Sanderling.Interface.MemoryStruct.IMemoryMeasurement>(memoryMeasurement, Bib3.Glob.StopwatchZaitMiliSictInt());
+			});
+
+			MemoryMeasurementSimulationUIUpdate();
+		}
+
+		private void MemoryMeasurementLastToFileButton_Drop(object sender, DragEventArgs e)
+		{
+			Bib3.FCL.GBS.Extension.CatchNaacMessageBoxException(() =>
+			{
+				var fromProcessMeasurementLast = FromProcessMeasurementLastGetDelegate?.Invoke();
+
+				var fromProcessMeasurementLastSerial = Bib3.RefNezDiferenz.Extension.ListeWurzelSerialisiireZuJson(new[] { fromProcessMeasurementLast }, Sanderling.Interface.FromInterfaceResponse.SerialisPolicyCache);
+
+				var fromProcessMeasurementLastSerialUtf8 = Encoding.UTF8.GetBytes(fromProcessMeasurementLastSerial);
+
+				var filePath = Bib3.FCL.Glob.DataiPfaadAlsKombinatioonAusSctandardPfaadUndFileDrop("memory_measurement", e);
+
+				Bib3.Glob.ScraibeInhaltNaacDataiPfaad(filePath, fromProcessMeasurementLastSerialUtf8);
 			});
 
 			MemoryMeasurementSimulationUIUpdate();
