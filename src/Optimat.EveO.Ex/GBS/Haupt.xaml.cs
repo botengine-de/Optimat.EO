@@ -67,7 +67,7 @@ namespace Optimat.EveO.Nuzer.GBS
 
 		public void EveOnlinePräferenzAusGbsAingaabeLeese()
 		{
-			SctoierelementEveOnlinePräferenz.KonfigBerecneAusGbs(ref	InternEveOnlinePräferenzAingaabeLezte);
+			SctoierelementEveOnlinePräferenz.KonfigBerecneAusGbs(ref InternEveOnlinePräferenzAingaabeLezte);
 		}
 
 		void EveOnlinePräferenzGeändertEventHandler(object sender, RoutedEventArgs e)
@@ -156,7 +156,7 @@ namespace Optimat.EveO.Nuzer.GBS
 
 			var SensorServerApiUri = konfig?.SensorServerApiUri;
 
-			if(SensorServerApiUri.IsNullOrEmpty())
+			if (SensorServerApiUri.IsNullOrEmpty())
 			{
 				SensorServerApiUri = App.BotEngineApiUriDefault;
 			}
@@ -641,7 +641,11 @@ namespace Optimat.EveO.Nuzer.GBS
 
 				var fromProcessMeasurementLastSerialUtf8 = Encoding.UTF8.GetBytes(fromProcessMeasurementLastSerial);
 
-				var filePath = Bib3.FCL.Glob.DataiPfaadAlsKombinatioonAusSctandardPfaadUndFileDrop("memory_measurement", e);
+				var timeCal = Bib3.Glob.SictDateTimeVonStopwatchZaitMili(fromProcessMeasurementLast?.Begin ?? 0);
+
+				var timeCalText = Bib3.Glob.SictwaiseKalenderString(timeCal, ".", 3);
+
+				var filePath = Bib3.FCL.Glob.DataiPfaadAlsKombinatioonAusSctandardPfaadUndFileDrop(timeCalText + ".From_Process_Measurement", e);
 
 				Bib3.Glob.ScraibeInhaltNaacDataiPfaad(filePath, fromProcessMeasurementLastSerialUtf8);
 			});
