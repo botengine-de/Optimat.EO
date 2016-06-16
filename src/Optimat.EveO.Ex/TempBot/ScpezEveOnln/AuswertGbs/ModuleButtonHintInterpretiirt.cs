@@ -52,6 +52,7 @@ namespace Optimat.EveOnline.AuswertGbs
 			"Cannon",
 			"Artillery",
 			"Howitzer",
+ 
 
 		};
 
@@ -165,7 +166,12 @@ namespace Optimat.EveOnline.AuswertGbs
 			get;
 		}
 
-		[JsonProperty]
+	    public bool? IstMissileGuidance
+	    {
+	        private set;
+            get; }
+
+        [JsonProperty]
 		public bool? ChargeLoaded
 		{
 			private set;
@@ -313,14 +319,29 @@ namespace Optimat.EveOnline.AuswertGbs
 		/// 
 		/// 2016.01.01	Bsp:
 		/// "36% Signature Radius Modifier"
+		/// 
+		/// 2016.06.16
+		/// Fix Target Painter
+		/// 
+		/// By Master
 		/// </summary>
-		static readonly public string SignatureRadiusBonusRegexPattern = Regex.Escape(@"Signature\s*Radius\s*(Bonus|Modifier)");
+		/// static readonly public string SignatureRadiusBonusRegexPattern = Regex.Escape(@"Signature\s*Radius\s*(Bonus|Modifier)");
+        static readonly public string SignatureRadiusBonusRegexPattern = Regex.Escape("Target Painter");
 
-		/*
+
+	    /// <summary>
+	    /// 2016.06.16
+	    /// "Missile Guidance Computer"
+	    /// 
+	    /// By Master
+	    /// </summary>
+        static readonly public string MissileGuidanceRegexPattern = Regex.Escape("Missile Guidance");
+
+        /*
 		 * 2013.10.16 Bsp:
 		 * "<b>Adaptive Invulnerability Field II</b>"
 		 * */
-		static readonly public string ShieldHardenerAdaptiveTitelRegexPattern = Regex.Escape("Adaptive Invulnerability Field");
+        static readonly public string ShieldHardenerAdaptiveTitelRegexPattern = Regex.Escape("Adaptive Invulnerability Field");
 
 		/// <summary>
 		/// 2013.10.16	Bsp:
@@ -436,6 +457,7 @@ namespace Optimat.EveOnline.AuswertGbs
 			bool? IstArmorRepairerSelbsct = null;
 			bool? IstWirkmitelDestrukt = null;
 			bool? IstTargetPainter = null;
+		    bool? IstMissileGuidance = null;
 			bool? AnnaameModuleInfoVolsctändig = null;
 			bool? ChargeLoaded = null;
 			int? ModuleAnzaal = null;
@@ -670,7 +692,16 @@ namespace Optimat.EveOnline.AuswertGbs
 							}
 						}
 
-						{
+                        {
+                            var PrecisionMissileBonusMatch = Regex.Match(ZaileBescriftung, MissileGuidanceRegexPattern, RegexOptions.IgnoreCase);
+
+                            if (PrecisionMissileBonusMatch.Success)
+                            {
+                                IstMissileGuidance = true;
+                            }
+                        }
+
+                        {
 							var ShieldHardenerAdaptiveTitelMatch = Regex.Match(ZaileBescriftung, ShieldHardenerAdaptiveTitelRegexPattern, RegexOptions.IgnoreCase);
 
 							if (ShieldHardenerAdaptiveTitelMatch.Success)
@@ -782,7 +813,8 @@ namespace Optimat.EveOnline.AuswertGbs
 				this.IstArmorRepairerSelbsct = IstArmorRepairerSelbsct;
 				this.IstWirkmitelDestrukt = IstWirkmitelDestrukt;
 				this.IstTargetPainter = IstTargetPainter;
-				this.ZyklusMengeZuDamageTypeDamage = ZyklusMengeDamage;
+			    this.IstMissileGuidance = IstMissileGuidance;
+                this.ZyklusMengeZuDamageTypeDamage = ZyklusMengeDamage;
 				this.RangeMax = RangeMax;
 				this.RangeOptimal = RangeOptimal;
 				this.ChargeLoaded = ChargeLoaded;
