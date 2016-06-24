@@ -1,0 +1,1 @@
+Optimat.EveOnline is a [Sanderling](https://github.com/Arcitectus/Sanderling) based eve online mission running bot.
