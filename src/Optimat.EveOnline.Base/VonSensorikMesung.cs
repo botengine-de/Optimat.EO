@@ -14,6 +14,8 @@ namespace Optimat.EveOnline
 
 	public class VonSensorikMesung : GbsElement, ICloneable
 	{
+		public int? SessionDurationRemaining;
+
 		public Menu[] MengeMenu;
 
 		public string VersionString;

@@ -128,6 +128,7 @@ namespace MapToOldInterface
 
 			return new BotEngine.EveOnline.Interface.MemoryStruct.MemoryMeasurement
 			{
+				SessionDurationRemaining = parsed?.SessionDurationRemaining,
 				Menu = parsed?.Menu?.Select(AsOld)?.ToArray(),
 				AbovemainMessage = parsed?.AbovemainMessage?.AsOldUIElementLabelString()?.ToArray(),
 				AbovemainPanelEveMenu = parsed?.AbovemainPanelEveMenu?.Select(AsOld)?.ToArray(),

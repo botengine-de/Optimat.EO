@@ -98,6 +98,9 @@ namespace Optimat.EveOnline.Anwendung
 
 					var AbovemainMessageClusterShutdownLezte = (null == GbsZuusctand) ? null : GbsZuusctand.AbovemainMessageClusterShutdownLezte;
 
+					if (AutomaatZuusctand?.VonSensorScnapscus?.MemoryMeasurement?.Wert?.SessionDurationRemaining < 60 * 15)
+						AnforderungDockUrsace = new SictNaacNuzerMeldungZuEveOnlineCause(SictNaacNuzerMeldungZuEveOnlineCauseTypeBinär.OptimatServerSessionEnd);
+
 					if (null != ParamZuZaitVerhalteKombi)
 					{
 						if (ParamZuZaitVerhalteKombi.DiinstUnterbrecungNääxteZait - SictAutomatZuusctand.InRaumAktioonEndeZaitDistanzBisDiinstUnterbrecung < ServerZaitMili / 1000)

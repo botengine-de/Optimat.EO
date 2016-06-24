@@ -7,6 +7,8 @@ namespace BotEngine.EveOnline.Interface.MemoryStruct
 	/// </summary>
 	public class MemoryMeasurement : ICloneable
 	{
+		public int? SessionDurationRemaining;
+
 		public string VersionString;
 
 		public Menu[] Menu;

@@ -33,6 +33,7 @@ namespace Optimat.EveOnline
 
             return new VonSensorikMesung()
 			{
+				SessionDurationRemaining = MemoryMeasurement?.SessionDurationRemaining,
 				VersionString = MemoryMeasurement.VersionString,
 				MengeMenu = MemoryMeasurement.Menu?.OrderBy(t => t.InTreeIndex)?.Select(AlsMenu)?.ToArray(),
 				SystemMenu = MemoryMeasurement.SystemMenu.AlsSystemMenu(),
