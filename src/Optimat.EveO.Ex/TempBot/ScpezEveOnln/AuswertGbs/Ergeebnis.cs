@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Bib3;
+﻿using System.Linq;
 using Newtonsoft.Json;
 using Optimat.EveOnline.AuswertGbs;
 using ExtractFromOldAssembly.Bib3;

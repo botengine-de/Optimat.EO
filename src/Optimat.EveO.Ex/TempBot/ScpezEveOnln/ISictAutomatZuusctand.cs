@@ -25,14 +25,6 @@ namespace Optimat.EveOnline.Anwendung
 			set;
 			get;
 		}
-
-		byte[][] MengeClientIdentAktuel
-		{
-			set;
-			get;
-		}
-
-		void VonNuzerListeBerictWindowClientRasterFüügeAin(IEnumerable<SictWertMitZait<SictDataiIdentUndSuuceHinwais>> VonNuzerBerictMengeWindowClientRaster);
 	}
 
 	public	interface ISictAutomatZuusctand
@@ -109,7 +101,7 @@ namespace Optimat.EveOnline.Anwendung
 		global::Optimat.SictWertMitZait<global::System.Collections.Generic.KeyValuePair<global::Optimat.EveOnline.Anwendung.SictAufgaabeParam, VonSensor.MenuEntry[]>>? VersuucMenuEntryKlikLezteBerecne(bool NurFertige = false);
 		global::Optimat.ScpezEveOnln.SictAutomatZuusctand.SictGbsAstOklusioonInfo ZuGbsAstHerkunftAdreseKandidaatOklusioonBerecne(long GbsAstHerkunftAdrese);
 
-		void ScteleSicerAktuel();
+		void Update();
 
 		/*
 		 * 2015.03.12
@@ -393,7 +385,7 @@ namespace Optimat.EveOnline.Anwendung
 			get;
 		}
 
-		abstract public void ScteleSicerAktuel();
+		abstract public void Update();
 
 		[JsonProperty]
 		public List<SictAusGbsScnapscusAuswertungSrv> ListeScnapscusAuswertungErgeebnisNaacSimu

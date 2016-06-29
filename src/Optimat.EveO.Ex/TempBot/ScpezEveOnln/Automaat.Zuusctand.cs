@@ -66,21 +66,11 @@ namespace Optimat.ScpezEveOnln
 		}
 
 		[JsonProperty]
-		public byte[][] MengeClientIdentAktuel
-		{
-			set;
-			get;
-		}
-
-		[JsonProperty]
 		override	public SictPräferenzZuZaitVerhalte ParamZuZaitVerhalteKombi
 		{
 			set;
 			get;
 		}
-
-		[JsonProperty]
-		public	List<SictWertMitZait<SictDataiIdentUndSuuceHinwais>> TempVonNuzerListeBerictWindowClientRaster;
 
 		[JsonProperty]
 		override	public	Optimat.EveOnline.SictEveWeltTopologii EveWeltTopologii
@@ -761,25 +751,5 @@ namespace Optimat.ScpezEveOnln
 			//	This should do as well....
 			return Bib3.RefNezDiferenz.Extension.ObjektKopiiKonstrukt(this, SictAutomat.ZuusctandSictDiferenzSictParam.TypeBehandlungRictliinieMitScatescpaicer);
 		}
-
-		public	void	VonNuzerListeBerictWindowClientRasterFüügeAin(IEnumerable<SictWertMitZait<SictDataiIdentUndSuuceHinwais>> VonNuzerBerictMengeWindowClientRaster)
-		{
-			if(null	== VonNuzerBerictMengeWindowClientRaster)
-			{
-				return;
-			}
-
-			var TempVonNuzerListeBerictWindowClientRaster = this.TempVonNuzerListeBerictWindowClientRaster;
-
-			if (null == TempVonNuzerListeBerictWindowClientRaster)
-			{
-				this.TempVonNuzerListeBerictWindowClientRaster = TempVonNuzerListeBerictWindowClientRaster = new List<SictWertMitZait<SictDataiIdentUndSuuceHinwais>>();
-			}
-
-			TempVonNuzerListeBerictWindowClientRaster.AddRange(VonNuzerBerictMengeWindowClientRaster);
-
-			TempVonNuzerListeBerictWindowClientRaster.ListeKürzeBegin(4);
-		}
 	}
-
 }

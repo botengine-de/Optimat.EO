@@ -1,38 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using Bib3;
 using Newtonsoft.Json;
 using Optimat.EveOnline;
 using Optimat.EveOnline.Anwendung;
 using Optimat.EveOnline.Anwendung.AuswertGbs;
 using Optimat.EveOnline.CustomBot;
-//using Optimat.EveOnline.AuswertGbs;
 using VonSensor = Optimat.EveOnline.VonSensor;
 using ExtractFromOldAssembly.Bib3;
 
 namespace Optimat.ScpezEveOnln
 {
-	[JsonObject(MemberSerialization.OptIn)]
-	public class SictCargoÜbernaame
-	{
-		[JsonProperty]
-		public string KweleObjektNaame;
-
-		[JsonProperty]
-		public VonSensor.OverviewZaile ObjektAusOverviewZaile;
-
-		[JsonProperty]
-		public string[] MengeItemÜbernome;
-
-		public SictCargoÜbernaame()
-		{
-		}
-	}
-
 	[JsonObject(MemberSerialization.OptIn)]
 	public class SictInventoryItemTransport
 	{
@@ -60,78 +38,13 @@ namespace Optimat.ScpezEveOnln
 		}
 	}
 
-	[JsonObject(MemberSerialization.OptIn)]
-	public partial class SictVersuucInventoryItemDrag
-	{
-		[JsonProperty]
-		public VonSensor.WindowInventoryPrimary WindowInventory;
-
-		[JsonProperty]
-		public VonSensor.InventoryItem DragItem;
-
-		[JsonProperty]
-		public VonSensor.TreeViewEntry DragZiil;
-
-		public SictVersuucInventoryItemDrag()
-			:
-			this(null, null, null)
-		{
-		}
-
-		public SictVersuucInventoryItemDrag(
-			VonSensor.WindowInventoryPrimary WindowInventory,
-			VonSensor.InventoryItem DragItem,
-			VonSensor.TreeViewEntry DragZiil)
-		{
-			this.WindowInventory = WindowInventory;
-			this.DragItem = DragItem;
-			this.DragZiil = DragZiil;
-		}
-	}
-
-	[JsonObject(MemberSerialization.OptIn)]
-	public class SictNaacNuzerBerict
-	{
-		[JsonProperty]
-		public IDictionary<Int64, SictWertMitZait<EveOnline.SictMissionZuusctand>> DictZuMissionZuZaitBerictLezte;
-
-		[JsonProperty]
-		public List<KeyValuePair<int, SictVonServerBerict>> ListeNaacNuzerNaacrict;
-
-		public int? ListeNaacNuzerNaacrictLezteBezaicnerBerecne()
-		{
-			var ListeNaacNuzerNaacrict = this.ListeNaacNuzerNaacrict;
-
-			if (null == ListeNaacNuzerNaacrict)
-			{
-				return null;
-			}
-
-			var ListeNaacNuzerNaacrictLezte = ListeNaacNuzerNaacrict.LastOrDefault();
-
-			return ListeNaacNuzerNaacrictLezte.Key;
-		}
-
-		public SictNaacNuzerBerict()
-		{
-		}
-	}
-
 	public partial class SictAutomat
 	{
-		readonly static byte[][] StaticMengeClientIdentAktuel = new byte[][] {
-			//	2015.02.26.12
-			new byte[]{0x79,0x7F,0x58,0xC9,0xA7,0x53,0xBF,0x58,0x65,0x24,0x42,0x2D,0x87,0x35,0xBF,0xFB,0xD6,0xD1,0x32,0x5E},
-			new byte[]{4},
-		};
-
 		public byte[] AnwendungSizungIdent
 		{
 			set;
 			get;
 		}
-
-		readonly public byte[][] MengeClientIdentAktuel = StaticMengeClientIdentAktuel;
 
 		public Int64? NuzerZaitMili
 		{
@@ -155,44 +68,18 @@ namespace Optimat.ScpezEveOnln
 
 		public BotEngine.EveOnline.Interface.FromSensorToConsumerMessage VonSensorikMesungLezte;
 
-		/*
-		 * 2015.03.12
-		 * 
-		 * Ersaz durc ToCustomBotSnapshot
+		public SictVonOptimatMeldungZuusctand NaacNuzerMeldungZuusctand =>
+			stateReported?.NaacNuzerMeldungZuusctand;
 
-		public SictGbsAstInfoSictAuswert VonNuzerMeldungZuusctandTailGbsBaum;
-
-		public SictWertMitZait<SictAuswertGbsAgr> ScnapscusAuswertLezte
-		{
-			private set;
-			get;
-		}
-		 * */
-
-		public SictVonOptimatMeldungZuusctand NaacNuzerMeldungZuusctand
-		{
-			get
-			{
-				var InternZuusctand = this.InternZuusctand;
-
-				if (null == InternZuusctand)
-				{
-					return null;
-				}
-
-				return InternZuusctand.NaacNuzerMeldungZuusctand;
-			}
-		}
-
-		readonly ISictAutomatZuusctandMitErwaiterungFürBerict InternZuusctand = new SictAutomatZuusctand();
+		readonly ISictAutomatZuusctandMitErwaiterungFürBerict stateReported = new SictAutomatZuusctand();
 
 		public SictAutomat()
 		{
 		}
 
-		public SictAutomat(ISictAutomatZuusctandMitErwaiterungFürBerict AutomaatZuusctand)
+		public SictAutomat(ISictAutomatZuusctandMitErwaiterungFürBerict automaatZuusctand)
 		{
-			this.InternZuusctand = AutomaatZuusctand;
+			this.stateReported = automaatZuusctand;
 		}
 
 		static public KeyValuePair<Type, Type>[] ZuusctandSictFürNuzerMengeZuHerkunftTypeZiilTypeBerecne()
@@ -259,7 +146,7 @@ namespace Optimat.ScpezEveOnln
 
 		public SictAutomatZuusctand ZuusctandKopiiBerecne()
 		{
-			var InternZuusctand = this.InternZuusctand;
+			var InternZuusctand = this.stateReported;
 
 			if (null == InternZuusctand)
 			{
@@ -270,16 +157,16 @@ namespace Optimat.ScpezEveOnln
 		}
 
 		public Bib3.RefNezDiferenz.SictZuNezSictDiferenzScritAbbild ZuusctandScritDiferenzBerecne(
-			int WiiderhoolungDistanzScrankeMax)
+			int wiiderhoolungDistanzScrankeMax)
 		{
 			lock (ZuusctandSictDiferenz)
 			{
 				var ÄltesteZuVerwendendeScritIndexScrankeMin =
-					ZuusctandSictDiferenz.ScritLezteIndex - WiiderhoolungDistanzScrankeMax;
+					ZuusctandSictDiferenz.ScritLezteIndex - wiiderhoolungDistanzScrankeMax;
 
 				return ZuusctandSictDiferenz.BerecneScritDif(
 					ÄltesteZuVerwendendeScritIndexScrankeMin,
-					new object[] { InternZuusctand });
+					new object[] { stateReported });
 			}
 		}
 
@@ -346,103 +233,32 @@ namespace Optimat.ScpezEveOnln
 			return MengeZuMissionFilterAktioonVerfüügbarScatescpaicer;
 		}
 
-		public void VonNuzerListeBerictWindowClientRaster(IEnumerable<SictWertMitZait<SictDataiIdentUndSuuceHinwais>> VonNuzerListeBerictWindowClientRaster)
+		public bool StepProcess()
 		{
-			if (null == VonNuzerListeBerictWindowClientRaster)
-			{
-				return;
-			}
+			stateReported.AnwendungSizungIdent = AnwendungSizungIdent;
+			stateReported.NuzerZaitMili = this.NuzerZaitMili ?? -1;
+			stateReported.ServerZaitMili = this.ServerZaitMili ?? -1;
+			stateReported.VonSensorScnapscus = VonSensorikMesungLezte.AlsToCustomBotSnapshot();
+			stateReported.VonNuzerMeldungZuusctand = VonNuzerMeldungZuusctand;
 
-			InternZuusctand.VonNuzerListeBerictWindowClientRasterFüügeAin(VonNuzerListeBerictWindowClientRaster);
-		}
-
-		public void VonWirtAingangParamZuZaitVerhalte(
-			SictPräferenzZuZaitVerhalte ZuZaitVerhalte)
-		{
-			InternZuusctand.VonWirtParamZuZaitVerhalte = ZuZaitVerhalte;
-		}
-
-		public bool ScritBerecne()
-		{
-			var Dauer = new SictMesungZaitraumAusStopwatch(true);
-
-			InternZuusctand.AnwendungSizungIdent = AnwendungSizungIdent;
-			InternZuusctand.MengeClientIdentAktuel = this.MengeClientIdentAktuel;
-			InternZuusctand.NuzerZaitMili = this.NuzerZaitMili ?? -1;
-			InternZuusctand.ServerZaitMili = this.ServerZaitMili ?? -1;
-			InternZuusctand.VonSensorScnapscus = VonSensorikMesungLezte.AlsToCustomBotSnapshot();
-			InternZuusctand.VonNuzerMeldungZuusctand = VonNuzerMeldungZuusctand;
-
-			{
-				var InternZuusctandScpez = InternZuusctand as SictAutomatZuusctandWaiterlaitung;
-
-				if (null != InternZuusctandScpez)
-					InternZuusctandScpez.TempDebugListeScritBerecneStopwatchZaitUndNuzerZait = this.TempDebugListeScritBerecneStopwatchZaitUndNuzerZait;
-			}
-
-			if (InternZuusctand.VorsclaagWirkungAusgefüürtNictLezteAlterBerecne() < 5555)
+			if (stateReported.VorsclaagWirkungAusgefüürtNictLezteAlterBerecne() < 5555)
 				return false;
 
-			{
-				SictAusGbsScnapscusAuswertungSrv AuswertErgeebnis = null;
+			var memoryMeasurement = stateReported?.VonSensorScnapscus?.MemoryMeasurement?.Mesung;
 
-				var MemoryMeasurement = InternZuusctand?.VonSensorScnapscus?.MemoryMeasurement?.Mesung;
+			SictAusGbsScnapscusAuswertungSrv parseResult = null;
 
-				if (null != MemoryMeasurement)
-					AuswertErgeebnis = new SictAusGbsScnapscusAuswertungSrv(MemoryMeasurement);
+			if (null != memoryMeasurement)
+				parseResult = new SictAusGbsScnapscusAuswertungSrv(memoryMeasurement);
 
-				InternZuusctand.ListeScnapscusLezteAuswertungErgeebnis = AuswertErgeebnis;
+			stateReported.ListeScnapscusLezteAuswertungErgeebnis = parseResult;
 
-				var OptimatParam = InternZuusctand.OptimatParam();
+			stateReported.ListeScnapscusAuswertungErgeebnisNaacSimu.Add(parseResult);
+			Bib3.Extension.ListeKürzeBegin(stateReported.ListeScnapscusAuswertungErgeebnisNaacSimu, 2);
 
-				var VonNuzerParamSimuFraigaabe = OptimatParam?.SimuFraigaabe;
-
-				var VonNuzerParamSimu = OptimatParam?.Simu;
-
-				var VonNuzerParamAutoFraigaabe = OptimatParam?.AutoFraigaabe;
-
-				var ListeScnapscusLezteAuswertungErgeebnisNaacSimu =
-					ApliziireSimulatioon(AuswertErgeebnis,
-					(true == VonNuzerParamSimuFraigaabe) ? VonNuzerParamSimu : null);
-
-				InternZuusctand.ListeScnapscusAuswertungErgeebnisNaacSimu.Add(ListeScnapscusLezteAuswertungErgeebnisNaacSimu);
-				Bib3.Extension.ListeKürzeBegin(InternZuusctand.ListeScnapscusAuswertungErgeebnisNaacSimu, 2);
-			}
-
-			InternZuusctand.ScteleSicerAktuel();
-
-			Dauer.EndeSezeJezt();
+			stateReported.Update();
 
 			return true;
 		}
-
-		static public SictAusGbsScnapscusAuswertungSrv ApliziireSimulatioon(
-			SictAusGbsScnapscusAuswertungSrv VorSimulatioonZuusctand,
-			SictOptimatParamSimu Simulatioon)
-		{
-			/*
-			 * 2015.03.12
-			 * 
-				if (null == Simulatioon)
-				{
-					return
-						(null == VorSimulatioonZuusctand) ? null : VorSimulatioonZuusctand.Kopii();
-				}
-
-				if (null == VorSimulatioonZuusctand)
-				{
-					return null;
-				}
-
-				var Ergeebnis = VorSimulatioonZuusctand.Kopii();
-
-				Ergeebnis.SimulatioonApliziire(Simulatioon);
-
-				return Ergeebnis;
-			 * **/
-
-			return VorSimulatioonZuusctand;
-		}
-
 	}
 }
