@@ -12,8 +12,14 @@ using ExtractFromOldAssembly.Bib3;
 namespace Optimat.EveOnline.Anwendung
 {
 	public class SictKonfigMissionTitel
-	{
-		static public SictMissionTitel MissionTitelPirateInvasion =
+    {
+       static public SictMissionTitel MissionTitelTheWildcatStrike =
+            SictMissionTitel.MissionTitelMitEntscaidungFactionKonstant("The Wildcat Strike", SictFactionSictEnum.Rogue_Drones);
+
+        static public SictMissionTitel MissionTitelAttackoftheDrones =
+            SictMissionTitel.MissionTitelMitEntscaidungFactionKonstant("Attack of the Drones", SictFactionSictEnum.Rogue_Drones);
+
+        static public SictMissionTitel MissionTitelPirateInvasion =
 			SictMissionTitel.MissionTitelMitEntscaidungFactionStandard("Pirate Invasion");
 
 		static public SictMissionTitel MissionTitelPirateIntrusion =
@@ -574,12 +580,39 @@ namespace Optimat.EveOnline.Anwendung
 		 * Objective
 		 * Eliminate the leader of the pirates blockading the stargate. You will be informed when he has been dispatched, his demise should disperse the pirate gang eventually.
 		 */
-		static public SictMissionStrategikon[] MengeMissionStrategikonTheBlockade =
+		 static public SictMissionStrategikon[] MengeMissionStrategikonTheBlockade =
 				MengeMissionStrategikonAusMissionStrategikonMalMengeFaction(
 					SictMissionStrategikon.StrategikonZersctööreAleRat(),
 					SictKonfigMissionTitel.MissionTitelTheBlockade);
 
-		/*
+
+         /* 2013.06.16
+         * 
+         * The Wildcat Strike
+         * 
+         * Objective
+         * Eliminate all the rats to finish the mission.
+         */
+         static public SictMissionStrategikon[] MengeMissionStrategikonTheWildcatStrike =
+                MengeMissionStrategikonAusMissionStrategikonMalMengeFaction(
+                    SictMissionStrategikon.StrategikonZersctööreAleRat(),
+                    SictKonfigMissionTitel.MissionTitelTheWildcatStrike);
+         /*
+         * 2013.06.16
+         * 
+         * Attack of the Drones
+         * 
+         * Objective
+         * Eliminate all the rats to finish the mission.
+         */
+         static public SictMissionStrategikon[] MengeMissionStrategikonAttackoftheDrones =
+                MengeMissionStrategikonAusMissionStrategikonMalMengeFaction(
+                    SictMissionStrategikon.StrategikonZersctööreAleRat(),
+                    SictKonfigMissionTitel.MissionTitelAttackoftheDrones);
+
+
+
+        /*
 		 * 2013.09.05
 		 * 
 		 * The Score
@@ -587,7 +620,7 @@ namespace Optimat.EveOnline.Anwendung
 		 * Objective
 		 * Time to settle the score. Go and destroy all the ships at the encounter. Your main target will be lurking around the radio telescope, seek and destroy then return to me.
 		 */
-		static public SictMissionStrategikon[] MengeMissionStrategikonTheScore =
+        static public SictMissionStrategikon[] MengeMissionStrategikonTheScore =
 				MengeMissionStrategikonAusMissionStrategikonMalMengeFaction(
 				SictMissionStrategikon.StrategikonZersctööreAleRat(),
 					SictKonfigMissionTitel.MissionTitelTheScore);
@@ -1897,7 +1930,9 @@ namespace Optimat.EveOnline.Anwendung
 		static public SictMissionStrategikon[] MengeMissionStrategikon =
 			Bib3.Glob.ArrayAusListeFeldGeflact(
 			new SictMissionStrategikon[][]{
-				MengeMissionStrategikonTheBlockade,
+                MengeMissionStrategikonTheWildcatStrike,
+                MengeMissionStrategikonAttackoftheDrones,
+                MengeMissionStrategikonTheBlockade,
 				MengeMissionStrategikonTheScore,
 				MengeMissionStrategikonTheMissingConvoy,
 				MengeMissionStrategikonTheGoodWord,
