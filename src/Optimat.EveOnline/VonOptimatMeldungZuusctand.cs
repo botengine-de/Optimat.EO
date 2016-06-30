@@ -120,9 +120,6 @@ namespace Optimat.EveOnline
 	public class SictVonOptimatMeldungZuusctand : Optimat.EveOnline.Base.VonAutomatMeldungZuusctand
 	{
 		[JsonProperty]
-		public byte[][] MengeClientIdentAktuel;
-
-		[JsonProperty]
 		public KeyValuePair<string, SictNaacNuzerMeldungZuEveOnlineSeverity>[] MengeMeldungGenerel;
 
 		[JsonProperty]

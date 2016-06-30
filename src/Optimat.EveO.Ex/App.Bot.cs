@@ -232,7 +232,7 @@ namespace Optimat.EveO.Nuzer
 
 			Automat.VonNuzerMeldungZuusctand = VonNuzerMeldungZuusctand;
 
-			var ScritBerecnet = Automat.ScritBerecne();
+			var ScritBerecnet = Automat.StepProcess();
 
 			var AutomaatZuusctandDiferenzScrit = Automat.ZuusctandScritDiferenzBerecne(10);
 

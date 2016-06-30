@@ -73,7 +73,7 @@ namespace Optimat.ScpezEveOnln
 			this.InternScritDauerDurcscnit = ScritDauerDurcscnitBerecne(InternListeScritZait);
 		}
 
-		override public void ScteleSicerAktuel()
+		override public void Update()
 		{
 			Aktualisiire();
 		}
@@ -155,7 +155,6 @@ namespace Optimat.ScpezEveOnln
 				(null == ScnapscusWindowFittingMgmt) ? null : ScnapscusWindowFittingMgmt.MengeFittingEntry;
 
 			NaacNuzerBerict.SizungIdent = this.AnwendungSizungIdent;
-			NaacNuzerBerict.MengeClientIdentAktuel = this.MengeClientIdentAktuel;
 
 			var MengeMeldungZuEveOnline = NaacNuzerBerict.MengeMeldungZuEveOnline;
 			var FittingManagementMengeFittingPfaadListeGrupeNaame = NaacNuzerBerict.FittingManagementMengeFittingPfaadListeGrupeNaame;

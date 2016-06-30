@@ -830,8 +830,6 @@ namespace Optimat.EveOnline.Anwendung.Berict.Auswert
 
 			var ReferenzZait = AutomaatZuusctand.Wert.NuzerZaitMili;
 
-			var TempVonNuzerListeBerictWindowClientRaster = AutomaatZuusctand.Wert.TempVonNuzerListeBerictWindowClientRaster;
-
 			var ScnapscusAuswertungErgeebnis = AutomaatZuusctand.Wert.ListeScnapscusLezteAuswertungErgeebnisNaacSimu;
 
 			var ListeZuZaitVonNuzerMeldungNaacProcessWirkung = AutomaatZuusctand.Wert.ListeZuZaitVonNuzerMeldungNaacProcessWirkung;
@@ -891,14 +889,6 @@ namespace Optimat.EveOnline.Anwendung.Berict.Auswert
 			if (null != OptimatScritAktuel)
 			{
 				DictZuNuzerZaitMiliAnwendungZaitMili[ReferenzZait] = AutomaatZuusctand.Zait;
-			}
-
-			if (null != TempVonNuzerListeBerictWindowClientRaster)
-			{
-				foreach (var VonNuzerBerictWindowClientRaster in TempVonNuzerListeBerictWindowClientRaster)
-				{
-					base.NuzerZaitMiliWindowClientRasterSuuceHinwaisFüügeAin(VonNuzerBerictWindowClientRaster.Zait, VonNuzerBerictWindowClientRaster.Wert);
-				}
 			}
 
 			if (null != OptimatScritAbbild)
