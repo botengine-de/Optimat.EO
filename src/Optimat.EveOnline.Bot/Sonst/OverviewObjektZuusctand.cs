@@ -12,6 +12,7 @@ using Bib3.RefNezDiferenz;
 using Optimat.EveOnline.Base;
 using Optimat.EveOnline.VonSensor;
 using ExtractFromOldAssembly.Bib3;
+using Sanderling.Parse;
 
 namespace Optimat.EveOnline.Anwendung
 {
@@ -281,7 +282,7 @@ namespace Optimat.EveOnline.Anwendung
 		}
 
 		[JsonProperty]
-		public IDictionary<SictEWarTypeEnum, Int64> DictZuEWarTypeWirkungLezteZait
+		public IDictionary<EWarTypeEnum, Int64> DictZuEWarTypeWirkungLezteZait
 		{
 			private set;
 			get;
@@ -333,7 +334,7 @@ namespace Optimat.EveOnline.Anwendung
 			return false;
 		}
 
-		public Int64? ZuMengeEWarLezteZait(SictEWarTypeEnum[] MengeEWarType)
+		public Int64? ZuMengeEWarLezteZait(EWarTypeEnum[] MengeEWarType)
 		{
 			if (null == MengeEWarType)
 			{
@@ -435,41 +436,22 @@ namespace Optimat.EveOnline.Anwendung
 
 				if (null != ScnapscusOverviewZaileAusOverviewZaile)
 				{
+					var setEWar =
+						Bib3.Extension.WhereNotNullSelectValue(
+							ScnapscusOverviewZaileAusOverviewZaile?.RightIcon?.Select(rightIcon => OverviewExtension.EWarTypeFromOverviewEntryRightIcon(rightIcon)))
+						?.ToArray();
+
+					var DictZuEWarTypeWirkungLezteZait = this.DictZuEWarTypeWirkungLezteZait;
+
+					foreach (var ewar in setEWar.EmptyIfNull())
 					{
-						//	Ermitlung EWar
+						if (null == DictZuEWarTypeWirkungLezteZait)
+							DictZuEWarTypeWirkungLezteZait = new Dictionary<EWarTypeEnum, Int64>();
 
-						var RightAlignedIconMengeTextureIdent =
-							ScnapscusOverviewZaileAusOverviewZaile.RightAlignedMengeIconTextureIdent.ToArrayFalsNitLeer();
-
-						if (null != RightAlignedIconMengeTextureIdent)
-						{
-							if (0 < RightAlignedIconMengeTextureIdent.Length)
-							{
-								//	Hiir wird davon ausgegangen das jeedes Icon welces im AlignedIconContainer erscaint ain EWar Icon ist.
-								EWarWirkungLezteZait = Bib3.Glob.Max(EWarWirkungLezteZait, Zait);
-							}
-
-							var DictZuEWarTypeWirkungLezteZait = this.DictZuEWarTypeWirkungLezteZait;
-
-							foreach (var RightAlignedIconTextureIdent in RightAlignedIconMengeTextureIdent)
-							{
-								foreach (var ZuEWarTypeTextureIdent in MengeZuEWarTypeTextureIdent)
-								{
-									if (ZuEWarTypeTextureIdent.Value == RightAlignedIconTextureIdent)
-									{
-										if (null == DictZuEWarTypeWirkungLezteZait)
-										{
-											DictZuEWarTypeWirkungLezteZait = new Dictionary<SictEWarTypeEnum, Int64>();
-										}
-
-										DictZuEWarTypeWirkungLezteZait[ZuEWarTypeTextureIdent.Key] = ScnapscusOverviewZaileMitZait.Zait;
-									}
-								}
-							}
-
-							this.DictZuEWarTypeWirkungLezteZait = DictZuEWarTypeWirkungLezteZait;
-						}
+						DictZuEWarTypeWirkungLezteZait[ewar] = ScnapscusOverviewZaileMitZait.Zait;
 					}
+
+					this.DictZuEWarTypeWirkungLezteZait = DictZuEWarTypeWirkungLezteZait;
 				}
 			}
 

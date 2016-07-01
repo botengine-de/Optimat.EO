@@ -10,6 +10,7 @@ using Optimat.EveOnline;
 using Bib3;
 using Optimat.EveOnline.Base;
 using ExtractFromOldAssembly.Bib3;
+using Sanderling.Parse;
 
 namespace Optimat.EveOnline.VonSensor
 {
@@ -1653,7 +1654,7 @@ namespace Optimat.EveOnline.VonSensor
 
 		readonly public int? DauerRestMili;
 
-		readonly public SictEWarTypeEnum? EWarTypSictEnum;
+		readonly public EWarTypeEnum? EWarTypSictEnum;
 
 		public ShipUiTimer()
 		{
@@ -1663,7 +1664,7 @@ namespace Optimat.EveOnline.VonSensor
 			string[] TextListeZaile = null,
 			string DauerLabelText = null,
 			int? DauerRestMili = null,
-			SictEWarTypeEnum? EWarTypSictEnum = null)
+			EWarTypeEnum? EWarTypSictEnum = null)
 		{
 			this.TextListeZaile = TextListeZaile;
 			this.DauerLabelText = DauerLabelText;
@@ -1678,7 +1679,7 @@ namespace Optimat.EveOnline.VonSensor
 		readonly public string EWarTypeString;
 
 		[JsonConverter(typeof(StringEnumConverter))]
-		readonly public SictEWarTypeEnum? EWarTypeEnum;
+		readonly public EWarTypeEnum? EWarTypeEnum;
 
 		readonly public GbsElement IconTexture;
 
@@ -1696,7 +1697,7 @@ namespace Optimat.EveOnline.VonSensor
 
 		public ShipUiEWarElement(
 			string EWarTypeString,
-			SictEWarTypeEnum? EWarTypeEnum,
+			EWarTypeEnum? EWarTypeEnum,
 			GbsElement IconTexture)
 		{
 			this.EWarTypeString = EWarTypeString;
@@ -3084,6 +3085,8 @@ namespace Optimat.EveOnline.VonSensor
 
 		readonly public bool? IconHostileSictbar;
 
+		public Sanderling.Interface.MemoryStruct.Sprite[] RightIcon;
+
 		public Int64? IconMainTextureIdent
 		{
 			get
@@ -3092,6 +3095,9 @@ namespace Optimat.EveOnline.VonSensor
 			}
 		}
 
+		/*
+		 * 16.06.01
+		 * 
 		/// <summary>
 		/// Im "rightAlignedIconContainer" wern di EWar (Jam,WarpScramble,....) Symbole angezaigt.
 		/// </summary>
@@ -3108,6 +3114,7 @@ namespace Optimat.EveOnline.VonSensor
 					.SelectNullable((t) => t ?? 0);
 			}
 		}
+		*/
 
 		public OverviewZaile()
 			:

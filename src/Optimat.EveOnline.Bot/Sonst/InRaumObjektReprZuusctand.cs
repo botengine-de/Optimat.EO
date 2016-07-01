@@ -9,6 +9,7 @@ using Newtonsoft.Json;
 //using Optimat.EveOnline.AuswertGbs;
 using Optimat.EveOnline.VonSensor;
 using ExtractFromOldAssembly.Bib3;
+using Sanderling.Parse;
 
 namespace Optimat.EveOnline.Anwendung
 {
@@ -19,7 +20,7 @@ namespace Optimat.EveOnline.Anwendung
 		readonly public string OverviewTypeSelectionName;
 
 		[JsonProperty]
-		readonly	public	KeyValuePair<SictEWarTypeEnum, Int64>[] MengeZuEWarTypeTextureIdent;
+		readonly	public	KeyValuePair<EWarTypeEnum, Int64>[] MengeZuEWarTypeTextureIdent;
 
 		[JsonProperty]
 		readonly public SictGbsMenuKaskaadeZuusctand MenuKaskaadeLezte;
@@ -39,7 +40,7 @@ namespace Optimat.EveOnline.Anwendung
 
 		public SictZuInRaumObjektReprScnapscusZuusazinfo(
 			string OverviewTypeSelectionName,
-			KeyValuePair<SictEWarTypeEnum, Int64>[] MengeZuEWarTypeTextureIdent,
+			KeyValuePair<EWarTypeEnum, Int64>[] MengeZuEWarTypeTextureIdent,
 			SictGbsMenuKaskaadeZuusctand MenuKaskaadeLezte,
 			VonSensor.MenuEntry MenuLezteEntryAuswaal,
 			SictOverviewPresetFolgeViewport OverviewPresetFolgeViewportFertigLezte,

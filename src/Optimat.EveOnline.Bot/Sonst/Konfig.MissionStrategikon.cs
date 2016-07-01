@@ -8,6 +8,7 @@ using Bib3;
 using Newtonsoft.Json;
 using Optimat.EveOnline.VonSensor;
 using ExtractFromOldAssembly.Bib3;
+using Sanderling.Parse;
 
 namespace Optimat.EveOnline.Anwendung
 {
@@ -249,7 +250,7 @@ namespace Optimat.EveOnline.Anwendung
 	public partial class SictKonfigMissionStrategikon
 	{
 		static public SictMissionStrategikon MissionStrategikonFürMissionOffer(
-			WindowAgentDialogue MissionOffer)
+			VonSensor.WindowAgentDialogue MissionOffer)
 		{
 			if (null == MissionOffer)
 			{
@@ -805,21 +806,16 @@ namespace Optimat.EveOnline.Anwendung
 			MengeMissionStrategikonAusMissionStrategikonMalMengeFaction(
 			SictMissionStrategikon.StrategikonZersctööre(
 			/*
-			 * 2014.05.28
-			 * Änderung naac Beobactung in MSN von LVL3 Agent:
-			 * Repair Station scaint Rats zu repariire und zu Begin des Raums werd Scpiiler ainmaal von Rat gejammed dese Destrukt daraufhin hööhere Prio erhält als Repair Station.
-			 * 
-			new	SictStrategikonOverviewObjektFilter[]{
-				new	SictStrategikonOverviewObjektFilter(SictOverviewObjektGrupeEnum.LargeCollidableStructure, "repair", "repair station", false),
-				new	SictStrategikonOverviewObjektFilter(SictOverviewObjektGrupeEnum.LargeCollidableStructure, "shipyard", "repair station", false),}),
+			 * 2014.05.28 LVL3:
+			 * Repair station repaired rats too fast. Therefore assign higher priority to repair station.
 			 * */
 			new KeyValuePair<SictStrategikonOverviewObjektFilter, SictInRaumObjektBearbaitungPrio>[]{
 				new	KeyValuePair<SictStrategikonOverviewObjektFilter,	SictInRaumObjektBearbaitungPrio>(
 					new	SictStrategikonOverviewObjektFilter(SictOverviewObjektGrupeEnum.LargeCollidableStructure, "repair", "repair station", false),
-					new	SictInRaumObjektBearbaitungPrio(true,	true,	new	SictEWarTypeEnum[]{ SictEWarTypeEnum.Webify, SictEWarTypeEnum.Jam})),
+					new	SictInRaumObjektBearbaitungPrio(true,	true,	new EWarTypeEnum[]{ EWarTypeEnum.Web, EWarTypeEnum.ECM})),
 				new	KeyValuePair<SictStrategikonOverviewObjektFilter,	SictInRaumObjektBearbaitungPrio>(
 					new	SictStrategikonOverviewObjektFilter(SictOverviewObjektGrupeEnum.LargeCollidableStructure, "shipyard", "repair station", false),
-					new	SictInRaumObjektBearbaitungPrio(true,	true,	new	SictEWarTypeEnum[]{ SictEWarTypeEnum.Webify, SictEWarTypeEnum.Jam})),
+					new	SictInRaumObjektBearbaitungPrio(true,	true,	new EWarTypeEnum[]{ EWarTypeEnum.Web, EWarTypeEnum.ECM})),
 			}),
 				SictKonfigMissionTitel.MissionTitelBreakTheirWill);
 

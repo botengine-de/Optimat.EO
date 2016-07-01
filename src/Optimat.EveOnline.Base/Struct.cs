@@ -46,24 +46,6 @@ namespace Optimat.EveOnline
 		DeadspaceStructure = 90,
 	}
 
-	/// <summary>
-	/// 2014.10.00	Bsp aus ShipUI.Timer:
-	/// "Centum Execrator<br>Miscellaneous"
-	/// </summary>
-	public enum SictEWarTypeEnum
-	{
-		Kain,
-		Jam,
-		TrackingDisrupt,
-		RemoteSensorDamp,
-		WarpScramble,
-		Webify,
-		EnergyNeut,
-		EnergyVampire,
-		TargetPaint,
-		Miscellaneous,
-	}
-
 	public enum SictZuInRaumObjektManööverTypEnum
 	{
 		Kain = 0,

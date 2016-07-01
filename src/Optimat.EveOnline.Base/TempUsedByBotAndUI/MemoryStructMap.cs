@@ -3,6 +3,7 @@ using BotEngine.Common;
 using BotEngine.EveOnline;
 using BotEngine.EveOnline.Parse;
 using ExtractFromOldAssembly.Bib3;
+using Sanderling.Parse;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -483,7 +484,7 @@ namespace Optimat.EveOnline
 					continue;
 				}
 
-				if (SictEWarTypeEnum.Jam == EWarElementErgeebnis.EWarTypeEnum)
+				if (EWarTypeEnum.ECM == EWarElementErgeebnis.EWarTypeEnum)
 				{
 					SelbstShipZuusctandJammed = true;
 				}
@@ -706,7 +707,7 @@ namespace Optimat.EveOnline
 			}
 			*/
 
-			var DroneLabel = Entry?.Label?.Label?.AsDroneLabel();
+			var DroneLabel = Sanderling.Parse.Drone.AsDroneLabel(Entry?.Label?.Label);
 
 			var DroneName = DroneLabel?.Name;
 			var DroneStatus = DroneLabel?.Status;

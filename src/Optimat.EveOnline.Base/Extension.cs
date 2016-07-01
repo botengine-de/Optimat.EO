@@ -8,6 +8,7 @@ using Bib3;
 using VonSensor = Optimat.EveOnline.VonSensor;
 using Optimat.EveOnline.VonSensor;
 using ExtractFromOldAssembly.Bib3;
+using Sanderling.Parse;
 
 namespace Optimat.EveOnline
 {
@@ -125,7 +126,7 @@ namespace Optimat.EveOnline
 			};
 		}
 
-		static public ShipUiIndication ShipUiIndication(
+		static public VonSensor.ShipUiIndication ShipUiIndication(
 			this VonSensorikMesung VonSensorikMesung)
 		{
 			if (null == VonSensorikMesung)
@@ -438,21 +439,21 @@ namespace Optimat.EveOnline
 		/// <summary>
 		/// String welcer im Name (Dict['name']) des GbsAst enthalte ist welcer das Icon des entsprecende EWar typ enthalt.
 		/// </summary>
-		static readonly KeyValuePair<SictEWarTypeEnum, string>[]
-			MengeZuEwarTypeNameString = new KeyValuePair<SictEWarTypeEnum, string>[]{
+		static readonly KeyValuePair<EWarTypeEnum, string>[]
+			MengeZuEwarTypeNameString = new KeyValuePair<EWarTypeEnum, string>[]{
 				//	Scnapscus 2014.00.07.21 - Jam : Jam isc scainbar als "electronic" aingetraage
-				new KeyValuePair<SictEWarTypeEnum,  string>(SictEWarTypeEnum.Jam, "electronic"),
-				new KeyValuePair<SictEWarTypeEnum,  string>(SictEWarTypeEnum.TrackingDisrupt, "TrackingDisrupt"),
-				new KeyValuePair<SictEWarTypeEnum,  string>(SictEWarTypeEnum.RemoteSensorDamp, "RemoteSensorDamp"),
-				new KeyValuePair<SictEWarTypeEnum,  string>(SictEWarTypeEnum.WarpScramble, "warpScrambler"),
-				new KeyValuePair<SictEWarTypeEnum,  string>(SictEWarTypeEnum.Webify, "webify"),
-				new KeyValuePair<SictEWarTypeEnum,  string>(SictEWarTypeEnum.EnergyNeut, "EnergyNeut"),
-				new KeyValuePair<SictEWarTypeEnum,  string>(SictEWarTypeEnum.EnergyVampire, "EnergyVampire"),
-				new KeyValuePair<SictEWarTypeEnum,  string>(SictEWarTypeEnum.TargetPaint, "TargetPaint"),
-				new KeyValuePair<SictEWarTypeEnum,  string>(SictEWarTypeEnum.Miscellaneous, "Misc"),
+				new KeyValuePair<EWarTypeEnum,  string>(EWarTypeEnum.ECM, "electronic"),
+				new KeyValuePair<EWarTypeEnum,  string>(EWarTypeEnum.TrackingDisrupt, "TrackingDisrupt"),
+				new KeyValuePair<EWarTypeEnum,  string>(EWarTypeEnum.SensorDamp, "RemoteSensorDamp"),
+				new KeyValuePair<EWarTypeEnum,  string>(EWarTypeEnum.WarpScramble, "warpScrambler"),
+				new KeyValuePair<EWarTypeEnum,  string>(EWarTypeEnum.Web, "webify"),
+				new KeyValuePair<EWarTypeEnum,  string>(EWarTypeEnum.EnergyNeut, "EnergyNeut"),
+				new KeyValuePair<EWarTypeEnum,  string>(EWarTypeEnum.EnergyVampire, "EnergyVampire"),
+				new KeyValuePair<EWarTypeEnum,  string>(EWarTypeEnum.TargetPaint, "TargetPaint"),
+				new KeyValuePair<EWarTypeEnum,  string>(EWarTypeEnum.Miscellaneous, "Misc"),
 				};
 
-		static public SictEWarTypeEnum? EWarTypeSictEnum(
+		static public EWarTypeEnum? EWarTypeSictEnum(
 			this string EWarTypeSictString)
 		{
 			if (null == EWarTypeSictString)
@@ -485,7 +486,7 @@ namespace Optimat.EveOnline
 		}
 
 		static public IEnumerable<Int64> MengeAssignedModuleOderDroneGrupeTexturIdent(
-			this ShipUiTarget Target)
+			this VonSensor.ShipUiTarget Target)
 		{
 			if (null == Target)
 			{
@@ -838,7 +839,7 @@ namespace Optimat.EveOnline
 			return GbsAst.AstEnthalteInBaum(Prädikaat, (tAst) => tAst.ListeGbsKindBerecne(), TiifeScrankeMax);
 		}
 
-		static public ShipUiTarget TargetEnthaltendGbsAstBerecne(
+		static public VonSensor.ShipUiTarget TargetEnthaltendGbsAstBerecne(
 			this VonSensorikMesung VonSensorikScnapscus,
 			ObjektMitIdentInt64 GbsAst)
 		{
