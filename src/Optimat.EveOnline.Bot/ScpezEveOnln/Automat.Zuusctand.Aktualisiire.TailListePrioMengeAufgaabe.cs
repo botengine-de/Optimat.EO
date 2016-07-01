@@ -12,6 +12,7 @@ using Optimat.EveOnline.Base;
 using VonSensor = Optimat.EveOnline.VonSensor;
 using Optimat.EveOnline.VonSensor;
 using ExtractFromOldAssembly.Bib3;
+using Optimat.EveOnline.Base.TempUsedByBotAndUI;
 
 namespace Optimat.ScpezEveOnln
 {
@@ -236,7 +237,7 @@ namespace Optimat.ScpezEveOnln
 									-1, Severity: SictNaacNuzerMeldungZuEveOnlineSeverity.Warning, DockForcedCause: AnforderungDockUrsace ?? AnforderungFluctUrsace);
 
 								var ZwekSictString =
-									Optimat.EveOnline.GBS.Glob.MeldungSictStringBerecneAusNaacNuzerMeldung(NaacNuzerMeldung);
+									NaacNuzerMeldung.MeldungSictStringBerecneAusNaacNuzerMeldung();
 
 								var NaacNuzerMeldungAufgaabeParam =
 									AufgaabeParamAndere.KonstruktNaacNuzerMeldungZuEveOnline(NaacNuzerMeldung);

@@ -4,10 +4,9 @@ using System.Linq;
 using Newtonsoft.Json;
 using Optimat.EveOnline;
 using Optimat.EveOnline.Anwendung;
-using Optimat.EveOnline.Anwendung.AuswertGbs;
-using Optimat.EveOnline.CustomBot;
 using VonSensor = Optimat.EveOnline.VonSensor;
 using ExtractFromOldAssembly.Bib3;
+using Optimat.EveOnline.Base;
 
 namespace Optimat.ScpezEveOnln
 {
@@ -52,19 +51,13 @@ namespace Optimat.ScpezEveOnln
 			get;
 		}
 
-		public Int64? ServerZaitMili
-		{
-			set;
-			get;
-		}
-
 		public KeyValuePair<Int64, Int64>[] TempDebugListeScritBerecneStopwatchZaitUndNuzerZait
 		{
 			set;
 			get;
 		}
 
-		public SictNaacOptimatMeldungZuusctand VonNuzerMeldungZuusctand;
+		public BotStepInput BotStepInput { set; get; }
 
 		public BotEngine.EveOnline.Interface.FromSensorToConsumerMessage VonSensorikMesungLezte;
 
@@ -233,32 +226,11 @@ namespace Optimat.ScpezEveOnln
 			return MengeZuMissionFilterAktioonVerfüügbarScatescpaicer;
 		}
 
-		public bool StepProcess()
+		public void StepProcess()
 		{
-			stateReported.AnwendungSizungIdent = AnwendungSizungIdent;
-			stateReported.NuzerZaitMili = this.NuzerZaitMili ?? -1;
-			stateReported.ServerZaitMili = this.ServerZaitMili ?? -1;
-			stateReported.VonSensorScnapscus = VonSensorikMesungLezte.AlsToCustomBotSnapshot();
-			stateReported.VonNuzerMeldungZuusctand = VonNuzerMeldungZuusctand;
-
-			if (stateReported.VorsclaagWirkungAusgefüürtNictLezteAlterBerecne() < 5555)
-				return false;
-
-			var memoryMeasurement = stateReported?.VonSensorScnapscus?.MemoryMeasurement?.Mesung;
-
-			SictAusGbsScnapscusAuswertungSrv parseResult = null;
-
-			if (null != memoryMeasurement)
-				parseResult = new SictAusGbsScnapscusAuswertungSrv(memoryMeasurement);
-
-			stateReported.ListeScnapscusLezteAuswertungErgeebnis = parseResult;
-
-			stateReported.ListeScnapscusAuswertungErgeebnisNaacSimu.Add(parseResult);
-			Bib3.Extension.ListeKürzeBegin(stateReported.ListeScnapscusAuswertungErgeebnisNaacSimu, 2);
+			stateReported.StepInput = this.BotStepInput;
 
 			stateReported.Update();
-
-			return true;
 		}
 	}
 }

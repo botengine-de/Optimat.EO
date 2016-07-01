@@ -45,7 +45,7 @@ namespace Optimat.EveOnline.GBS
 		{
 			get
 			{
-				return Glob.MeldungSictStringBerecneAusNaacNuzerMeldung(RepräsentiirteMeldung);
+				return Base.TempUsedByBotAndUI.Extension.MeldungSictStringBerecneAusNaacNuzerMeldung(RepräsentiirteMeldung);
 			}
 		}
 

@@ -11,7 +11,6 @@ using Bib3;
 using Optimat.EveOnline.Anwendung.AuswertGbs;
 using Optimat.EveOnline.VonSensor;
 using VonSensor = Optimat.EveOnline.VonSensor;
-using Optimat.EveOnline.CustomBot;
 using ExtractFromOldAssembly.Bib3;
 
 namespace Optimat.ScpezEveOnln

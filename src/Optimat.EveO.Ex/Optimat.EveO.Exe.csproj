@@ -181,93 +181,6 @@
     <Compile Include="Report\EveOnline.Anwendung.Berict.Auswert.cs" />
     <Compile Include="Report\SictAusSctroomDiferenzScnapscus.cs" />
     <Compile Include="SensorClient.cs" />
-    <Compile Include="TempBot\AufgaabeParam\AufgaabeParam.Andere.cs" />
-    <Compile Include="TempBot\AufgaabeParam\AufgaabeParam.Andere.Konstrukt.cs" />
-    <Compile Include="TempBot\AufgaabeParam\AufgaabeParam.Destrukt.cs" />
-    <Compile Include="TempBot\AufgaabeParam\AufgaabeParam.InfoPanelRouteFüüreAus.cs" />
-    <Compile Include="TempBot\AufgaabeParam\AufgaabeParam.InSolarSystemMenuAktioon.cs" />
-    <Compile Include="TempBot\AufgaabeParam\AufgaabeParam.GbsElementVerberge.cs" />
-    <Compile Include="TempBot\AufgaabeParam\AufgaabeParam.LockTarget.cs" />
-    <Compile Include="TempBot\AufgaabeParam\AufgaabeParam.MengeOverviewObjGrupeMesung.cs" />
-    <Compile Include="TempBot\AufgaabeParam\AufgaabeParam.OverviewPresetLaade.cs" />
-    <Compile Include="TempBot\AufgaabeParam\AufgaabeParam.OverviewPresetLaadeNaacVorgeseheneTab.cs" />
-    <Compile Include="TempBot\AufgaabeParam\AufgaabeParam.ScrollDown.cs" />
-    <Compile Include="TempBot\AufgaabeParam\AufgaabeParam.ScrollToTop.cs" />
-    <Compile Include="TempBot\AufgaabeParam\AufgaabeParam.ScteleSicerOverviewSortNaacDistance.cs" />
-    <Compile Include="TempBot\AufgaabeParam\AufgaabeParam.ShipAktuelCargoTypLeere.cs" />
-    <Compile Include="TempBot\AufgaabeParam\AufgaabeParam.ShipAktuelOpenInventoryCargoTyp.cs" />
-    <Compile Include="TempBot\AufgaabeParam\AufgaabeParam.ShipDock.cs" />
-    <Compile Include="TempBot\AufgaabeParam\AufgaabeParam.ShipFluct.cs" />
-    <Compile Include="TempBot\AufgaabeParam\AufgaabeParam.ShipStop.cs" />
-    <Compile Include="TempBot\Mine\AutoMine.cs" />
-    <Compile Include="TempBot\Mine\AutoMine.DockUndOffload.cs" />
-    <Compile Include="TempBot\Mine\AutoMine.InBeltMine.cs" />
-    <Compile Include="TempBot\Mine\AutoMine.SurveyScan.cs" />
-    <Compile Include="TempBot\Mine\AutoMine.WarpToBelt.cs" />
-    <Compile Include="TempBot\ScpezEveOnln\AufgaabeKombiZuusctand.cs" />
-    <Compile Include="TempBot\ScpezEveOnln\AuswertGbs\Ergeebnis.cs" />
-    <Compile Include="TempBot\ScpezEveOnln\AuswertGbs\Extension.cs" />
-    <Compile Include="TempBot\ScpezEveOnln\AuswertGbs\ModuleButtonHintInterpretiirt.cs" />
-    <Compile Include="TempBot\ScpezEveOnln\AuswertGbs\Scpez.cs" />
-    <Compile Include="TempBot\ScpezEveOnln\AuswertGbs\ShipUIIndicationAuswert.cs" />
-    <Compile Include="TempBot\ScpezEveOnln\AuswertGbs\WindowInventoryVerknüpfungMitOverview.cs" />
-    <Compile Include="TempBot\ScpezEveOnln\Automaat.Zuusctand.cs" />
-    <Compile Include="TempBot\ScpezEveOnln\Automaat.Zuusctand.Verwerte.cs" />
-    <Compile Include="TempBot\ScpezEveOnln\Automaat.Zuusctand.Verwerte.Komponente.cs" />
-    <Compile Include="TempBot\ScpezEveOnln\Automaat.Zuusctand.Verwerte.Tailaufgaabe.cs" />
-    <Compile Include="TempBot\ScpezEveOnln\Automat.cs" />
-    <Compile Include="TempBot\ScpezEveOnln\Automat.Helfer.cs" />
-    <Compile Include="TempBot\ScpezEveOnln\Automat.Zuusctand.Aktualisiire.cs" />
-    <Compile Include="TempBot\ScpezEveOnln\Automat.Zuusctand.Aktualisiire.TailListePrioMengeAufgaabe.cs" />
-    <Compile Include="TempBot\ScpezEveOnln\ISictAutomatZuusctand.cs" />
-    <Compile Include="TempBot\Sonst\AgentUndMission.Aktualisiire.cs" />
-    <Compile Include="TempBot\Sonst\AgentUndMission.Verwerte.cs" />
-    <Compile Include="TempBot\Sonst\AgentUndMission.Zuusctand.cs" />
-    <Compile Include="TempBot\Sonst\Assets.Zuusctand.cs" />
-    <Compile Include="TempBot\Sonst\Aufgaabe.cs" />
-    <Compile Include="TempBot\Sonst\AufgaabeParam.cs" />
-    <Compile Include="TempBot\Sonst\AufgaabeParam.Verglaic.cs" />
-    <Compile Include="TempBot\Sonst\AufgaabeÜbersazNaacGbs.cs" />
-    <Compile Include="TempBot\Sonst\AusSequenz.Transitioon.cs" />
-    <Compile Include="TempBot\Sonst\Automaat.Zuusctand.Extension.cs" />
-    <Compile Include="TempBot\Sonst\Extension.cs" />
-    <Compile Include="TempBot\Sonst\FittingUndShip.Aktualisiire.cs" />
-    <Compile Include="TempBot\Sonst\FittingUndShip.ModuleRepr.Zuusctand.cs" />
-    <Compile Include="TempBot\Sonst\FittingUndShip.Zuusctand.cs" />
-    <Compile Include="TempBot\Sonst\FürGefectAufgaabeManööver.cs" />
-    <Compile Include="TempBot\Sonst\Gbs.Agregatioon.AusTransitionInfo.cs" />
-    <Compile Include="TempBot\Sonst\Gbs.Aktualisiire.cs" />
-    <Compile Include="TempBot\Sonst\Gbs.ListGrouped.Zuusctand.cs" />
-    <Compile Include="TempBot\Sonst\Gbs.Menu.Kaskaade.cs" />
-    <Compile Include="TempBot\Sonst\Gbs.Window.Zuusctand.cs" />
-    <Compile Include="TempBot\Sonst\Gbs.Zuusctand.cs" />
-    <Compile Include="TempBot\Sonst\InRaumAktioonUndGefect.Aktualis.cs" />
-    <Compile Include="TempBot\Sonst\InRaumAktioonUndGefect.Zuusctand.cs" />
-    <Compile Include="TempBot\Sonst\InRaumObjektReprZuusctand.cs" />
-    <Compile Include="TempBot\Sonst\Konfig.cs" />
-    <Compile Include="TempBot\Sonst\Konfig.MissionStrategikon.cs" />
-    <Compile Include="TempBot\Sonst\Mission.Aktualisiire.cs" />
-    <Compile Include="TempBot\Sonst\Mission.ObjectiveLocation.cs" />
-    <Compile Include="TempBot\Sonst\Mission.Strategikon.Instanz.cs" />
-    <Compile Include="TempBot\Sonst\Mission.Strategikon.Instanz.FortscritBerecne.cs" />
-    <Compile Include="TempBot\Sonst\Mission.Zuusctand.cs" />
-    <Compile Include="TempBot\Sonst\MissionStrategikon.cs" />
-    <Compile Include="TempBot\Sonst\MissionTitel.cs" />
-    <Compile Include="TempBot\Sonst\OverviewObjektZuusctand.cs" />
-    <Compile Include="TempBot\Sonst\OverviewProfileFolgeViewport.cs" />
-    <Compile Include="TempBot\Sonst\OverviewUndTarget.Aktualisiire.cs" />
-    <Compile Include="TempBot\Sonst\OverviewUndTarget.Zuusctand.cs" />
-    <Compile Include="TempBot\Sonst\ScpaicerTransitioonNaacHasValue.cs" />
-    <Compile Include="TempBot\Sonst\ShipModuleAktivitäätZaitraum.cs" />
-    <Compile Include="TempBot\Sonst\SictFläceRectekOrtoAbhängigVonGbsAst.cs" />
-    <Compile Include="TempBot\Sonst\StrategikonInRaumAtomZwisceergeebnis.cs" />
-    <Compile Include="TempBot\Sonst\SurveyScanView.cs" />
-    <Compile Include="TempBot\Sonst\TargetZuusctand.cs" />
-    <Compile Include="TempBot\Sonst\Topologii.cs" />
-    <Compile Include="TempBot\Sonst\VerbindungListEntryUndInRaumObjektPerDistance.cs" />
-    <Compile Include="TempBot\Sonst\WindowAgentDialogueZuusctand.cs" />
-    <Compile Include="TempBot\Sonst\WirkungPfaad.cs" />
-    <Compile Include="TempBot\Sonst\ZuGbsObjektZuusctand.cs" />
     <Compile Include="VonServerBerict.cs" />
     <Compile Include="WebServer.cs" />
     <None Include="UserscriptHost.cs" />
@@ -370,13 +283,13 @@
       <Project>{38e5633b-1aa6-4d03-90b6-9b672a17f32a}</Project>
       <Name>Optimat.EveOnline.Base</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Optimat.EveOnline.Bot\Optimat.EveOnline.Bot.csproj">
+      <Project>{19bc4767-2ad1-4c0d-83d0-61046f653355}</Project>
+      <Name>Optimat.EveOnline.Bot</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Optimat.EveOnline.CustomBot\Optimat.EveOnline.CustomBot.csproj">
       <Project>{d8f6bbab-23e1-44b8-adb4-ad2c5f703a41}</Project>
       <Name>Optimat.EveOnline.CustomBot</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Optimat.EveOnline.TempAuswertGbs\Optimat.EveOnline.TempAuswertGbs.csproj">
-      <Project>{f493b43d-0230-488c-95c3-99e150295ea9}</Project>
-      <Name>Optimat.EveOnline.TempAuswertGbs</Name>
     </ProjectReference>
     <ProjectReference Include="..\Optimat.EveOnline.UI\Optimat.EveOnline.UI.csproj">
       <Project>{d2d968ac-1169-4005-8960-f8afca65eb58}</Project>
@@ -391,7 +304,9 @@
       <Name>Optimat.EveO</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="TempBot\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.1.29.4\build\dotnet\Fody.targets" Condition="Exists('..\packages\Fody.1.29.4\build\dotnet\Fody.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

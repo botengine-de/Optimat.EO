@@ -90,7 +90,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Berict\BerictSictSeriel.cs" />
-    <Compile Include="AuswertGbs\AuswertGbs.WindowAgentDialogue.MissionObjective.cs" />
     <Compile Include="Berict\EveOnline.Berict.Auswert.cs" />
     <Compile Include="Berict\ZuOptimatScritInfo.cs" />
     <Compile Include="GBS\AnimZiilPunkt.xaml.cs">
@@ -128,16 +127,10 @@
     <Compile Include="GBS\SictShipTreferpunkteUndCapacitorInspekt.xaml.cs" />
     <Compile Include="GBS\SictTreferpunkteInspekt.xaml.cs" />
     <Compile Include="GBS\TreeViewRepr.cs" />
-    <Compile Include="MemoryStructMap.cs" />
-    <Compile Include="MemoryStructMapAgent.cs" />
     <Compile Include="MissionTypKonfig.cs" />
     <Compile Include="OptimatScrit.cs" />
-    <Compile Include="VonOptimatMeldungZuusctand.cs" />
-    <Compile Include="NaacNuzerMeldung.cs" />
-    <Compile Include="WorldConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="VonOptimatNaacrict.cs" />
-    <Compile Include="OptimatParam.cs" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="GBS\AnimZiilPunkt.xaml">
@@ -217,9 +210,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Mission.cs" />
+    <Folder Include="AuswertGbs\" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\BotEngine.EveOnline.Interface\BotEngine.EveOnline.Interface\BotEngine.EveOnline.Interface.csproj">
       <Project>{64123dfe-b5f0-4f23-b42d-b93a27b0c2a9}</Project>
@@ -236,10 +228,6 @@
     <ProjectReference Include="..\Optimat.EveOnline.Base\Optimat.EveOnline.Base.csproj">
       <Project>{38e5633b-1aa6-4d03-90b6-9b672a17f32a}</Project>
       <Name>Optimat.EveOnline.Base</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Optimat.EveOnline.TempAuswertGbs\Optimat.EveOnline.TempAuswertGbs.csproj">
-      <Project>{f493b43d-0230-488c-95c3-99e150295ea9}</Project>
-      <Name>Optimat.EveOnline.TempAuswertGbs</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

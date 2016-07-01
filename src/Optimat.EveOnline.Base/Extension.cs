@@ -1719,5 +1719,31 @@ namespace Optimat.EveOnline
 					VonProcessMesung.ProcessId);
 		}
 
+		static public Base.MotionResult MapToNew(this SictNaacProcessWirkung motion) =>
+			null == motion ? null :
+			new Base.MotionResult
+			{
+				MotionRecommendationId = motion.VorsclaagWirkungIdent ?? -1,
+				Success = motion.Erfolg ?? false,
+			};
+
+		static public SictNaacProcessWirkung MapToOld(this Base.MotionResult motion) =>
+			null == motion ? null :
+			new SictNaacProcessWirkung
+			{
+				VorsclaagWirkungIdent = motion.MotionRecommendationId,
+				Erfolg = motion.Success,
+			};
+
+		static public string RegexPatternStringGlaicwertig(this string @string)
+		{
+			if (null == @string)
+			{
+				return null;
+			}
+
+			return "^" + Regex.Escape(@string) + "$";
+		}
+
 	}
 }

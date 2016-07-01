@@ -8,37 +8,6 @@ namespace Optimat.EveOnline.GBS
 {
 	static	public	class Glob
 	{
-		static public string MeldungSictStringBerecneAusNaacNuzerMeldung(
-			SictNaacNuzerMeldungZuEveOnline Meldung)
-		{
-			if (null == Meldung)
-			{
-				return null;
-			}
-
-			var GeneralCause = Meldung.GeneralCause;
-
-			var UndockPreventedCause = Meldung.UndockPreventedCause;
-			var DockForcedCause = Meldung.DockForcedCause;
-
-			if (null	!= UndockPreventedCause)
-			{
-				return "undocking prevented, cause=\"" + SictNaacNuzerMeldungZuEveOnlineCause.CauseSictStringBerecne(UndockPreventedCause) + "\"";
-			}
-
-			if (null	!= DockForcedCause)
-			{
-				return "dock forced, cause=\"" + SictNaacNuzerMeldungZuEveOnlineCause.CauseSictStringBerecne(DockForcedCause) + "\"";
-			}
-
-			if (null != GeneralCause)
-			{
-				return SictNaacNuzerMeldungZuEveOnlineCause.CauseSictStringBerecne(GeneralCause);
-			}
-
-			return null;
-		}
-
 		/*
 		 * 2014.07.29
 		 * 
