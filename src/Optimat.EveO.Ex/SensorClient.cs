@@ -99,7 +99,7 @@ public class SensorAppDomainSetup
 			get;
 		}
 
-		public FromProcessMeasurement<MemoryMeasurement> MemoryMeasurementLast
+		public FromProcessMeasurement<Sanderling.Interface.MemoryStruct.IMemoryMeasurement> MemoryMeasurementLast
 		{
 			set;
 			get;

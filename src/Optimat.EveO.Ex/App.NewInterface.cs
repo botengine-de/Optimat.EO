@@ -70,7 +70,7 @@ namespace Optimat.EveO.Nuzer
 			if (null != simulateMemoryMeasurement)
 				measurementNewStructure = new FromProcessMeasurement<Sanderling.Interface.MemoryStruct.IMemoryMeasurement>(simulateMemoryMeasurement, time, time, eveOnlineClientProcessId);
 
-			SensorClient.MemoryMeasurementLast = measurementNewStructure.MapValue(MapToOldInterface.MapToOldInterface.AsOld);
+			SensorClient.MemoryMeasurementLast = measurementNewStructure;
 		}
 	}
 }

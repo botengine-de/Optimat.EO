@@ -1,6 +1,7 @@
 ﻿using BotEngine.EveOnline.Interface.MemoryStruct;
 using BotEngine.Interface;
 using ExtractFromOldAssembly.Bib3;
+using Sanderling.Interface.MemoryStruct;
 using System;
 using System.Text;
 
@@ -10,7 +11,7 @@ namespace BotEngine.EveOnline.Interface
 	{
 		public Int64 Time;
 
-		public FromProcessMeasurement<MemoryMeasurement> MemoryMeasurement;
+		public FromProcessMeasurement<IMemoryMeasurement> MemoryMeasurement;
 
 		/// <summary>
 		/// Area is Window Client Area.

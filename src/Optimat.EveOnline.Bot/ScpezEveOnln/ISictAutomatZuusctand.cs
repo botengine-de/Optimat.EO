@@ -9,8 +9,8 @@ using Optimat.EveOnline.VonSensor;
 using Optimat.ScpezEveOnln;
 using VonSensor = Optimat.EveOnline.VonSensor;
 using Optimat.EveO.Nuzer.TempBot.Sonst;
-using Optimat.EveOnline.CustomBot;
 using ExtractFromOldAssembly.Bib3;
+using System.Linq;
 
 namespace Optimat.EveOnline.Anwendung
 {
@@ -27,12 +27,12 @@ namespace Optimat.EveOnline.Anwendung
 		}
 	}
 
-	public	interface ISictAutomatZuusctand
+	public interface ISictAutomatZuusctand
 	{
-		ToCustomBotSnapshot VonSensorScnapscus { set;  get; }
+		BotStepInput StepInput { set; get; }
 
 		global::Optimat.EveOnline.Anwendung.SictAgentUndMissionZuusctand AgentUndMission { get; }
-		
+
 		int ScritDauerDurcscnit();
 
 		SictPräferenzZuZaitVerhalte VonWirtParamZuZaitVerhalte
@@ -77,7 +77,7 @@ namespace Optimat.EveOnline.Anwendung
 		global::Optimat.EveOnline.Anwendung.SictGbsWindowZuusctand[] MengeWindowZuErhalte { get; }
 		global::Optimat.EveOnline.SictVonOptimatMeldungZuusctand NaacNuzerMeldungZuusctand { get; }
 		long? NuzerAlterMili<T>(global::Optimat.SictWertMitZait<T>? WertMitZaitNuzer);
-		long NuzerZaitMili { set; get; }
+		long NuzerZaitMili { get; }
 
 		/*
 		 * 2014.10.15
@@ -96,7 +96,6 @@ namespace Optimat.EveOnline.Anwendung
 		global::Optimat.ScpezEveOnln.SictAufgaabeKombiZuusctand ScritLezteListeAufgaabeKombiZuusctand { get; }
 		global::Optimat.EveOnline.Anwendung.SictAufgaabeGrupePrio[] ScritLezteListePrioMengeAufgaabe { get; }
 		global::System.Collections.Generic.KeyValuePair<global::Optimat.EveOnline.Anwendung.SictAufgaabeZuusctand[], string>[] ScritLezteWirkungMengeAufgaabePfaadZuBlatMitGrupePrioNaame { get; }
-		long ServerZaitMili { set;  get; }
 		global::Optimat.SictWertMitZait<VonSensor.UtilmenuMissionInfo>? UtilmenuMissionLezte { get; }
 		global::Optimat.SictWertMitZait<global::System.Collections.Generic.KeyValuePair<global::Optimat.EveOnline.Anwendung.SictAufgaabeParam, VonSensor.MenuEntry[]>>? VersuucMenuEntryKlikLezteBerecne(bool NurFertige = false);
 		global::Optimat.ScpezEveOnln.SictAutomatZuusctand.SictGbsAstOklusioonInfo ZuGbsAstHerkunftAdreseKandidaatOklusioonBerecne(long GbsAstHerkunftAdrese);
@@ -115,12 +114,6 @@ namespace Optimat.EveOnline.Anwendung
 		 * */
 
 		Int64? VorsclaagWirkungAusgefüürtNictLezteAlterBerecne();
-
-		SictNaacOptimatMeldungZuusctand VonNuzerMeldungZuusctand
-		{
-			set;
-			get;
-		}
 
 		SictOptimatParam OptimatParam();
 
@@ -165,7 +158,7 @@ namespace Optimat.EveOnline.Anwendung
 
 		IEnumerable<VonSensor.Tab> WindowOverviewScnapscusLezteListeTabNuzbar();
 
-		VonSensor.Tab	WindowOverviewScnapscusLezteTabAktiiv();
+		VonSensor.Tab WindowOverviewScnapscusLezteTabAktiiv();
 
 		VonSensor.Scroll WindowOverviewScnapscusLezteScroll();
 
@@ -219,23 +212,25 @@ namespace Optimat.EveOnline.Anwendung
 	public abstract class SictAutomatZuusctandWaiterlaitung : Optimat.EveOnline.Anwendung.ISictAutomatZuusctand
 	{
 		[JsonProperty]
-		public ToCustomBotSnapshot VonSensorScnapscus
-		{
-			set;
-			get;
-		}
+		public BotStepInput StepInput { set; get; }
+
+		[JsonProperty]
+		public SictOptimatParam PreferencesStruct { set; get; }
+
+		[JsonProperty]
+		public SictNaacProcessWirkung[] ListeNaacProcessWirkung { set; get; }
 
 		public SictAutomatZuusctandWaiterlaitung()
 		{
 			ListeScnapscusAuswertungErgeebnisNaacSimu = new List<SictAusGbsScnapscusAuswertungSrv>();
 		}
 
-		virtual	public int ScritDauerDurcscnit()
+		virtual public int ScritDauerDurcscnit()
 		{
 			return ScritDauerDurcscnitBerecne(this.ListeScritZait);
 		}
 
-		static	public int ScritDauerDurcscnitBerecne(
+		static public int ScritDauerDurcscnitBerecne(
 			IEnumerable<ZuScritInfoZait> ListeScritZait)
 		{
 			if (null == ListeScritZait)
@@ -277,34 +272,22 @@ namespace Optimat.EveOnline.Anwendung
 
 		Int64? VorsclaagWirkungAusgefüürtNictLezteZaitBerecne()
 		{
-			var ListeZuZaitNaacNuzerVorsclaagNaacProcessWirkung = this.ListeZuZaitNaacNuzerVorsclaagNaacProcessWirkung;
-			var VonNuzerMeldungZuusctand = this.VonNuzerMeldungZuusctand;
+			var listeZuZaitNaacNuzerVorsclaagNaacProcessWirkung = this.ListeZuZaitNaacNuzerVorsclaagNaacProcessWirkung;
+			var listeNaacProcessWirkung = this.ListeNaacProcessWirkung;
 
-			if (null == ListeZuZaitNaacNuzerVorsclaagNaacProcessWirkung)
-			{
-				return null;
-			}
-
-			foreach (var ZuZaitNaacNuzerVorsclaagNaacProcessWirkung in ListeZuZaitNaacNuzerVorsclaagNaacProcessWirkung.Reversed())
+			foreach (var ZuZaitNaacNuzerVorsclaagNaacProcessWirkung in listeZuZaitNaacNuzerVorsclaagNaacProcessWirkung.EmptyIfNull().Reversed())
 			{
 				var VorsclaagWirkung = ZuZaitNaacNuzerVorsclaagNaacProcessWirkung.Wert;
 
 				if (null == VorsclaagWirkung)
-				{
 					continue;
-				}
 
-				if (null != VonNuzerMeldungZuusctand)
-				{
-					var Wirkung =
-						VonNuzerMeldungZuusctand.ListeNaacProcessWirkung
-						.FirstOrDefaultNullable((Kandidaat) => (null == Kandidaat) ? false : Kandidaat.VorsclaagWirkungIdent == VorsclaagWirkung.Ident);
+				var Wirkung =
+					listeNaacProcessWirkung
+					?.FirstOrDefault(kandidaat => kandidaat?.VorsclaagWirkungIdent == VorsclaagWirkung.Ident);
 
-					if (null != Wirkung)
-					{
-						continue;
-					}
-				}
+				if (null != Wirkung)
+					continue;
 
 				return ZuZaitNaacNuzerVorsclaagNaacProcessWirkung.Zait;
 			}
@@ -327,13 +310,6 @@ namespace Optimat.EveOnline.Anwendung
 			}
 		}
 
-		[JsonProperty]
-		public SictNaacOptimatMeldungZuusctand VonNuzerMeldungZuusctand
-		{
-			set;
-			get;
-		}
-
 		/*
 		 * 2015.03.12
 		 * 
@@ -353,8 +329,11 @@ namespace Optimat.EveOnline.Anwendung
 			get;
 		}
 
-		public	SictOptimatParam OptimatParam()
+		public SictOptimatParam OptimatParam()
 		{
+			/*
+			 * 16.06.00	
+			 * 
 			var VonNuzerMeldungZuusctand = this.VonNuzerMeldungZuusctand;
 
 			if (null == VonNuzerMeldungZuusctand)
@@ -363,6 +342,9 @@ namespace Optimat.EveOnline.Anwendung
 			}
 
 			return VonNuzerMeldungZuusctand.OptimatParam;
+			*/
+
+			return PreferencesStruct;
 		}
 
 		[JsonProperty]
@@ -547,19 +529,7 @@ namespace Optimat.EveOnline.Anwendung
 
 		abstract public long? NuzerAlterMili<T>(SictWertMitZait<T>? WertMitZaitNuzer);
 
-		[JsonProperty]
-		public long NuzerZaitMili
-		{
-			set;
-			get;
-		}
-
-		[JsonProperty]
-		public long ServerZaitMili
-		{
-			set;
-			get;
-		}
+		public long NuzerZaitMili => StepInput?.TimeMilli ?? 0;
 
 		[JsonProperty]
 		public KeyValuePair<Int64, Int64>[] TempDebugListeScritBerecneStopwatchZaitUndNuzerZait
@@ -654,7 +624,7 @@ namespace Optimat.EveOnline.Anwendung
 				return null;
 			}
 
-			return	WindowOverview.AingangScnapscusTailObjektIdentLezteBerecne() as VonSensor.WindowOverView;
+			return WindowOverview.AingangScnapscusTailObjektIdentLezteBerecne() as VonSensor.WindowOverView;
 		}
 
 		public IEnumerable<VonSensor.Tab> WindowOverviewScnapscusLezteListeTabNuzbar()
@@ -709,7 +679,7 @@ namespace Optimat.EveOnline.Anwendung
 				return null;
 			}
 
-			return	OverviewUndTarget.OverViewScrolledToTopLezteZait;
+			return OverviewUndTarget.OverViewScrolledToTopLezteZait;
 		}
 
 		public Int64? OverViewScrolledToTopLezteAlter()
@@ -718,8 +688,8 @@ namespace Optimat.EveOnline.Anwendung
 		}
 
 		public Int64? ShipSctrekeZurükgeleegtMiliInZaitraum(
-			Int64	ZaitraumBegin,
-			Int64	ZaitraumEnde)
+			Int64 ZaitraumBegin,
+			Int64 ZaitraumEnde)
 		{
 			var FittingUndShipZuusctand = this.FittingUndShipZuusctand;
 
@@ -786,14 +756,14 @@ namespace Optimat.EveOnline.Anwendung
 
 		public int? TargetInputFookusTransitioonLezteScritIndex()
 		{
-			var	MengeTarget	= this.MengeTarget();
+			var MengeTarget = this.MengeTarget();
 
 			if (null == MengeTarget)
 			{
 				return null;
 			}
 
-			Int64?	InputFookusTransitioonLezteZait	= null;
+			Int64? InputFookusTransitioonLezteZait = null;
 
 			foreach (var Target in MengeTarget)
 			{
@@ -943,7 +913,7 @@ namespace Optimat.EveOnline.Anwendung
 
 		public Int64? ShipWarpingLezteAlterMili()
 		{
-			return	NuzerZaitMili - ShipWarpingLezteZaitMili();
+			return NuzerZaitMili - ShipWarpingLezteZaitMili();
 		}
 
 		public Int64? ShipDockedLezteAlterMili()

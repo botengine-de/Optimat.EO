@@ -58,7 +58,6 @@ namespace Optimat.EveOnline.Anwendung
 			}
 
 			var NuzerZaitMili = AutomaatZuusctand.NuzerZaitMili;
-			var ServerZaitMili = AutomaatZuusctand.ServerZaitMili;
 
 			{
 				SictVerzwaigungNaacShipZuusctandScranke InRaumVerhalteGefectFortsazScranke = null;
@@ -98,21 +97,13 @@ namespace Optimat.EveOnline.Anwendung
 
 					var AbovemainMessageClusterShutdownLezte = (null == GbsZuusctand) ? null : GbsZuusctand.AbovemainMessageClusterShutdownLezte;
 
-					if (AutomaatZuusctand?.VonSensorScnapscus?.MemoryMeasurement?.Wert?.SessionDurationRemaining < 60 * 15)
+					var memoryMeasurement = AutomaatZuusctand?.StepInput?.FromProcessMemoryMeasurement?.Value;
+
+					if (memoryMeasurement?.SessionDurationRemaining < 60 * 15)
 						AnforderungDockUrsace = new SictNaacNuzerMeldungZuEveOnlineCause(SictNaacNuzerMeldungZuEveOnlineCauseTypeBinär.OptimatServerSessionEnd);
 
-					if (null != ParamZuZaitVerhalteKombi)
-					{
-						if (ParamZuZaitVerhalteKombi.DiinstUnterbrecungNääxteZait - SictAutomatZuusctand.InRaumAktioonEndeZaitDistanzBisDiinstUnterbrecung < ServerZaitMili / 1000)
-						{
-							AnforderungDockUrsace = new SictNaacNuzerMeldungZuEveOnlineCause(SictNaacNuzerMeldungZuEveOnlineCauseTypeBinär.OptimatServerSessionEnd);
-						}
-
-						if (ParamZuZaitVerhalteKombi.DiinstUnterbrecungNääxteZait - SictAutomatZuusctand.MissionAktioonFüüreAusEndeZaitDistanzBisDiinstUnterbrecung < ServerZaitMili / 1000)
-						{
-							AktioonUndockFraigaabeNictUrsace = new SictNaacNuzerMeldungZuEveOnlineCause(SictNaacNuzerMeldungZuEveOnlineCauseTypeBinär.OptimatServerSessionEnd);
-						}
-					}
+					if (memoryMeasurement?.SessionDurationRemaining < 60 * 25)
+						AktioonUndockFraigaabeNictUrsace = new SictNaacNuzerMeldungZuEveOnlineCause(SictNaacNuzerMeldungZuEveOnlineCauseTypeBinär.OptimatServerSessionEnd);
 
 					if (null != AbovemainMessageClusterShutdownLezte)
 					{

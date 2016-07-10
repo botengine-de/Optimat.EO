@@ -17,6 +17,7 @@ using Optimat.EveOnline.Base;
 using Optimat.EveOnline.CustomBot;
 using ExtractFromOldAssembly.Bib3;
 using Sanderling;
+using MapToOldInterface;
 
 namespace Optimat.EveO.Nuzer
 {
@@ -800,7 +801,7 @@ namespace Optimat.EveO.Nuzer
 			}
 
 			ListeOptimatScrit.Add(new EveOnline.SictOptimatScrit(SensorMeasurementInTimeframe.Begin,
-				SensorMeasurementInTimeframe.AlsVonProcessMesung().Sict(MemoryStructMap.AlsVonSensorikMesung)));
+				SensorMeasurementInTimeframe.AlsVonProcessMesung().Sict(measurement => measurement?.AsOld().AlsVonSensorikMesung())));
 
 			ListeOptimatScrit.ListeKürzeBegin(30);
 		}

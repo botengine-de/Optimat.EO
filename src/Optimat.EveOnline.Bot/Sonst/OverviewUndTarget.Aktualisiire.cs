@@ -88,7 +88,7 @@ namespace Optimat.EveOnline.Anwendung
 			return
 				ListeDefaultTypBerüksictigt
 				.Select((DefaultTyp) =>
-					new KeyValuePair<string, OverviewPresetDefaultTyp>(Bib3.FCL.Glob.RegexPatternStringGlaicwertig(DefaultTyp.ToString()), DefaultTyp))
+					new KeyValuePair<string, OverviewPresetDefaultTyp>(DefaultTyp.ToString().RegexPatternStringGlaicwertig(), DefaultTyp))
 				.Concat(
 				ListeDefaultTypBerüksictigt.Select((DefaultTyp) =>
 					new KeyValuePair<string, OverviewPresetDefaultTyp>(DefaultTyp.ToString(), DefaultTyp)))

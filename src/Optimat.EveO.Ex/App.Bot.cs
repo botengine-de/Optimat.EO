@@ -10,6 +10,7 @@ using Newtonsoft.Json;
 using Optimat.EveOnline;
 using Optimat.EveOnline.Anwendung;
 using ExtractFromOldAssembly.Bib3;
+using BotEngine;
 
 namespace Optimat.EveO.Nuzer
 {
@@ -213,31 +214,30 @@ namespace Optimat.EveO.Nuzer
 
 			AutomatScritBerecneLezteNuzerZaitMili = Zait;
 
-			AutomatScritBerecneLezteSensorikMesungZaitMili = Automat?.VonSensorikMesungLezte?.MemoryMeasurement?.End ?? 0;
+			var memoryMeasurement = Automat?.VonSensorikMesungLezte?.MemoryMeasurement;
 
-			Automat.ServerZaitMili = Zait;
-			Automat.NuzerZaitMili = Automat?.VonSensorikMesungLezte?.MemoryMeasurement?.End ?? 0;
+			var timeMilli = memoryMeasurement?.End ?? 0;
 
-			var VonNuzerMeldungZuusctand = Automat.VonNuzerMeldungZuusctand;
+			AutomatScritBerecneLezteSensorikMesungZaitMili = timeMilli;
 
-			if (null == VonNuzerMeldungZuusctand)
+			Automat.NuzerZaitMili = timeMilli;
+
+			var preferences = EveOnlnOptimatParamBerecne();
+
+			Automat.BotStepInput = new EveOnline.Base.BotStepInput
 			{
-				VonNuzerMeldungZuusctand = new SictNaacOptimatMeldungZuusctand();
-			}
+				TimeMilli = timeMilli,
+				PreferencesSerial = preferences?.SerializeToString(),
+				StepLastMotionResult = ListeNaacProcessWirkung?.Select(motion => motion.MapToNew())?.ToArray(),
+				FromProcessMemoryMeasurement = memoryMeasurement,
+			};
 
-			VonNuzerMeldungZuusctand.OptimatParam = EveOnlnOptimatParamBerecne();
-			VonNuzerMeldungZuusctand.ListeNaacProcessWirkung = this.ListeNaacProcessWirkung;
-
-			//	VonNuzerMeldungZuusctand.VonSensorikScnapscus = VonSensorikScnapscus;
-
-			Automat.VonNuzerMeldungZuusctand = VonNuzerMeldungZuusctand;
-
-			var ScritBerecnet = Automat.StepProcess();
+			Automat.StepProcess();
 
 			var AutomaatZuusctandDiferenzScrit = Automat.ZuusctandScritDiferenzBerecne(10);
 
 			NaacBerictListeAutomaatZuusctandDiferenz.Add(new WertZuZaitpunktStruct<Bib3.RefNezDiferenz.SictZuNezSictDiferenzScritAbbild>(
-				AutomaatZuusctandDiferenzScrit, Automat.ServerZaitMili ?? -1));
+				AutomaatZuusctandDiferenzScrit, -1));
 
 			NaacBerictListeAutomaatZuusctandDiferenz.ListeKürzeBegin(30);
 		}

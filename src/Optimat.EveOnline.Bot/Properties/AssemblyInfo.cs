@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Optimat.EveOnline.TempAuswertGbs")]
+[assembly: AssemblyTitle("Optimat.EveOnline.Bot")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Optimat.EveOnline.TempAuswertGbs")]
-[assembly: AssemblyCopyright("Copyright ©  2015")]
+[assembly: AssemblyProduct("Optimat.EveOnline.Bot")]
+[assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("8326fb24-da93-4f2f-aff5-2bb34017e062")]
+[assembly: Guid("19bc4767-2ad1-4c0d-83d0-61046f653355")]
 
 // Version information for an assembly consists of the following four values:
 //

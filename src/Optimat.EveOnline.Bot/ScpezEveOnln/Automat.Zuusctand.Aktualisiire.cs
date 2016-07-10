@@ -15,6 +15,8 @@ using Optimat.EveOnline.Anwendung.AuswertGbs;
 using Optimat.EveOnline.VonSensor;
 using VonSensor = Optimat.EveOnline.VonSensor;
 using ExtractFromOldAssembly.Bib3;
+using BotEngine;
+using MapToOldInterface;
 
 namespace Optimat.ScpezEveOnln
 {
@@ -57,7 +59,6 @@ namespace Optimat.ScpezEveOnln
 		public void AktualisiireTailScritZait()
 		{
 			var NuzerZaitMili = this.NuzerZaitMili;
-			var ServerZaitMili = this.ServerZaitMili;
 
 			if (0 < InternListeScritZait.Count)
 			{
@@ -67,7 +68,7 @@ namespace Optimat.ScpezEveOnln
 				}
 			}
 
-			InternListeScritZait.Enqueue(new ZuScritInfoZait((ScritLezteIndex + 1) ?? 0, NuzerZaitMili, ServerZaitMili));
+			InternListeScritZait.Enqueue(new ZuScritInfoZait((ScritLezteIndex + 1) ?? 0, NuzerZaitMili, -1));
 			InternListeScritZait.ListeKürzeBegin(10);
 
 			this.InternScritDauerDurcscnit = ScritDauerDurcscnitBerecne(InternListeScritZait);
@@ -75,6 +76,26 @@ namespace Optimat.ScpezEveOnln
 
 		override public void Update()
 		{
+			ListeNaacProcessWirkung = StepInput?.StepLastMotionResult?.Select(motion => motion.MapToOld())?.ToArray();
+
+			if (VorsclaagWirkungAusgefüürtNictLezteAlterBerecne() < 5555)
+				return;
+
+			PreferencesStruct = StepInput?.PreferencesSerial?.DeserializeFromString<SictOptimatParam>();
+			var memoryMeasurement = StepInput?.FromProcessMemoryMeasurement?.Value;
+
+			var MemoryMeasurementOld = memoryMeasurement?.AsOld()?.AlsVonSensorikMesung();
+
+			SictAusGbsScnapscusAuswertungSrv parseResult = null;
+
+			if (null != memoryMeasurement)
+				parseResult = new SictAusGbsScnapscusAuswertungSrv(MemoryMeasurementOld);
+
+			ListeScnapscusLezteAuswertungErgeebnis = parseResult;
+
+			ListeScnapscusAuswertungErgeebnisNaacSimu.Add(parseResult);
+			Bib3.Extension.ListeKürzeBegin(ListeScnapscusAuswertungErgeebnisNaacSimu, 2);
+
 			Aktualisiire();
 		}
 
@@ -91,11 +112,11 @@ namespace Optimat.ScpezEveOnln
 					1 < ListeScnapscusLezteAuswertungErgeebnisNaacSimu?.MengeMenu?.Length &&
 					(ListeScnapscusLezteAuswertungErgeebnisNaacSimu?.MengeMenu?.FirstOrDefault()?.ListeEntry?.Any(Entry => Regex.Match(Entry?.Bescriftung ?? "", @"load.*default", RegexOptions.IgnoreCase).Success) ?? false);
 
-				if(tDebug)
+				if (tDebug)
 				{
 
 				}
-            }
+			}
 
 			AktualisiireZuusctandAusScnapscusAuswertung();
 
@@ -103,7 +124,7 @@ namespace Optimat.ScpezEveOnln
 				var t = this.AufgaabeBerecneAktueleTailaufgaabeCall.ToArray();
 
 				AufgaabeBerecneAktueleTailaufgaabeCall.Clear();
-            }
+			}
 			AktualisiireTailNaacNuzerMeldungZuusctand();
 		}
 
@@ -250,9 +271,9 @@ namespace Optimat.ScpezEveOnln
 			{
 				//	MesungNääxteZaitScrankeMin
 
-				if(VorsclaagListeWirkung.NullOderLeer())
+				if (VorsclaagListeWirkung.NullOderLeer())
 				{
-					var	ListeZuZaitNaacNuzerVorsclaagNaacProcessWirkungLezte	=
+					var ListeZuZaitNaacNuzerVorsclaagNaacProcessWirkungLezte =
 						ListeZuZaitNaacNuzerVorsclaagNaacProcessWirkung.LastOrDefaultNullable();
 
 					var NaacNuzerVorsclaagNaacProcessWirkungLezteZait =
@@ -676,6 +697,9 @@ namespace Optimat.ScpezEveOnln
 
 		public void AktualisiireTailAingangNaacProcessWirkung()
 		{
+			/*
+			 * 16.06.00	
+			 * 
 			var VonNuzerMeldungZuusctand = this.VonNuzerMeldungZuusctand;
 
 			if (null == VonNuzerMeldungZuusctand)
@@ -684,6 +708,9 @@ namespace Optimat.ScpezEveOnln
 			}
 
 			var ListeNaacProcessWirkung = VonNuzerMeldungZuusctand.ListeNaacProcessWirkung;
+			*/
+
+			var ListeNaacProcessWirkung = this.ListeNaacProcessWirkung;
 
 			if (null == ListeNaacProcessWirkung)
 			{
@@ -1869,12 +1896,12 @@ namespace Optimat.ScpezEveOnln
 			int KandidaatAufgaabeErsazAlterScritAnzaal;
 
 			return AufgaabeZaitHinraicendJungZuVermaidungWiiderhoolung(
-				KandidaatAufgaabeErsazZait, out	KandidaatAufgaabeErsazAlterScritAnzaal);
+				KandidaatAufgaabeErsazZait, out KandidaatAufgaabeErsazAlterScritAnzaal);
 		}
 
 		public bool AufgaabeZaitHinraicendJungZuVermaidungWiiderhoolung(
 			Int64? KandidaatAufgaabeErsazZait,
-			out	int KandidaatAufgaabeErsazAlterScritAnzaal)
+			out int KandidaatAufgaabeErsazAlterScritAnzaal)
 		{
 			KandidaatAufgaabeErsazAlterScritAnzaal = -1;
 
@@ -1934,12 +1961,12 @@ namespace Optimat.ScpezEveOnln
 
 			var KombiZuusctand = new SictAufgaabeKombiZuusctand(8);
 
-		/*
-		 * 2015.03.12
-		 * 
-		 * Ersaz durc ToCustomBotSnapshot
-			var GbsBaum = this.VonNuzerMeldungZuusctandTailGbsBaum;
-		 * */
+			/*
+			 * 2015.03.12
+			 * 
+			 * Ersaz durc ToCustomBotSnapshot
+				var GbsBaum = this.VonNuzerMeldungZuusctandTailGbsBaum;
+			 * */
 
 			var GbsBaum = this.ListeScnapscusLezteAuswertungErgeebnisNaacSimu;
 
@@ -2505,7 +2532,7 @@ namespace Optimat.ScpezEveOnln
 									 * 
 									if ((ZaitMili - AufgaabeErsaz.AbsclusTailWirkungZait) / 1000 < AufgaabeErsazAbsclusTailWirkungAlterScrankeMax)
 									 * */
-									if (AufgaabeZaitHinraicendJungZuVermaidungWiiderhoolung(AufgaabeErsaz.AbsclusTailWirkungZait, out	AufgaabeErsazAbsclusTailWirkungZaitAlterScritAnzaal))
+									if (AufgaabeZaitHinraicendJungZuVermaidungWiiderhoolung(AufgaabeErsaz.AbsclusTailWirkungZait, out AufgaabeErsazAbsclusTailWirkungZaitAlterScritAnzaal))
 									{
 										//	Für Aufgaabe mit hinraicend glaicwertige Param wurde Tail Wirkung beraits abgesclose.
 										/*
@@ -2736,7 +2763,7 @@ namespace Optimat.ScpezEveOnln
 
 							if (null != AstAufgaabeParamScpezAndere.WindowMinimize ||
 								null != AstAufgaabeParamScpezAndere.WindowHooleNaacVorne ||
-								AstAufgaabeParam	is	AufgaabeParamGbsElementVerberge)
+								AstAufgaabeParam is AufgaabeParamGbsElementVerberge)
 							{
 								//	Diise werde nit als Verwendet gekenzaicnet da hiir scon abseebar isc das kaine waitere Verwendung meer erfolgt.
 								break;

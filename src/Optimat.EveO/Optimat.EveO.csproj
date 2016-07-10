@@ -82,7 +82,6 @@
     <None Include="GBS\BerictInspekt.xaml.cs" />
     <Compile Include="GBS\MengeOptimatScritInspekt.xaml.cs" />
     <Compile Include="GBS\OptimatScritRepr.cs" />
-    <Compile Include="NaacOptimatNaacrict.cs" />
     <None Include="Optimat.EveOnline.Nuzer.cs" />
     <Compile Include="OptimatScrit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

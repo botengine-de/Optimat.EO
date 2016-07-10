@@ -91,10 +91,10 @@ namespace Optimat.EveOnline
 	public class SictNaacProcessWirkung : SictVerlaufBeginUndEndeRefMitZaitAinhaitMili<object>
 	{
 		[JsonProperty]
-		readonly	public Int64? VorsclaagWirkungIdent;
+		public Int64? VorsclaagWirkungIdent;
 
 		[JsonProperty]
-		readonly public bool? Erfolg;
+		public bool? Erfolg;
 
 		[JsonProperty]
 		readonly public SictExceptionSictJson Exception;
