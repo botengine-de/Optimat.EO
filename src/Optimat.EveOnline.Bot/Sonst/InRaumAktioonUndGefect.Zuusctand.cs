@@ -8,7 +8,7 @@ using Optimat.EveOnline.Anwendung;
 //using Optimat.EveOnline.AuswertGbs;
 using Optimat.EveOnline.VonSensor;
 using Optimat.ScpezEveOnln;
-
+using Sanderling.Parse;
 
 namespace Optimat.EveOnline.Anwendung
 {
@@ -171,7 +171,7 @@ namespace Optimat.EveOnline.Anwendung
 		}
 
 		[JsonProperty]
-		public	SictEWarTypeEnum[][] ListePrioMengeEWarTypeZuZersctööre
+		public EWarTypeEnum[][] ListePrioMengeEWarTypeZuZersctööre
 		{
 			private set;
 			get;
@@ -188,7 +188,7 @@ namespace Optimat.EveOnline.Anwendung
 		/// Menge der Target aus GBS welce geUnLocked were solen.
 		/// </summary>
 		[JsonProperty]
-		public KeyValuePair<ShipUiTarget, SictAktioonPrioEnum>[] MengeTargetZuUnLockeMitPrio
+		public KeyValuePair<VonSensor.ShipUiTarget, SictAktioonPrioEnum>[] MengeTargetZuUnLockeMitPrio
 		{
 			private set;
 			get;
@@ -553,7 +553,7 @@ namespace Optimat.EveOnline.Anwendung
 		/// Wii di ainzelne EWar aingeordnet werde kan u.a. von Fitting abhängig sain (so werd zum Baispiil TrackingDisrupt hööher Priorisiirt wen aigene Ship Turret verwendet.)
 		/// </summary>
 		[JsonProperty]
-		public	SictEWarTypeEnum[]	InGrupeEWar
+		public EWarTypeEnum[]	InGrupeEWar
 		{
 			private set;
 			get;
@@ -583,7 +583,7 @@ namespace Optimat.EveOnline.Anwendung
 		public SictInRaumObjektBearbaitungPrio(
 			bool? InGrupeFürGefectAngraiferAufDistanzHalte = null,
 			bool? InGrupeAngraifend = null,
-			SictEWarTypeEnum[] InGrupeEWar = null,
+			EWarTypeEnum[] InGrupeEWar = null,
 			int? InGrupeIndex	=	null)
 			:
 			this()

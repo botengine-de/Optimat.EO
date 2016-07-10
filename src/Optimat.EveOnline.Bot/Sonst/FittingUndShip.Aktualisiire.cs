@@ -12,6 +12,7 @@ using Optimat.EveOnline.Base;
 using Optimat.EveOnline.Anwendung.AuswertGbs;
 using Optimat.EveOnline.VonSensor;
 using ExtractFromOldAssembly.Bib3;
+using Sanderling.Parse;
 
 namespace Optimat.EveOnline.Anwendung
 {
@@ -216,7 +217,7 @@ namespace Optimat.EveOnline.Anwendung
 				if (null != ShipUiMengeEWarElement)
 				{
 					var ShipUiEWarElementWarpScramble =
-						ShipUiMengeEWarElement.FirstOrDefault((EWarElement) => (null == EWarElement) ? false : SictEWarTypeEnum.WarpScramble == EWarElement.EWarTypeEnum);
+						ShipUiMengeEWarElement.FirstOrDefault((EWarElement) => (null == EWarElement) ? false : EWarTypeEnum.WarpScramble == EWarElement.EWarTypeEnum);
 
 					SelbsctShipWarpScrambled = null != ShipUiEWarElementWarpScramble;
 				}
@@ -805,13 +806,7 @@ namespace Optimat.EveOnline.Anwendung
 								continue;
 							}
 
-							/*
-							 * 2014.10.00
-							 * 
-							if (!Timer.EWarTypSictEnum.HasValue	||
-								Timer.EWarTypSictEnum == SictEWarTypeEnum.Jam)
-							 * */
-							if (SictEWarTypeEnum.Jam == Timer.EWarTypSictEnum)
+							if (EWarTypeEnum.ECM == Timer.EWarTypSictEnum)
 							{
 								if (ScritNääxteTimerRestZaitScranke < Timer.DauerRestMili)
 								{

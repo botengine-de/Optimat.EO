@@ -57,6 +57,9 @@
     <Reference Include="Optimat">
       <HintPath>..\..\lib\Optimat.dll</HintPath>
     </Reference>
+    <Reference Include="Sanderling">
+      <HintPath>..\..\lib\Sanderling.dll</HintPath>
+    </Reference>
     <Reference Include="Sanderling.Interface">
       <HintPath>..\..\lib\Sanderling.Interface.dll</HintPath>
     </Reference>

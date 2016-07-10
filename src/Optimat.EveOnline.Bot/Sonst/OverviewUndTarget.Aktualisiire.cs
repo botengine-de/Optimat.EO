@@ -12,6 +12,7 @@ using Optimat.EveOnline.Base;
 //using Optimat.EveOnline.AuswertGbs;
 using Optimat.EveOnline.Anwendung.AuswertGbs;
 using ExtractFromOldAssembly.Bib3;
+using Sanderling.Parse;
 
 namespace Optimat.EveOnline.Anwendung
 {
@@ -570,7 +571,7 @@ namespace Optimat.EveOnline.Anwendung
 
 				var ShipUi = AusScnapscusAuswertungZuusctand.ShipUi;
 
-				var MengeZuEWarTypeTextureIdent = default(KeyValuePair<SictEWarTypeEnum, Int64>[]);
+				var MengeZuEWarTypeTextureIdent = default(KeyValuePair<EWarTypeEnum, Int64>[]);
 
 				if (null != ShipUi)
 				{
@@ -579,10 +580,10 @@ namespace Optimat.EveOnline.Anwendung
 					if (null != ShipUiMengeEWarElement)
 					{
 						MengeZuEWarTypeTextureIdent =
-							ShipUiMengeEWarElement.Select((EWarElement) => new KeyValuePair<SictEWarTypeEnum?, Int64?>(
+							ShipUiMengeEWarElement.Select((EWarElement) => new KeyValuePair<EWarTypeEnum?, Int64?>(
 								EWarElement.EWarTypeEnum, EWarElement.IconTextureIdent))
 							.Where((Kandidaat) => Kandidaat.Key.HasValue && Kandidaat.Value.HasValue)
-							.Select((Kandidaat) => new KeyValuePair<SictEWarTypeEnum, Int64>(Kandidaat.Key.Value, Kandidaat.Value.Value))
+							.Select((Kandidaat) => new KeyValuePair<EWarTypeEnum, Int64>(Kandidaat.Key.Value, Kandidaat.Value.Value))
 							.ToArray();
 					}
 				}

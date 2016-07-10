@@ -11,6 +11,7 @@ using Optimat.EveOnline.Base;
 //using Optimat.EveOnline.AuswertGbs;
 using Optimat.EveOnline.VonSensor;
 using ExtractFromOldAssembly.Bib3;
+using Sanderling.Parse;
 
 namespace Optimat.EveOnline.Anwendung
 {
@@ -509,46 +510,14 @@ Probleem:Automaat Tail Msn wartet auf in RaumAktioonUndGefect.GefectBaitritFraig
 			AktualisiireTailAfterburner(AutomaatZuusctand);
 		}
 
-		/// <summary>
-		/// Berecnet folgende Menge:
-		/// - ListePrioMengeEWarTypeZuZersctööre
-		/// - ListePrioMengeObjektZuZersctööre
-		/// </summary>
-		/// <param name="AutomaatZuusctand"></param>
 		void AktualisiireTailListePrioMengeObjektZuZersctööre(
-			ISictAutomatZuusctand AutomaatZuusctand)
+			ISictAutomatZuusctand automaatZuusctand)
 		{
-			SictEWarTypeEnum[][] ListePrioMengeEWarTypeZuZersctööre = null;
-
-			try
-			{
-				if (null == AutomaatZuusctand)
-				{
-					return;
-				}
-
-				var ZaitMili = AutomaatZuusctand.NuzerZaitMili;
-
-				var OptimatParam = AutomaatZuusctand.OptimatParam();
-				var FittingUndShipZuusctand = AutomaatZuusctand.FittingUndShipZuusctand;
-				var OverviewUndTarget = AutomaatZuusctand.OverviewUndTarget;
-				var AgentUndMission = AutomaatZuusctand.AgentUndMission;
-
-				var MissionAktuel = (null == AgentUndMission) ? null : AgentUndMission.MissionAktuel;
-				var MissionAnforderungInRaum = (null == MissionAktuel) ? null : MissionAktuel.NaacAutomaatAnforderungInRaum;
-
-				/*
-				 * !!!!	Hiir noc ainzufüüge: TrackingDisrupt fals Fitting Turret
-				 * */
-				ListePrioMengeEWarTypeZuZersctööre = new SictEWarTypeEnum[][]{
-					new SictEWarTypeEnum[]{ SictEWarTypeEnum.Jam},
-					new SictEWarTypeEnum[]{ SictEWarTypeEnum.WarpScramble},
-					new SictEWarTypeEnum[]{ SictEWarTypeEnum.Webify},};
-			}
-			finally
-			{
-				this.ListePrioMengeEWarTypeZuZersctööre = ListePrioMengeEWarTypeZuZersctööre;
-			}
+			ListePrioMengeEWarTypeZuZersctööre = new EWarTypeEnum[][]{
+				new EWarTypeEnum[]{ EWarTypeEnum.ECM},
+				new EWarTypeEnum[]{ EWarTypeEnum.WarpScramble},
+				new EWarTypeEnum[]{ EWarTypeEnum.WarpDisrupt},
+				new EWarTypeEnum[]{ EWarTypeEnum.Web},};
 		}
 
 		/// <summary>
@@ -560,7 +529,7 @@ Probleem:Automaat Tail Msn wartet auf in RaumAktioonUndGefect.GefectBaitritFraig
 		/// <returns></returns>
 		static public bool AufgaabeMitPrioritäätEnthältAinesAusMengeEWarType(
 			SictAufgaabeInRaumObjektZuBearbaiteMitPrio AufgaabeObjektZuBearbaiteMitPrio,
-			SictEWarTypeEnum[] MengeEWarType,
+			EWarTypeEnum[] MengeEWarType,
 			Int64? EWarWirkungZuBerüksictigeZaitScrankeMin)
 		{
 			if (null == AufgaabeObjektZuBearbaiteMitPrio)
@@ -838,7 +807,7 @@ Probleem:Automaat Tail Msn wartet auf in RaumAktioonUndGefect.GefectBaitritFraig
 		/// <returns></returns>
 		static public SictAufgaabeGrupePrio[] MengeAufgaabeMitPrioGrupiireNaacEWar(
 			IEnumerable<SictAufgaabeInRaumObjektZuBearbaiteMitPrio> MengeAufgaabeZuGrupiire,
-			SictEWarTypeEnum[][] ListePrioMengeEWarTypeZuZersctööre,
+			EWarTypeEnum[][] ListePrioMengeEWarTypeZuZersctööre,
 			Int64? EWarWirkungZuBerüksictigeZaitScrankeMin)
 		{
 			if (null == MengeAufgaabeZuGrupiire)
@@ -904,7 +873,7 @@ Probleem:Automaat Tail Msn wartet auf in RaumAktioonUndGefect.GefectBaitritFraig
 		/// <returns>höhere Rükgaabewert bedoitet hööhere Prioritäät.</returns>
 		static int FürInRaumObjektZersctöörungPrioTailEWar(
 			SictOverViewObjektZuusctand InRaumObjekt,
-			SictEWarTypeEnum[][] ListePrioMengeEWarTypeZuZersctööre,
+			EWarTypeEnum[][] ListePrioMengeEWarTypeZuZersctööre,
 			Int64? EWarWirkungZuBerüksictigeZaitScrankeMin)
 		{
 			if (null == InRaumObjekt || null == ListePrioMengeEWarTypeZuZersctööre)
@@ -967,7 +936,7 @@ Probleem:Automaat Tail Msn wartet auf in RaumAktioonUndGefect.GefectBaitritFraig
 			ISictAutomatZuusctand AutomaatZuusctand,
 			VonSensorikMesung AusScnapscusAuswertungZuusctand)
 		{
-			KeyValuePair<ShipUiTarget, SictAktioonPrioEnum>[] MengeTargetZuUnLockeMitPrio = null;
+			KeyValuePair<VonSensor.ShipUiTarget, SictAktioonPrioEnum>[] MengeTargetZuUnLockeMitPrio = null;
 
 			try
 			{
@@ -1040,7 +1009,7 @@ Probleem:Automaat Tail Msn wartet auf in RaumAktioonUndGefect.GefectBaitritFraig
 				{
 					//	Berecnung MengeObjektZuUnLockeMitPrio
 
-					var InternMengeObjektZuUnLockeMitPrio = new List<KeyValuePair<ShipUiTarget, SictAktioonPrioEnum>>();
+					var InternMengeObjektZuUnLockeMitPrio = new List<KeyValuePair<VonSensor.ShipUiTarget, SictAktioonPrioEnum>>();
 
 					foreach (var Target in ListeTargetOrdnetNaacDistance.Reversed())
 					{
@@ -1137,13 +1106,13 @@ Probleem:Automaat Tail Msn wartet auf in RaumAktioonUndGefect.GefectBaitritFraig
 								}
 								else
 								{
-									InternMengeObjektZuUnLockeMitPrio.Add(new KeyValuePair<ShipUiTarget, SictAktioonPrioEnum>(
+									InternMengeObjektZuUnLockeMitPrio.Add(new KeyValuePair<VonSensor.ShipUiTarget, SictAktioonPrioEnum>(
 										TargetScnapscus, SictAktioonPrioEnum.VorWirkung));
 								}
 							}
 							else
 							{
-								InternMengeObjektZuUnLockeMitPrio.Add(new KeyValuePair<ShipUiTarget, SictAktioonPrioEnum>(
+								InternMengeObjektZuUnLockeMitPrio.Add(new KeyValuePair<VonSensor.ShipUiTarget, SictAktioonPrioEnum>(
 									TargetScnapscus, SictAktioonPrioEnum.VorLock));
 							}
 						}
