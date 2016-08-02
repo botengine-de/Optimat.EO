@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Optimat.EveOnline;
 using Bib3;
@@ -9,18 +8,18 @@ using ExtractFromOldAssembly.Bib3;
 
 namespace Optimat.EveO.Nuzer
 {
-	public	partial	class App
+	public partial class App
 	{
 		SictNaacProcessWirkung[] ListeNaacProcessWirkung;
 
 		Random Zuufal = new Random((int)Bib3.Glob.StopwatchZaitMikroSictInt());
 
-		static	public	System.Windows.Point AlsSystemWindowsPoint(SictVektor2DSingle	Vektor)
+		static public System.Windows.Point AlsSystemWindowsPoint(SictVektor2DSingle Vektor)
 		{
 			return new System.Windows.Point(Vektor.A, Vektor.B);
 		}
 
-		static	public	System.Windows.Point AlsSystemWindowsPoint(Vektor2DInt	Vektor)
+		static public System.Windows.Point AlsSystemWindowsPoint(Vektor2DInt Vektor)
 		{
 			return new System.Windows.Point(Vektor.A, Vektor.B);
 		}
@@ -33,11 +32,11 @@ namespace Optimat.EveO.Nuzer
 				return null;
 			}
 
-			var	Grööse	= Fläce.Grööse;
+			var Grööse = Fläce.Grööse;
 
-			if(Grööse.A < 1 || Grööse.B < 1)
+			if (Grööse.A < 1 || Grööse.B < 1)
 			{
-				return	null;
+				return null;
 			}
 
 			var ZuufalA = Zuufal.Next();
@@ -50,8 +49,8 @@ namespace Optimat.EveO.Nuzer
 		static int MouseWartezaitMili = 166;
 
 		SictNaacProcessWirkungTailMausErgeebnis MausWirkungFüüreAus(
-			SictVorsclaagNaacProcessWirkung	Wirkung,
-			int	ZiilFläceRandScrankeAkzeptanz,
+			SictVorsclaagNaacProcessWirkung Wirkung,
+			int ZiilFläceRandScrankeAkzeptanz,
 			int ZiilFläceRandScrankeZuufal)
 		{
 			if (null == Wirkung)
@@ -100,37 +99,37 @@ namespace Optimat.EveO.Nuzer
 			var ZiilWindowHandle = GbsAingaabeWaalZiilProcessMainWindowHandle;
 
 			Bib3.Windows.User32.RECT ZiilWindowClientRect;
-			Bib3.Windows.User32.GetClientRect(ZiilWindowHandle, out	ZiilWindowClientRect);
+			Bib3.Windows.User32.GetClientRect(ZiilWindowHandle, out ZiilWindowClientRect);
 
-		/*
-		 * 2015.03.03
-		 * 
-			var EveOnlnSensoWurzelSuuceLezteTask = this.EveOnlnSensoWurzelSuuceLezteTask;
+			/*
+			 * 2015.03.03
+			 * 
+				var EveOnlnSensoWurzelSuuceLezteTask = this.EveOnlnSensoWurzelSuuceLezteTask;
 
-			var EveOnlnSensoWurzelSuuceLezteTaskTask = EveOnlnSensoWurzelSuuceLezteTask.Wert;
+				var EveOnlnSensoWurzelSuuceLezteTaskTask = EveOnlnSensoWurzelSuuceLezteTask.Wert;
 
-			if (!EveOnlnSensoWurzelSuuceLezteTaskTask.IsCompleted)
-			{
-				return Ergeebnis;
-			}
+				if (!EveOnlnSensoWurzelSuuceLezteTaskTask.IsCompleted)
+				{
+					return Ergeebnis;
+				}
 
-			var GbsSuuceWurzel = EveOnlnSensoWurzelSuuceLezteTaskTask.Result;
-		 * */
+				var GbsSuuceWurzel = EveOnlnSensoWurzelSuuceLezteTaskTask.Result;
+			 * */
 
 			var MengeFläceAbhängigVonGbsAst =
 				Optimat.Glob.ListeErwaitertAlsArray(MausPfaadListeWeegpunktFläceAbhängigVonGbs, MausPfaadMengeFläceZuMaideAbhängigVonGbs);
 
-		/*
-		 * 2015.03.03
-		 * 
-			var MengeFläceErgeebnis =
-				Optimat.EveOnline.SictProzesAuswertZuusctand.ListeFläceBerecneAusGbs(
-				MengeFläceAbhängigVonGbsAst,
-				ProcessId,
-				GbsSuuceWurzel);
-		 * */
+			/*
+			 * 2015.03.03
+			 * 
+				var MengeFläceErgeebnis =
+					Optimat.EveOnline.SictProzesAuswertZuusctand.ListeFläceBerecneAusGbs(
+					MengeFläceAbhängigVonGbsAst,
+					ProcessId,
+					GbsSuuceWurzel);
+			 * */
 
-			var MengeFläceErgeebnis	=
+			var MengeFläceErgeebnis =
 				MengeFläceAbhängigVonGbsAst
 				.SelectNullable((Fläce) => new KeyValuePair<InProcessGbsFläceRectekOrto, OrtogoonInt?>(
 					Fläce, Fläce.FläceTailSctaatisc));
@@ -176,9 +175,9 @@ namespace Optimat.EveO.Nuzer
 											return null;
 										}
 
-										return	Optimat.EveOnline.Extension.FläceMiinusFläce(VorherFläce, FläceZuMaide);
+										return Optimat.EveOnline.Extension.FläceMiinusFläce(VorherFläce, FläceZuMaide);
 									})
-									.Where((t) => null	!= t)
+									.Where((t) => null != t)
 									.ToArray());
 							}
 						}
@@ -200,7 +199,7 @@ namespace Optimat.EveO.Nuzer
 
 						return
 							MausPfaadWeegpunktFläceMiinusFläceZuMaide
-							.Where((Fläce) => null	!= Fläce)
+							.Where((Fläce) => null != Fläce)
 							.Select((Fläce) => Fläce.Vergröösert(
 							-ZiilFläceRandScrankeAkzeptanz * 2,
 							-ZiilFläceRandScrankeAkzeptanz * 2))
@@ -230,7 +229,7 @@ namespace Optimat.EveO.Nuzer
 			var MausPfaadBeginPunktNulbar = ZuufäligePunktAusFläce(MausPfaadBeginFläce);
 			var MausPfaadEndePunktNulbar = ZuufäligePunktAusFläce(MausPfaadEndeFläce);
 
-			if(!PfaadEnthaltMeerereWeegpunkt)
+			if (!PfaadEnthaltMeerereWeegpunkt)
 			{
 				MausPfaadEndePunktNulbar = MausPfaadBeginPunktNulbar;
 			}
@@ -345,13 +344,13 @@ namespace Optimat.EveO.Nuzer
 				return;
 			}
 
-		/*
-		 * 2015.03.03
-		 * 
-			var EveOnlnSensoScnapscusAuswertLezteFertig = this.EveOnlnSensoScnapscusAuswertLezteFertig;
-		 * */
+			/*
+			 * 2015.03.03
+			 * 
+				var EveOnlnSensoScnapscusAuswertLezteFertig = this.EveOnlnSensoScnapscusAuswertLezteFertig;
+			 * */
 
-			var VonOptimatMeldungZuusctandLezte = this.VonOptimatMeldungZuusctandLezte	as	Optimat.EveOnline.Base.VonAutomatMeldungZuusctand;
+			var VonOptimatMeldungZuusctandLezte = this.VonOptimatMeldungZuusctandLezte as Optimat.EveOnline.Base.VonAutomatMeldungZuusctand;
 
 			if (null == VonOptimatMeldungZuusctandLezte)
 			{
@@ -360,13 +359,13 @@ namespace Optimat.EveO.Nuzer
 
 			var Task = new Task(() =>
 				{
-					lock(LockWirkung)
+					lock (LockWirkung)
 					{
 						var VorsclaagListeWirkung =
 							VonOptimatMeldungZuusctandLezte.VorsclaagListeWirkung
 							.WhereNullable((KandidaatVorsclaagWirkung) =>
 								!(ListeNaacProcessWirkung
-								.AnyNullable((KandidaatWirkung) => KandidaatWirkung.VorsclaagWirkungIdent == KandidaatVorsclaagWirkung.Ident)	?? false))
+								.AnyNullable((KandidaatWirkung) => KandidaatWirkung.VorsclaagWirkungIdent == KandidaatVorsclaagWirkung.Ident) ?? false))
 							.ToArrayNullable();
 
 						if (VorsclaagListeWirkung.NullOderLeer())
@@ -418,7 +417,7 @@ namespace Optimat.EveO.Nuzer
 
 				var WirkungBeginZaitMili = Bib3.Glob.StopwatchZaitMikroSictInt() / 1000;
 
-				System.Exception WirkungException	= null;
+				System.Exception WirkungException = null;
 
 				try
 				{
@@ -434,7 +433,7 @@ namespace Optimat.EveO.Nuzer
 					if (null != MengeKey ||
 						null != MausPfaadListeWeegpunktFläce ||
 						true == MausPfaadTasteLinksAin ||
-						true == MausPfaadTasteRectsAin	||
+						true == MausPfaadTasteRectsAin ||
 						!AingaabeText.NullOderLeer())
 					{
 						if (VorherForegroundWindowHandle != GbsAingaabeWaalZiilProzesWindowHandle)
@@ -457,6 +456,8 @@ namespace Optimat.EveO.Nuzer
 
 					if (!WirkungNict)
 					{
+						var inputSimulator = new WindowsInput.InputSimulator();
+
 						var WirkungTailMausDauer = new SictMesungZaitraumAusStopwatch(true);
 
 						WirkungTailMausErgeebnis = MausWirkungFüüreAus(VorsclaagWirkung, 1, 4);
@@ -480,16 +481,16 @@ namespace Optimat.EveO.Nuzer
 										{
 											var KeyKeySictInputSimulator = Glob.VonWindowsInputKeyNaacInputSimulatorVirtualKeyCode((System.Windows.Input.Key)KeyKey);
 
-											WindowsInput.InputSimulator.SimulateKeyPress(KeyKeySictInputSimulator);
+											inputSimulator.Keyboard.KeyPress(KeyKeySictInputSimulator);
 										}
 									}
 								}
 							}
 						}
 
-						if(!AingaabeText.NullOderLeer())
+						if (!AingaabeText.NullOderLeer())
 						{
-							WindowsInput.InputSimulator.SimulateTextEntry(AingaabeText);
+							inputSimulator.Keyboard.TextEntry(AingaabeText);
 						}
 					}
 				}
@@ -510,7 +511,7 @@ namespace Optimat.EveO.Nuzer
 						}
 					}
 
-					var	ExceptionSictJsonAbbild	= SictExceptionSictJson.ExceptionSictJson(WirkungException);
+					var ExceptionSictJsonAbbild = SictExceptionSictJson.ExceptionSictJson(WirkungException);
 
 					var NaacZiilProcessWirkung = new SictNaacProcessWirkung(
 						WirkungBeginZaitMili,
