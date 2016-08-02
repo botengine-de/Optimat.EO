@@ -157,9 +157,10 @@
                         For the eve online mining bot, see:
                     </Run>
                     <LineBreak></LineBreak>
-                    <Run>
-                        https://github.com/Arcitectus/Sanderling/wiki/Getting-Started
-                    </Run>
+                    <Bib3.FCL.UI:HyperlinkProcessStartFilename
+                                NavigateUri="https://github.com/Arcitectus/Sanderling/wiki/Getting-Started">
+                        <Run>https://github.com/Arcitectus/Sanderling/wiki/Getting-Started</Run>
+                    </Bib3.FCL.UI:HyperlinkProcessStartFilename>
                     <LineBreak></LineBreak>
                     <LineBreak></LineBreak>
                     <Run>
