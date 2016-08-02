@@ -249,7 +249,7 @@ namespace MapToOldInterface
 		}
 
 		static public BotEngine.EveOnline.Interface.MemoryStruct.InfoPanelLocationInfo AsOld(
-			this IInfoPanelSystem infoPanelSystem)
+			this Sanderling.Interface.MemoryStruct.IInfoPanelSystem infoPanelSystem)
 		{
 			if (infoPanelSystem == null)
 				return null;

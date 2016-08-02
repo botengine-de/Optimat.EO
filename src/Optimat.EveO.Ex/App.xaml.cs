@@ -410,7 +410,7 @@ namespace Optimat.EveO.Nuzer
 
 		private void Timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
 		{
-			timerLock.InvokeIfNotLocked(() =>
+			timerLock.IfLockIsAvailableEnter(() =>
 			{
 				try
 				{
