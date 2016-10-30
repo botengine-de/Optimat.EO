@@ -108,7 +108,7 @@ namespace Optimat.EveOnline.Anwendung
 
 				var Menu0ListeEntry = MenuKaskaadeLezte.AusMenu0ListeEntryBerecne();
 
-				if (!Menu0ListeEntry.NullOderLeer())
+				if (!Menu0ListeEntry.IsNullOrEmpty())
 				{
 					var MenuEntryLock = MenuAstBedingung.AusMengeMenuEntryGibUntermengePasendFürFrüühestePasendePrio(Menu0ListeEntry);
 

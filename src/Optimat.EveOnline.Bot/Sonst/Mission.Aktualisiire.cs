@@ -826,10 +826,8 @@ namespace Optimat.EveOnline.Anwendung
 													MessungMissionObjectivePrio));
 										}
 
-										if (Bib3.Extension.NullOderLeer(ListeMesungObjectiveZuusctandLezteObjectiveMengeAstItemNictComplete))
-										{
+										if (ListeMesungObjectiveZuusctandLezteObjectiveMengeAstItemNictComplete.IsNullOrEmpty())
 											PfaadAnnaameErfolgZaitMili = ListeMesungObjectiveZuusctandZuZaitLezte.Zait;
-										}
 										else
 										{
 											if (ListeMesungObjectiveZuusctandLezteZaitMili < ListeInventoryItemTransportLezteZaitMili)

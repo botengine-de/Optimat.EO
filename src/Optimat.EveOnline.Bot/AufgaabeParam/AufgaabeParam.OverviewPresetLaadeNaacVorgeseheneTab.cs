@@ -75,7 +75,7 @@ namespace Optimat.EveOnline.Anwendung
 				InRaumAktioonUndGefect.OverviewMengeZuTabNamePresetDefault
 				.FirstOrDefaultNullable((Kandidaat) => Kandidaat.Value == PresetDefault).Key;
 
-			if (ZiilTab.NullOderLeer())
+			if (ZiilTab.IsNullOrEmpty())
 			{
 				AufgaabeParamZerleegungErgeebnis.FüügeAn(
 					AufgaabeParamAndere.KonstruktNaacNuzerMeldungZuEveOnline(

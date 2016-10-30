@@ -1049,10 +1049,8 @@ namespace Optimat.EveOnline.GBS
 				.TakeWhile((Komponente) => Komponente.HasValue)
 				.ToArray();
 
-			if (ListeKomponenteInt.NullOderLeer())
-			{
+			if (ListeKomponenteInt.IsNullOrEmpty())
 				return null;
-			}
 
 			var InTagSekunde =
 				ListeKomponenteInt

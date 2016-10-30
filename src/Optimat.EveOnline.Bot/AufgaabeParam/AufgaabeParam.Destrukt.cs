@@ -288,7 +288,7 @@ namespace Optimat.EveOnline.Anwendung
 					TargetDistancePasendFürDrone &&
 					true == FürWirkungDestruktAufgaabeDroneEngageTarget;
 
-				if (DroneEngage || !Bib3.Extension.NullOderLeer(MengeModuleAinSol))
+				if (DroneEngage || !MengeModuleAinSol.IsNullOrEmpty())
 				{
 					{
 						if (TargetDistancePasendFürModule)
@@ -298,7 +298,7 @@ namespace Optimat.EveOnline.Anwendung
 					}
 				}
 
-				if (!Bib3.Extension.NullOderLeer(MengeModuleAinSol))
+				if (!MengeModuleAinSol.IsNullOrEmpty())
 				{
 					//	Hiir werd nuur waitergemact wen noc mindesctens ain Module noc aigescaltet werde sol.
 

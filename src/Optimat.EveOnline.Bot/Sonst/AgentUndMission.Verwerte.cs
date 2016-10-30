@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Optimat.EveOnline.Base;
 using Optimat.ScpezEveOnln;
+using Bib3;
 
 namespace Optimat.EveOnline.Anwendung
 {
@@ -168,7 +169,7 @@ namespace Optimat.EveOnline.Anwendung
 
 			if (null != MissionAktuelTailFürNuzer)
 			{
-				if (Bib3.Extension.NullOderLeer(MissionAktuelTailFürNuzer.FürMissionFittingBezaicner))
+				if (MissionAktuelTailFürNuzer.FürMissionFittingBezaicner.IsNullOrEmpty())
 				{
 					ListeAufgaabeNääxteParam.Add(AufgaabeParamAndere.KonstruktNaacNuzerMeldungZuEveOnline(
 						SictNaacNuzerMeldungZuEveOnline.WarningGenerel(-1, SictNaacNuzerMeldungZuEveOnlineCauseTypeBinär.MissionCurrentNoFittingConfigured)));

@@ -385,10 +385,8 @@ namespace ExtractFromOldAssembly.Bib3
 		static public Int64? MinNullable(
 			this IEnumerable<Int64> Menge)
 		{
-			if (Menge.NullOderLeer())
-			{
+			if (Menge.IsNullOrEmpty())
 				return null;
-			}
 
 			return Menge.Min();
 		}
@@ -396,10 +394,8 @@ namespace ExtractFromOldAssembly.Bib3
 		static public int? MinNullable(
 			this IEnumerable<int> Menge)
 		{
-			if (Menge.NullOderLeer())
-			{
+			if (Menge.IsNullOrEmpty())
 				return null;
-			}
 
 			return Menge.Min();
 		}
@@ -407,10 +403,8 @@ namespace ExtractFromOldAssembly.Bib3
 		static public Int64? MaxNullable(
 			this IEnumerable<Int64> Menge)
 		{
-			if (Menge.NullOderLeer())
-			{
+			if (Menge.IsNullOrEmpty())
 				return null;
-			}
 
 			return Menge.Max();
 		}
@@ -418,10 +412,8 @@ namespace ExtractFromOldAssembly.Bib3
 		static public int? MaxNullable(
 			this IEnumerable<int> Menge)
 		{
-			if (Menge.NullOderLeer())
-			{
+			if (Menge.IsNullOrEmpty())
 				return null;
-			}
 
 			return Menge.Max();
 		}
@@ -1309,18 +1301,6 @@ namespace ExtractFromOldAssembly.Bib3
 			}
 
 			return Match.Groups[1].Value;
-		}
-
-		static public T NullIfEmpty<T>(
-			this T Sequenz)
-			where T : IEnumerable
-		{
-			if (Sequenz.NullOderLeer())
-			{
-				return default(T);
-			}
-
-			return Sequenz;
 		}
 
 		static public void RGBKonvertiirtNaacHueSatVal(

@@ -306,7 +306,7 @@ namespace Optimat.EveOnline
 				 * !!!!	Temp:	2014.04.25	Zuusaz Bedingung Faction
 				 * */
 
-				if (MissionMengeFaction.NullOderLeer())
+				if (MissionMengeFaction.IsNullOrEmpty())
 				{
 					MengeMissionFilterPasend = null;
 				}
@@ -328,7 +328,7 @@ namespace Optimat.EveOnline
 			if (AktioonDeclineAlsSctandardFürSonstigeFraigaabe &&
 				AktioonDeclineFraigaabe	&&
 				(AgentLevel.HasValue && AktioonAcceptFraigaabeFürAgentLevel)	||
-				MengeMissionFilterPasend.NullOderLeer())
+				MengeMissionFilterPasend.IsNullOrEmpty())
 			{
 				VerhalteSctandardDecline = true;
 			}

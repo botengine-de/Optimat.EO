@@ -371,10 +371,8 @@ namespace Optimat.EveOnline.Anwendung
 		{
 			var MengeOreTypFraigaabe = VonNuzerParamMengeOreTypFraigaabe;
 
-			if (MengeOreTypFraigaabe.NullOderLeer())
-			{
+			if (MengeOreTypFraigaabe.IsNullOrEmpty())
 				MengeOreTypFraigaabe = MengeOreTypAleBerecne();
-			}
 
 			if (VonNuzerParamMengeOreTypeBescrankeNaacMiningCrystal)
 			{
@@ -382,7 +380,7 @@ namespace Optimat.EveOnline.Anwendung
 					MengeOreTypFraigaabe.IntersectNullable(MengeMiningCrystalTypVerfüügbar).ToArrayNullable();
 			}
 
-			if (MengeOreTypFraigaabe.NullOderLeer())
+			if (MengeOreTypFraigaabe.IsNullOrEmpty())
 			{
 				MengeOreTypFraigaabe = MengeOreTypAleBerecne();
 			}
@@ -1230,7 +1228,7 @@ namespace Optimat.EveOnline.Anwendung
 					.FirstOrDefault();
 
 				if (!(MengeTargetIsInRaicwaite ?? false) &&
-					!ShipMengeModuleMiner.NullOderLeer())
+					!ShipMengeModuleMiner.IsNullOrEmpty())
 				{
 					var AusTailmengeAssignedNictTargetAnzufliigeNääxte = MengeTargetVerwendetTailmengeAssignedNictNääxte.Key;
 
@@ -1324,7 +1322,7 @@ namespace Optimat.EveOnline.Anwendung
 				{
 					if (!(DockUndOffloadPrioVorMine ?? false))
 					{
-						if (Bib3.Extension.NullOderLeer(MengeTargetVerwendet) &&
+						if (MengeTargetVerwendet.IsNullOrEmpty() &&
 							!(AsteroidZuLockeNääxteDistance < 7e+4) &&
 							!(InOverviewSuuceAsteroid ?? false))
 						{

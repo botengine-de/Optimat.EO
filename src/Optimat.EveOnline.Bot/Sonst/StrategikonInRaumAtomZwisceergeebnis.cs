@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Optimat.ScpezEveOnln;
+using Bib3;
 
 namespace Optimat.EveOnline.Anwendung
 {
@@ -241,7 +242,7 @@ namespace Optimat.EveOnline.Anwendung
 					new Func<SictOverViewObjektZuusctand, bool>((InRaumObjekt) => SictMissionZuusctand.FilterCargoZuDurcsuuce(InRaumObjekt, RaumMengeObjektCargoDurcsuuct));
 
 				if (!(true == InStrategikonAtom.BedingungObjektExistent) ||
-					!Bib3.Extension.NullOderLeer(MengeObjektGefiltertNocSictbar))
+					!MengeObjektGefiltertNocSictbar.IsNullOrEmpty())
 				{
 					BedingungObjektExistentErfült = true;
 				}
@@ -299,7 +300,7 @@ namespace Optimat.EveOnline.Anwendung
 
 				AtomZwisceergeebnis.MengeAufgaabeObjektZuBearbaite = AtomZwisceergeebnisMengeAufgaabeObjektZuBearbaite.ToArray();
 
-				if (Bib3.Extension.NullOderLeer(MengeObjektCargoZuDurcsuuce))
+				if (MengeObjektCargoZuDurcsuuce.IsNullOrEmpty())
 				{
 					if (!AtomZwisceergeebnis.CargoDurcsuuceErfolgZait.HasValue)
 					{
@@ -311,7 +312,7 @@ namespace Optimat.EveOnline.Anwendung
 					AtomZwisceergeebnis.CargoDurcsuuceErfolgZait = null;
 				}
 
-				if (Bib3.Extension.NullOderLeer(MengeObjektZuZersctööre))
+				if (MengeObjektZuZersctööre.IsNullOrEmpty())
 				{
 					if (!AtomZwisceergeebnis.ZersctööreErfolgZait.HasValue)
 					{
@@ -375,7 +376,7 @@ namespace Optimat.EveOnline.Anwendung
 					InStrategikonAtomMengeObjektFilterGrupe,
 					MesungMengeObjektGrupeZaitScrankeMin);
 
-				if (!Bib3.Extension.NullOderLeer(ZuMengeObjektGrupeMesungVolsctändigFeelend))
+				if (!ZuMengeObjektGrupeMesungVolsctändigFeelend.IsNullOrEmpty())
 				{
 					//	Verzwaigung Für Debug Haltepunkt
 				}
@@ -414,10 +415,8 @@ namespace Optimat.EveOnline.Anwendung
 
 				if (MesungMengeObjektGrupeZaitScrankeMinPlusBeruhigungszait < ZaitMili)
 				{
-					if (Bib3.Extension.NullOderLeer(ZuMengeObjektGrupeMesungVolsctändigFeelend))
-					{
+					if (ZuMengeObjektGrupeMesungVolsctändigFeelend.IsNullOrEmpty())
 						AtomZwisceergeebnisErfolg = true;
-					}
 				}
 
 				AtomZwisceergeebnis.ErfolgTailVorMengeOverviewObjektGrupeMesungZuErscteleZait =

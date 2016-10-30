@@ -833,7 +833,7 @@ namespace Optimat.EveOnline.AuswertGbs
 					var AgentConvAgentShowInfoHtmlNode =
 						Optimat.Glob.SelectSingleNodeNaacNodeMitZuusazFilter(
 						AgentConvLocationTdHtmlNode, "/a", AgentConvAgentNameHtmlNode,
-						(KandidaatNode) => !Optimat.Glob.SelectNodesPerXPath(KandidaatNode, "/img").NullOderLeer());
+						(KandidaatNode) => !Optimat.Glob.SelectNodesPerXPath(KandidaatNode, "/img").IsNullOrEmpty());
 
 					AgentConvLocationMengeHtmlNode =
 						Optimat.Glob.SelectNodesNaacNode(AgentConvLocationTdHtmlNode, "/*", AgentConvAgentShowInfoHtmlNode);

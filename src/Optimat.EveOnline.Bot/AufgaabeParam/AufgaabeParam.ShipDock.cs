@@ -74,7 +74,7 @@ namespace Optimat.EveOnline.Anwendung
 			}
 
 			var StationRegexPatternFürMenuAusButtonListSurroundings =
-				StationName.NullOderLeer() ? null :
+				StationName.IsNullOrEmpty() ? null :
 				SictAgentUndMissionZuusctand.StationNameSictFürButtonListSurroundingsRegexPattern(StationName);
 
 			var MenuStationListePrioRegexPattern = new List<string>();

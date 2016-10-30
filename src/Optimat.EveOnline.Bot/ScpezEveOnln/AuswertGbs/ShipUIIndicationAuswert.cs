@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 //using Optimat.EveOnline.AuswertGbs;
 using Optimat.EveOnline.VonSensor;
+using Bib3;
 
 namespace Optimat.EveOnline.Anwendung.AuswertGbs
 {
@@ -54,8 +55,8 @@ namespace Optimat.EveOnline.Anwendung.AuswertGbs
 			}
 
 			return
-				!Bib3.Extension.NullOderLeer(ShipUIIndication.IndicationCaption) ||
-				!Bib3.Extension.NullOderLeer(ShipUIIndication.IndicationText);
+				!Bib3.Extension.IsNullOrEmpty(ShipUIIndication.IndicationCaption) ||
+				!Bib3.Extension.IsNullOrEmpty(ShipUIIndication.IndicationText);
 		}
 
 		public ShipUiIndicationAuswert()
@@ -106,10 +107,8 @@ namespace Optimat.EveOnline.Anwendung.AuswertGbs
 				var IndicationCaption = ShipUIIndication.IndicationCaption;
 				var IndicationText = ShipUIIndication.IndicationText;
 
-				if (Bib3.Extension.NullOderLeer(IndicationCaption))
-				{
+				if (IndicationCaption.IsNullOrEmpty())
 					return;
-				}
 
 				if (null != MengeZuRegexPatternManöverTyp)
 				{
@@ -133,10 +132,8 @@ namespace Optimat.EveOnline.Anwendung.AuswertGbs
 					}
 				}
 
-				if (Bib3.Extension.NullOderLeer(IndicationText))
-				{
+				if (IndicationText.IsNullOrEmpty())
 					return;
-				}
 
 				var InRaumObjektNaameUndDistanceMatch = Regex.Match(IndicationText, IndicationTextInRaumObjektNaameUndDistanceRegexPatternVersioon0);
 

@@ -359,17 +359,13 @@ namespace Optimat.EveOnline.Anwendung
 						.WhereNullable((Kandidaat) => Kandidaat.SaitAingangUnglaicDefaultLezteListeAingangAnzaal() < 2)
 						.ToArrayNullable();
 
-					if (MengeTargetTailmengeBisVorherigeScrit.NullOderLeer())
-					{
+					if (MengeTargetTailmengeBisVorherigeScrit.IsNullOrEmpty())
 						return;
-					}
 
 					var AutoMineMengeTargetVerwendet = AutoMine.MengeTargetVerwendet;
 
-					if (AutoMineMengeTargetVerwendet.NullOderLeer())
-					{
+					if (AutoMineMengeTargetVerwendet.IsNullOrEmpty())
 						return;
-					}
 
 					var MenuEntryUnlockTarget = MenuKaskaadeLezteMenu0ListeEntry.MenuEntryTargetUnLock();
 
@@ -424,10 +420,8 @@ namespace Optimat.EveOnline.Anwendung
 						return;
 					}
 
-					if (TailmengeTargetPasendZuSurveyScanEntry.NullOderLeer())
-					{
+					if (TailmengeTargetPasendZuSurveyScanEntry.IsNullOrEmpty())
 						return;
-					}
 
 					MengeTargetMitTransitioonInZaitraumUmMenuBegin =
 						TailmengeTargetPasendZuSurveyScanEntry

@@ -508,7 +508,7 @@ namespace Optimat.ScpezEveOnln
 			{
 				if (null != ScnapscusCurrentLocationInfo)
 				{
-					if (Bib3.Extension.NullOderLeer(ScnapscusCurrentLocationInfo.NearestName))
+					if (ScnapscusCurrentLocationInfo.NearestName.IsNullOrEmpty())
 					{
 						ListePrioMengeAufgaabe.Add(new SictAufgaabeGrupePrio(
 							new SictAufgaabeParam[]{
@@ -589,7 +589,7 @@ namespace Optimat.ScpezEveOnln
 						{
 							var MengeDamage = Module.MengeDamageBerecne();
 
-							if (!Bib3.Extension.NullOderLeer(MengeDamage))
+							if (!MengeDamage.IsNullOrEmpty())
 							{
 								BisherModuleDamage =
 									MengeDamage
@@ -640,7 +640,7 @@ namespace Optimat.ScpezEveOnln
 							{
 								//	Es isc beraits hinraicend Ammo gelaade um Wirkmitel zu aktiviire.
 
-								if (Bib3.Extension.NullOderLeer(FürGefectListePrioMengeDamageTypePrioOrdnet))
+								if (FürGefectListePrioMengeDamageTypePrioOrdnet.IsNullOrEmpty())
 								{
 									//	Aus Konfig isc kaine Priorisatioon für DamageType vorgegebe.
 									continue;

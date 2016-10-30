@@ -1079,10 +1079,8 @@ namespace Optimat.EveOnline
 				yield break;
 			}
 
-			if (ListePrädikaat.NullOderLeer())
-			{
+			if (ListePrädikaat.IsNullOrEmpty())
 				yield break;
-			}
 
 			var LastPredicate = ListePrädikaat.Last();
 

@@ -477,7 +477,7 @@ namespace Optimat.ScpezEveOnln
 
 			var MengeAufgaabeKomponenteAktiiv = new List<SictAufgaabeZuusctand>();
 
-			if (Bib3.Extension.NullOderLeer(MengeAufgaabeKomponenteParam))
+			if (MengeAufgaabeKomponenteParam.IsNullOrEmpty())
 			{
 			}
 			else

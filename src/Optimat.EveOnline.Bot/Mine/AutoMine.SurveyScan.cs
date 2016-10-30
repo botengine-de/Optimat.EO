@@ -59,10 +59,8 @@ namespace Optimat.EveOnline.Anwendung
 
 			var WindowSurveyScanViewListScnapscus = (null == WindowSurveyScanViewList) ? null : WindowSurveyScanViewList.AingangScnapscusTailObjektIdentLezteBerecne();
 
-			if (MengeTargetVerwendet.WhereNullable((Kandidaat) => Kandidaat.Value.OreTypFraigaabe ?? false).NullOderLeer())
-			{
+			if (MengeTargetVerwendet.WhereNullable((Kandidaat) => Kandidaat.Value.OreTypFraigaabe ?? false).IsNullOrEmpty())
 				return ListeAufgaabeParam;
-			}
 
 			if (!(0 < BisSurveyScanBeginZaitDauer))
 			{

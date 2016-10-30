@@ -334,7 +334,7 @@ namespace Optimat.ScpezEveOnln
 						var WeegpunktOklusioonVermaidungListeTailaufgaabe =
 							GbsAstOklusioonVermaidungBerecne(new SictAufgaabeParamGbsAstOklusioonVermaidung(WeegpunktGbsObjekt, 8), out WeegpunktMengeFläceZuMaide);
 
-						if (!Bib3.Extension.NullOderLeer(WeegpunktOklusioonVermaidungListeTailaufgaabe))
+						if (!WeegpunktOklusioonVermaidungListeTailaufgaabe.IsNullOrEmpty())
 						{
 							AufgaabeParamZerleegungErgeebnis = AufgaabeParamZerleegungErgeebnis.Kombiniire(
 								WeegpunktOklusioonVermaidungListeTailaufgaabe
@@ -402,10 +402,8 @@ namespace Optimat.ScpezEveOnln
 				var WeegpunktOklusioonVermaidungListeTailaufgaabe =
 					GbsAstOklusioonVermaidungBerecne(GbsAstOklusioonVermaidung);
 
-				if (!Bib3.Extension.NullOderLeer(WeegpunktOklusioonVermaidungListeTailaufgaabe))
-				{
+				if (!WeegpunktOklusioonVermaidungListeTailaufgaabe.IsNullOrEmpty())
 					AufgaabeParamZerleegungErgeebnis = AufgaabeParamZerleegungErgeebnis.Kombiniire(WeegpunktOklusioonVermaidungListeTailaufgaabe);
-				}
 			}
 
 			/*
@@ -650,7 +648,7 @@ namespace Optimat.ScpezEveOnln
 										var FürWindowMinimizeHeaderFläceOoneSctoierelementOklusioonZuVermaideMengeAufgaabe =
 											GbsAstOklusioonVermaidungBerecne(new SictAufgaabeParamGbsAstOklusioonVermaidung(WindowMinimizeHeaderFläceOoneSctoierelement, 3));
 
-										if (Bib3.Extension.NullOderLeer(FürWindowMinimizeHeaderFläceOoneSctoierelementOklusioonZuVermaideMengeAufgaabe))
+										if (FürWindowMinimizeHeaderFläceOoneSctoierelementOklusioonZuVermaideMengeAufgaabe.IsNullOrEmpty())
 										{
 											//	Um Oklusioon von WindowMinimizeHeaderFläceOoneSctoierelement zu vermaide wääre kaine Aufgaabe nootwendig. D.h. das Element isc nit (volsctändig) okludiirt.
 											WindowHooleNaacVorneZiilFläce = WindowMinimizeHeaderFläceOoneSctoierelement;
@@ -1141,7 +1139,7 @@ namespace Optimat.ScpezEveOnln
 				//	Um zu vermaide das andere Aufgaabe den Tooltip unterbrece werd in jeedem Scrit das beweege der Maus wiiderhoolt.
 				AufgaabeParamZerleegungErgeebnis.ZerleegungVolsctändigSezeAus();
 
-				if (!Bib3.Extension.NullOderLeer(GbsMengeMenuMitBeginZait))
+				if (!GbsMengeMenuMitBeginZait.IsNullOrEmpty())
 				{
 					//	ModuleButtonHint werd nur angezait kain Menu vorhande, daher Menu irgendwii entferne
 
@@ -1526,7 +1524,7 @@ namespace Optimat.ScpezEveOnln
 							TargetDistancePasendFürDrone &&
 							true == FürWirkungDestruktAufgaabeDroneEngageTarget;
 
-						if (DroneEngage || !Bib3.Extension.NullOderLeer(MengeModuleAinSol))
+						if (DroneEngage || !MengeModuleAinSol.IsNullOrEmpty())
 						{
 							{
 								if (TargetDistancePasendFürModule)
@@ -1536,7 +1534,7 @@ namespace Optimat.ScpezEveOnln
 							}
 						}
 
-						if (!Bib3.Extension.NullOderLeer(MengeModuleAinSol))
+						if (!MengeModuleAinSol.IsNullOrEmpty())
 						{
 							//	Hiir werd nuur waitergemact wen noc mindesctens ain Module noc aigescaltet werde sol.
 
@@ -2112,7 +2110,7 @@ namespace Optimat.ScpezEveOnln
 							var ListeAusGbsAbovemainMessageNocAngezaigt =
 								ExtractFromOldAssembly.Bib3.Extension.WhereNullable(ListeAusGbsAbovemainMessage, (Kandidaat) => !Kandidaat.EndeZait.HasValue);
 
-							if (ListeAusGbsAbovemainMessageNocAngezaigt.NullOderLeer())
+							if (ListeAusGbsAbovemainMessageNocAngezaigt.IsNullOrEmpty())
 							{
 								AufgaabeParamZerleegungErgeebnis.FüügeAn(AufgaabeParamAndere.AufgaabeAktioonMenu(FittingEntry,
 									new SictAnforderungMenuKaskaadeAstBedingung("load Fitting", true)));
@@ -2308,7 +2306,7 @@ namespace Optimat.ScpezEveOnln
 
 					var VersuucAnforderungReturnFälig = true;
 
-					if (Bib3.Extension.NullOderLeer(GrupeDronesInLocalSpaceMengeDroneEntryReturnNict) &&
+					if (GrupeDronesInLocalSpaceMengeDroneEntryReturnNict.IsNullOrEmpty() &&
 						DronesInLocalSpaceAnzaal <= ExtractFromOldAssembly.Bib3.Extension.CountNullable(GrupeDronesInLocalSpaceMengeDroneEntry))
 					{
 						VersuucAnforderungReturnFälig = false;

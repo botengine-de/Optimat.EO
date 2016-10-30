@@ -263,15 +263,13 @@ namespace Optimat.ScpezEveOnln
 
 			var VorsclaagListeWirkung = FürNuzerVorsclaagWirkungBerecne().ToArrayFalsNitLeer();
 
-			if (!VorsclaagListeWirkung.NullOderLeer())
-			{
+			if (!VorsclaagListeWirkung.IsNullOrEmpty())
 				NaacNuzerBerict.VorsclaagListeWirkung = VorsclaagListeWirkung.ToList();
-			}
 
 			{
 				//	MesungNääxteZaitScrankeMin
 
-				if (VorsclaagListeWirkung.NullOderLeer())
+				if (VorsclaagListeWirkung.IsNullOrEmpty())
 				{
 					var ListeZuZaitNaacNuzerVorsclaagNaacProcessWirkungLezte =
 						ListeZuZaitNaacNuzerVorsclaagNaacProcessWirkung.LastOrDefaultNullable();
@@ -443,7 +441,7 @@ namespace Optimat.ScpezEveOnln
 
 			var GbsMengeMenuMitBeginZait = InternZuusctand.GbsListeMenuNocOfeMitBeginZaitBerecne() ?? new SictWertMitZait<VonSensor.Menu>[0];
 
-			if (Bib3.Extension.NullOderLeer(ListeMenu) && 0 < ExtractFromOldAssembly.Bib3.Extension.CountNullable(VorherListeMenu))
+			if (ListeMenu.IsNullOrEmpty() && 0 < ExtractFromOldAssembly.Bib3.Extension.CountNullable(VorherListeMenu))
 			{
 				//	MengeVersuucMenuEntryKlikErfolg	werd zurzait waiter unte berecnet
 			}
@@ -1145,10 +1143,8 @@ namespace Optimat.ScpezEveOnln
 				var NaacherScnapscusWindowInventoryLinxTreeListeEntry = NaacherScnapscusWindowInventory.LinxTreeListeEntry;
 				var NaacherScnapscusWindowInventoryAuswaalReczListeItem = NaacherScnapscusWindowInventory.AuswaalReczListeItem;
 
-				if (Bib3.Extension.NullOderLeer(NaacherScnapscusWindowInventoryLinxTreeListeEntry))
-				{
+				if (NaacherScnapscusWindowInventoryLinxTreeListeEntry.IsNullOrEmpty())
 					continue;
-				}
 
 				var VorherAuswaalReczObjektPfaadListeAst = VorherScnapscusWindowInventory.AuswaalReczObjektPfaadListeAst;
 				var NaacherAuswaalReczObjektPfaadListeAst = NaacherScnapscusWindowInventory.AuswaalReczObjektPfaadListeAst;
@@ -1197,13 +1193,11 @@ namespace Optimat.ScpezEveOnln
 						VorherAuswaalReczObjektPfaadListeAst,
 						NaacherScnapscusWindowInventoryLinxTreeListeEntry);
 
-					if (Bib3.Extension.NullOderLeer(VorherAuswaalObjektMengeKandidaatReprInNaacherScnapscus))
-					{
+					if (VorherAuswaalObjektMengeKandidaatReprInNaacherScnapscus.IsNullOrEmpty())
 						AnnaameMengeItemTransportiirt = VorherScnapscusWindowInventory.AuswaalReczListeItem;
-					}
 				}
 
-				if (!Bib3.Extension.NullOderLeer(AnnaameMengeItemTransportiirt))
+				if (!AnnaameMengeItemTransportiirt.IsNullOrEmpty())
 				{
 					if (null == ListeInventoryItemTransportMitZait)
 					{
@@ -1382,7 +1376,7 @@ namespace Optimat.ScpezEveOnln
 					var MengeKandidaatAsteroidBeltBescriftung =
 						ListeMenu1.ListeEntryBerecne()
 						.SelectNullable((Kandidaat) => ExtractFromOldAssembly.Bib3.Glob.TrimNullable(Kandidaat.Bescriftung))
-						.WhereNullable((KandidaatBescriftung) => !KandidaatBescriftung.NullOderLeer())
+						.WhereNullable((KandidaatBescriftung) => !KandidaatBescriftung.IsNullOrEmpty())
 						.ToArrayNullable();
 
 					var MengeAsteroidBeltBescriftung =
@@ -1422,10 +1416,8 @@ namespace Optimat.ScpezEveOnln
 
 			var ScnapscusNearestName = ExtractFromOldAssembly.Bib3.Glob.TrimNullable(CurrentLocationInfo.NearestName);
 
-			if (ScnapscusNearestName.NullOderLeer())
-			{
+			if (ScnapscusNearestName.IsNullOrEmpty())
 				return;
-			}
 
 			if (null == InternListeLocationNearest)
 			{
@@ -2169,7 +2161,7 @@ namespace Optimat.ScpezEveOnln
 										continue;
 									}
 
-									if (!Bib3.Extension.NullOderLeer(AufgaabePfaadBlatNaacNuzerVorsclaagWirkung.MausPfaadListeWeegpunktFläce) ||
+									if (!AufgaabePfaadBlatNaacNuzerVorsclaagWirkung.MausPfaadListeWeegpunktFläce.IsNullOrEmpty() ||
 										true == AufgaabePfaadBlatNaacNuzerVorsclaagWirkung.MausPfaadTasteLinksAin ||
 										true == AufgaabePfaadBlatNaacNuzerVorsclaagWirkung.MausPfaadTasteRectsAin)
 									{
@@ -2271,10 +2263,10 @@ namespace Optimat.ScpezEveOnln
 
 									var VorsclaagWirkungBetriftWindowWirkungGescpert = false;
 
-									if (!Bib3.Extension.NullOderLeer(AufgaabeParamMausPfaadListeWeegpunktGbsObjekt) &&
+									if (!AufgaabeParamMausPfaadListeWeegpunktGbsObjekt.IsNullOrEmpty() &&
 										(true == AufgaabeParamMausPfaad.MausTasteLinxAin ||
 										true == AufgaabeParamMausPfaad.MausTasteReczAin) &&
-										!Bib3.Extension.NullOderLeer(MengeWindowWirkungGescpert) &&
+										!MengeWindowWirkungGescpert.IsNullOrEmpty() &&
 										null != GbsMengeWindow &&
 										null != GbsBaum)
 									{
@@ -2603,7 +2595,7 @@ namespace Optimat.ScpezEveOnln
 
 								if (null != AufgaabeParamNaacNuzerVorsclaagWirkung)
 								{
-									if (!Bib3.Extension.NullOderLeer(AufgaabeParamNaacNuzerVorsclaagWirkung.MausPfaadListeWeegpunktFläce) ||
+									if (!AufgaabeParamNaacNuzerVorsclaagWirkung.MausPfaadListeWeegpunktFläce.IsNullOrEmpty() ||
 										true == AufgaabeParamNaacNuzerVorsclaagWirkung.MausPfaadTasteLinksAin ||
 										true == AufgaabeParamNaacNuzerVorsclaagWirkung.MausPfaadTasteRectsAin)
 									{

@@ -299,8 +299,8 @@ namespace Optimat.EveOnline.Anwendung
 		public bool Glaicwertig()
 		{
 			return
-				ZiilWertMengeInGrupeZuunaame.NullOderLeer() &&
-				ZiilWertMengeInGrupeAbnaame.NullOderLeer();
+				ZiilWertMengeInGrupeZuunaame.IsNullOrEmpty() &&
+				ZiilWertMengeInGrupeAbnaame.IsNullOrEmpty();
 		}
 
 		public MengeInGrupeAnzaalTransitioon(

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 //using Optimat.EveOnline.AuswertGbs;
 using Optimat.ScpezEveOnln;
-
+using Bib3;
 
 namespace Optimat.EveOnline.Anwendung
 {
@@ -27,7 +27,7 @@ namespace Optimat.EveOnline.Anwendung
 			this.ShipAktuelCargoLeereTyp = ShipAktuelCargoLeereTyp;
 		}
 
-		override	public SictAufgaabeParamZerleegungErgeebnis Zerleege(
+		override public SictAufgaabeParamZerleegungErgeebnis Zerleege(
 			ISictAutomatZuusctand AutomaatZuusctand,
 			SictAufgaabeKombiZuusctand KombiZuusctand)
 		{
@@ -36,7 +36,7 @@ namespace Optimat.EveOnline.Anwendung
 
 		override public IEnumerable<string> ZwekListeKomponenteAusParamBerecne()
 		{
-			return	new	string[]{	"Ship.Empty Cargo[" + ShipAktuelCargoLeereTyp.ToString() + "]"};
+			return new string[] { "Ship.Empty Cargo[" + ShipAktuelCargoLeereTyp.ToString() + "]" };
 		}
 
 		override public bool HinraicendGlaicwertigFürFortsazScpez(
@@ -62,15 +62,15 @@ namespace Optimat.EveOnline.Anwendung
 			return ZerleegeShipAktuelOpenCargoLeereTyp(
 				AutomaatZuusctand,
 				CargoTyp,
-				out	ErgeebnisWindowShipInventory,
-				out	ErgeebnisShipInventory);
+				out ErgeebnisWindowShipInventory,
+				out ErgeebnisShipInventory);
 		}
 
 		public SictAufgaabeParamZerleegungErgeebnis ZerleegeShipAktuelOpenCargoLeereTyp(
 			ISictAutomatZuusctand AutomaatZuusctand,
 			SictShipCargoTypSictEnum CargoTyp,
-			out	VonSensor.WindowInventoryPrimary ErgeebnisWindowShipInventory,
-			out	VonSensor.Inventory ErgeebnisShipInventory)
+			out VonSensor.WindowInventoryPrimary ErgeebnisWindowShipInventory,
+			out VonSensor.Inventory ErgeebnisShipInventory)
 		{
 			ErgeebnisWindowShipInventory = null;
 			ErgeebnisShipInventory = null;
@@ -88,8 +88,8 @@ namespace Optimat.EveOnline.Anwendung
 				AufgaabeParamShipAktuelOpenInventoryCargoTyp.ZerleegeShipAktuelOpenInventoryCargoTyp(
 				AutomaatZuusctand,
 				CargoTyp,
-				out	ErgeebnisWindowShipInventory,
-				out	ErgeebnisShipInventory);
+				out ErgeebnisWindowShipInventory,
+				out ErgeebnisShipInventory);
 
 			AufgaabeParamZerleegungErgeebnis.FüügeAn(TailInventoryAuswaalZerleegungErgeebnis);
 
@@ -100,10 +100,8 @@ namespace Optimat.EveOnline.Anwendung
 				return AufgaabeParamZerleegungErgeebnis;
 			}
 
-			if (!Bib3.Extension.NullOderLeer(TailInventoryAuswaalZerleegungErgeebnis.ListeKomponenteAufgaabeParam))
-			{
+			if (!(TailInventoryAuswaalZerleegungErgeebnis.ListeKomponenteAufgaabeParam).IsNullOrEmpty())
 				return AufgaabeParamZerleegungErgeebnis;
-			}
 
 			if (true == ErgeebnisShipInventory.SictwaiseScaintGeseztAufListNict)
 			{

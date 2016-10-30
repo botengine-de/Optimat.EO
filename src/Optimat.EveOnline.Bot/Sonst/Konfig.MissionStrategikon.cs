@@ -290,10 +290,8 @@ namespace Optimat.EveOnline.Anwendung
 				{
 					var MengeFaction = AusOfferMengeFaction;
 
-					if(MengeFaction.NullOderLeer())
-					{
+					if(MengeFaction.IsNullOrEmpty())
 						MengeFaction = MissionStrategikon.MengeFactionPassend;
-					}
 
 					MengePasend.Add(new KeyValuePair<SictFactionSictEnum[], SictMissionStrategikon>(MengeFaction, MissionStrategikon));
 				}

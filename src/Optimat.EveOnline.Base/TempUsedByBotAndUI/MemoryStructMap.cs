@@ -340,7 +340,7 @@ namespace Optimat.EveOnline
 
 			var OreTypSictString = ZeleStringZuHeaderMitBescriftungRegex(ListeZuHeaderZeleString, ColumnHeaderOreTypRegex);
 
-			if (OreTypSictString.NullOderLeer())
+			if (OreTypSictString.IsNullOrEmpty())
 			{
 				if (TempAuswertGbs.Extension.OreTypBerecneAusOreTypSictString(BescriftungTailTitel).HasValue)
 				{
@@ -935,7 +935,7 @@ namespace Optimat.EveOnline
 				PfaadSictString
 				.Split(new string[] { ">" }, StringSplitOptions.RemoveEmptyEntries)
 				.Select((Ast) => Ast.Trim())
-				.Where((Ast) => !Bib3.Extension.NullOderLeer(Ast))
+				.Where((Ast) => !Ast.IsNullOrEmpty())
 				.ToArray();
 		}
 
@@ -1579,7 +1579,7 @@ namespace Optimat.EveOnline
 			var ListeKomponente =
 				HeaderText?.ListeStringZwisceXmlTag()
 				?.Select((InnerText) => InnerText?.Trim())
-				?.Where((InnerText) => !InnerText.NullOderLeer())
+				?.Where((InnerText) => !InnerText.IsNullOrEmpty())
 				?.ToArray();
 
 			if (null == ListeKomponente)

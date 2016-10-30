@@ -228,10 +228,8 @@ namespace Optimat.EveOnline.Anwendung
 				var MengeTabNameÜbrig = MengeTabName.Except(MengeZuTabNameDefault.Keys()).ToArray();
 				var ListePresetDefaultPrioÜbrig = ListePresetDefaultPrioMacbar.Except(MengeZuTabNameDefault.Values()).ToArray();
 
-				if (MengeTabNameÜbrig.NullOderLeer() || ListePresetDefaultPrioÜbrig.NullOderLeer())
-				{
+				if (MengeTabNameÜbrig.IsNullOrEmpty() || ListePresetDefaultPrioÜbrig.IsNullOrEmpty())
 					break;
-				}
 
 				var Match = ZuMengeTabNameBerecneFrüühesteDefault(MengeTabNameÜbrig, ListePresetDefaultPrioÜbrig);
 

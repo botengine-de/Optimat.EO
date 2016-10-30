@@ -394,7 +394,7 @@ Probleem:Automaat Tail Msn wartet auf in RaumAktioonUndGefect.GefectBaitritFraig
 							var FittingUndShipFitLoadedLezteNocAktiivZait =
 								FittingUndShipFitLoadedLezteNocAktiiv.HasValue ? (Int64?)FittingUndShipFitLoadedLezteNocAktiiv.Value.Zait : null;
 
-							if (Bib3.Extension.NullOderLeer(FittingUndShipZuusctandMengeModuleRepr))
+							if (FittingUndShipZuusctandMengeModuleRepr.IsNullOrEmpty())
 							{
 								if (ZaitraumDockedLezteHinraicendAltFürBeurtailungShipZuusctand ?? true)
 								{
@@ -834,14 +834,10 @@ Probleem:Automaat Tail Msn wartet auf in RaumAktioonUndGefect.GefectBaitritFraig
 					FunkZugehörigkaitZuGrupe = new Func<SictAufgaabeInRaumObjektZuBearbaiteMitPrio, bool>((Aufgaabe) =>
 						AufgaabeMitPrioritäätEnthältAinesAusMengeEWarType(Aufgaabe, InGrupeMengeEWarType, EWarWirkungZuBerüksictigeZaitScrankeMin));
 
-					if (Bib3.Extension.NullOderLeer(InGrupeMengeEWarType))
-					{
+					if (InGrupeMengeEWarType.IsNullOrEmpty())
 						GrupeEWarNaameTailMengeEWar = "Sonstige";
-					}
 					else
-					{
 						GrupeEWarNaameTailMengeEWar = string.Join(",", InGrupeMengeEWarType.Select((EWarType) => EWarType.ToString()).ToArray());
-					}
 				}
 
 				var InGrupeMengeAufgaabeMitPrio =
@@ -1427,7 +1423,7 @@ Probleem:Automaat Tail Msn wartet auf in RaumAktioonUndGefect.GefectBaitritFraig
 					var MengeKandidaatFürGefectAufgaabeManööverErgeebnis = new List<SictFürGefectAufgaabeManööverErgeebnis>();
 
 					if (null != MengeAufgaabeZuusctand &&
-						!Bib3.Extension.NullOderLeer(GefectAngraifendeHalteAufDistanceLezteListeAufgaabeAufDistanceZuHalteParam))
+						!GefectAngraifendeHalteAufDistanceLezteListeAufgaabeAufDistanceZuHalteParam.IsNullOrEmpty())
 					{
 						foreach (var KandidaatAufgaabe in MengeAufgaabeZuusctand)
 						{
@@ -1474,7 +1470,7 @@ Probleem:Automaat Tail Msn wartet auf in RaumAktioonUndGefect.GefectBaitritFraig
 							.OrderBy((Kandidaat) => Kandidaat.ShipUIIndication.EndeZait ?? Int64.MaxValue)
 							.ToArray();
 
-						if (!Bib3.Extension.NullOderLeer(MengeKandidaatFürGefectAufgaabeManööverErgeebnis))
+						if (!MengeKandidaatFürGefectAufgaabeManööverErgeebnis.IsNullOrEmpty())
 						{
 							FürGefectAufgaabeManööverErgeebnis =
 								ListeKandidaatFürGefectAufgaabeManööverErgeebnis
@@ -1524,8 +1520,8 @@ Probleem:Automaat Tail Msn wartet auf in RaumAktioonUndGefect.GefectBaitritFraig
 						}
 					}
 
-					if (Bib3.Extension.NullOderLeer(MengeObjektAufDistanceZuHalte) &&
-						!Bib3.Extension.NullOderLeer(MengeInRaumObjektAttackingMe))
+					if (MengeObjektAufDistanceZuHalte.IsNullOrEmpty() &&
+						!MengeInRaumObjektAttackingMe.IsNullOrEmpty())
 					{
 						MengeObjektAufDistanceZuHalte = MengeInRaumObjektAttackingMe;
 					}
@@ -1534,7 +1530,7 @@ Probleem:Automaat Tail Msn wartet auf in RaumAktioonUndGefect.GefectBaitritFraig
 					var ObjektAufDistanceZuHalteBeginDistanceScrankeMaxKonstant = 26000;
 					var ObjektAufDistanceZuHalteFortsazDistanceScrankeMaxKonstant = ObjektAufDistanceZuHalteBeginDistanceScrankeMaxKonstant + 5000;
 
-					if (!Bib3.Extension.NullOderLeer(MengeObjektAufDistanceZuHalte))
+					if (!MengeObjektAufDistanceZuHalte.IsNullOrEmpty())
 					{
 						var ObjektAufDistanceZuHalteNääxteDistance =
 							Bib3.Glob.Min(
@@ -1559,7 +1555,7 @@ Probleem:Automaat Tail Msn wartet auf in RaumAktioonUndGefect.GefectBaitritFraig
 								Bib3.Glob.Min(ObjektAufDistanceZuHalteBeginDistanceScrankeMaxKonstant, ObjektAufDistanceZuHalteDistanceScrankeMax))
 							.ToArray();
 
-						if (!Bib3.Extension.NullOderLeer(ListeObjektAufDistanceZuHalteFortsaz))
+						if (!ListeObjektAufDistanceZuHalteFortsaz.IsNullOrEmpty())
 						{
 							bool AufgaabeAufDistanceZuHalteBeraitsErleedigt = false;
 							bool AufgaabeAufDistanceZuHalteBeginNaacrangig = false;
@@ -1613,7 +1609,7 @@ Probleem:Automaat Tail Msn wartet auf in RaumAktioonUndGefect.GefectBaitritFraig
 									AngraifendeAufDistanzZuHalteManööverPrioNaacrangig :
 									AngraifendeAufDistanzZuHalteManööverPrioVorrangig;
 
-								if (!Bib3.Extension.NullOderLeer(ListeObjektAufDistanceZuHalteBegin))
+								if (!ListeObjektAufDistanceZuHalteBegin.IsNullOrEmpty())
 								{
 									var ListeObjektAufDistanceZuHalteAufgaabeParam =
 										ListeObjektAufDistanceZuHalteBegin
@@ -1697,7 +1693,7 @@ Probleem:Automaat Tail Msn wartet auf in RaumAktioonUndGefect.GefectBaitritFraig
 							AutoMine.FürMineListeAufgaabeNääxteParamBerecne(AutomaatZuusctand)
 							.ToArrayNullable();
 
-						if (!Bib3.Extension.NullOderLeer(FürMineListeAufgaabeNääxteParam))
+						if (!FürMineListeAufgaabeNääxteParam.IsNullOrEmpty())
 						{
 							var AusMineGrupePrio = new SictAufgaabeGrupePrio(FürMineListeAufgaabeNääxteParam, "aus Auto.Mine");
 
@@ -1715,7 +1711,7 @@ Probleem:Automaat Tail Msn wartet auf in RaumAktioonUndGefect.GefectBaitritFraig
 							AgentUndMission.FürMissionListeAufgaabeNääxteParamBerecne(AutomaatZuusctand)
 							.ToArrayNullable();
 
-						if (!Bib3.Extension.NullOderLeer(FürMissionListeAufgaabeNääxteParam))
+						if (!FürMissionListeAufgaabeNääxteParam.IsNullOrEmpty())
 						{
 							var AusMissionGrupePrio = new SictAufgaabeGrupePrio(FürMissionListeAufgaabeNääxteParam, "aus Mission direkt");
 

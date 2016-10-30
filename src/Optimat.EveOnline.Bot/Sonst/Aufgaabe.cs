@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Optimat.EveOnline.Anwendung.AuswertGbs;
+using Bib3;
 //using Optimat.EveOnline.AuswertGbs;
 
 
@@ -468,10 +469,8 @@ namespace Optimat.EveOnline.Anwendung
 		{
 			var MengeKomponente = MengeKomponenteBerecne();
 
-			if (!Bib3.Extension.NullOderLeer(MengeKomponente))
-			{
+			if (!MengeKomponente.IsNullOrEmpty())
 				return false;
-			}
 
 			var AufgaabeParam = this.AufgaabeParam;
 

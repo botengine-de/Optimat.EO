@@ -1151,7 +1151,7 @@ namespace Optimat.EveOnline.Anwendung
 
 			var AtomObjektExistentDisjunktBezaicnerUndSctruktur =
 				new KeyValuePair<int, SictMissionStrategikonInRaumSctruktuur>(400,
-					Bib3.Extension.NullOderLeer(MengeAtomObjektExistentBezaicnerUndSctruktur) ? null :
+					MengeAtomObjektExistentBezaicnerUndSctruktur.IsNullOrEmpty() ? null :
 				new SictMissionStrategikonInRaumSctruktuur(
 					null,
 					null,

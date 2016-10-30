@@ -518,7 +518,7 @@ namespace Optimat.EveOnline.Anwendung
 
 				if (null != ShipUi && ZaitraumDockedLezteHinraicendAltFürBeurtailungShipZuusctand)
 				{
-					var ScnapscusIndikatorShipTypIstPod = ShipUiMengeModuleRepr.NullOderLeer();
+					var ScnapscusIndikatorShipTypIstPod = ShipUiMengeModuleRepr.IsNullOrEmpty();
 
 					UndockedMesungShipTypIstPodIndikator.AingangWertZuZait(ZaitMili, ScnapscusIndikatorShipTypIstPod);
 
@@ -1071,10 +1071,8 @@ namespace Optimat.EveOnline.Anwendung
 					Optimat.EveOnline.Extension.AusLinxTreeEntryShipExtraktShipType(
 					ScnapscusWindowInventory.LinxTreeEntryActiveShip));
 
-				if (ShipType.NullOderLeer())
-				{
+				if (ShipType.IsNullOrEmpty())
 					continue;
-				}
 
 				var IsPod =
 					string.Equals("Capsule", ShipType, StringComparison.InvariantCultureIgnoreCase) ||

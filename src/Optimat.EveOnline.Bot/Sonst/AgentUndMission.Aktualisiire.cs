@@ -34,7 +34,7 @@ namespace Optimat.EveOnline.Anwendung
 
 			var VonNuzerParamMissionMengeZuFactionFittingBezaicner = (null == VonNuzerParamMission) ? null : VonNuzerParamMission.MengeZuFactionFittingBezaicner;
 
-			VonNuzerParamScpezVerzictAufCargoLeere = Bib3.Extension.NullOderLeer(VonNuzerParamMissionMengeZuFactionFittingBezaicner);
+			VonNuzerParamScpezVerzictAufCargoLeere = VonNuzerParamMissionMengeZuFactionFittingBezaicner.IsNullOrEmpty();
 
 			AktualisiireZuusctandAusScnapscusAuswertungTailAgent(
 				AusScnapscusAuswertungZuusctand,
@@ -938,7 +938,7 @@ namespace Optimat.EveOnline.Anwendung
 						}
 					}
 
-					if (ZuBeginZaitMissionFittingZuTesteNääxte.Wert.FürMissionFittingBezaicner().NullOderLeer() || 33333 < MissionFittingZuTesteNääxteAlter ||
+					if (ZuBeginZaitMissionFittingZuTesteNääxte.Wert.FürMissionFittingBezaicner().IsNullOrEmpty() || 33333 < MissionFittingZuTesteNääxteAlter ||
 						(ZuBeginZaitMissionFittingZuTesteNääxte.Wert.AnnaameCompleteFallsInAgentStation ?? false) ||
 						ZuBeginZaitMissionFittingZuTesteNääxte.Wert.EndeZaitMili().HasValue)
 					{
@@ -1061,7 +1061,7 @@ namespace Optimat.EveOnline.Anwendung
 							{
 								//	2015.02.12	Filter Faction werd vorersct ignoriirt.
 
-								if (Bib3.Extension.NullOderLeer(MissionAkzeptiirtUndNictBeendetTailNuzer.ObjectiveMengeFaction))
+								if (MissionAkzeptiirtUndNictBeendetTailNuzer.ObjectiveMengeFaction.IsNullOrEmpty())
 								{
 									//	Automat hat in Mission zu erwartende Faction nit erkant.
 									continue;
@@ -1355,10 +1355,8 @@ namespace Optimat.EveOnline.Anwendung
 
 								var FürMissionFittingBezaicner = AgentOfferMissionTailFürNuzer.FürMissionFittingBezaicner;
 
-								if (FürMissionFittingBezaicner.NullOderLeer())
-								{
+								if (FürMissionFittingBezaicner.IsNullOrEmpty())
 									continue;
-								}
 
 								ZuStationAktuelMengeAgentMitOfferTailmengeTestFitting.Add(AgentMitOffer);
 							}

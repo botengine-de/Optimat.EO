@@ -568,18 +568,12 @@ namespace Optimat.EveOnline.Anwendung
 
 							var MengeAssignedGrupeZuunaame = KandidaatTargetAssignedTransitioon.ZuusazInfo.ZiilWertMengeInGrupeZuunaame;
 
-							if (MengeAssignedGrupeZuunaame.NullOderLeer())
-							{
+							if (MengeAssignedGrupeZuunaame.IsNullOrEmpty())
 								continue;
-							}
 
-							if (!FilterMengeTexturIdent.NullOderLeer())
-							{
+							if (!FilterMengeTexturIdent.IsNullOrEmpty())
 								if (!MengeAssignedGrupeZuunaame.Any((AssignedGrupeZuunaame) => FilterMengeTexturIdent.Contains(AssignedGrupeZuunaame.Key)))
-								{
 									continue;
-								}
-							}
 
 							MengeTarget.Add(Target);
 							break;

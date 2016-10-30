@@ -62,7 +62,7 @@ namespace Optimat.EveOnline.Anwendung
 		{
 			var AufgaabeParamZerleegungErgeebnis = new SictAufgaabeParamZerleegungErgeebnis(null, true);
 
-			if (MengeObjGrupe.NullOderLeer())
+			if (MengeObjGrupe.IsNullOrEmpty())
 			{
 				return AufgaabeParamZerleegungErgeebnis;
 			}
@@ -112,7 +112,7 @@ namespace Optimat.EveOnline.Anwendung
 				OverviewMengeZuTabNamePresetDefault
 				.FirstOrDefaultNullable((Kandidaat) => Kandidaat.Value == PresetNääxte).Key;
 
-			if (TabFürPresetDefault.NullOderLeer())
+			if (TabFürPresetDefault.IsNullOrEmpty())
 			{
 				AufgaabeParamZerleegungErgeebnis.FüügeAn(
 					AufgaabeParamAndere.KonstruktNaacNuzerMeldungZuEveOnline(

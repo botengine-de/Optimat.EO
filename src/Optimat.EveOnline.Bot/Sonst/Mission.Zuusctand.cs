@@ -414,7 +414,7 @@ namespace Optimat.EveOnline.Anwendung
 					MengeOverviewObjekt,
 					(KandidaatObjekt) => KandidaatObjekt.SictungLezteDistanceScrankeMinScpezOverview < 1000 * 1000);
 
-				if (Bib3.Extension.NullOderLeer(MengeOverviewObjektInGrid))
+				if (MengeOverviewObjektInGrid.IsNullOrEmpty())
 				{
 					base.EndeSeze(new SictWertMitZait<Optimat.EveOnline.SictMissionLocationRaumEnde>(Zait, KandidaatEnde.Value.Wert));
 				}
@@ -731,10 +731,10 @@ namespace Optimat.EveOnline.Anwendung
 					 * */
 					FittingBezaicner = Strategikon.FürMissionFittingBezaicnerBerecne(OptimatParam, TailFürNuzer.ObjectiveMengeFaction, out	MengeZuFactionFittingBezaicner);
 
-					if (FittingBezaicner.NullOderLeer())
+					if (FittingBezaicner.IsNullOrEmpty())
 					{
 						//	Wen kain ainziges Fitting konfiguriirt ist dan darf Mission oone Fitting geflooge werde.
-						ConstraintFittingSatisfied = MengeZuFactionFittingBezaicner.NullOderLeer();
+						ConstraintFittingSatisfied = MengeZuFactionFittingBezaicner.IsNullOrEmpty();
 						return;
 					}
 
